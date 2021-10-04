@@ -30,7 +30,7 @@ class HelloWorld
     public function info()
     {
         $info = "Hello World ! \n";
-        $info .= "\t--Power By ";
+        $info .= "\t--Power By x ";
         $info .= $this->author . "\n";
         return $info;
     }
