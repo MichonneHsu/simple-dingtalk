@@ -10,7 +10,7 @@ class AccessToken extends
 {
 
    
-    public   function getToken(): string
+    public static function getToken(): string
     {
         if (!file_exists(Config::expires)) {
             throw new Exception(Config::access_token_file_path . ' 文件不存在');
@@ -36,7 +36,7 @@ class AccessToken extends
         // Log::info($token);
         return  $token['access_token'];
     }
-    public  function generateToken()
+    public static function generateToken()
     {
 
 
