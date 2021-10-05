@@ -15,16 +15,16 @@ class AccessToken extends
         if (!file_exists(Config::expires)) {
             throw new Exception(Config::access_token_file_path . ' 文件不存在');
         }
-        $filename = $this->path;
+        $filename = Config::access_token_file_path;
         $json = file_get_contents($filename);
         if (empty($json)) {
-            $this->generateToken();
+            self::generateToken();
 
             // Log::channel('token')->info('空内容，需重新生成');
         } else {
             $token = json_decode($json, true);
             if (($token['expires_in'] - Config::expires) < time()) {
-                $this->generateToken();
+                self::generateToken();
 
                 // Log::channel('token')->info('超时,重新获取内容');
             }
