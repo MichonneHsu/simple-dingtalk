@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 
-class apiRequest{
+final class apiRequest{
   
     /**
      * 客户端请求基本信息
@@ -60,8 +60,8 @@ class apiRequest{
            
             return $content;
         } catch (RequestException $e) {
-            Log::error(Message::toString($e->getResponse()));
-            return '';
+            throw Message::toString($e->getResponse());
+           
         }
     }
     public static function async_post(string $uri,array $options){

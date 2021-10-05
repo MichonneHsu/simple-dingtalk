@@ -6,25 +6,14 @@ namespace SimpleDingTalk;
 
 use Exception;
 
-class AccessToken
+class AccessToken extends 
 {
 
-    public $expires = 0;
-    public  $path = '';
-    public  $APP_KEY = '';
-    public $APP_SECRET = '';
-    
-    public function __construct(array $config)
+   
+    public   function getToken(): string
     {
-        $this->expires=$config['expires'];
-        $this->path=$config['path'];
-        $this->APP_KEY=$config['APP_KEY'];
-        $this->APP_SECRET=$config['APP_SECRET'];
-    }
-    public  function getToken(): string
-    {
-        if (!file_exists($this->path)) {
-            throw new Exception($this->path . ' 文件不存在');
+        if (!file_exists(Config::expires)) {
+            throw new Exception(Config::access_token_file_path . ' 文件不存在');
         }
         $filename = $this->path;
         $json = file_get_contents($filename);
@@ -34,7 +23,7 @@ class AccessToken
             // Log::channel('token')->info('空内容，需重新生成');
         } else {
             $token = json_decode($json, true);
-            if (($token['expires_in'] - 300) < time()) {
+            if (($token['expires_in'] - Config::expires) < time()) {
                 $this->generateToken();
 
                 // Log::channel('token')->info('超时,重新获取内容');
@@ -43,7 +32,7 @@ class AccessToken
 
         $json = file_get_contents($filename);
         $token = json_decode($json, true);
-
+        
         // Log::info($token);
         return  $token['access_token'];
     }
@@ -51,9 +40,9 @@ class AccessToken
     {
 
 
-        $appkey = $this->APP_KEY;
-        $appSecret = $this->APP_SECRET;
-        $uri = Uri::$api['gettoken'];
+        $appkey = Config::APP_KEY;
+        $appSecret = Config::APP_SECRET;
+        $uri = Config::$api['gettoken'];
         $query = [
             'appkey' => $appkey,
             'appsecret' => $appSecret
@@ -62,7 +51,7 @@ class AccessToken
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = $this->path;
+        $filename = Config::access_token_file_path;
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }
