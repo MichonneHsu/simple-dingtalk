@@ -7,7 +7,7 @@
  * Time: 上午11:16
  */
 
-namespace HelloWorld;
+namespace SimpleDingtalk;
 
 class HelloWorld
 {

@@ -1,5 +1,5 @@
 {
-    "name": "michonne/simpledingding",
+    "name": "michonnehsu/simpledingtalk",
     "description": "dingding API",
     "type": "library",
     "authors": [
@@ -10,12 +10,13 @@
     ],
     "license": "Apache-2.0",
     "require": {
-        "php":">=7.3"
+        "php":">=7.3",
+        "guzzlehttp/guzzle": "^7.3",
     },
     "autoload":{
         
         "psr-4": {
-            "HelloWorld\\" : "src/"
+            "SimpleDingTalk\\" : "src/"
             }
     }
 }
