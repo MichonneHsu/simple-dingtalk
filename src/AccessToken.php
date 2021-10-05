@@ -13,6 +13,7 @@ class AccessToken
     public  $path = '';
     public  $APP_KEY = '';
     public $APP_SECRET = '';
+    
     public function __construct(array $config)
     {
         $this->expires=$config['expires'];
