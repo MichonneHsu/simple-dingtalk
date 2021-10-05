@@ -12,25 +12,27 @@ class AccessToken
    
     public static function getToken(): string
     {
-        if (!file_exists(Config::access_token_file_path)) {
-            throw new Exception(Config::access_token_file_path . ' 文件不存在');
+        $at=Config::$access_token;
+        $file_path=$at['file_path'];
+        if (!file_exists($file_path)) {
+            throw new Exception($file_path . ' 文件不存在');
         }
-        $filename = Config::access_token_file_path;
-        $json = file_get_contents($filename);
+      
+        $json = file_get_contents($file_path);
         if (empty($json)) {
             self::generateToken();
 
             // Log::channel('token')->info('空内容，需重新生成');
         } else {
             $token = json_decode($json, true);
-            if (($token['expires_in'] - Config::expires) < time()) {
+            if (($token['expires_in'] - $at['expires']) < time()) {
                 self::generateToken();
 
                 // Log::channel('token')->info('超时,重新获取内容');
             }
         }
 
-        $json = file_get_contents($filename);
+        $json = file_get_contents($file_path);
         $token = json_decode($json, true);
         
         // Log::info($token);
@@ -39,9 +41,9 @@ class AccessToken
     public static function generateToken()
     {
 
-
-        $appkey = Config::APP_KEY;
-        $appSecret = Config::APP_SECRET;
+        $app_info=Config::$app_info;
+        $appkey =$app_info['APP_KEY'];
+        $appSecret = $app_info['APP_SECRET'];
         $uri = Config::$api['gettoken'];
         $query = [
             'appkey' => $appkey,
@@ -51,7 +53,7 @@ class AccessToken
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = Config::access_token_file_path;
+        $filename = Config::$access_token['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }

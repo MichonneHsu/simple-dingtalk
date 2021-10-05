@@ -8,10 +8,13 @@ class Config{
         'gettoken' => '/gettoken',
         'getuserinfo'=>'/user/getuserinfo'
     ];
-    public static $info=[
-        'expires'=>0,
-        'access_token_file_path'=>'',
+    public static $app_info=[
+      
         'APP_KEY'=>'',
         'APP_SECRET'=>''
+    ];
+    public static $access_token=[
+        'expires'=>0,
+        'file_path'=>''
     ];
 } 
