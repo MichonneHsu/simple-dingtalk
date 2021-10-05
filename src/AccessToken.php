@@ -6,7 +6,7 @@ namespace SimpleDingTalk;
 
 use Exception;
 
-class AccessToken extends 
+class AccessToken
 {
 
    
