@@ -61,7 +61,7 @@ class AccessToken
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = self::$path;
+        $filename = $this->path;
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }
