@@ -14,7 +14,7 @@ final class apiRequest{
      * @return Client
      */
     public static function client(){
-        return  new Client(['base_uri'=>Uri::$api['domain']]);
+        return  new Client(['base_uri'=>Config::$api['domain']]);
     }
     /**
      * get请求
