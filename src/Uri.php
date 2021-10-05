@@ -4,6 +4,7 @@ namespace SimpleDingtalk;
 
 final class Uri{
     public static $api=[
+        'domain' => 'https://oapi.dingtalk.com',
         'gettoken' => '/gettoken'
     ];
 } 
