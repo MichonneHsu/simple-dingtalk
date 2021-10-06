@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://developers.dingtalk.com/document/app">
-<img src="https://images.gitee.com/uploads/images/2021/1006/105453_40454723_8010855.png" alt="dingtalk" width="360"/>
+<img src="https://images.gitee.com/uploads/images/2021/1006/105453_40454723_8010855.png" alt="dingtalk" width="180"/>
 </a>
 </p>
 
