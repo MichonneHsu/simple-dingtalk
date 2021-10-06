@@ -14,3 +14,4 @@
 
 * 安装方式
 `composer require michonnehsu/simpledingtalk`
+* [文档地址](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
