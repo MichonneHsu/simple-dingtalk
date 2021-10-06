@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace SimpleDingtalk;
+namespace SimpleDingTalk;
 
 final class User{
     public static function getuserinfo(string $code){
