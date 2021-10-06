@@ -12,11 +12,11 @@ class User{
         return apiRequest::get($uri, $query);
     }
 
-    public static function create_user(array $data){
+    public static function create_user(array $json){
         $uri=apiRequest::joinParams(Config::$api['createuser'],[
             'access_token'=>AccessToken::getToken()
         ]);
-        $json = $data;
+       
         return apiRequest::post($uri, $json);
     }
 } 
