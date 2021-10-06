@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 
-final class apiRequest{
+class apiRequest{
   
     /**
      * 客户端请求基本信息
@@ -64,22 +64,13 @@ final class apiRequest{
            
         }
     }
-    public static function async_post(string $uri,array $options){
-        $client = self::client();
-        $client->requestAsync('POST',$uri,$options);
-    }
-   /**
-    * url阐述拼接
-    *
-    * @param string $uri
-    * @param array $params
-    * @return string
-    */
+  
+  
     public static function joinParams(string $uri, array $params):string
     {
 
-        $url =  $uri;
-        $url .= '?' . http_build_query($params);
+  
+        $url = $uri.'?' . http_build_query($params);
        
         return urldecode($url);
     }

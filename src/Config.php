@@ -6,7 +6,8 @@ class Config{
     public static $api=[
         'domain' => 'https://oapi.dingtalk.com',
         'gettoken' => '/gettoken',
-        'getuserinfo'=>'/user/getuserinfo'
+        'getuserinfo'=>'/user/getuserinfo',
+        'createuser'=>'/topapi/v2/user/create'
     ];
     public static $app_info=[
       
