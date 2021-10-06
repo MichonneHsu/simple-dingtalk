@@ -3,12 +3,10 @@ namespace SimpleDingTalk;
 
 final class User{
     public static function getuserinfo(string $code){
-        $uri = apiRequest::joinParams(Config::$api['getuserinfo'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
         $query = [
-            'code' => $code
+            'code' => $code,
+            'access_token'=>AccessToken::getToken()
         ];
-        return apiRequest::get($uri, $query);
+        return apiRequest::get(Config::$api['getuserinfo'], $query);
     }
 } 
