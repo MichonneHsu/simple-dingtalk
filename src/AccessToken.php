@@ -22,20 +22,20 @@ class AccessToken
         if (empty($json)) {
             self::generateToken();
 
-            // Log::channel('token')->info('空内容，需重新生成');
+           
         } else {
             $token = json_decode($json, true);
             if (($token['expires_in'] - $at['expires']) < time()) {
                 self::generateToken();
 
-                // Log::channel('token')->info('超时,重新获取内容');
+              
             }
         }
 
         $json = file_get_contents($file_path);
         $token = json_decode($json, true);
         
-        // Log::info($token);
+      
         return  $token['access_token'];
     }
     public static function generateToken()
