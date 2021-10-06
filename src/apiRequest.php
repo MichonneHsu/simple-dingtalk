@@ -23,7 +23,7 @@ class apiRequest{
      * @param array $query
      * @return mixed
      */
-    public static function get(string $uri,array $query){
+    public static function get(string $uri,array $query=[]){
       
         try {
             $client = self::client();
@@ -47,7 +47,7 @@ class apiRequest{
      * @param array $json
      * @return mixed
      */
-    public static function post(string $uri,array $json){
+    public static function post(string $uri,array $json=[]){
       
         try {
             $client = self::client();

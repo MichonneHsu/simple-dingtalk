@@ -6,10 +6,22 @@ class Config{
     public static $api=[
         'domain' => 'https://oapi.dingtalk.com',
         'gettoken' => '/gettoken',
-        'getuserinfo'=>'/user/getuserinfo',
-        'createuser'=>'/topapi/v2/user/create',
-        'updateuser'=>'/topapi/v2/user/update',
-        'deleteuser'=>'/topapi/v2/user/delete'
+        'user'=>[
+            'getuserinfo'=>'/user/getuserinfo',
+            'create'=>'/topapi/v2/user/create',
+            'update'=>'/topapi/v2/user/update',
+            'delete'=>'/topapi/v2/user/delete',
+            'get'=>'/topapi/v2/user/get',
+            'listsimple'=>'/topapi/user/listsimple',
+            'listid'=>'/topapi/user/listid',
+            'list'=>'/topapi/v2/user/list',
+            'count'=>'/topapi/user/count',
+            'listadmin'=>'/topapi/v2/user/listadmin',
+            'get_admin_scope'=>'/topapi/user/get_admin_scope',
+            'can_access_microapp'=>'/user/can_access_microapp'
+        ],
+     
+       
     ];
     public static $app_info=[
       
