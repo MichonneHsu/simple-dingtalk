@@ -205,11 +205,11 @@ class User{
      *
      * @return mixed
      */
-    public static function getinactive(){
+    public static function getinactive($json){
         $uri=apiRequest::joinParams(Config::$api['user']['getinactive'],[
             'access_token'=>AccessToken::getToken()
         ]);
        
-        return apiRequest::post($uri);
+        return apiRequest::post($uri,$json);
     }
 } 
