@@ -16,7 +16,7 @@ class Config{
             'listid'=>'/topapi/user/listid',
             'list'=>'/topapi/v2/user/list',
             'count'=>'/topapi/user/count',
-            'listadmin'=>'/topapi/v2/user/listadmin',
+            'listadmin'=>'/topapi/user/listadmin',
             'get_admin_scope'=>'/topapi/user/get_admin_scope',
             'can_access_microapp'=>'/user/can_access_microapp'
         ],
