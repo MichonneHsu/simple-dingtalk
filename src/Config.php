@@ -18,8 +18,10 @@ class Config{
             'count'=>'/topapi/user/count',
             'listadmin'=>'/topapi/user/listadmin',
             'get_admin_scope'=>'/topapi/user/get_admin_scope',
-            'can_access_microapp'=>'/user/can_access_microapp'
-            
+            'can_access_microapp'=>'/user/can_access_microapp',
+            'getbymobile'=>'/topapi/v2/user/getbymobile',
+            'getbyunionid'=>'/topapi/user/getbyunionid',
+            'getinactive'=>'/topapi/inactive/user/get'
         ],
      
        

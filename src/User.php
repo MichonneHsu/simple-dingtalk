@@ -170,4 +170,46 @@ class User{
        
         return apiRequest::get($uri,$query);
     }
+    /**
+     * 根据手机号获取userid
+     *
+     * @param string $mobile
+     * @return mixed
+     */
+    public static function getbymobile(string $mobile){
+        $uri=apiRequest::joinParams(Config::$api['user']['getbymobile'],[
+            'access_token'=>AccessToken::getToken()
+        ]);
+        $json=[
+            'mobile'=>$mobile
+        ];
+        return apiRequest::post($uri, $json);
+    }
+     /**
+     * 根据unionid获取用户userid
+     *
+     * @param string $unionid
+     * @return mixed
+     */
+    public static function getbyunionid(string $unionid){
+        $uri=apiRequest::joinParams(Config::$api['user']['getbyunionid'],[
+            'access_token'=>AccessToken::getToken()
+        ]);
+        $json=[
+            'unionid'=>$unionid
+        ];
+        return apiRequest::post($uri, $json);
+    }
+     /**
+     * 获取未登录钉钉的员工列表
+     *
+     * @return mixed
+     */
+    public static function getinactive(){
+        $uri=apiRequest::joinParams(Config::$api['user']['getinactive'],[
+            'access_token'=>AccessToken::getToken()
+        ]);
+       
+        return apiRequest::post($uri);
+    }
 } 
