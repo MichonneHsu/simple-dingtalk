@@ -134,11 +134,11 @@ class User{
      * @return mixed
      */
     public static function listadmin(){
-        $uri=apiRequest::joinParams(Config::$api['user']['listadmin'],[
+        $uri=Config::$api['user']['listadmin'];
+        $json=[
             'access_token'=>AccessToken::getToken()
-        ]);
-      
-        return apiRequest::post($uri);
+        ];
+        return apiRequest::post($uri,$json);
     }
     /**
      * 获取管理员通讯录权限范围
