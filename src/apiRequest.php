@@ -27,13 +27,17 @@ class apiRequest{
       
         try {
             $client = self::client();
-            $resp=$client->request('GET',$uri,[
-                'query'=>$query
-            ]);
+            $resp=null;
+            if(empty($query)){
+                $resp=$client->request('GET',$uri);
+            }else{
+                $resp=$client->request('GET',$uri,[
+                    'query'=>$query
+                ]);
+            }
+           
            
             $content=$resp->getBody()->getContents();
-          
-         
            
             return $content;
         } catch (RequestException $e) {
@@ -51,9 +55,15 @@ class apiRequest{
       
         try {
             $client = self::client();
-            $resp=$client->request('POST',$uri,[
-                'json'=>$json
-            ]);
+            $resp=null;
+            if(empty($json)){
+                $resp=$client->request('POST',$uri);
+            }else{
+                $resp=$client->request('POST',$uri,[
+                    'json'=>$json
+                ]);
+            }
+            
            
             $content=$resp->getBody()->getContents();
           
