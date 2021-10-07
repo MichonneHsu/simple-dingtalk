@@ -49,7 +49,7 @@ class User{
      * @return mixed
      */
     public static function remove(string $userid){
-        $uri=apiRequest::joinParams(Config::$api['user']['delete'],[
+        $uri=apiRequest::joinParams(Config::$api['user']['remove'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[

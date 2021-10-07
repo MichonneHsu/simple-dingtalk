@@ -10,7 +10,7 @@ class Config{
             'getuserinfo'=>'/user/getuserinfo',
             'create'=>'/topapi/v2/user/create',
             'update'=>'/topapi/v2/user/update',
-            'delete'=>'/topapi/v2/user/delete',
+            'remove'=>'/topapi/v2/user/delete',
             'get'=>'/topapi/v2/user/get',
             'listsimple'=>'/topapi/user/listsimple',
             'listid'=>'/topapi/user/listid',
@@ -23,6 +23,16 @@ class Config{
             'getbyunionid'=>'/topapi/user/getbyunionid',
             'getinactive'=>'/topapi/inactive/user/get'
         ],
+        'department'=>[
+            'create'=>'/topapi/v2/department/create',
+            'update'=>'/topapi/v2/department/update',
+            'remove'=>'/topapi/v2/department/delete',
+            'get'=>'/topapi/v2/department/get',
+            'listsub'=>'/topapi/v2/department/listsub',
+            'listsubid'=>'/topapi/v2/department/listsubid',
+            'listparentbyuser'=>'/topapi/v2/department/listparentbyuser',
+            'listparentbydept'=>'/topapi/v2/department/listparentbydept'
+        ]
      
        
     ];
