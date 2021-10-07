@@ -138,10 +138,8 @@ class User{
             'access_token'=>AccessToken::getToken()
         ]);
       
-        $json=[
-           'none'=>0
-        ];
-        return apiRequest::post($uri,$json);
+       
+        return apiRequest::post($uri);
     }
     /**
      * 获取管理员通讯录权限范围
