@@ -119,7 +119,7 @@ class User{
      * @param bool $only_active
      * @return mixed
      */
-    public static function count(bool $only_active){
+    public static function count(bool $only_active=true){
         $uri=apiRequest::joinParams(Config::$api['user']['count'],[
             'access_token'=>AccessToken::getToken()
         ]);
