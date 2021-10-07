@@ -20,8 +20,8 @@ class AccessToken
       
         $json = file_get_contents($file_path);
         if (empty($json)) {
-            self::generateToken();
 
+            self::generateToken();
            
         } else {
             $token = json_decode($json, true);
@@ -33,9 +33,9 @@ class AccessToken
         }
 
         $json = file_get_contents($file_path);
+
         $token = json_decode($json, true);
         
-      
         return  $token['access_token'];
     }
     public static function generateToken()
