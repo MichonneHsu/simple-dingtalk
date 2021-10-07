@@ -134,9 +134,12 @@ class User{
      * @return mixed
      */
     public static function listadmin(){
-        $uri=Config::$api['user']['listadmin'];
-        $json=[
+        $uri=apiRequest::joinParams(Config::$api['user']['listadmin'],[
             'access_token'=>AccessToken::getToken()
+        ]);
+      
+        $json=[
+           'none'=>0
         ];
         return apiRequest::post($uri,$json);
     }
