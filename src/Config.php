@@ -32,6 +32,13 @@ class Config{
             'listsubid'=>'/topapi/v2/department/listsubid',
             'listparentbyuser'=>'/topapi/v2/department/listparentbyuser',
             'listparentbydept'=>'/topapi/v2/department/listparentbydept'
+        ],
+        'contact_log'=>[
+            'get_department'=>'/topapi/industry/department/get',
+            'get_user_list'=>'/topapi/industry/user/list',
+            'get_department_list'=>'/topapi/industry/department/list',
+            'get_user'=>'/topapi/industry/user/get',
+            'get_organization'=>'/topapi/industry/organization/get',
         ]
      
        
