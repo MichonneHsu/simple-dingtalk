@@ -23,7 +23,7 @@ class User{
      * @return mixed
      */
     public static function create(array $json){
-        $uri=apiRequest::joinParams(Config::$api['user']['create'],[
+        $uri=Url::joinParams(Config::$api['user']['create'],[
             'access_token'=>AccessToken::getToken()
         ]);
        
@@ -36,7 +36,7 @@ class User{
      * @return mixed
      */
     public static function update(array $json){
-        $uri=apiRequest::joinParams(Config::$api['user']['update'],[
+        $uri=Url::joinParams(Config::$api['user']['update'],[
             'access_token'=>AccessToken::getToken()
         ]);
         
@@ -49,7 +49,7 @@ class User{
      * @return mixed
      */
     public static function remove(string $userid){
-        $uri=apiRequest::joinParams(Config::$api['user']['remove'],[
+        $uri=Url::joinParams(Config::$api['user']['remove'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -64,7 +64,7 @@ class User{
      * @return mixed
      */
     public static function get(string $userid){
-        $uri=apiRequest::joinParams(Config::$api['user']['get'],[
+        $uri=Url::joinParams(Config::$api['user']['get'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -79,7 +79,7 @@ class User{
      * @return mixed
      */
     public static function listsimple(array $json){
-        $uri=apiRequest::joinParams(Config::$api['user']['listsimple'],[
+        $uri=Url::joinParams(Config::$api['user']['listsimple'],[
             'access_token'=>AccessToken::getToken()
         ]);
       
@@ -92,7 +92,7 @@ class User{
      * @return mixed
      */
     public static function listid(int $dept_id){
-        $uri=apiRequest::joinParams(Config::$api['user']['listid'],[
+        $uri=Url::joinParams(Config::$api['user']['listid'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -107,7 +107,7 @@ class User{
      * @return mixed
      */
     public static function list(array $json){
-        $uri=apiRequest::joinParams(Config::$api['user']['list'],[
+        $uri=Url::joinParams(Config::$api['user']['list'],[
             'access_token'=>AccessToken::getToken()
         ]);
       
@@ -120,7 +120,7 @@ class User{
      * @return mixed
      */
     public static function count(bool $only_active=true){
-        $uri=apiRequest::joinParams(Config::$api['user']['count'],[
+        $uri=Url::joinParams(Config::$api['user']['count'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -134,7 +134,7 @@ class User{
      * @return mixed
      */
     public static function listadmin(){
-        $uri=apiRequest::joinParams(Config::$api['user']['listadmin'],[
+        $uri=Url::joinParams(Config::$api['user']['listadmin'],[
             'access_token'=>AccessToken::getToken()
         ]);
       
@@ -148,7 +148,7 @@ class User{
      * @return mixed
      */
     public static function get_admin_scope(string $userid){
-        $uri=apiRequest::joinParams(Config::$api['user']['get_admin_scope'],[
+        $uri=Url::joinParams(Config::$api['user']['get_admin_scope'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -177,7 +177,7 @@ class User{
      * @return mixed
      */
     public static function getbymobile(string $mobile){
-        $uri=apiRequest::joinParams(Config::$api['user']['getbymobile'],[
+        $uri=Url::joinParams(Config::$api['user']['getbymobile'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -192,7 +192,7 @@ class User{
      * @return mixed
      */
     public static function getbyunionid(string $unionid){
-        $uri=apiRequest::joinParams(Config::$api['user']['getbyunionid'],[
+        $uri=Url::joinParams(Config::$api['user']['getbyunionid'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -206,7 +206,7 @@ class User{
      * @return mixed
      */
     public static function getinactive($json){
-        $uri=apiRequest::joinParams(Config::$api['user']['getinactive'],[
+        $uri=Url::joinParams(Config::$api['user']['getinactive'],[
             'access_token'=>AccessToken::getToken()
         ]);
        

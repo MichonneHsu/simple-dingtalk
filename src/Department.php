@@ -9,7 +9,7 @@ class Department{
      * @return mixed
      */
     public static function create(array $json){
-        $uri=apiRequest::joinParams(Config::$api['department']['create'],[
+        $uri=Url::joinParams(Config::$api['department']['create'],[
             'access_token'=>AccessToken::getToken()
         ]);
         return apiRequest::post($uri, $json);
@@ -21,7 +21,7 @@ class Department{
      * @return mixed
      */
     public static function update(array $json){
-        $uri=apiRequest::joinParams(Config::$api['department']['update'],[
+        $uri=Url::joinParams(Config::$api['department']['update'],[
             'access_token'=>AccessToken::getToken()
         ]);
         return apiRequest::post($uri, $json);
@@ -33,7 +33,7 @@ class Department{
      * @return mixed
      */
     public static function remove(int $dept_id){
-        $uri=apiRequest::joinParams(Config::$api['department']['remove'],[
+        $uri=Url::joinParams(Config::$api['department']['remove'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -48,7 +48,7 @@ class Department{
      * @return mixed
      */
     public static function get(int $dept_id){
-        $uri=apiRequest::joinParams(Config::$api['department']['get'],[
+        $uri=Url::joinParams(Config::$api['department']['get'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -63,7 +63,7 @@ class Department{
      * @return mixed
      */
     public static function listsub(int $dept_id){
-        $uri=apiRequest::joinParams(Config::$api['department']['listsub'],[
+        $uri=Url::joinParams(Config::$api['department']['listsub'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -78,7 +78,7 @@ class Department{
      * @return mixed
      */
     public static function listsubid(int $dept_id){
-        $uri=apiRequest::joinParams(Config::$api['department']['listsubid'],[
+        $uri=Url::joinParams(Config::$api['department']['listsubid'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -93,7 +93,7 @@ class Department{
      * @return mixed
      */
     public static function listparentbyuser(string $userid){
-        $uri=apiRequest::joinParams(Config::$api['department']['listparentbyuser'],[
+        $uri=Url::joinParams(Config::$api['department']['listparentbyuser'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
@@ -108,7 +108,7 @@ class Department{
      * @return mixed
      */
     public static function listparentbydept(int $dept_id){
-        $uri=apiRequest::joinParams(Config::$api['department']['listparentbydept'],[
+        $uri=Url::joinParams(Config::$api['department']['listparentbydept'],[
             'access_token'=>AccessToken::getToken()
         ]);
         $json=[
