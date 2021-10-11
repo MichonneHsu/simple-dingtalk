@@ -15,9 +15,9 @@ class Notification{
         ]);
         
 
-        $json=array_merge([
+        $json=array_merge($json,[
             'agent_id'=>Config::$app_info['AGENT_ID']
-        ],$json);
+        ]);
         return apiRequest::post($uri, $json);
      
     }
