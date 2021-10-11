@@ -46,7 +46,11 @@ class Url
             'get_organization' => '/topapi/industry/organization/get',
         ],
         'notification' => [
-            'corpconversation' => '/topapi/message/corpconversation/asyncsend_v2'
+            'corpconversation' => '/topapi/message/corpconversation/asyncsend_v2',
+            'update_status_bar' =>'/topapi/message/corpconversation/status_bar/update',
+            'getsendprogress'=>'/topapi/message/corpconversation/getsendprogress',
+            'getsendresult'=>'/topapi/message/corpconversation/getsendresult',
+            'recall'=>'/topapi/message/corpconversation/recall'
         ]
 
 
