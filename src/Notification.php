@@ -56,7 +56,7 @@ class Notification
     public static function getsendprogress(int $task_id)
     {
 
-        $uri = Url::joinParams(Url::$api['notification']['update_status_bar'], [
+        $uri = Url::joinParams(Url::$api['notification']['getsendprogress'], [
             'access_token' => AccessToken::getToken()
         ]);
 
@@ -85,6 +85,7 @@ class Notification
             'agent_id' => Config::$app_info['AGENT_ID'],
             'task_id' => $task_id
         ];
+
         return apiRequest::post($uri, $json);
     }
     /**
