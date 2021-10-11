@@ -44,7 +44,7 @@ class AccessToken
         $app_info=Config::$app_info;
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
-        $uri = Config::$api['gettoken'];
+        $uri = Url::$api['gettoken'];
         $query = [
             'appkey' => $appkey,
             'appsecret' => $appSecret
