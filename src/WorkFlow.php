@@ -50,6 +50,8 @@ class WorkFlow
         $uri=Url::joinParams(Url::$api['workflow']['terminate'],[
             'access_token'=>AccessToken::getToken()
         ]);
+        $pre=$json;
+        $json['request']=$pre;
        
         return apiRequest::post($uri, $json);
     }
