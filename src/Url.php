@@ -56,6 +56,8 @@ class Url
             'save'=>'/topapi/process/save',
             'create'=>'/topapi/processinstance/create',
             'terminate'=>'/topapi/process/instance/terminate',
+            'get_file'=>'/topapi/processinstance/file/url/get',
+            'get_detail'=>'/topapi/processinstance/file/url/get',
         ]
 
 
