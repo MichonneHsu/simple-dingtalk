@@ -137,7 +137,7 @@ class WorkFlow
      * @param array $json
      * @return mixed
      */
-    public static function listbyuserid(string $json)
+    public static function listbyuserid(array $json)
     {
         $uri = Url::joinParams(Url::$api['workflow']['listbyuserid'], [
             'access_token' => AccessToken::getToken()
