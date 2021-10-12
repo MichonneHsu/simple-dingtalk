@@ -101,4 +101,18 @@ class WorkFlow
 
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 获取审批实例ID列表
+     *
+     * @param array $json
+     * @return mixed
+     */
+    public static function get_list(array $json)
+    {
+        $uri = Url::joinParams(Url::$api['workflow']['get_list'], [
+            'access_token' => AccessToken::getToken()
+        ]);
+
+        return apiRequest::post($uri, $json);
+    }
 }
