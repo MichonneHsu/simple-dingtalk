@@ -211,8 +211,62 @@ class WorkFlow
         $uri = Url::joinParams(Url::$api['workflow']['add_comment'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        $json['request']= $pre;
+        $pre = $json;
+        $json['request'] = $pre;
+        return apiRequest::post($uri, $json);
+    }
+    /**
+     * 获取当前企业所有可管理的模版
+     *
+     * @param string $userid
+     * @return mixed
+     */
+    public static function get_template(string $userid)
+    {
+        $uri = Url::joinParams(Url::$api['workflow']['get_template'], [
+            'access_token' => AccessToken::getToken()
+        ]);
+        $json = [
+            'userid' => $userid
+        ];
+        return apiRequest::post($uri, $json);
+    }
+    /**
+     * 添加审批评论
+     *
+     * @param array $json
+     * @return mixed
+     */
+    public static function execute(array $json)
+    {
+        $uri = Url::joinParams(Url::$api['workflow']['execute'], [
+            'access_token' => AccessToken::getToken()
+        ]);
+        $pre = $json;
+        $json['request'] = $pre;
+        return apiRequest::post($uri, $json);
+    }
+    /**
+     * 授权下载审批钉盘文件
+     *
+     * @param integer $space_id
+     * @param string $file_id
+     * @param string $userid
+     * @return mixed
+     */
+    public static function space_auth(int $space_id, string $file_id, string $userid)
+    {
+        $uri = Url::joinParams(Url::$api['workflow']['space_auth'], [
+            'access_token' => AccessToken::getToken()
+        ]);
+        $json = [
+            'request' => [],
+            'userid' => $userid
+        ];
+        $json['request']['file_infos'] = [
+            'space_id' => $space_id,
+            'file_id' => $file_id
+        ];
         return apiRequest::post($uri, $json);
     }
 }

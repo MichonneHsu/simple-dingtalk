@@ -65,6 +65,10 @@ class Url
             'space_preview'=>'/topapi/processinstance/cspace/preview',
             'condition_list'=>'/topapi/process/form/condition/list',
             'add_comment'=>'/topapi/process/instance/comment/add',
+            'get_template'=>'/topapi/process/template/manage/get',
+            'execute'=>'/topapi/process/instance/execute',
+            'space_auth'=>'/topapi/process/dentry/auth',
+            
         ]
 
 
