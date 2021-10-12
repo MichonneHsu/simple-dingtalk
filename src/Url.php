@@ -53,8 +53,9 @@ class Url
             'recall'=>'/topapi/message/corpconversation/recall'
         ],
         'workflow'=>[
+            'save'=>'/topapi/process/save',
             'create'=>'/topapi/processinstance/create',
-            
+            'terminate'=>'/topapi/process/instance/terminate',
         ]
 
 
