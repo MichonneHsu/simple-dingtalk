@@ -260,8 +260,10 @@ class WorkFlow
             'access_token' => AccessToken::getToken()
         ]);
         $json = [
-            'request' => [],
-            'userid' => $userid
+            'request' => [
+                'userid' => $userid
+            ],
+            
         ];
         $json['request']['file_infos'] = [
             'space_id' => $space_id,
