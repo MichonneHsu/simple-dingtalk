@@ -51,6 +51,10 @@ class Url
             'getsendprogress'=>'/topapi/message/corpconversation/getsendprogress',
             'getsendresult'=>'/topapi/message/corpconversation/getsendresult',
             'recall'=>'/topapi/message/corpconversation/recall'
+        ],
+        'workflow'=>[
+            'create'=>'/topapi/processinstance/create',
+            
         ]
 
 
