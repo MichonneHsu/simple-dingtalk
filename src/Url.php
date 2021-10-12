@@ -58,7 +58,13 @@ class Url
             'terminate'=>'/topapi/process/instance/terminate',
             'get_file'=>'/topapi/processinstance/file/url/get',
             'get_detail'=>'/topapi/processinstance/get',
-            'get_list'=>'/topapi/processinstance/get',
+            'get_list'=>'/topapi/processinstance/listids',
+            'gettodonum'=>'/topapi/process/gettodonum',
+            'listbyuserid'=>'/topapi/process/listbyuserid',
+            'space_info'=>'/topapi/processinstance/cspace/info',
+            'space_preview'=>'/topapi/processinstance/cspace/preview',
+            'condition_list'=>'/topapi/process/form/condition/list',
+            'add_comment'=>'/topapi/process/instance/comment/add',
         ]
 
 
