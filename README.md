@@ -10,11 +10,10 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/MichonneHsu/simple-dingtalk">
 </p>
 
-* 钉钉服务端API
+# 钉钉服务端API
 
-* 安装方式
-`composer require michonnehsu/simpledingtalk`
-* [文档地址](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
+# 安装方式`composer require michonnehsu/simpledingtalk`
+# [文档地址](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
 >  需要新的功能请发起 [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
 >  案例
 ```
