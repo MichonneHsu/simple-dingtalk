@@ -2,6 +2,14 @@
 namespace SimpleDingTalk;
 
 class HumanResource{
+    /**
+     * 获取在职员工列表
+     *
+     * @param string $status_list
+     * @param integer $size
+     * @param integer $offset
+     * @return mixed
+     */
     public static function queryonjob(string $status_list,int $size,int $offset=0)
     {
         $uri = Url::joinParams(Url::$api['humanResource']['queryonjob'], [
@@ -52,7 +60,10 @@ class HumanResource{
         $uri = Url::joinParams(Url::$api['humanResource']['addpreentry'], [
             'access_token' => AccessToken::getToken()
         ]);
-        
+        $pre=$json;
+        $json=[
+            'param'=>$pre
+        ];
         return apiRequest::post($uri, $json);
     }
 }
