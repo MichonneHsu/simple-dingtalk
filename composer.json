@@ -16,7 +16,8 @@
     "autoload":{
         
         "psr-4": {
-            "SimpleDingTalk\\" : "src/"
+            "SimpleDingTalk\\" : "src/",
+            "SimpleDingTalk\\v2" : "src/v2/"
             }
     }
 }

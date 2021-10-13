@@ -67,10 +67,15 @@ class Url
             'add_comment'=>'/topapi/process/instance/comment/add',
             'get_template'=>'/topapi/process/template/manage/get',
             'execute'=>'/topapi/process/instance/execute',
-            'space_auth'=>'/topapi/process/dentry/auth',
-            
+            'space_auth'=>'/topapi/process/dentry/auth'
+        ],
+        'humanResource'=>[
+            'queryonjob'=>'/topapi/smartwork/hrm/employee/queryonjob',
+            'querypreentry'=>'/topapi/smartwork/hrm/employee/querypreentry',
+            'listdimission'=>'/topapi/smartwork/hrm/employee/listdimission',
+            'querydimission'=>'/topapi/smartwork/hrm/employee/querydimission',
+            'addpreentry'=>'/topapi/smartwork/hrm/employee/addpreentry',
         ]
-
 
     ];
 
