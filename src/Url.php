@@ -47,34 +47,49 @@ class Url
         ],
         'notification' => [
             'corpconversation' => '/topapi/message/corpconversation/asyncsend_v2',
-            'update_status_bar' =>'/topapi/message/corpconversation/status_bar/update',
-            'getsendprogress'=>'/topapi/message/corpconversation/getsendprogress',
-            'getsendresult'=>'/topapi/message/corpconversation/getsendresult',
-            'recall'=>'/topapi/message/corpconversation/recall'
+            'update_status_bar' => '/topapi/message/corpconversation/status_bar/update',
+            'getsendprogress' => '/topapi/message/corpconversation/getsendprogress',
+            'getsendresult' => '/topapi/message/corpconversation/getsendresult',
+            'recall' => '/topapi/message/corpconversation/recall'
         ],
-        'workflow'=>[
-            'save'=>'/topapi/process/save',
-            'create'=>'/topapi/processinstance/create',
-            'terminate'=>'/topapi/process/instance/terminate',
-            'get_file'=>'/topapi/processinstance/file/url/get',
-            'get_detail'=>'/topapi/processinstance/get',
-            'get_list'=>'/topapi/processinstance/listids',
-            'gettodonum'=>'/topapi/process/gettodonum',
-            'listbyuserid'=>'/topapi/process/listbyuserid',
-            'space_info'=>'/topapi/processinstance/cspace/info',
-            'space_preview'=>'/topapi/processinstance/cspace/preview',
-            'condition_list'=>'/topapi/process/form/condition/list',
-            'add_comment'=>'/topapi/process/instance/comment/add',
-            'get_template'=>'/topapi/process/template/manage/get',
-            'execute'=>'/topapi/process/instance/execute',
-            'space_auth'=>'/topapi/process/dentry/auth'
+        'workflow' => [
+            'save' => '/topapi/process/save',
+            'create' => '/topapi/processinstance/create',
+            'terminate' => '/topapi/process/instance/terminate',
+            'get_file' => '/topapi/processinstance/file/url/get',
+            'get_detail' => '/topapi/processinstance/get',
+            'get_list' => '/topapi/processinstance/listids',
+            'gettodonum' => '/topapi/process/gettodonum',
+            'listbyuserid' => '/topapi/process/listbyuserid',
+            'space_info' => '/topapi/processinstance/cspace/info',
+            'space_preview' => '/topapi/processinstance/cspace/preview',
+            'condition_list' => '/topapi/process/form/condition/list',
+            'add_comment' => '/topapi/process/instance/comment/add',
+            'get_template' => '/topapi/process/template/manage/get',
+            'execute' => '/topapi/process/instance/execute',
+            'space_auth' => '/topapi/process/dentry/auth',
+
+
         ],
-        'humanResource'=>[
-            'queryonjob'=>'/topapi/smartwork/hrm/employee/queryonjob',
-            'querypreentry'=>'/topapi/smartwork/hrm/employee/querypreentry',
-            'listdimission'=>'/topapi/smartwork/hrm/employee/listdimission',
-            'querydimission'=>'/topapi/smartwork/hrm/employee/querydimission',
-            'addpreentry'=>'/topapi/smartwork/hrm/employee/addpreentry',
+        'workrecord' => [
+            'get_by_name' => '/topapi/process/get_by_name',
+            'delete' => '/topapi/process/delete',
+            'clean' => '/topapi/process/clean',
+            'create' => '/topapi/process/workrecord/create',
+            'save' => '/topapi/process/save',
+            'update' => '/topapi/process/workrecord/update',
+            'batchupdate' => '/topapi/process/workrecord/batchupdate',
+            'task_create' => '/topapi/process/workrecord/task/create',
+            'task_query' => '/topapi/process/workrecord/task/query',
+            'task_update' => '/topapi/process/workrecord/task/update',
+            'cancel' => '/topapi/process/workrecord/taskgroup/cancel',
+        ],
+        'humanResource' => [
+            'queryonjob' => '/topapi/smartwork/hrm/employee/queryonjob',
+            'querypreentry' => '/topapi/smartwork/hrm/employee/querypreentry',
+            'listdimission' => '/topapi/smartwork/hrm/employee/listdimission',
+            'querydimission' => '/topapi/smartwork/hrm/employee/querydimission',
+            'addpreentry' => '/topapi/smartwork/hrm/employee/addpreentry',
         ]
 
     ];
