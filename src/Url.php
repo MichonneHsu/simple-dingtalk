@@ -93,6 +93,9 @@ class Url
         ],
         'normalMessage'=>[
             'send_to_conversation'=>'/message/send_to_conversation'
+        ],
+        'corpMessage'=>[
+            'send'=>'/chat/send'
         ]
 
     ];
