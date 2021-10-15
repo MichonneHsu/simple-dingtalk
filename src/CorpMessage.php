@@ -31,5 +31,20 @@ class CorpMessage
         ];
         return apiRequest::post($uri, $json);
     }
+    public static function getReadList(string $messageId,int $size=5,int $cursor=0)
+    {
+
+        $uri = Url::joinParams(Url::$api['corpMessage']['getReadList'], [
+            'access_token' => AccessToken::getToken()
+        ]);
+
+
+        $json =[
+            'messageId'=>urlencode($messageId),
+            'size'=>$size,
+            'cursor'=>$cursor
+        ];
+        return apiRequest::post($uri, $json);
+    }
    
 }
