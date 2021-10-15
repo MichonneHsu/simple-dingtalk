@@ -34,16 +34,16 @@ class CorpMessage
     public static function getReadList(string $messageId,int $size=5,int $cursor=0)
     {
 
-        $uri = Url::joinParams(Url::$api['corpMessage']['getReadList'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['corpMessage']['getReadList'];
 
         $query =[
+            'access_token' => AccessToken::getToken(),
             'messageId'=>urlencode($messageId),
             'size'=>$size,
             'cursor'=>$cursor
         ];
         return apiRequest::get($uri, $query);
+       
     }
    
 }
