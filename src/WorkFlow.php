@@ -21,9 +21,10 @@ class WorkFlow
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-        $json['saveProcessRequest'] = array_merge($pre, [
-            'agent_id' => Config::$app_info['AGENT_ID']
-        ]);
+       
+        $json = ['saveProcessRequest' => array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ])];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -54,7 +55,7 @@ class WorkFlow
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-        $json['request'] = $pre;
+        $json =['request'=> $pre];
 
         return apiRequest::post($uri, $json);
     }
@@ -212,7 +213,7 @@ class WorkFlow
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-        $json['request'] = $pre;
+        $json =['request'=> $pre];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -243,7 +244,7 @@ class WorkFlow
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-        $json['request'] = $pre;
+        $json =['request'=> $pre];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -261,14 +262,15 @@ class WorkFlow
         ]);
         $json = [
             'request' => [
-                'userid' => $userid
+                'userid' => $userid,
+                'file_infos' => [
+                    'space_id' => $space_id,
+                    'file_id' => $file_id
+                ]
             ],
             
         ];
-        $json['request']['file_infos'] = [
-            'space_id' => $space_id,
-            'file_id' => $file_id
-        ];
+      
         return apiRequest::post($uri, $json);
     }
 

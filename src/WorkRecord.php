@@ -9,7 +9,7 @@ namespace SimpleDingTalk;
 class WorkRecord
 {
 
-    
+
     /**
      * 获取模板code
      *
@@ -22,8 +22,8 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $json = [
-          'name'=>$name
-            
+            'name' => $name
+
         ];
         return apiRequest::post($uri, $json);
     }
@@ -32,23 +32,23 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['delete'], [
             'access_token' => AccessToken::getToken()
         ]);
-        
-       
+
+
         $pre = $json;
-        $json['request'] = array_merge($pre, [
+        $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
+        ])];
         return apiRequest::post($uri, $json);
     }
-    public static function clean(string $process_code,string $corpid)
+    public static function clean(string $process_code, string $corpid)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['clean'], [
             'access_token' => AccessToken::getToken()
         ]);
-       
-        $json=[
-            'process_code'=>$process_code,
-            'corpid'=>$corpid
+
+        $json = [
+            'process_code' => $process_code,
+            'corpid' => $corpid
         ];
         return apiRequest::post($uri, $json);
     }
@@ -58,10 +58,10 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-        $json['request'] = array_merge($pre, [
+       
+        $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
-      
+        ])];
         return apiRequest::post($uri, $json);
     }
     public static function save(array $json)
@@ -69,13 +69,14 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['save'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        
-       
         $pre = $json;
-        $json['saveProcessRequest'] = array_merge($pre, [
+
+
+       
+       
+        $json = ['saveProcessRequest' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
+        ])];
         return apiRequest::post($uri, $json);
     }
     public static function update(array $json)
@@ -84,10 +85,10 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-        $json['request'] = array_merge($pre, [
+        $json =['request'=> array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
-      
+        ])];
+
         return apiRequest::post($uri, $json);
     }
     public static function batchupdate(array $json)
@@ -95,11 +96,11 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['batchupdate'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        $json['request'] = array_merge($pre, [
+        $pre = $json;
+        $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
-      
+        ])];
+
         return apiRequest::post($uri, $json);
     }
     public static function task_create(array $json)
@@ -107,26 +108,26 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['task_create'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        $json['request'] = array_merge($pre, [
+        $pre = $json;
+        $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
-      
+        ])];
+
         return apiRequest::post($uri, $json);
     }
-    public static function task_query(string $userid ,int $offset=0,int $count=5,int $status=0)
+    public static function task_query(string $userid, int $offset = 0, int $count = 5, int $status = 0)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
             'access_token' => AccessToken::getToken()
         ]);
-       
-        $json=[
-           'userid'=>$userid,
-           'offset'=>$offset,
-           'count'=>$count,
-           'status'=>$status,
+
+        $json = [
+            'userid' => $userid,
+            'offset' => $offset,
+            'count' => $count,
+            'status' => $status,
         ];
-      
+
         return apiRequest::post($uri, $json);
     }
     public static function task_update(array $json)
@@ -134,12 +135,12 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
             'access_token' => AccessToken::getToken()
         ]);
-       
-        $pre=$json;
-        $json['request'] = array_merge($pre, [
+
+        $pre = $json;
+        $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
-      
+        ])];
+
         return apiRequest::post($uri, $json);
     }
     public static function cancel(array $json)
@@ -147,12 +148,13 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['cancel'], [
             'access_token' => AccessToken::getToken()
         ]);
-       
-        $pre=$json;
-        $json['request'] = array_merge($pre, [
+
+        $pre = $json;
+
+        $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
-        ]);
-      
+        ])];
+
         return apiRequest::post($uri, $json);
     }
 }
