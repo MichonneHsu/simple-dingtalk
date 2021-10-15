@@ -32,10 +32,12 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['delete'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        
+       
+        $pre = $json;
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
         return apiRequest::post($uri, $json);
     }
     public static function clean(string $process_code,string $corpid)
@@ -55,10 +57,10 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['create'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        $pre = $json;
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
       
         return apiRequest::post($uri, $json);
     }
@@ -68,10 +70,12 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $pre=$json;
-        $json=[
-            'saveProcessRequest'=>$pre
-        ];
-      
+        
+       
+        $pre = $json;
+        $json['saveProcessRequest'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
         return apiRequest::post($uri, $json);
     }
     public static function update(array $json)
@@ -79,10 +83,10 @@ class WorkRecord
         $uri = Url::joinParams(Url::$api['workrecord']['update'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        $pre = $json;
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
       
         return apiRequest::post($uri, $json);
     }
@@ -92,9 +96,9 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
       
         return apiRequest::post($uri, $json);
     }
@@ -104,9 +108,9 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
       
         return apiRequest::post($uri, $json);
     }
@@ -132,9 +136,9 @@ class WorkRecord
         ]);
        
         $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
       
         return apiRequest::post($uri, $json);
     }
@@ -145,9 +149,9 @@ class WorkRecord
         ]);
        
         $pre=$json;
-        $json=[
-            'request'=>$pre
-        ];
+        $json['request'] = array_merge($pre, [
+            'agentid' => Config::$app_info['AGENT_ID']
+        ]);
       
         return apiRequest::post($uri, $json);
     }
