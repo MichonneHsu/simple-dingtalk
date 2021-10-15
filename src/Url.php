@@ -90,6 +90,9 @@ class Url
             'listdimission' => '/topapi/smartwork/hrm/employee/listdimission',
             'querydimission' => '/topapi/smartwork/hrm/employee/querydimission',
             'addpreentry' => '/topapi/smartwork/hrm/employee/addpreentry',
+        ],
+        'normalMessage'=>[
+            'send_to_conversation'=>'/message/send_to_conversation'
         ]
 
     ];
