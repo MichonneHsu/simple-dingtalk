@@ -38,7 +38,6 @@ class CorpMessage
             'access_token' => AccessToken::getToken()
         ]);
 
-
         $json =[
             'messageId'=>urlencode($messageId),
             'size'=>$size,
