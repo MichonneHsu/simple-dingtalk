@@ -84,32 +84,38 @@ class WorkRecord
         ])];
         return apiRequest::post($uri, $json);
     }
-    public static function update(string $process_instance_id,string $status,string $result,bool $cancel_running_task=false)
+    public static function update(string $process_instance_id, string $status, string $result, bool $cancel_running_task = false)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['update'], [
             'access_token' => AccessToken::getToken()
         ]);
 
-        $json = ['request' =>  [
-            'agentid' => Config::$app_info['AGENT_ID'],
-            'process_instance_id'=>$process_instance_id,
-            'status'=>$status,
-            'result'=>$result,
-            'cancel_running_task'=>$cancel_running_task
-        ]
-    ];
+        $json = [
+            'request' =>  [
+                'agentid' => Config::$app_info['AGENT_ID'],
+                'process_instance_id' => $process_instance_id,
+                'status' => $status,
+                'result' => $result,
+                'cancel_running_task' => $cancel_running_task
+            ]
+        ];
 
         return apiRequest::post($uri, $json);
     }
-    public static function batchupdate(array $json)
+    public static function batchupdate(string $process_instance_id, string $status, string $result)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['batchupdate'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre = $json;
-        $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
-        ])];
+      
+        $json = [
+            'request' => [
+                'process_instance_id' => $process_instance_id,
+                'status' => $status,
+                'result' => $result,
+                'agentid' => Config::$app_info['AGENT_ID']
+            ]
+        ];
 
         return apiRequest::post($uri, $json);
     }
@@ -125,7 +131,7 @@ class WorkRecord
 
         return apiRequest::post($uri, $json);
     }
-    public static function task_query(string $userid, int $offset = 0,  int $status = 0,int $count = 5)
+    public static function task_query(string $userid, int $offset = 0,  int $status = 0, int $count = 5)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
             'access_token' => AccessToken::getToken()
