@@ -38,12 +38,12 @@ class CorpMessage
             'access_token' => AccessToken::getToken()
         ]);
 
-        $json =[
+        $query =[
             'messageId'=>urlencode($messageId),
             'size'=>$size,
             'cursor'=>$cursor
         ];
-        return apiRequest::post($uri, $json);
+        return apiRequest::get($uri, $query);
     }
    
 }
