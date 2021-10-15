@@ -45,7 +45,7 @@ class WorkRecord
         ];
         return apiRequest::post($uri, $json);
     }
-    public static function clean(string $process_code, string $corpid)
+    public static function clean(string $process_code)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['clean'], [
             'access_token' => AccessToken::getToken()
@@ -53,7 +53,7 @@ class WorkRecord
 
         $json = [
             'process_code' => $process_code,
-            'corpid' => $corpid
+            'corpid' => Config::$app_info['CORP_ID']
         ];
         return apiRequest::post($uri, $json);
     }
