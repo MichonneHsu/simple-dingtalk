@@ -9,13 +9,15 @@ namespace SimpleDingTalk;
 class NormalMessage
 {
 
-    /**
-     * 发送工作通知
-     *
-     * @param integer $task_id
-     * @return mixed
-     */
-    public static function send(string $sender,string $cid,string $msg)
+  /**
+   * 发送消息到企业群
+   *
+   * @param string $sender
+   * @param string $cid
+   * @param array $msg
+   * @return mixed
+   */
+    public static function send(string $sender,string $cid,array $msg)
     {
 
         $uri = Url::joinParams(Url::$api['normalMessage']['send_to_conversation'], [
