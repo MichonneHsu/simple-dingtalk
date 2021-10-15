@@ -142,7 +142,7 @@ class WorkRecord
     }
     public static function task_update(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
+        $uri = Url::joinParams(Url::$api['workrecord']['task_update'], [
             'access_token' => AccessToken::getToken()
         ]);
 
