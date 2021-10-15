@@ -110,6 +110,7 @@ class WorkRecord
       
         $json = [
             'request' => [
+                
                 'process_instance_id' => $process_instance_id,
                 'status' => $status,
                 'result' => $result,
