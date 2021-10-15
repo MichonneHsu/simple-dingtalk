@@ -27,6 +27,13 @@ class WorkRecord
         ];
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 删除模板
+     *
+     * @param string $process_code
+     * @param bool $clean_running_task
+     * @return mixed
+     */
     public static function remove(string $process_code, bool $clean_running_task = false)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['remove'], [
@@ -57,6 +64,12 @@ class WorkRecord
     //     ];
     //     return apiRequest::post($uri, $json);
     // }
+    /**
+     * 创建实例
+     *
+     * @param array $json
+     * @return mixed
+     */
     public static function create(array $json)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['create'], [
@@ -69,6 +82,12 @@ class WorkRecord
         ])];
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 创建或更新审批模板
+     *
+     * @param array $json
+     * @return mixed
+     */
     public static function save(array $json)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['save'], [
@@ -84,6 +103,15 @@ class WorkRecord
         ])];
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 更新实例状态
+     *
+     * @param string $process_instance_id
+     * @param string $status
+     * @param string $result
+     * @param boolean $cancel_running_task
+     * @return mixed
+     */
     public static function update(string $process_instance_id, string $status, string $result, bool $cancel_running_task = false)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['update'], [
@@ -102,15 +130,23 @@ class WorkRecord
 
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 批量取消待办
+     *
+     * @param string $process_instance_id
+     * @param string $status
+     * @param string $result
+     * @return mixed
+     */
     public static function batchupdate(string $process_instance_id, string $status, string $result)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['batchupdate'], [
             'access_token' => AccessToken::getToken()
         ]);
-      
+
         $json = [
             'request' => [
-                'instances'=>[
+                'instances' => [
                     'process_instance_id' => $process_instance_id,
                     'status' => $status,
                     'result' => $result,
@@ -121,6 +157,12 @@ class WorkRecord
 
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 创建待办事项
+     *
+     * @param array $json
+     * @return mixed
+     */
     public static function task_create(array $json)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['task_create'], [
@@ -133,6 +175,15 @@ class WorkRecord
 
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 查询待办列表
+     *
+     * @param string $userid
+     * @param integer $offset
+     * @param integer $status
+     * @param integer $count
+     * @return mixed
+     */
     public static function task_query(string $userid, int $offset = 0,  int $status = 0, int $count = 5)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
@@ -148,16 +199,27 @@ class WorkRecord
 
         return apiRequest::post($uri, $json);
     }
-    public static function task_update(array $json)
+    /**
+     * 更新待办状态
+     *
+     * @param string $process_instance_id
+     * @param array $tasks
+     * @return mixed
+     */
+    public static function task_update(string $process_instance_id, array $tasks)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['task_update'], [
             'access_token' => AccessToken::getToken()
         ]);
 
-        $pre = $json;
-        $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
-        ])];
+
+        $json = [
+            'request' => [
+                'process_instance_id'=>$process_instance_id,
+                'tasks'=>$tasks,
+                'agentid' => Config::$app_info['AGENT_ID']
+            ]
+        ];
 
         return apiRequest::post($uri, $json);
     }
