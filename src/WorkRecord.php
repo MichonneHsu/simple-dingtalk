@@ -27,17 +27,22 @@ class WorkRecord
         ];
         return apiRequest::post($uri, $json);
     }
-    public static function delete(array $json)
+    public static function remove(string $process_code, bool $clean_running_task = false)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['delete'], [
+        $uri = Url::joinParams(Url::$api['workrecord']['remove'], [
             'access_token' => AccessToken::getToken()
         ]);
 
 
-        $pre = $json;
-        $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
-        ])];
+
+        $json = [
+            'request' => [
+                'agentid' => Config::$app_info['AGENT_ID'],
+                'process_code' => $process_code,
+                'clean_running_task' => $clean_running_task
+            ]
+
+        ];
         return apiRequest::post($uri, $json);
     }
     public static function clean(string $process_code, string $corpid)
@@ -58,7 +63,7 @@ class WorkRecord
             'access_token' => AccessToken::getToken()
         ]);
         $pre = $json;
-       
+
         $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
         ])];
@@ -72,22 +77,27 @@ class WorkRecord
         $pre = $json;
 
 
-       
-       
+
+
         $json = ['saveProcessRequest' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
         ])];
         return apiRequest::post($uri, $json);
     }
-    public static function update(array $json)
+    public static function update(string $process_instance_id,string $status,string $result,bool $cancel_running_task=false)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['update'], [
             'access_token' => AccessToken::getToken()
         ]);
-        $pre = $json;
-        $json =['request'=> array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
-        ])];
+
+        $json = ['request' =>  [
+            'agentid' => Config::$app_info['AGENT_ID'],
+            'process_instance_id'=>$process_instance_id,
+            'status'=>$status,
+            'result'=>$result,
+            'cancel_running_task'=>$cancel_running_task
+        ]
+    ];
 
         return apiRequest::post($uri, $json);
     }

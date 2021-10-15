@@ -73,7 +73,7 @@ class Url
         ],
         'workrecord' => [
             'get_by_name' => '/topapi/process/get_by_name',
-            'delete' => '/topapi/process/delete',
+            'remove' => '/topapi/process/delete',
             'clean' => '/topapi/process/clean',
             'create' => '/topapi/process/workrecord/create',
             'save' => '/topapi/process/save',
