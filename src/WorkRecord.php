@@ -45,18 +45,18 @@ class WorkRecord
         ];
         return apiRequest::post($uri, $json);
     }
-    public static function clean(string $process_code)
-    {
-        $uri = Url::joinParams(Url::$api['workrecord']['clean'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+    // public static function clean(string $process_code)
+    // {
+    //     $uri = Url::joinParams(Url::$api['workrecord']['clean'], [
+    //         'access_token' => AccessToken::getToken()
+    //     ]);
 
-        $json = [
-            'process_code' => $process_code,
-            'corpid' => Config::$app_info['CORP_ID']
-        ];
-        return apiRequest::post($uri, $json);
-    }
+    //     $json = [
+    //         'process_code' => $process_code,
+    //         'corpid' => Config::$app_info['CORP_ID']
+    //     ];
+    //     return apiRequest::post($uri, $json);
+    // }
     public static function create(array $json)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['create'], [
@@ -125,7 +125,7 @@ class WorkRecord
 
         return apiRequest::post($uri, $json);
     }
-    public static function task_query(string $userid, int $offset = 0, int $count = 5, int $status = 0)
+    public static function task_query(string $userid, int $offset = 0,  int $status = 0,int $count = 5)
     {
         $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
             'access_token' => AccessToken::getToken()
