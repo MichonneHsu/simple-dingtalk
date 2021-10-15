@@ -110,10 +110,11 @@ class WorkRecord
       
         $json = [
             'request' => [
-                
-                'process_instance_id' => $process_instance_id,
-                'status' => $status,
-                'result' => $result,
+                'instances'=>[
+                    'process_instance_id' => $process_instance_id,
+                    'status' => $status,
+                    'result' => $result,
+                ],
                 'agentid' => Config::$app_info['AGENT_ID']
             ]
         ];
