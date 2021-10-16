@@ -67,9 +67,7 @@ class Url
             'add_comment' => '/topapi/process/instance/comment/add',
             'get_template' => '/topapi/process/template/manage/get',
             'execute' => '/topapi/process/instance/execute',
-            'space_auth' => '/topapi/process/dentry/auth',
-
-
+            'space_auth' => '/topapi/process/dentry/auth'
         ],
         'workrecord' => [
             'get_by_name' => '/topapi/process/get_by_name',
@@ -97,6 +95,14 @@ class Url
         'corpMessage'=>[
             'send'=>'/chat/send',
             'getReadList'=>'/chat/getReadList'
+        ],
+        'attendance'=>[
+            'getsimplegroups'=>'/topapi/attendance/getsimplegroups',
+            'getusergroup'=>'/topapi/attendance/getusergroup',
+            'group_member_list'=>'/topapi/attendance/group/member/list',
+            'group_member_listbyids'=>'/topapi/attendance/group/member/listbyids',
+            'group_member_update'=>'/topapi/attendance/group/member/update',
+            'group_memberusers_list'=>'/topapi/attendance/group/memberusers/list',
         ]
 
     ];
