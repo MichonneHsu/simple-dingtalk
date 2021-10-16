@@ -103,6 +103,24 @@ class Url
             'group_member_listbyids'=>'/topapi/attendance/group/member/listbyids',
             'group_member_update'=>'/topapi/attendance/group/member/update',
             'group_memberusers_list'=>'/topapi/attendance/group/memberusers/list',
+            'group_minimalism_list'=>'/topapi/attendance/group/minimalism/list',
+            'group_query'=>'/topapi/attendance/group/query',
+            'group_search'=>'/topapi/attendance/group/search',
+            'group_wifis_add'=>'/topapi/attendance/group/wifis/add',
+            'group_wifis_query'=>'/topapi/attendance/group/wifis/query',
+            'group_wifis_remove'=>'/topapi/attendance/group/wifis/remove',
+            'group_positions_add'=>'/topapi/attendance/group/positions/add',
+            'group_positions_remove'=>'/topapi/attendance/group/positions/remove',
+            'group_positions_query'=>'/topapi/attendance/group/positions/query',
+            'group_add'=>'/topapi/attendance/group/add',
+            'group_modify'=>'/topapi/attendance/group/modify',
+            'group_remove'=>'/topapi/attendance/group/delete',
+            'group_users_add'=>'/topapi/attendance/group/users/add',
+            'group_users_remove'=>'/topapi/attendance/group/users/remove',
+            'group_users_query'=>'/topapi/attendance/group/users/query',
+            'group_get'=>'/topapi/attendance/group/get',
+            'group_keytoid'=>'/topapi/attendance/groups/keytoid',
+            'group_idtokey'=>'/topapi/attendance/groups/idtokey'
         ]
 
     ];
