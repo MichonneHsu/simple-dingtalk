@@ -165,10 +165,10 @@ class Attendance
      *
      * @param string $op_user_id
      * @param string $group_key
-     * @param array $wifi_key_list
+     * @param array $wifi_list
      * @return mixed
      */
-    public static function group_wifis_add(string $op_user_id,string $group_key,array $wifi_key_list)
+    public static function group_wifis_add(string $op_user_id,string $group_key,array $wifi_list)
     {
         $uri = Url::joinParams(Url::$api['attendance']['group_wifis_add'], [
             'access_token' => AccessToken::getToken()
@@ -176,7 +176,7 @@ class Attendance
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
-            'wifi_key_list'=>$wifi_key_list
+            'wifi_list'=>$wifi_list
         ];
         return apiRequest::post($uri, $json);
     }
