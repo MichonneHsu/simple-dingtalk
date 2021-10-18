@@ -343,10 +343,10 @@ class Attendance
      *
      * @param string $op_user_id
      * @param string $group_key
-     * @param array $user_id_list
+     * @param string $user_id_list
      * @return mixed
      */
-    public static function group_users_add(string $op_user_id,string $group_key,array $user_id_list)
+    public static function group_users_add(string $op_user_id,string $group_key,string $user_id_list)
     {
         $uri = Url::joinParams(Url::$api['attendance']['group_users_add'], [
             'access_token' => AccessToken::getToken()
@@ -364,7 +364,7 @@ class Attendance
      *
      * @param string $op_user_id
      * @param string $group_key
-     * @param array $user_id_list
+     * @param string $user_id_list
      * @return mixed
      */
     public static function group_users_remove(string $op_user_id,string $group_key,string $user_id_list)
