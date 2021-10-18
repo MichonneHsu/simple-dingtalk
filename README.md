@@ -13,7 +13,7 @@
 
 #### 安装方式`composer require michonnehsu/simpledingtalk`
 #### [文档地址](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
-#### 需要新的功能请发起 [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
+**需要新的功能请发起** [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
 #### 案例
 ```
 use SimpleDingTalk\WorkFlow;
