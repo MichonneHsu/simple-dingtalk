@@ -258,7 +258,7 @@ class Attendance
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
-            'position_list'=>$position_key_list
+            'position_key_list'=>$position_key_list
         ];
         return apiRequest::post($uri, $json);
     }
