@@ -12,9 +12,13 @@ class CallBack
     /**
      * 解码加密信息
      *
-     * @return mixed
+     * @param string $signature
+     * @param string $timeStamp
+     * @param string $nonce
+     * @param string $encrypt
+     * @return array
      */
-    public static function getEncryptedMap(string $signature,string $timeStamp,string $nonce,string $encrypt)
+    public static function getEncryptedMap(string $signature,string $timeStamp,string $nonce,string $encrypt):array
     {
         $callback_info = Config::$callback_info;
         $token = $callback_info['token'];
