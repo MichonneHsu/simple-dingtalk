@@ -10,7 +10,7 @@ class Todo
 {
     public static function create(array $json){
         $unionId=UserInfo::$unionId;
-        $uri='/v1.0/todo/users/'.$unionId.'tasks/';
+        $uri="/v1.0/todo/users/{$unionId}/tasks";
         $params=[
             'operatorId'=>$unionId
         ];
