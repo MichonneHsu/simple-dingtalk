@@ -28,8 +28,8 @@ class CallBack
         $text = $crypt->getDecryptMsg($signature, $timeStamp, $nonce, $encrypt);
         $res = $crypt->getEncryptedMap("success");
         return [
-            'getDecryptMsg'=>$text,
-            'getEncryptedMap'=>$res
+            'getDecryptMsg'=>json_decode($text, true),
+            'getEncryptedMap'=>json_decode($res, true)
         ];
     }
 }
