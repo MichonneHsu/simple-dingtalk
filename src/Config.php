@@ -14,4 +14,8 @@ class Config{
         'expires'=>0,
         'file_path'=>''
     ];
+    public static $callback_info=[
+        'aes_key'=>'',
+        'token'=>''
+    ];
 } 
