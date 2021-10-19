@@ -14,12 +14,18 @@ class CallBack
      *
      * @return mixed
      */
-    public static function getEncryptedMap()
+    public static function getEncryptedMap(string $signature,string $timeStamp,string $nonce,string $encrypt)
     {
         $callback_info = Config::$callback_info;
         $token = $callback_info['token'];
         $encodingAesKey = $callback_info['aes_key'];
         $ownerKey = Config::$app_info['APP_KEY'];
-        return (new DingCallbackCrypto($token, $encodingAesKey, $ownerKey));
+        $crypt=(new DingCallbackCrypto($token, $encodingAesKey, $ownerKey));
+        $text = $crypt->getDecryptMsg($signature, $timeStamp, $nonce, $encrypt);
+        $res = $crypt->getEncryptedMap("success");
+        return [
+            'getDecryptMsg'=>$text,
+            'getEncryptedMap'=>$res
+        ];
     }
 }
