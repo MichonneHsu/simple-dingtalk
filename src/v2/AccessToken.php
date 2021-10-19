@@ -46,8 +46,8 @@ class AccessToken
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];
         $json = [
-            'appkey' => $appkey,
-            'appsecret' => $appSecret
+            'appKey' => $appkey,
+            'appSecret' => $appSecret
         ];
         $has_headers=false;
         $res = apiRequest::post($uri, $json,$has_headers);
