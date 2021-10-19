@@ -41,7 +41,7 @@ class apiRequest{
            
             return $content;
         } catch (RequestException $e) {
-            throw Message::toString($e->getResponse());
+            throw new \Exception(Message::toString($e->getResponse()));
         }
     }
     /**
@@ -70,7 +70,7 @@ class apiRequest{
            
             return $content;
         } catch (RequestException $e) {
-            throw Message::toString($e->getResponse());
+            throw new \Exception(Message::toString($e->getResponse()));
            
         }
     }
