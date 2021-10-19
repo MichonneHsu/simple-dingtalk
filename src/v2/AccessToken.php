@@ -52,8 +52,8 @@ class AccessToken
         $has_headers=false;
         $res = apiRequest::post($uri, $json,$has_headers);
         $token = json_decode($res, true);
-        $expires_in = $token['expires_in'];
-        $token['expires_in'] = $expires_in + time();
+        $expires_in = $token['expireIn'];
+        $token['expireIn'] = $expires_in + time();
         $filename = Config::$access_token['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
