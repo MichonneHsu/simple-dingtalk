@@ -36,7 +36,7 @@ class AccessToken
 
         $token = json_decode($json, true);
         
-        return  $token['access_token'];
+        return  $token['accessToken'];
     }
     public static function generateToken()
     {
