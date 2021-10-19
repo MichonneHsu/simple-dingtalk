@@ -23,7 +23,7 @@ class apiRequest{
      * @param array $query
      * @return mixed
      */
-    public static function get(string $uri,array $query=[]){
+    public static function get(string $uri,array $query=[],bool $has_headers=true){
       
         try {
             $client = self::client();
@@ -31,12 +31,19 @@ class apiRequest{
             if(empty($query)){
                 $resp=$client->request('GET',$uri);
             }else{
-                $resp=$client->request('GET',$uri,[
-                    'query'=>$query,
-                    'headers'=>[
-                        'x-acs-dingtalk-access-token'=>AccessToken::getToken()
-                    ]
-                ]);
+                if($has_headers){
+                    $resp=$client->request('GET',$uri,[
+                        'query'=>$query,
+                        'headers'=>[
+                            'x-acs-dingtalk-access-token'=>AccessToken::getToken()
+                        ]
+                    ]);
+                }else{
+                    $resp=$client->request('GET',$uri,[
+                        'query'=>$query
+                    ]);
+                }
+               
             }
            
            
@@ -52,9 +59,10 @@ class apiRequest{
      *
      * @param string $uri
      * @param array $json
+     * @param boolean $has_headers
      * @return mixed
      */
-    public static function post(string $uri,array $json=[]){
+    public static function post(string $uri,array $json=[],bool $has_headers=true){
       
         try {
             $client = self::client();
@@ -62,12 +70,19 @@ class apiRequest{
             if(empty($json)){
                 $resp=$client->request('POST',$uri);
             }else{
-                $resp=$client->request('POST',$uri,[
-                    'json'=>$json,
-                    'headers'=>[
-                        'x-acs-dingtalk-access-token'=>AccessToken::getToken()
-                    ]
-                ]);
+                if($has_headers){
+                    $resp=$client->request('POST',$uri,[
+                        'json'=>$json,
+                        'headers'=>[
+                            'x-acs-dingtalk-access-token'=>AccessToken::getToken()
+                        ]
+                    ]);
+                }else{
+                    $resp=$client->request('POST',$uri,[
+                        'json'=>$json
+                    ]);
+                }
+               
             }
             
            
