@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
 
-use Exception;
+
 
 class Todo
 {
-    public static function create(string $unionId,array $json){
+    public static function create(array $json){
+        $unionId=UserInfo::$unionId;
         $uri='/v1.0/todo/users/'.$unionId.'tasks';
         $params=[
             'operatorId'=>$unionId
