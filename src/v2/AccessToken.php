@@ -49,8 +49,8 @@ class AccessToken
             'appkey' => $appkey,
             'appsecret' => $appSecret
         ];
-        $json = apiRequest::post($uri, $query);
-        $token = json_decode($json, true);
+        $res = apiRequest::post($uri, $json);
+        $token = json_decode($res, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
         $filename = Config::$access_token['file_path'];
