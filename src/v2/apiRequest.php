@@ -111,18 +111,19 @@ class apiRequest{
     public static function REST(string $method,string $uri,array $body,bool $has_header=true){
       
         try {
-           
+            $client=self::client();
             $body=json_encode($body);
-            $resp=null;
+            $rep=null;
             if($has_header){
-                $resp=self::request($method,$uri,$body,[
+                $rep=self::request($method,$uri,$body,[
                     'x-acs-dingtalk-access-token'=>AccessToken::getToken()
                 ]);
+               
             }else{
-                $resp=self::request($method,$uri,$body);
+                $rep=self::request($method,$uri,$body);
             }
            
-            
+            $resp=$client->send($rep,['timeout'=>2]);
            
             $content=$resp->getBody()->getContents();
           
