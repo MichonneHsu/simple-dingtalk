@@ -20,5 +20,15 @@ class Todo
         return apiRequest::post($uri,$body);
     }
   
-    
+    public static function get(string $taskId){
+        $unionId=UserInfo::$unionId;
+        $uri=Url::$api['todo']."{$unionId}/tasks";
+        $params=[
+            'operatorId'=>$unionId
+        ];
+        $uri=apiRequest::joinParams($uri,$params);
+        
+       
+        return apiRequest::get($uri);
+    }
 }

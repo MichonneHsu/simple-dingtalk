@@ -25,7 +25,7 @@ class apiRequest{
      * @param array $header
      * @return Request
      */
-    public static function request(string $method,string $uri,string $body,array $header=[]){
+    public static function request(string $method,string $uri,string $body='',array $header=[]){
         return new Request($method,$uri,$header,$body);
     }
    /**
@@ -36,7 +36,7 @@ class apiRequest{
      * @param boolean $has_headers
      * @return mixed
      */
-    public static function get(string $uri,array $body,bool $has_headers=true){
+    public static function get(string $uri,array $body=[],bool $has_headers=true){
       
         return self::REST('get',$uri,$body,$has_headers);
     }
@@ -48,7 +48,7 @@ class apiRequest{
      * @param boolean $has_headers
      * @return mixed
      */
-    public static function post(string $uri,array $body,bool $has_headers=true){
+    public static function post(string $uri,array $body=[],bool $has_headers=true){
       
         return self::REST('post',$uri,$body,$has_headers);
     }
@@ -60,7 +60,7 @@ class apiRequest{
      * @param boolean $has_headers
      * @return mixed
      */
-    public static function delete(string $uri,array $body,bool $has_headers=true){
+    public static function delete(string $uri,array $body=[],bool $has_headers=true){
       
         return self::REST('delete',$uri,$body,$has_headers);
     }
@@ -76,11 +76,11 @@ class apiRequest{
       
         return self::REST('put',$uri,$body,$has_headers);
     }
-    public static function REST(string $method,string $uri,array $body,bool $has_header=true){
+    public static function REST(string $method,string $uri,array $body=[],bool $has_header=true){
       
         try {
             $client=self::client();
-            $body=json_encode($body);
+            $body=empty($body)?'':json_encode($body);
             $rep=null;
             if($has_header){
                 $rep=self::request($method,$uri,$body,[
