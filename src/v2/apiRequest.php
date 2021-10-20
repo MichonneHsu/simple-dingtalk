@@ -32,7 +32,7 @@ class apiRequest{
      * get请求
      *
      * @param string $uri
-     * @param array $json
+     * @param array $body
      * @param boolean $has_headers
      * @return mixed
      */
@@ -44,7 +44,7 @@ class apiRequest{
      * post请求
      *
      * @param string $uri
-     * @param array $json
+     * @param array $body
      * @param boolean $has_headers
      * @return mixed
      */
@@ -56,7 +56,7 @@ class apiRequest{
      * delete
      *
      * @param string $uri
-     * @param array $json
+     * @param array $body
      * @param boolean $has_headers
      * @return mixed
      */
@@ -68,7 +68,7 @@ class apiRequest{
      * delete
      *
      * @param string $uri
-     * @param array $json
+     * @param array $body
      * @param boolean $has_headers
      * @return mixed
      */
