@@ -8,7 +8,7 @@ namespace SimpleDingTalk\v2;
 
 class Todo
 {
-    public static function create(array $json){
+    public static function create(array $body){
         $unionId=UserInfo::$unionId;
         $uri=Url::$api['todo']."{$unionId}/tasks";
         $params=[
@@ -16,15 +16,9 @@ class Todo
         ];
         $uri=apiRequest::joinParams($uri,$params);
         
-
-        return apiRequest::post($uri,$json);
+       
+        return apiRequest::REST('post',$uri,$body);
     }
-    public static function test(){
-    
-        $a=[
-            'a'=>1
-        ];
-        return apiRequest::REST('get','http://www.wxshop.com',json_encode($a));
-    }
+  
     
 }
