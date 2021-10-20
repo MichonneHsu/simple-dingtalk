@@ -17,7 +17,7 @@ class Todo
         $uri=apiRequest::joinParams($uri,$params);
         
        
-        return apiRequest::REST('post',$uri,$body);
+        return apiRequest::post($uri,$body);
     }
   
     

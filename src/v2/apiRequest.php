@@ -28,43 +28,17 @@ class apiRequest{
     public static function request(string $method,string $uri,string $body,array $header=[]){
         return new Request($method,$uri,$header,$body);
     }
-    /**
+   /**
      * get请求
      *
      * @param string $uri
-     * @param array $query
+     * @param array $json
+     * @param boolean $has_headers
      * @return mixed
      */
-    public static function get(string $uri,array $query=[],bool $has_headers=true){
+    public static function get(string $uri,array $body,bool $has_headers=true){
       
-        try {
-            $client = self::client();
-            $resp=null;
-            if(empty($query)){
-                $resp=$client->request('GET',$uri);
-            }else{
-                if($has_headers){
-                    $resp=$client->request('GET',$uri,[
-                        'query'=>$query,
-                        'headers'=>[
-                            'x-acs-dingtalk-access-token'=>AccessToken::getToken()
-                        ]
-                    ]);
-                }else{
-                    $resp=$client->request('GET',$uri,[
-                        'query'=>$query
-                    ]);
-                }
-               
-            }
-           
-           
-            $content=$resp->getBody()->getContents();
-           
-            return $content;
-        } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
-        }
+        return self::REST('get',$uri,$body,$has_headers);
     }
     /**
      * post请求
@@ -74,40 +48,34 @@ class apiRequest{
      * @param boolean $has_headers
      * @return mixed
      */
-    public static function post(string $uri,array $json=[],bool $has_headers=true){
+    public static function post(string $uri,array $body,bool $has_headers=true){
       
-        try {
-            $client = self::client();
-            $resp=null;
-            if(empty($json)){
-                $resp=$client->request('POST',$uri);
-            }else{
-                if($has_headers){
-                    $resp=$client->request('POST',$uri,[
-                        'json'=>$json,
-                        'headers'=>[
-                            'x-acs-dingtalk-access-token'=>AccessToken::getToken()
-                        ]
-                    ]);
-                }else{
-                    $resp=$client->request('POST',$uri,[
-                        'json'=>$json
-                    ]);
-                }
-               
-            }
-            
-           
-            $content=$resp->getBody()->getContents();
-          
-           
-            return $content;
-        } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
-           
-        }
+        return self::REST('post',$uri,$body,$has_headers);
     }
-    
+    /**
+     * delete
+     *
+     * @param string $uri
+     * @param array $json
+     * @param boolean $has_headers
+     * @return mixed
+     */
+    public static function delete(string $uri,array $body,bool $has_headers=true){
+      
+        return self::REST('delete',$uri,$body,$has_headers);
+    }
+    /**
+     * delete
+     *
+     * @param string $uri
+     * @param array $json
+     * @param boolean $has_headers
+     * @return mixed
+     */
+    public static function put(string $uri,array $body,bool $has_headers=true){
+      
+        return self::REST('put',$uri,$body,$has_headers);
+    }
     public static function REST(string $method,string $uri,array $body,bool $has_header=true){
       
         try {
