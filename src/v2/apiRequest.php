@@ -80,7 +80,7 @@ class apiRequest{
       
         try {
             $client=self::client();
-            $body=empty($body)?json_encode($body):'';
+            $body=empty($body)?'':json_encode($body);
             $rep=null;
             if($has_header){
                 $rep=self::request($method,$uri,$body,[
