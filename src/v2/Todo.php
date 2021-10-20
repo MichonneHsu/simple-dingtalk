@@ -35,9 +35,9 @@ class Todo
 
         return apiRequest::delete($uri);
     }
-    public static function update(array $body){
+    public static function update(string $id,array $body){
         $unionId=UserInfo::$unionId;
-        $uri=Url::$api['todo']."{$unionId}/tasks";
+        $uri=Url::$api['todo']."{$unionId}/tasks/$id";
         $params=[
             'operatorId'=>$unionId
         ];
