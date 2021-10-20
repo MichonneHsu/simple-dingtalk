@@ -25,8 +25,8 @@ class apiRequest{
      * @param array $header
      * @return Request
      */
-    public static function request(string $method,string $uri,string $body,array $header=[]){
-        return new Request($method,$uri,$header,$body);
+    public static function request(string $method,string $uri,array $header=[]){
+        return new Request($method,$uri,$header);
     }
     /**
      * get请求
@@ -108,22 +108,22 @@ class apiRequest{
         }
     }
     
-    public static function REST(string $method,string $uri,array $body,bool $has_header=true){
+    public static function REST(string $method,string $uri,array $json,bool $has_header=true){
       
         try {
             $client=self::client();
-            $body=json_encode($body);
+          
             $rep=null;
             if($has_header){
-                $rep=self::request($method,$uri,$body,[
+                $rep=self::request($method,$uri,[
                     'x-acs-dingtalk-access-token'=>AccessToken::getToken()
                 ]);
                
             }else{
-                $rep=self::request($method,$uri,$body);
+                $rep=self::request($method,$uri);
             }
            
-            $resp=$client->send($rep,['timeout'=>2]);
+            $resp=$client->send($rep,['timeout'=>2,'json'=>$json]);
            
             $content=$resp->getBody()->getContents();
           
