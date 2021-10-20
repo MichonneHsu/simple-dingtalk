@@ -121,6 +121,9 @@ class Url
             'group_get'=>'/topapi/attendance/group/get',
             'group_keytoid'=>'/topapi/attendance/groups/keytoid',
             'group_idtokey'=>'/topapi/attendance/groups/idtokey'
+        ],
+        'cspace'=>[
+            'get_custom_space'=>'/cspace/get_custom_space'
         ]
 
     ];

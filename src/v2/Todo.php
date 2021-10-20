@@ -10,7 +10,7 @@ class Todo
 {
     public static function create(array $json){
         $unionId=UserInfo::$unionId;
-        $uri="/v1.0/todo/users/{$unionId}/tasks";
+        $uri=Url::$api['todo']."{$unionId}/tasks";
         $params=[
             'operatorId'=>$unionId
         ];
@@ -19,4 +19,12 @@ class Todo
 
         return apiRequest::post($uri,$json);
     }
+    public static function test(){
+    
+        $a=[
+            'a'=>1
+        ];
+        return apiRequest::REST('get','http://www.wxshop.com',json_encode($a));
+    }
+    
 }

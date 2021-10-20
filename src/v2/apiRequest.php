@@ -5,7 +5,7 @@ namespace SimpleDingTalk\v2;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
-
+use GuzzleHttp\Psr7\Request;
 class apiRequest{
   
     /**
@@ -15,6 +15,18 @@ class apiRequest{
      */
     public static function client(){
         return  new Client(['base_uri'=>Url::$api['domain']]);
+    }
+    /**
+     * 客户端请求基本信息
+     *
+     * @param string $method
+     * @param string $uri
+     * @param string $body
+     * @param array $header
+     * @return Request
+     */
+    public static function request(string $method,string $uri,string $body,array $header=[]){
+        return new Request($method,$uri,$header,$body);
     }
     /**
      * get请求
@@ -95,7 +107,26 @@ class apiRequest{
            
         }
     }
-  
+    
+    public static function REST(string $method,string $uri,string $body){
+      
+        try {
+           
+           
+            $resp=self::request($method,$uri,$body);
+            
+           
+            $content=$resp->getBody()->getContents();
+          
+           
+            return $content;
+        } catch (RequestException $e) {
+            throw new \Exception(Message::toString($e->getResponse()));
+           
+        }
+    }
+    
+    
   
     public static function joinParams(string $uri, array $params):string
     {
