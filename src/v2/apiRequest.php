@@ -108,12 +108,20 @@ class apiRequest{
         }
     }
     
-    public static function REST(string $method,string $uri,string $body){
+    public static function REST(string $method,string $uri,array $body,bool $has_header=true){
       
         try {
            
+            $body=json_encode($body);
+            $resp=null;
+            if($has_header){
+                $resp=self::request($method,$uri,$body,[
+                    'x-acs-dingtalk-access-token'=>AccessToken::getToken()
+                ]);
+            }else{
+                $resp=self::request($method,$uri,$body);
+            }
            
-            $resp=self::request($method,$uri,$body);
             
            
             $content=$resp->getBody()->getContents();
