@@ -81,7 +81,9 @@ class apiRequest{
         try {
             $client=self::client();
             $body=empty($body)?'':json_encode($body);
-            $header=[];
+            $header=[
+                'Content-Type'=>'application/json'
+            ];
             $rep=null;
             if($has_header){
                
