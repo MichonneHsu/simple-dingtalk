@@ -45,12 +45,13 @@ class AccessToken
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];
-        $json = [
+        $body = [
             'appKey' => $appkey,
             'appSecret' => $appSecret
         ];
        
-        $res = apiRequest::post($uri, $json);
+        $has_headers=false;
+        $res = apiRequest::post($uri, $body,$has_headers);
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
