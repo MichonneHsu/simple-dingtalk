@@ -8,16 +8,24 @@ class Time{
     
  
 
+    public $model=null;
+    public $date='';
    
-    public static function getDate(string $date)
+    public function __construct()
     {
-        return new DateTime($date);
+      
+        $date=$this->date;
+        $this->model=new DateTime($date);
     }
-    public static function get_calandar_date(string $startTime,string $endTime){
-        
-        return [
-            'startTime'=>self::getDate($startTime)->format('c'),
-            'endTime'=>self::getDate($endTime)->format('c'),
-        ];
+    public function setDate(string $date){
+        $this->date=$date;
+
+        return $this;
+    }
+ 
+
+
+    public function getDate(string $format){
+        return $this->model->format($format);
     }
 }

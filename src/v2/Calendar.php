@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
 
+use PDO;
 use SimpleDingTalk\util\date\Time;
 
 class Calendar
@@ -14,8 +15,24 @@ class Calendar
         $unionId = UserInfo::$unionId;
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . '/events';
-
-
+        $time=new Time();
+        if(array_key_exists('isAllDay',$body)){
+            $isAllDay=$body['isAllDay'];
+            if($isAllDay){
+                $startDate=$body['start']['date'];
+                $body['start']['date']=$time->setDate($startDate)->getDate('yyyy-mm-dd');
+                $endDate=$body['end']['date'];
+                $body['end']['date']=$time->setDate($endDate)->getDate('yyyy-mm-dd');
+            }else{
+                $star_dateTime=$body['start']['dateTime'];
+                $body['start']['dateTime']=$time->setDate($star_dateTime)->getDate('c');
+                $body['start']['timeZone']='Asia/Shanghai';
+                $end_dateTime=$body['start']['dateTime'];
+                $body['end']['dateTime']=$time->setDate($end_dateTime)->getDate('c');
+                $body['end']['timeZone']='Asia/Shanghai';
+            }
+        }
+       
         return apiRequest::post($uri, $body);
     }
     public static function remove(string $id)
@@ -98,13 +115,15 @@ class Calendar
         $unionId = UserInfo::$unionId;
 
         $uri = Url::$api['calendar'] . "{$unionId}/querySchedule";
-        $date = Time::get_calandar_date($startTime, $endTime);
+        $time = new Time();
+        $startTime=$time->setDate($startTime)->getDate('c');
+        $endTime=$time->setDate($endTime)->getDate('c');
         $body = [
             'userIds' => $userIds,
-            'startTime' => $date['startTime'],
-            'endTime' => $date['endTime']
+            'startTime' => $startTime,
+            'endTime' => $endTime
         ];
-
+      
         return apiRequest::post($uri, $body);
     }
     public static function get_signin(string $id, string $maxResults, string $type, string $nextToken = '')
