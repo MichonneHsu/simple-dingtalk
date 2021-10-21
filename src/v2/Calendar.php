@@ -20,9 +20,9 @@ class Calendar
             $isAllDay=$body['isAllDay'];
             if($isAllDay){
                 $startDate=$body['start']['date'];
-                $body['start']['date']=$time->setDate($startDate)->getDate('yyyy-mm-dd');
+                $body['start']['date']=$time->setDate($startDate)->getDate('Y-m-d');
                 $endDate=$body['end']['date'];
-                $body['end']['date']=$time->setDate($endDate)->getDate('yyyy-mm-dd');
+                $body['end']['date']=$time->setDate($endDate)->getDate('Y-m-d');
             }else{
                 $star_dateTime=$body['start']['dateTime'];
                 $body['start']['dateTime']=$time->setDate($star_dateTime)->getDate('c');
