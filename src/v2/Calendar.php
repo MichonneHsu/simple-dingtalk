@@ -32,7 +32,10 @@ class Calendar
                 $body['end']['timeZone']='Asia/Shanghai';
             }
         }
-       
+        if(array_key_exists('recurrence',$body)){
+            $recurrence_range_endDate=$body['recurrence']['range']['endDate'];
+            $body['recurrence']['range']['endDate']=$time->setDate($recurrence_range_endDate)->getDate('c');
+        }
         return apiRequest::post($uri, $body);
     }
     public static function remove(string $id)
