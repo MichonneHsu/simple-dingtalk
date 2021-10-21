@@ -11,7 +11,8 @@ class Url
     public static $api = [
         'domain' => 'https://api.dingtalk.com',
         'gettoken' => '/v1.0/oauth2/accessToken',
-        'todo'=>'/v1.0/todo/users/'
+        'todo'=>'/v1.0/todo/users/',
+        'calendar'=>'/v1.0/calendar/users/'
     ];
 
     public static function joinParams(string $uri, array $params): string
