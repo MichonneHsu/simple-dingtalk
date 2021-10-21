@@ -81,16 +81,15 @@ class apiRequest{
         try {
             $client=self::client();
             $body=empty($body)?'':json_encode($body);
+            $header=[];
             $rep=null;
             if($has_header){
-                $rep=self::request($method,$uri,$body,[
-                    'x-acs-dingtalk-access-token'=>AccessToken::getToken()
-                ]);
                
-            }else{
-                $rep=self::request($method,$uri,$body);
+                   $header['x-acs-dingtalk-access-token']=AccessToken::getToken();
+              
+               
             }
-           
+            $rep=self::request($method,$uri,$body,$header);
             $resp=$client->send($rep,['timeout'=>2]);
            
             $content=$resp->getBody()->getContents();
@@ -104,7 +103,7 @@ class apiRequest{
     }
     
    
-    public static function tokenpost(string $uri, array $json)
+    public static function token_post(string $uri, array $json)
     {
 
         try {
