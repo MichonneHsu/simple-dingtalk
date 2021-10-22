@@ -82,9 +82,9 @@ class Todo
 
         return apiRequest::get($uri);
     }
-    public static function query(bool $isDone, string $nextToken = '')
+    public static function query(string $unionId,bool $isDone, string $nextToken = '')
     {
-        $unionId = UserInfo::$unionId;
+      
         $uri = Url::$api['todo'] . "{$unionId}/org/tasks/query";
 
 
