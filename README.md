@@ -54,8 +54,7 @@ v2_config::$access_token = [
     'file_path' => ''
 ];
 
-新版服务端-当前全局唯一操作用户
-UserInfo::$unionId='MRjt3BAdafasd2UNg5d5jK8dwiEiE';
+
 ```
 #### 案例
 ```
