@@ -40,7 +40,7 @@ class Calendar
     {
         
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
 
         return apiRequest::get($uri);
