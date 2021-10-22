@@ -8,24 +8,10 @@ class Time{
     
  
 
-    public $model=null;
-    public $date='';
-   
-    public function __construct()
-    {
-      
-        $date=$this->date;
-        $this->model=new DateTime($date);
-    }
-    public function setDate(string $date){
-        $this->date=$date;
-
-        return $this;
+    public static function setDate(string $date){
+       
+        
+        return new DateTime($date);
     }
  
-
-
-    public function getDate(string $format){
-        return $this->model->format($format);
-    }
 }

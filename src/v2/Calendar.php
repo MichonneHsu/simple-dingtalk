@@ -50,14 +50,14 @@ class Calendar
      
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events";
-        $time = new Time();
+       
         if (array_key_exists('timeMin', $query)) {
             $timeMin = $query['timeMin'];
-            $query['timeMin'] = $time->setDate($timeMin)->getDate('c');
+            $query['timeMin'] = Time::setDate($timeMin)->format('c');
         }
         if (array_key_exists('timeMax', $query)) {
             $timeMax = $query['timeMax'];
-            $query['timeMax'] = $time->setDate($timeMax)->getDate('c');
+            $query['timeMax'] = Time::setDate($timeMax)->format('c');
         }
         $uri = apiRequest::joinParams($uri, $query);
 
@@ -107,9 +107,9 @@ class Calendar
       
 
         $uri = Url::$api['calendar'] . "{$unionId}/querySchedule";
-        $time = new Time();
-        $startTime=$time->setDate($startTime)->getDate('c');
-        $endTime=$time->setDate($endTime)->getDate('c');
+    
+        $startTime=Time::setDate($startTime)->format('c');
+        $endTime=Time::setDate($endTime)->format('c');
         $body = [
             'userIds' => $userIds,
             'startTime' => $startTime,
@@ -142,26 +142,26 @@ class Calendar
 
 
     public static function date_parse(array $body){
-        $time=new Time();
+  
         if(array_key_exists('isAllDay',$body)){
             $isAllDay=$body['isAllDay'];
             if($isAllDay){
                 $startDate=$body['start']['date'];
-                $body['start']['date']=$time->setDate($startDate)->getDate('Y-m-d');
+                $body['start']['date']=Time::setDate($startDate)->format('Y-m-d');
                 $endDate=$body['end']['date'];
-                $body['end']['date']=$time->setDate($endDate)->getDate('Y-m-d');
+                $body['end']['date']=Time::setDate($endDate)->format('Y-m-d');
             }else{
                 $star_dateTime=$body['start']['dateTime'];
-                $body['start']['dateTime']=$time->setDate($star_dateTime)->getDate('c');
+                $body['start']['dateTime']=Time::setDate($star_dateTime)->format('c');
                 $body['start']['timeZone']='Asia/Shanghai';
                 $end_dateTime=$body['start']['dateTime'];
-                $body['end']['dateTime']=$time->setDate($end_dateTime)->getDate('c');
+                $body['end']['dateTime']=Time::setDate($end_dateTime)->format('c');
                 $body['end']['timeZone']='Asia/Shanghai';
             }
         }
         if(array_key_exists('recurrence',$body)){
             $recurrence_range_endDate=$body['recurrence']['range']['endDate'];
-            $body['recurrence']['range']['endDate']=$time->setDate($recurrence_range_endDate)->getDate('c');
+            $body['recurrence']['range']['endDate']=Time::setDate($recurrence_range_endDate)->format('c');
         }
 
         return $body;
