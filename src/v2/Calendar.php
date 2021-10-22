@@ -50,6 +50,15 @@ class Calendar
      
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events";
+        $time = new Time();
+        if (array_key_exists('timeMin', $query)) {
+            $timeMin = $query['timeMin'];
+            $query['timeMin'] = $time->setDate($timeMin)->getDate('c');
+        }
+        if (array_key_exists('timeMax', $query)) {
+            $timeMax = $query['timeMax'];
+            $query['timeMax'] = $time->setDate($timeMax)->getDate('c');
+        }
         $uri = apiRequest::joinParams($uri, $query);
 
         return apiRequest::get($uri);
