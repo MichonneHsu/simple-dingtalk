@@ -17,7 +17,7 @@ class Todo
     public static function create(array $body)
     {
         $unionId = UserInfo::$unionId;
-        
+
         $uri = Url::$api['todo'] . "{$unionId}/tasks";
         $params = [
             'operatorId' => $unionId
@@ -82,17 +82,17 @@ class Todo
 
         return apiRequest::get($uri);
     }
-    public static function query( bool $isDone,string $nextToken = '')
+    public static function query(bool $isDone, string $nextToken = '')
     {
         $unionId = UserInfo::$unionId;
         $uri = Url::$api['todo'] . "{$unionId}/org/tasks/query";
 
 
         $body = [
-            'executorStatusList' => [
-                'nextToken' => $nextToken,
-                'isDone' => $isDone
-            ]
+
+            'nextToken' => $nextToken,
+            'isDone' => $isDone
+
         ];
         return apiRequest::post($uri, $body);
     }
