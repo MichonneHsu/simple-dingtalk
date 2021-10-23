@@ -12,7 +12,8 @@ class Url
         'domain' => 'https://api.dingtalk.com',
         'gettoken' => '/v1.0/oauth2/accessToken',
         'todo'=>'/v1.0/todo/users/',
-        'calendar'=>'/v1.0/calendar/users/'
+        'calendar'=>'/v1.0/calendar/users/',
+        'drive'=>'/v1.0/drive/spaces/'
     ];
 
     public static function joinParams(string $uri, array $params): string

@@ -2,22 +2,86 @@
 
 declare(strict_types=1);
 
-namespace SimpleDingTalk;
+namespace SimpleDingTalk\v2;
 
 
-
+/**
+ * 钉盘
+ */
 class Drive
 {
-    public static function get_custom_space(string $chatid,array $msg)
+    /**
+     * 新建空间
+     *
+     * @param string $unionId
+     * @param string $name
+     * @return mixed
+     */
+    public static function create(string $unionId, string $name)
     {
-        $uri=Url::$api['Cspace']['get_custom_space'];
-       
+        $uri = Url::$api['drive'];
 
-
-        $query =[
-            'access_token' => AccessToken::getToken(),
-            ''
+        $body = [
+            'name' => $name,
+            'unionId' => $unionId
         ];
-        return apiRequest::get($uri, $query);
+        return apiRequest::post($uri, $body);
+    }
+    /**
+     * 删除空间
+     *
+     * @param string $unionId
+     * @param string $spaceId
+     * @return mixed
+     */
+    public static function remove(string $unionId, string $spaceId)
+    {
+        $uri = Url::$api['drive'] . $spaceId;
+
+        $params = [
+            'unionId' => $unionId
+        ];
+        $uri = apiRequest::joinParams($uri, $params);
+        return apiRequest::delete($uri);
+    }
+
+    /**
+     * 获取空间列表
+     *
+     * @param string $unionId
+     * @param string $spaceType
+     * @param string $maxResults
+     * @param string $nextToken
+     * @return mixed
+     */
+    public static function get_list(string $unionId, string $spaceType, string $maxResults, string $nextToken='')
+    {
+        $uri = Url::$api['drive'];
+
+        $params = [
+            'unionId' => $unionId,
+            'spaceType' => $spaceType,
+            'maxResults'=>$maxResults,
+            'nextToken'=>$nextToken
+        ];
+        $uri = apiRequest::joinParams($uri, $params);
+        return apiRequest::get($uri);
+    }
+    /**
+     * 获取空间信息
+     *
+     * @param string $unionId
+     * @param string $spaceId
+     * @return mixed
+     */
+    public static function get_info(string $unionId, string $spaceId)
+    {
+        $uri = Url::$api['drive'].$spaceId;
+
+        $params = [
+            'unionId' => $unionId
+        ];
+        $uri = apiRequest::joinParams($uri, $params);
+        return apiRequest::get($uri);
     }
 }
