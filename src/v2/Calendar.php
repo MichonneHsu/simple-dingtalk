@@ -69,9 +69,7 @@ class Calendar
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees";
         $body = [
-            'attendeesToAdd' => [
-                $attendeesToAdd
-            ]
+            'attendeesToAdd' =>  $attendeesToAdd
 
         ];
 
