@@ -8,7 +8,7 @@ namespace SimpleDingTalk\v2;
 /**
  * 钉盘
  */
-class Drive
+class Space
 {
     /**
      * 新建空间
@@ -84,4 +84,8 @@ class Drive
         $uri = apiRequest::joinParams($uri, $params);
         return apiRequest::get($uri);
     }
+
+
+
+
 }
