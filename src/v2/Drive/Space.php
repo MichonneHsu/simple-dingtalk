@@ -7,7 +7,7 @@ namespace SimpleDingTalk\v2\Drive;
 use SimpleDingTalk\v2\apiRequest;
 use SimpleDingTalk\v2\Url;
 /**
- * 钉盘
+ * 空间管理
  */
 class Space
 {
