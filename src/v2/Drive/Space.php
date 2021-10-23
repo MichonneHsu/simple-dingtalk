@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Drive;
 
-
+use SimpleDingTalk\v2\apiRequest;
+use SimpleDingTalk\v2\Url;
 /**
  * 钉盘
  */
