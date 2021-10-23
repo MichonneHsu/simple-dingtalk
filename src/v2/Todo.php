@@ -14,9 +14,9 @@ class Todo
      * @param array $body
      * @return mixed
      */
-    public static function create(array $body)
+    public static function create(string $unionId,array $body)
     {
-        $unionId = UserInfo::$unionId;
+      
 
         $uri = Url::$api['todo'] . "{$unionId}/tasks";
         $params = [
@@ -27,16 +27,16 @@ class Todo
         return apiRequest::post($uri, $body);
     }
 
-    public static function get(string $id)
+    public static function get(string $unionId,string $id)
     {
-        $unionId = UserInfo::$unionId;
+    
         $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
 
         return apiRequest::get($uri);
     }
-    public static function remove(string $id)
+    public static function remove(string $unionId,string $id)
     {
-        $unionId = UserInfo::$unionId;
+     
         $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
         $params = [
             'operatorId' => $unionId
@@ -45,9 +45,9 @@ class Todo
 
         return apiRequest::delete($uri);
     }
-    public static function update(string $id, array $body)
+    public static function update(string $unionId,string $id, array $body)
     {
-        $unionId = UserInfo::$unionId;
+        
         $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
         $params = [
             'operatorId' => $unionId
@@ -56,9 +56,9 @@ class Todo
 
         return apiRequest::put($uri, $body);
     }
-    public static function status(string $id, bool $isDone)
+    public static function status(string $unionId,string $id, bool $isDone)
     {
-        $unionId = UserInfo::$unionId;
+      
         $uri = Url::$api['todo'] . "{$unionId}/tasks/$id/executorStatus";
         $params = [
             'operatorId' => $unionId
@@ -75,7 +75,7 @@ class Todo
         ];
         return apiRequest::put($uri, $body);
     }
-    public static function get_by_sourceId(string $sourceId)
+    public static function get_by_sourceId(string $unionId,string $sourceId)
     {
         $unionId = UserInfo::$unionId;
         $uri = Url::$api['todo'] . "{$unionId}/tasks/sources/$sourceId";
