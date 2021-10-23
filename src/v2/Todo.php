@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace SimpleDingTalk\v2;
 
 
-
+/**
+ * 待办任务
+ */
 class Todo
 {
     /**
-     * asda
+     * 新增钉钉待办任务
      *
+     * @param string $unionId
      * @param array $body
      * @return mixed
      */
@@ -26,7 +29,13 @@ class Todo
 
         return apiRequest::post($uri, $body);
     }
-
+    /**
+     * 获取钉钉待办任务详情
+     *
+     * @param string $unionId
+     * @param string $id
+     * @return mixed
+     */
     public static function get(string $unionId,string $id)
     {
     
@@ -34,6 +43,13 @@ class Todo
 
         return apiRequest::get($uri);
     }
+    /**
+     * 删除钉钉待办任务
+     *
+     * @param string $unionId
+     * @param string $id
+     * @return mixed
+     */
     public static function remove(string $unionId,string $id)
     {
      
@@ -45,6 +61,14 @@ class Todo
 
         return apiRequest::delete($uri);
     }
+    /**
+     * 更新钉钉待办任务
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param array $body
+     * @return mixed
+     */
     public static function update(string $unionId,string $id, array $body)
     {
         
@@ -56,6 +80,14 @@ class Todo
 
         return apiRequest::put($uri, $body);
     }
+    /**
+     * 更新钉钉待办执行者状态
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param boolean $isDone
+     * @return mixed
+     */
     public static function status(string $unionId,string $id, bool $isDone)
     {
       
@@ -75,6 +107,13 @@ class Todo
         ];
         return apiRequest::put($uri, $body);
     }
+    /**
+     * 根据sourceId获取钉钉待办任务详情
+     *
+     * @param string $unionId
+     * @param string $sourceId
+     * @return mixed
+     */
     public static function get_by_sourceId(string $unionId,string $sourceId)
     {
         $unionId = UserInfo::$unionId;
@@ -82,6 +121,14 @@ class Todo
 
         return apiRequest::get($uri);
     }
+    /**
+     * 查询企业下用户待办列表
+     *
+     * @param string $unionId
+     * @param boolean $isDone
+     * @param string $nextToken
+     * @return mixed
+     */
     public static function query(string $unionId,bool $isDone, string $nextToken = '')
     {
       

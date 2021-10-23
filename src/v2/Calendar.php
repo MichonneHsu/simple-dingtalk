@@ -6,10 +6,24 @@ namespace SimpleDingTalk\v2;
 
 use PDO;
 use SimpleDingTalk\util\date\Time;
-
+/**
+ * 日程
+ */
 class Calendar
-{
+{   
+    /**
+     * 日程所属的日历ID，统一为primary，表示用户的主日历。
+     *
+     * @var string
+     */
     private static $calendarId = 'primary';
+    /**
+     * 创建日程
+     *
+     * @param string $unionId
+     * @param array $body
+     * @return mixed
+     */
     public static function create(string $unionId, array $body)
     {
 
@@ -18,6 +32,13 @@ class Calendar
         $body = self::date_parse($body);
         return apiRequest::post($uri, $body);
     }
+    /**
+     * 删除日程
+     *
+     * @param string $unionId
+     * @param string $id
+     * @return mixed
+     */
     public static function remove(string $unionId, string $id)
     {
 
@@ -27,6 +48,14 @@ class Calendar
 
         return apiRequest::delete($uri);
     }
+    /**
+     * 修改日程
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param array $body
+     * @return mixed
+     */
     public static function update(string $unionId, string $id, array $body)
     {
 
@@ -36,6 +65,13 @@ class Calendar
         $body = self::date_parse($body);
         return apiRequest::put($uri, $body);
     }
+    /**
+     * 查询单个日程详情
+     *
+     * @param string $unionId
+     * @param string $id
+     * @return mixed
+     */
     public static function get_details( string $unionId,string $id)
     {
 
@@ -45,6 +81,13 @@ class Calendar
 
         return apiRequest::get($uri);
     }
+    /**
+     * 查询日程列表
+     *
+     * @param string $unionId
+     * @param array $query
+     * @return mixed
+     */
     public static function get_list(string $unionId, array $query)
     {
 
@@ -63,6 +106,14 @@ class Calendar
 
         return apiRequest::get($uri);
     }
+    /**
+     * 添加日程参与者
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param array $attendeesToAdd
+     * @return mixed
+     */
     public static function add_attendees(string $unionId,string $id , array $attendeesToAdd)
     {
 
@@ -74,6 +125,14 @@ class Calendar
 
         return apiRequest::post($uri, $body);
     }
+    /**
+     * 删除日程参与者
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param array $attendeesToRemove
+     * @return mixed
+     */
     public static function remove_attendees(string $unionId,string $id , array $attendeesToRemove)
     {
 
@@ -88,6 +147,14 @@ class Calendar
 
         return apiRequest::post($uri, $body);
     }
+    /**
+     * 设置日程响应邀请状态
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param string $responseStatus
+     * @return mixed
+     */
     public static function respond(string $unionId, string $id, string $responseStatus)
     {
 
@@ -99,6 +166,15 @@ class Calendar
 
         return apiRequest::post($uri, $body);
     }
+    /**
+     * 获取用户忙闲信息
+     *
+     * @param string $unionId
+     * @param array $userIds
+     * @param string $startTime
+     * @param string $endTime
+     * @return mixed
+     */
     public static function querySchedule(string $unionId, array $userIds, string $startTime, string $endTime)
     {
 
@@ -115,6 +191,16 @@ class Calendar
 
         return apiRequest::post($uri, $body);
     }
+    /**
+     * 查看单个日程的签到详情
+     *
+     * @param string $unionId
+     * @param string $id
+     * @param string $maxResults
+     * @param string $type
+     * @param string $nextToken
+     * @return mixed
+     */
     public static function get_signin(string $unionId, string $id, string $maxResults, string $type, string $nextToken = '')
     {
 
@@ -129,7 +215,12 @@ class Calendar
 
         return apiRequest::get($uri);
     }
-
+    /**
+     * 查询日历
+     *
+     * @param string $unionId
+     * @return mixed
+     */
     public static function get(string $unionId)
     {
         $uri = Url::$api['calendar'] . "{$unionId}/calendars";
@@ -137,8 +228,13 @@ class Calendar
         return apiRequest::get($uri);
     }
 
-
-    public static function date_parse(array $body)
+    /**
+     * 日程日期解析
+     *
+     * @param array $body
+     * @return array
+     */
+    private static function date_parse(array $body)
     {
 
         if (array_key_exists('isAllDay', $body)) {
