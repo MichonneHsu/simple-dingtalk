@@ -139,10 +139,7 @@ class Calendar
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees/batchRemove";
         $body = [
-            'attendeesToRemove' => [
-                $attendeesToRemove
-            ]
-
+            'attendeesToRemove' =>$attendeesToRemove
         ];
 
         return apiRequest::post($uri, $body);
