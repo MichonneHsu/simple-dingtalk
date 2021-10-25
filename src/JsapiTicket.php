@@ -6,13 +6,13 @@ namespace SimpleDingTalk;
 
 use Exception;
 
-class AccessToken
+class JsapiTicket
 {
 
    
     public static function getToken(): string
     {
-        $at=Config::$miniprogram_app;
+        $at=Config::$micro_app;
         $file_path=$at['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
@@ -36,24 +36,22 @@ class AccessToken
 
         $token = json_decode($json, true);
         
-        return  $token['access_token'];
+        return  $token['ticket'];
     }
     public static function generateToken()
     {
 
-        $app_info=Config::$app_info;
-        $appkey =$app_info['APP_KEY'];
-        $appSecret = $app_info['APP_SECRET'];
-        $uri = Url::$api['gettoken'];
+      
+      
+        $uri = Url::$api['get_jsapi_ticket'];
         $query = [
-            'appkey' => $appkey,
-            'appsecret' => $appSecret
+            'access_token' => AccessToken::getToken(),
         ];
         $json = apiRequest::get($uri, $query);
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = Config::$miniprogram_app['file_path'];
+        $filename = Config::$micro_app['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }

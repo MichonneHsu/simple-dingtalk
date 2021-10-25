@@ -10,11 +10,19 @@ class Config{
         'APP_KEY'=>'',
         'APP_SECRET'=>''
     ];
-    public static $access_token=[
+    public static $miniprogram_app=[
         'expires'=>0,
         'file_path'=>''
     ];
-    
+    public static $micro_app=[
+        'expires'=>0,
+        'file_path'=>'',
+        'page'=>[
+            'app'=>'',
+            'pc'=>'',
+            'management'=>''
+        ]
+    ];
     public static $callback_info=[
         'aes_key'=>'',
         'token'=>''

@@ -11,6 +11,7 @@ class Url
     public static $api = [
         'domain' => 'https://oapi.dingtalk.com',
         'gettoken' => '/gettoken',
+        'get_jsapi_ticket' => '/get_jsapi_ticket',
         'user' => [
             'getuserinfo' => '/user/getuserinfo',
             'create' => '/topapi/v2/user/create',
