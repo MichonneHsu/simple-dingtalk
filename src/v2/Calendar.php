@@ -96,11 +96,11 @@ class Calendar
 
         if (array_key_exists('timeMin', $query)) {
             $timeMin = $query['timeMin'];
-            $query['timeMin'] = Time::setDate($timeMin)->format('c');
+            $query['timeMin'] = Time::setDate($timeMin)->format('Y-m-d\TH:i:s\Z');
         }
         if (array_key_exists('timeMax', $query)) {
             $timeMax = $query['timeMax'];
-            $query['timeMax'] = Time::setDate($timeMax)->format('c');
+            $query['timeMax'] = Time::setDate($timeMax)->format('Y-m-d\TH:i:s\Z');
         }
         $uri = apiRequest::joinParams($uri, $query);
 
