@@ -20,9 +20,7 @@ class CorpMessage
     public static function send(string $chatid,array $msg)
     {
 
-        $uri = Url::joinParams(Url::$api['corpMessage']['send'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['corpMessage']['send'];
 
 
         $json =[
@@ -37,7 +35,6 @@ class CorpMessage
         $uri =Url::$api['corpMessage']['getReadList'];
 
         $query =[
-            'access_token' => AccessToken::getToken(),
             'messageId'=>urlencode($messageId),
             'size'=>$size,
             'cursor'=>$cursor

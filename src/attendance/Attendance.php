@@ -17,9 +17,7 @@ class GroupManagerment
      */
     public static function getsimplegroups(int $offset=0,int $size=10)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['getsimplegroups'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['getsimplegroups'];
         $json = [
             'offset' => $offset,
             'size'=>$size
