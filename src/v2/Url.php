@@ -13,7 +13,8 @@ class Url
         'gettoken' => '/v1.0/oauth2/accessToken',
         'todo'=>'/v1.0/todo/users/',
         'calendar'=>'/v1.0/calendar/users/',
-        'drive'=>'/v1.0/drive/spaces/'
+        'drive'=>'/v1.0/drive/spaces/',
+        'serviceGroup'=>'/v1.0/serviceGroup/groups'
     ];
 
     public static function joinParams(string $uri, array $params): string
