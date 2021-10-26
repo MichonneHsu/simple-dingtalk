@@ -127,6 +127,7 @@ class Url
             
         ],
         'groupChatMangement'=>[
+            'chat_create'=>'/chat/create',
             'get_qrcode'=>'/topapi/chat/qrcode/get'
         ],
         'cspace'=>[
