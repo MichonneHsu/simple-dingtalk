@@ -32,9 +32,7 @@ class GroupManagerment
      */
     public static function getusergroup(string $userid)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['getusergroup'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['attendance']['getusergroup'];
         $json = [
             'userid' => $userid
         ];
@@ -50,9 +48,7 @@ class GroupManagerment
      */
     public static function group_member_list(string $op_user_id,int $group_id,int $cursor=1)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_member_list'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_member_list'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -71,9 +67,7 @@ class GroupManagerment
      */
     public static function group_member_listbyids(string $op_user_id,int $group_id,string $member_ids,int $member_type)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_member_listbyids'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_member_listbyids'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -93,9 +87,7 @@ class GroupManagerment
      */
     public static function group_member_update(string $op_user_id,int $group_id,int $schedule_flag,array $update_param)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_member_update'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_member_update'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -114,9 +106,7 @@ class GroupManagerment
      */
     public static function group_memberusers_list(string $op_user_id,int $group_id,int $cursor)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_memberusers_list'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_memberusers_list'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -133,9 +123,7 @@ class GroupManagerment
      */
     public static function group_query(string $op_user_id,int $group_id)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_query'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id
@@ -151,9 +139,7 @@ class GroupManagerment
      */
     public static function group_search(string $op_user_id,string $group_name)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_search'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_search'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_name'=>$group_name
@@ -170,9 +156,7 @@ class GroupManagerment
      */
     public static function group_wifis_add(string $op_user_id,string $group_key,array $wifi_list)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_wifis_add'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_wifis_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -190,9 +174,7 @@ class GroupManagerment
      */
     public static function group_wifis_remove(string $op_user_id,string $group_key,string $wifi_key_list)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_wifis_remove'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_wifis_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -211,9 +193,7 @@ class GroupManagerment
      */
     public static function group_wifis_query(string $op_user_id,string $group_key,string $cursor,int $size=10)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_wifis_query'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_wifis_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -232,9 +212,7 @@ class GroupManagerment
      */
     public static function group_positions_add(string $op_user_id,string $group_key,array $position_list)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_positions_add'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['attendance']['group_positions_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -252,9 +230,7 @@ class GroupManagerment
      */
     public static function group_positions_remove(string $op_user_id,string $group_key,string $position_key_list)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_positions_remove'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_positions_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -273,9 +249,7 @@ class GroupManagerment
      */
     public static function group_positions_query(string $op_user_id,string $group_key,string $cursor,  int $size)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_positions_query'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_positions_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -293,9 +267,7 @@ class GroupManagerment
      */
     public static function group_add(string $op_user_id,array $top_group)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_add'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'top_group'=>$top_group
@@ -311,9 +283,7 @@ class GroupManagerment
      */
     public static function group_modify(string $op_user_id,array $top_group)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_modify'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_modify'];
         $json = [
             'op_user_id' => $op_user_id,
             'top_group'=>$top_group
@@ -329,9 +299,7 @@ class GroupManagerment
      */
     public static function group_remove(string $op_user_id,string $group_key)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_remove'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key
@@ -348,9 +316,7 @@ class GroupManagerment
      */
     public static function group_users_add(string $op_user_id,string $group_key,string $user_id_list)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_users_add'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_users_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -369,9 +335,7 @@ class GroupManagerment
      */
     public static function group_users_remove(string $op_user_id,string $group_key,string $user_id_list)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_users_remove'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_users_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -390,9 +354,7 @@ class GroupManagerment
      */
     public static function group_users_query(string $op_user_id,string $group_key,string $cursor,int $size=10)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_users_query'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_users_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -410,9 +372,7 @@ class GroupManagerment
      */
     public static function group_get(string $op_user_id,string $group_key)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_get'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_get'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key
@@ -428,9 +388,7 @@ class GroupManagerment
      */
     public static function group_keytoid(string $op_user_id,string $group_key)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_keytoid'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['attendance']['group_keytoid'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -447,9 +405,7 @@ class GroupManagerment
      */
     public static function group_idtokey(string $op_user_id,int $group_id)
     {
-        $uri = Url::joinParams(Url::$api['attendance']['group_idtokey'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['attendance']['group_idtokey'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id

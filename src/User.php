@@ -11,8 +11,7 @@ class User{
     public static function getuserinfo(string $code){
         $uri=Url::$api['user']['getuserinfo'];
         $query = [
-            'code' => $code,
-            'access_token'=>AccessToken::getToken()
+            'code' => $code
         ];
         return apiRequest::get($uri, $query);
     }
@@ -23,9 +22,7 @@ class User{
      * @return mixed
      */
     public static function create(array $json){
-        $uri=Url::joinParams(Url::$api['user']['create'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['create'];
        
         return apiRequest::post($uri, $json);
     }
@@ -36,9 +33,7 @@ class User{
      * @return mixed
      */
     public static function update(array $json){
-        $uri=Url::joinParams(Url::$api['user']['update'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['update'];
         
         return apiRequest::post($uri, $json);
     }
@@ -49,9 +44,7 @@ class User{
      * @return mixed
      */
     public static function remove(string $userid){
-        $uri=Url::joinParams(Url::$api['user']['remove'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['remove'];
         $json=[
             'userid'=>$userid
         ];
@@ -64,9 +57,7 @@ class User{
      * @return mixed
      */
     public static function get(string $userid){
-        $uri=Url::joinParams(Url::$api['user']['get'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['get'];
         $json=[
             'userid'=>$userid
         ];
@@ -79,9 +70,7 @@ class User{
      * @return mixed
      */
     public static function listsimple(array $json){
-        $uri=Url::joinParams(Url::$api['user']['listsimple'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['listsimple'];
       
         return apiRequest::post($uri, $json);
     }
@@ -92,9 +81,7 @@ class User{
      * @return mixed
      */
     public static function listid(int $dept_id){
-        $uri=Url::joinParams(Url::$api['user']['listid'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['listid'];
         $json=[
             'dept_id'=>$dept_id
         ];
@@ -107,9 +94,7 @@ class User{
      * @return mixed
      */
     public static function list(array $json){
-        $uri=Url::joinParams(Url::$api['user']['list'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['list'];
       
         return apiRequest::post($uri, $json);
     }
@@ -120,9 +105,7 @@ class User{
      * @return mixed
      */
     public static function count(bool $only_active=true){
-        $uri=Url::joinParams(Url::$api['user']['count'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['count'];
         $json=[
             'only_active'=>$only_active
         ];
@@ -134,9 +117,7 @@ class User{
      * @return mixed
      */
     public static function listadmin(){
-        $uri=Url::joinParams(Url::$api['user']['listadmin'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['listadmin'];
       
        
         return apiRequest::post($uri);
@@ -148,9 +129,7 @@ class User{
      * @return mixed
      */
     public static function get_admin_scope(string $userid){
-        $uri=Url::joinParams(Url::$api['user']['get_admin_scope'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['get_admin_scope'];
         $json=[
             'userid'=>$userid
         ];
@@ -164,9 +143,6 @@ class User{
      */
     public static function can_access_microapp(array $query){
         $uri=Url::$api['user']['can_access_microapp'];
-       $query=array_merge([
-        'access_token'=>AccessToken::getToken()
-       ],$query);
        
         return apiRequest::get($uri,$query);
     }
@@ -177,9 +153,7 @@ class User{
      * @return mixed
      */
     public static function getbymobile(string $mobile){
-        $uri=Url::joinParams(Url::$api['user']['getbymobile'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['getbymobile'];
         $json=[
             'mobile'=>$mobile
         ];
@@ -192,9 +166,7 @@ class User{
      * @return mixed
      */
     public static function getbyunionid(string $unionid){
-        $uri=Url::joinParams(Url::$api['user']['getbyunionid'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['getbyunionid'];
         $json=[
             'unionid'=>$unionid
         ];
@@ -206,9 +178,7 @@ class User{
      * @return mixed
      */
     public static function getinactive($json){
-        $uri=Url::joinParams(Url::$api['user']['getinactive'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['user']['getinactive'];
        
         return apiRequest::post($uri,$json);
     }

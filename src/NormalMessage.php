@@ -20,9 +20,7 @@ class NormalMessage
     public static function send(string $sender,string $cid,array $msg)
     {
 
-        $uri = Url::joinParams(Url::$api['normalMessage']['send_to_conversation'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['normalMessage']['send_to_conversation'];
 
 
         $json =[

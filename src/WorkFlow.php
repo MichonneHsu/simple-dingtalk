@@ -17,11 +17,9 @@ class WorkFlow
      */
     public static function save(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['save'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['save'];
         $pre = $json;
-       
+
         $json = ['saveProcessRequest' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
         ])];
@@ -35,12 +33,9 @@ class WorkFlow
      */
     public static function create(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['create'], [
-            'access_token' => AccessToken::getToken()
-        ]);
-        $json = array_merge($json, [
-            'agent_id' => Config::$app_info['AGENT_ID']
-        ]);
+        $uri = Url::$api['workflow']['create'];
+        $json['agent_id'] = Config::$app_info['AGENT_ID'];
+
         return apiRequest::post($uri, $json);
     }
     /**
@@ -51,11 +46,9 @@ class WorkFlow
      */
     public static function terminate(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['terminate'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['terminate'];
         $pre = $json;
-        $json =['request'=> $pre];
+        $json = ['request' => $pre];
 
         return apiRequest::post($uri, $json);
     }
@@ -68,9 +61,7 @@ class WorkFlow
      */
     public static function get_file(string $process_instance_id, string $file_id)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['get_file'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['get_file'];
 
         $json = [
             'request' => [
@@ -91,9 +82,7 @@ class WorkFlow
      */
     public static function get_detail(string $process_instance_id)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['get_detail'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['get_detail'];
 
         $json = [
             'process_instance_id' => $process_instance_id,
@@ -110,9 +99,7 @@ class WorkFlow
      */
     public static function get_list(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['get_list'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['get_list'];
 
         return apiRequest::post($uri, $json);
     }
@@ -124,9 +111,7 @@ class WorkFlow
      */
     public static function gettodonum(string $userid)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['gettodonum'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['gettodonum'];
         $json = [
             'userid' => $userid
         ];
@@ -140,9 +125,7 @@ class WorkFlow
      */
     public static function listbyuserid(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['listbyuserid'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['listbyuserid'];
 
         return apiRequest::post($uri, $json);
     }
@@ -154,9 +137,7 @@ class WorkFlow
      */
     public static function space_info(string $user_id)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['space_info'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['space_info'];
         $json = [
             'user_id' => $user_id,
             'agent_id' => Config::$app_info['AGENT_ID']
@@ -171,9 +152,7 @@ class WorkFlow
      */
     public static function space_preview(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['space_preview'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['space_preview'];
         $pre = $json;
         $pre['agentid'] = Config::$app_info['AGENT_ID'];
         $json = [
@@ -189,9 +168,7 @@ class WorkFlow
      */
     public static function condition_list(string $process_code)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['condition_list'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['condition_list'];
 
         $json = [
             'request' => [
@@ -209,11 +186,9 @@ class WorkFlow
      */
     public static function add_comment(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['add_comment'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['add_comment'];
         $pre = $json;
-        $json =['request'=> $pre];
+        $json = ['request' => $pre];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -224,9 +199,7 @@ class WorkFlow
      */
     public static function get_template(string $userid)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['get_template'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['get_template'];
         $json = [
             'userid' => $userid
         ];
@@ -240,11 +213,9 @@ class WorkFlow
      */
     public static function execute(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['execute'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['execute'];
         $pre = $json;
-        $json =['request'=> $pre];
+        $json = ['request' => $pre];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -257,9 +228,7 @@ class WorkFlow
      */
     public static function space_auth(int $space_id, string $file_id, string $userid)
     {
-        $uri = Url::joinParams(Url::$api['workflow']['space_auth'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workflow']['space_auth'];
         $json = [
             'request' => [
                 'userid' => $userid,
@@ -268,11 +237,9 @@ class WorkFlow
                     'file_id' => $file_id
                 ]
             ],
-            
+
         ];
-      
+
         return apiRequest::post($uri, $json);
     }
-
-   
 }

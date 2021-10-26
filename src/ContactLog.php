@@ -14,9 +14,7 @@ class ContactLog
      */
     public static function get_department(int $dept_id)
     {
-        $uri = Url::joinParams(Url::$api['contact_log']['get_department'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['contact_log']['get_department'];
         $json = [
             'dept_id' => $dept_id
         ];
@@ -30,9 +28,7 @@ class ContactLog
      */
     public static function get_user(array $json)
     {
-        $uri = Url::joinParams(Url::$api['contact_log']['get_user'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['contact_log']['get_user'];
 
         return apiRequest::post($uri, $json);
     }
@@ -44,9 +40,7 @@ class ContactLog
      */
     public static function get_user_list(array $json)
     {
-        $uri = Url::joinParams(Url::$api['contact_log']['get_user_list'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['contact_log']['get_user_list'];
 
         return apiRequest::post($uri, $json);
     }
@@ -58,9 +52,7 @@ class ContactLog
      */
     public static function get_department_list(array $json)
     {
-        $uri = Url::joinParams(Url::$api['contact_log']['get_department_list'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['contact_log']['get_department_list'];
 
         return apiRequest::post($uri, $json);
     }
@@ -71,9 +63,7 @@ class ContactLog
      */
     public static function get_organization()
     {
-        $uri = Url::joinParams(Url::$api['contact_log']['get_organization'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['contact_log']['get_organization'];
 
         return apiRequest::post($uri);
     }

@@ -18,9 +18,7 @@ class WorkRecord
      */
     public static function get_by_name(string $name)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['get_by_name'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['get_by_name'];
         $json = [
             'name' => $name
 
@@ -36,11 +34,7 @@ class WorkRecord
      */
     public static function remove(string $process_code, bool $clean_running_task = false)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['remove'], [
-            'access_token' => AccessToken::getToken()
-        ]);
-
-
+        $uri = Url::$api['workrecord']['remove'];
 
         $json = [
             'request' => [
@@ -72,9 +66,7 @@ class WorkRecord
      */
     public static function create(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['create'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['create'];
         $pre = $json;
 
         $json = ['request' => array_merge($pre, [
@@ -90,9 +82,7 @@ class WorkRecord
      */
     public static function save(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['save'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['save'];
         $pre = $json;
 
 
@@ -114,9 +104,7 @@ class WorkRecord
      */
     public static function update(string $process_instance_id, string $status, string $result, bool $cancel_running_task = false)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['update'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['workrecord']['update'];
 
         $json = [
             'request' =>  [
@@ -140,9 +128,7 @@ class WorkRecord
      */
     public static function batchupdate(string $process_instance_id, string $status, string $result)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['batchupdate'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['workrecord']['batchupdate'];
 
         $json = [
             'request' => [
@@ -165,9 +151,7 @@ class WorkRecord
      */
     public static function task_create(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['task_create'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['task_create'];
         $pre = $json;
         $json = ['request' => array_merge($pre, [
             'agentid' => Config::$app_info['AGENT_ID']
@@ -186,9 +170,7 @@ class WorkRecord
      */
     public static function task_query(string $userid, int $offset = 0,  int $status = 0, int $count = 5)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['task_query'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['task_query'];
 
         $json = [
             'userid' => $userid,
@@ -208,9 +190,7 @@ class WorkRecord
      */
     public static function task_update(string $process_instance_id, array $tasks)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['task_update'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['task_update'];
 
 
         $json = [
@@ -225,9 +205,7 @@ class WorkRecord
     }
     public static function cancel(array $json)
     {
-        $uri = Url::joinParams(Url::$api['workrecord']['cancel'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['workrecord']['cancel'];
 
         $pre = $json;
 

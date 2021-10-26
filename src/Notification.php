@@ -18,9 +18,7 @@ class Notification
     public static function send(array $json)
     {
 
-        $uri = Url::joinParams(Url::$api['notification']['corpconversation'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['notification']['corpconversation'];
 
 
         $json = array_merge($json, [
@@ -37,14 +35,10 @@ class Notification
     public static function update_status_bar(array $json)
     {
 
-        $uri = Url::joinParams(Url::$api['notification']['update_status_bar'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['notification']['update_status_bar'];
 
-
-        $json = array_merge($json, [
-            'agent_id' => Config::$app_info['AGENT_ID']
-        ]);
+        $json['agent_id']=Config::$app_info['AGENT_ID'];
+      
         return apiRequest::post($uri, $json);
     }
     /**
@@ -56,9 +50,7 @@ class Notification
     public static function getsendprogress(int $task_id)
     {
 
-        $uri = Url::joinParams(Url::$api['notification']['getsendprogress'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['notification']['getsendprogress'];
 
 
         $json = [
@@ -76,9 +68,7 @@ class Notification
     public static function getsendresult(int $task_id)
     {
 
-        $uri = Url::joinParams(Url::$api['notification']['getsendresult'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['notification']['getsendresult'];
 
 
         $json = [
@@ -97,9 +87,7 @@ class Notification
     public static function recall(int $task_id)
     {
 
-        $uri = Url::joinParams(Url::$api['notification']['recall'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['notification']['recall'];
 
 
         $json = [

@@ -27,28 +27,14 @@ class Login
         $json = [
             'tmp_auth_code' => $tmp_auth_code
         ];
-        $http = apiRequest::post($uri,$json);
+        $has_token =false;
+        $http = apiRequest::post($uri,$json,$has_token);
        
         
         return $http;
     }
 
-    public static function getUseridByUnionid(string $unionid)
-    {
-        $access_token=AccessToken::getToken();
-        $uri = self::$urls['getUseridByUnionid'];
-        $params = [
-            'access_token'=> $access_token
-        ];
-        $uri = apiRequest::joinParams($uri, $params);
-        $json = [
-            'unionid' => $unionid
-        ];
-        $http = apiRequest::post($uri,$json);
-       
-       
-        return $http;
-    }
+
 
     public static function sns_authorize(string $tmp_auth_code): string
     {

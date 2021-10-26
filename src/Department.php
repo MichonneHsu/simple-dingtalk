@@ -9,9 +9,7 @@ class Department{
      * @return mixed
      */
     public static function create(array $json){
-        $uri=Url::joinParams(Url::$api['department']['create'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['create'];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -21,9 +19,7 @@ class Department{
      * @return mixed
      */
     public static function update(array $json){
-        $uri=Url::joinParams(Url::$api['department']['update'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['update'];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -33,9 +29,7 @@ class Department{
      * @return mixed
      */
     public static function remove(int $dept_id){
-        $uri=Url::joinParams(Url::$api['department']['remove'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['remove'];
         $json=[
             'dept_id'=>$dept_id
         ];
@@ -48,9 +42,7 @@ class Department{
      * @return mixed
      */
     public static function get(int $dept_id){
-        $uri=Url::joinParams(Url::$api['department']['get'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['get'];
         $json=[
             'dept_id'=>$dept_id
         ];
@@ -63,9 +55,7 @@ class Department{
      * @return mixed
      */
     public static function listsub(int $dept_id){
-        $uri=Url::joinParams(Url::$api['department']['listsub'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['listsub'];
         $json=[
             'dept_id'=>$dept_id
         ];
@@ -78,9 +68,7 @@ class Department{
      * @return mixed
      */
     public static function listsubid(int $dept_id){
-        $uri=Url::joinParams(Url::$api['department']['listsubid'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['listsubid'];
         $json=[
             'dept_id'=>$dept_id
         ];
@@ -93,9 +81,7 @@ class Department{
      * @return mixed
      */
     public static function listparentbyuser(string $userid){
-        $uri=Url::joinParams(Url::$api['department']['listparentbyuser'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['listparentbyuser'];
         $json=[
             'userid'=>$userid
         ];
@@ -108,9 +94,7 @@ class Department{
      * @return mixed
      */
     public static function listparentbydept(int $dept_id){
-        $uri=Url::joinParams(Url::$api['department']['listparentbydept'],[
-            'access_token'=>AccessToken::getToken()
-        ]);
+        $uri=Url::$api['department']['listparentbydept'];
         $json=[
             'dept_id'=>$dept_id
         ];

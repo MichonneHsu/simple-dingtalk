@@ -12,9 +12,7 @@ class HumanResource{
      */
     public static function queryonjob(string $status_list,int $size,int $offset=0)
     {
-        $uri = Url::joinParams(Url::$api['humanResource']['queryonjob'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['humanResource']['queryonjob'];
         $json=[
             'status_list'=>$status_list,
             'offset'=>$offset,
@@ -24,9 +22,7 @@ class HumanResource{
     }
     public static function querypreentry(int $size,int $offset=0)
     {
-        $uri = Url::joinParams(Url::$api['humanResource']['querypreentry'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['humanResource']['querypreentry'];
         $json=[
             'offset'=>$offset,
             'size'=>$size
@@ -35,9 +31,7 @@ class HumanResource{
     }
     public static function listdimission(string $userid_list)
     {
-        $uri = Url::joinParams(Url::$api['humanResource']['listdimission'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['humanResource']['listdimission'];
         $json=[
             'userid_list'=>$userid_list
         ];
@@ -45,9 +39,7 @@ class HumanResource{
     }
     public static function querydimission(int $size,int $offset=0)
     {
-        $uri = Url::joinParams(Url::$api['humanResource']['querydimission'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri =Url::$api['humanResource']['querydimission'];
         $json=[
             'offset'=>$offset,
             'size'=>$size
@@ -57,9 +49,7 @@ class HumanResource{
     }
     public static function addpreentry(array $json)
     {
-        $uri = Url::joinParams(Url::$api['humanResource']['addpreentry'], [
-            'access_token' => AccessToken::getToken()
-        ]);
+        $uri = Url::$api['humanResource']['addpreentry'];
         $pre=$json;
         $json=[
             'param'=>$pre
