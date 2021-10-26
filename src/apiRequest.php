@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SimpleDingTalk;
 
@@ -6,15 +8,17 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 
-class apiRequest{
-  
+class apiRequest
+{
+
     /**
      * 客户端请求基本信息
      *
      * @return Client
      */
-    public static function client(){
-        return  new Client(['base_uri'=>Url::$api['domain']]);
+    public static function client()
+    {
+        return  new Client(['base_uri' => Url::$api['domain']]);
     }
     /**
      * get请求
@@ -23,22 +27,23 @@ class apiRequest{
      * @param array $query
      * @return mixed
      */
-    public static function get(string $uri,array $query=[]){
-      
+    public static function get(string $uri, array $query = [], bool $has_token = true)
+    {
+
         try {
             $client = self::client();
-            $resp=null;
-            if(empty($query)){
-                $resp=$client->request('GET',$uri);
-            }else{
-                $resp=$client->request('GET',$uri,[
-                    'query'=>$query
-                ]);
+            $resp = null;
+            if ($has_token) {
+                $query['access_token']=AccessToken::getToken();
             }
-           
-           
-            $content=$resp->getBody()->getContents();
-           
+
+            $resp = $client->request('GET', $uri, [
+                'query' => $query
+            ]);
+
+
+            $content = $resp->getBody()->getContents();
+
             return $content;
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
@@ -51,37 +56,42 @@ class apiRequest{
      * @param array $json
      * @return mixed
      */
-    public static function post(string $uri,array $json=[]){
-      
+    public static function post(string $uri, array $json = [], bool $has_token = true)
+    {
+
         try {
             $client = self::client();
-            $resp=null;
-            if(empty($json)){
-                $resp=$client->request('POST',$uri);
-            }else{
-                $resp=$client->request('POST',$uri,[
-                    'json'=>$json
+            $resp = null;
+            if ($has_token) {
+                $uri = self::joinParams($uri, [
+                    'access_token' => AccessToken::getToken()
                 ]);
             }
-            
-           
-            $content=$resp->getBody()->getContents();
-          
-           
+            if (empty($json)) {
+                $resp = $client->request('POST', $uri);
+            } else {
+                $resp = $client->request('POST', $uri, [
+                    'json' => $json
+                ]);
+            }
+
+
+            $content = $resp->getBody()->getContents();
+
+
             return $content;
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
-           
         }
     }
-  
-  
-    public static function joinParams(string $uri, array $params):string
+
+
+    public static function joinParams(string $uri, array $params): string
     {
 
-  
-        $url = $uri.'?' . http_build_query($params);
-       
+
+        $url = $uri . '?' . http_build_query($params);
+
         return urldecode($url);
     }
 }
