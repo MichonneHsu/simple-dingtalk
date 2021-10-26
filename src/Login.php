@@ -8,7 +8,6 @@ namespace SimpleDingTalk;
 class Login
 {
     private static $urls = [
-        'redirect_uri' => Config,
         'getuserinfo_bycode' => '/sns/getuserinfo_bycode',
         'sns_authorize' => '/connect/oauth2/sns_authorize',
         'getUseridByUnionid' => '/topapi/user/getbyunionid',
@@ -59,7 +58,7 @@ class Login
             'response_type' => 'code',
             'scope' => 'snsapi_login',
             'state' => 'STATE',
-            'redirect_uri' => self::$urls['redirect_uri'],
+            'redirect_uri' => Config::$scan_info['redirect_uri'],
             'loginTmpCode' => $tmp_auth_code
         ];
         $uri = Url::$api['domain'].self::$urls['sns_authorize'];
