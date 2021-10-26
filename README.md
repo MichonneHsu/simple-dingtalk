@@ -90,3 +90,6 @@ WorkFlow::add_comment($json);
 
 #### 关于本扩展
 如果小伙伴有定制需求的话可以发[issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)。
+
+#### 扩展开发进度
+开发的进度已经完成70%
