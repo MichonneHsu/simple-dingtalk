@@ -17,7 +17,7 @@ class GroupManagerment
      */
     public static function getsimplegroups(int $offset=0,int $size=10)
     {
-        $uri = Url::$api['attendance']['getsimplegroups'];
+        $uri = Url::$api['attendance']['group_management']['getsimplegroups'];
         $json = [
             'offset' => $offset,
             'size'=>$size
@@ -32,7 +32,7 @@ class GroupManagerment
      */
     public static function getusergroup(string $userid)
     {
-        $uri =Url::$api['attendance']['getusergroup'];
+        $uri =Url::$api['attendance']['group_management']['getusergroup'];
         $json = [
             'userid' => $userid
         ];
@@ -48,7 +48,7 @@ class GroupManagerment
      */
     public static function group_member_list(string $op_user_id,int $group_id,int $cursor=1)
     {
-        $uri = Url::$api['attendance']['group_member_list'];
+        $uri = Url::$api['attendance']['group_management']['group_member_list'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -67,7 +67,7 @@ class GroupManagerment
      */
     public static function group_member_listbyids(string $op_user_id,int $group_id,string $member_ids,int $member_type)
     {
-        $uri = Url::$api['attendance']['group_member_listbyids'];
+        $uri = Url::$api['attendance']['group_management']['group_member_listbyids'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -87,7 +87,7 @@ class GroupManagerment
      */
     public static function group_member_update(string $op_user_id,int $group_id,int $schedule_flag,array $update_param)
     {
-        $uri = Url::$api['attendance']['group_member_update'];
+        $uri = Url::$api['attendance']['group_management']['group_member_update'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -106,7 +106,7 @@ class GroupManagerment
      */
     public static function group_memberusers_list(string $op_user_id,int $group_id,int $cursor)
     {
-        $uri = Url::$api['attendance']['group_memberusers_list'];
+        $uri = Url::$api['attendance']['group_management']['group_memberusers_list'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -123,7 +123,7 @@ class GroupManagerment
      */
     public static function group_query(string $op_user_id,int $group_id)
     {
-        $uri = Url::$api['attendance']['group_query'];
+        $uri = Url::$api['attendance']['group_management']['group_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id
@@ -139,7 +139,7 @@ class GroupManagerment
      */
     public static function group_search(string $op_user_id,string $group_name)
     {
-        $uri = Url::$api['attendance']['group_search'];
+        $uri = Url::$api['attendance']['group_management']['group_search'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_name'=>$group_name
@@ -156,7 +156,7 @@ class GroupManagerment
      */
     public static function group_wifis_add(string $op_user_id,string $group_key,array $wifi_list)
     {
-        $uri = Url::$api['attendance']['group_wifis_add'];
+        $uri = Url::$api['attendance']['group_management']['group_wifis_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -174,7 +174,7 @@ class GroupManagerment
      */
     public static function group_wifis_remove(string $op_user_id,string $group_key,string $wifi_key_list)
     {
-        $uri = Url::$api['attendance']['group_wifis_remove'];
+        $uri = Url::$api['attendance']['group_management']['group_wifis_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -193,7 +193,7 @@ class GroupManagerment
      */
     public static function group_wifis_query(string $op_user_id,string $group_key,string $cursor,int $size=10)
     {
-        $uri = Url::$api['attendance']['group_wifis_query'];
+        $uri = Url::$api['attendance']['group_management']['group_wifis_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -212,7 +212,7 @@ class GroupManagerment
      */
     public static function group_positions_add(string $op_user_id,string $group_key,array $position_list)
     {
-        $uri =Url::$api['attendance']['group_positions_add'];
+        $uri =Url::$api['attendance']['group_management']['group_positions_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -230,7 +230,7 @@ class GroupManagerment
      */
     public static function group_positions_remove(string $op_user_id,string $group_key,string $position_key_list)
     {
-        $uri = Url::$api['attendance']['group_positions_remove'];
+        $uri = Url::$api['attendance']['group_management']['group_positions_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -249,7 +249,7 @@ class GroupManagerment
      */
     public static function group_positions_query(string $op_user_id,string $group_key,string $cursor,  int $size)
     {
-        $uri = Url::$api['attendance']['group_positions_query'];
+        $uri = Url::$api['attendance']['group_management']['group_positions_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -267,7 +267,7 @@ class GroupManagerment
      */
     public static function group_add(string $op_user_id,array $top_group)
     {
-        $uri = Url::$api['attendance']['group_add'];
+        $uri = Url::$api['attendance']['group_management']['group_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'top_group'=>$top_group
@@ -283,7 +283,7 @@ class GroupManagerment
      */
     public static function group_modify(string $op_user_id,array $top_group)
     {
-        $uri = Url::$api['attendance']['group_modify'];
+        $uri = Url::$api['attendance']['group_management']['group_modify'];
         $json = [
             'op_user_id' => $op_user_id,
             'top_group'=>$top_group
@@ -299,7 +299,7 @@ class GroupManagerment
      */
     public static function group_remove(string $op_user_id,string $group_key)
     {
-        $uri = Url::$api['attendance']['group_remove'];
+        $uri = Url::$api['attendance']['group_management']['group_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key
@@ -316,7 +316,7 @@ class GroupManagerment
      */
     public static function group_users_add(string $op_user_id,string $group_key,string $user_id_list)
     {
-        $uri = Url::$api['attendance']['group_users_add'];
+        $uri = Url::$api['attendance']['group_management']['group_users_add'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -335,7 +335,7 @@ class GroupManagerment
      */
     public static function group_users_remove(string $op_user_id,string $group_key,string $user_id_list)
     {
-        $uri = Url::$api['attendance']['group_users_remove'];
+        $uri = Url::$api['attendance']['group_management']['group_users_remove'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -354,7 +354,7 @@ class GroupManagerment
      */
     public static function group_users_query(string $op_user_id,string $group_key,string $cursor,int $size=10)
     {
-        $uri = Url::$api['attendance']['group_users_query'];
+        $uri = Url::$api['attendance']['group_management']['group_users_query'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -372,7 +372,7 @@ class GroupManagerment
      */
     public static function group_get(string $op_user_id,string $group_key)
     {
-        $uri = Url::$api['attendance']['group_get'];
+        $uri = Url::$api['attendance']['group_management']['group_get'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key
@@ -388,7 +388,7 @@ class GroupManagerment
      */
     public static function group_keytoid(string $op_user_id,string $group_key)
     {
-        $uri = Url::$api['attendance']['group_keytoid'];
+        $uri = Url::$api['attendance']['group_management']['group_keytoid'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key,
@@ -405,7 +405,7 @@ class GroupManagerment
      */
     public static function group_idtokey(string $op_user_id,int $group_id)
     {
-        $uri =Url::$api['attendance']['group_idtokey'];
+        $uri =Url::$api['attendance']['group_management']['group_idtokey'];
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id
