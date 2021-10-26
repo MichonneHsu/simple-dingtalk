@@ -23,11 +23,12 @@ $app_info=[
     'APP_KEY'=>'',#应用的唯一标识key
     'APP_SECRET'=>''#应用的密钥
 ];
-
+#小程序
 $miniprogram_app=[
     'expires'=>0,#提前过期时间，主要用于接口返回的token日期减去已设的秒数是否大于当前时间,然后提前去生成token;单位：秒
     'file_path'=>''#凭证文件的绝对路径   例如：/usr/local/xxxx/public/access_token.json
 ];
+#h5微应用
 $micro_app=[
     'expires'=>0,#提前过期时间，主要用于接口返回的token日期减去已设的秒数是否大于当前时间,然后提前去生成token;单位：秒
     'file_path'=>''#凭证文件的绝对路径   例如：/usr/local/xxxx/public/access_token.json
