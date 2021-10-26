@@ -126,6 +126,9 @@ class Url
             ]
             
         ],
+        'groupChatMangement'=>[
+            'get_qrcode'=>'/topapi/chat/qrcode/get'
+        ],
         'cspace'=>[
             'get_custom_space'=>'/cspace/get_custom_space'
         ]
