@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SimpleDingTalk;
-
-class Attendance
+namespace SimpleDingTalk\attendance;
+use SimpleDingTalk\Url;
+use SimpleDingTalk\AccessToken;
+use SimpleDingTalk\apiRequest;
+class GroupManagerment
 {
     /**
      * 批量获取考勤组详情
