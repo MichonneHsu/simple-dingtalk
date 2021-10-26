@@ -34,7 +34,7 @@ class apiRequest
             $client = self::client();
             $resp = null;
             if ($has_token) {
-                $query['access_token']=AccessToken::getToken();
+                $query['access_token'] = AccessToken::getToken();
             }
 
             $resp = $client->request('GET', $uri, [
@@ -67,13 +67,11 @@ class apiRequest
                     'access_token' => AccessToken::getToken()
                 ]);
             }
-            if (empty($json)) {
-                $resp = $client->request('POST', $uri);
-            } else {
-                $resp = $client->request('POST', $uri, [
-                    'json' => $json
-                ]);
-            }
+
+            $resp = $client->request('POST', $uri, [
+                'json' => $json
+            ]);
+
 
 
             $content = $resp->getBody()->getContents();
