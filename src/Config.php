@@ -27,4 +27,7 @@ class Config{
         'aes_key'=>'',
         'token'=>''
     ];
+    public static $scan_info=[
+        'redirect_url'=>''
+    ];
 } 
