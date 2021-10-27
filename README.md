@@ -16,62 +16,44 @@
 #### [文档地址](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
 **需要新的功能请发起** [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
 #### 配置
+预先配置多个应用后，只修改app_type 进行切换。
 ```
-$app_info=[
-    'CORP_ID'=>'',#企业唯一corpid
-];
-#小程序
-$miniprogram_app=[
-    'app_info'=>[
-            'AGENT_ID'=>'',#应用的agentId
-            'APP_KEY'=>'',#应用的唯一标识key
-            'APP_SECRET'=>''#应用的密钥
-        ],
-         'access_token'=>[
-            'expires'=>0,#提前过期时间，主要用于接口返回的token日期减去已设的秒数是否大于当前时间,然后提前去生成token;单位：秒
-    'file_path'=>''#凭证文件的绝对路径   例如：/usr/local/xxxx/public/access_token.json
-        ]
-   
-];
-
-$callback_info=[
-     'aes_key'=>'',#事件订阅生成的aes_key
-     'token'=>''#事件订阅生成的token
-];
-$scan_info=[
-   'redirect_uri'=>'',#扫码登录跳转uri
-];
-#修改方式：
-use SimpleDingTalk\Config;
+Config::$app_type = 'miniprogram_app';
 Config::$app_info = [
-    'CORP_ID'=>'',
-    'AGENT_ID' => '',
-    'APP_KEY'=>'',
-    'APP_SECRET'=>''
+	'CORP_ID' => '',
+	'app' => [
+		'miniprogram_app' => [
+			'AGENT_ID' => 0,
+			'APP_KEY' => '',
+			'APP_SECRET' => '',
+			'access_token' => [
+				'expires' => 0,
+				'file_path' => './a.json'
+			],
+			'v2' => [
+				'access_token' => [
+					'expires' => 180,
+					'file_path' => './c.json'
+				]
+			]
+		],
+		'micro_app'=>[
+			'AGENT_ID' => 0,
+			'APP_KEY' => '',
+			'APP_SECRET' => '',
+			'access_token'=>[
+				'expires' => 0,
+				'file_path' => './a.json'
+			],
+			'v2'=>[
+				'access_token'=>[
+					'expires' => 0,
+					'file_path' => './c.json'
+				]
+			]
+		]
+	]
 ];
-Config::$miniprogram_app=[
-    'expires'=>0,
-    'file_path'=>''
-];
-Config::$micro_app=[
-    'expires'=>0,
-    'file_path'=>''
-];
-Config::$callback_info=[
-     'aes_key'=>'',
-     'token'=>''
-];
-Config::$scan_info=[
-    'redirect_uri'=>''
-];
-新版服务端-API配置
-use SimpleDingTalk\v2\Config as v2_config;
-
-v2_config::$access_token = [
-    'expires' => 0,
-    'file_path' => ''
-];
-
 
 ```
 #### 案例
