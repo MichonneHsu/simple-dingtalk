@@ -123,6 +123,11 @@ class Url
                 'group_get'=>'/topapi/attendance/group/get',
                 'group_keytoid'=>'/topapi/attendance/groups/keytoid',
                 'group_idtokey'=>'/topapi/attendance/groups/idtokey'
+            ],
+            'checkin'=>[
+                'get_list'=>'/attendance/list',
+                'get_list_record'=>'/attendance/listRecord',
+                'upload'=>'/topapi/attendance/record/upload',
             ]
             
         ],
