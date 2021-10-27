@@ -18,6 +18,22 @@
 #### 配置
 预先配置多个应用后，只修改app_type 进行切换。
 ```
+关键字解释：
+
+CORP_ID：当前公司的Corp_id
+app：微应用或小程序
+APP_KEY：当前应用的app_key
+APP_SECRET：当前应用的app_secret
+access_token：当前应用的access_token信息
+access_token->expires：access_token的提前超时重新获取时间，单位秒
+access_token->file_path：access_token的文件路径，建议填写绝对路径
+callback_info：回调信息
+callback_info->aes_key：当前应用的加密
+callback_info->token：当前应用的签名
+scan_info：扫码登录信息
+scan_info->redirect_uri：跳转url
+v2：新版服务端信息
+
 Config::$app_type = 'miniprogram_app';
 Config::$app_info = [
 	'CORP_ID' => '',

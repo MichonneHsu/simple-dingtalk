@@ -22,14 +22,14 @@ class Config
                     'expires' => 0,
                     'file_path' => ''
                 ],
-                'callback_info'=>[
+                'callback_info' => [
                     'aes_key' => '',
                     'token' => ''
                 ],
-                'scan_info'=>[
-                    'redirect_uri'=>''
+                'scan_info' => [
+                    'redirect_uri' => ''
                 ],
-                'v2'=>[
+                'v2' => [
                     'access_token' => [
                         'expires' => 0,
                         'file_path' => ''
@@ -46,7 +46,7 @@ class Config
                     'expires' => 0,
                     'file_path' => ''
                 ],
-                'callback_info'=>[
+                'callback_info' => [
                     'aes_key' => '',
                     'token' => ''
                 ],
@@ -55,10 +55,10 @@ class Config
                     'pc' => '',
                     'management' => ''
                 ],
-                'scan_info'=>[
-                    'redirect_uri'=>''
+                'scan_info' => [
+                    'redirect_uri' => ''
                 ],
-                'v2'=>[
+                'v2' => [
                     'access_token' => [
                         'expires' => 0,
                         'file_path' => ''
