@@ -128,6 +128,15 @@ class Url
                 'get_list'=>'/attendance/list',
                 'get_list_record'=>'/attendance/listRecord',
                 'upload'=>'/topapi/attendance/record/upload',
+            ],
+            'shift'=>[
+                'add'=>'/topapi/attendance/shift/add',
+                'history_query'=>'/topapi/attendance/shift/history/query',
+                'remove'=>'/topapi/attendance/shift/delete',
+                'updatepunches'=>'/topapi/attendance/shift/updatepunches',
+                'search'=>'/topapi/attendance/shift/search',
+                'query'=>'/topapi/attendance/shift/query',
+                'list'=>'/topapi/attendance/shift/list'
             ]
             
         ],
