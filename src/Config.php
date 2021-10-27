@@ -27,7 +27,7 @@ class Config
                     'token' => ''
                 ],
                 'scan_info'=>[
-                    'scan_info'=>''
+                    'redirect_uri'=>''
                 ],
                 'v2'=>[
                     'access_token' => [
@@ -56,7 +56,7 @@ class Config
                     'management' => ''
                 ],
                 'scan_info'=>[
-                    'scan_info'=>''
+                    'redirect_uri'=>''
                 ],
                 'v2'=>[
                     'access_token' => [
