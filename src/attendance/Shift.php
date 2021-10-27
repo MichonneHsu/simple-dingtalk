@@ -70,7 +70,7 @@ class Shift
       
         $json = [
             'op_user_id' => $op_user_id,
-            'shift_name'=>$shift_id
+            'shift_id'=>$shift_id
         ];
         return apiRequest::post($uri, $json);
     }
