@@ -30,6 +30,13 @@ Config::$app_info = [
 				'expires' => 0,
 				'file_path' => './a.json'
 			],
+            'callback_info'=>[
+                'aes_key' => '',
+                'token' => ''
+            ],
+            'scan_info'=>[
+                 'redirect_uri'=>''
+            ],
 			'v2' => [
 				'access_token' => [
 					'expires' => 180,
@@ -45,6 +52,13 @@ Config::$app_info = [
 				'expires' => 0,
 				'file_path' => './a.json'
 			],
+            'callback_info'=>[
+                'aes_key' => '',
+                'token' => ''
+            ],
+            'scan_info'=>[
+                'redirect_uri'=>''
+            ],
 			'v2'=>[
 				'access_token'=>[
 					'expires' => 0,
