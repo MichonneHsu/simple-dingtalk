@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\apiRequest;
-
+/**
+ * 考勤班次
+ */
 class Shift
 {
     public static function add(string $op_user_id,array $shift)
@@ -21,7 +23,7 @@ class Shift
     }
     public static function history_query(string $op_user_id,int $shift_id,int $version)
     {
-        $uri=Url::$api['attendance']['shift']['add'];
+        $uri=Url::$api['attendance']['shift']['history_query'];
       
         $json = [
             'op_user_id' => $op_user_id,

@@ -6,6 +6,9 @@ namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\AccessToken;
 use SimpleDingTalk\apiRequest;
+/**
+ * 考勤组管理
+ */
 class GroupManagerment
 {
     /**
