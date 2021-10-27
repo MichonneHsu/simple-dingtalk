@@ -12,8 +12,8 @@ class JsapiTicket
    
     public static function getToken(): string
     {
-        $at=Config::$micro_app;
-        $file_path=$at['file_path'];
+        $app_info=Config::$app_info[Config::$app_type];
+        $file_path=$app_info['access_token']['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
         }
@@ -25,7 +25,7 @@ class JsapiTicket
            
         } else {
             $token = json_decode($json, true);
-            if (($token['expires_in'] - $at['expires']) < time()) {
+            if (($token['expires_in'] - $app_info['access_token']['expires']) < time()) {
                 self::generateToken();
 
               
@@ -51,7 +51,7 @@ class JsapiTicket
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = Config::$micro_app['file_path'];
+        $filename = Config::$app_info[Config::$app_type]['access_token']['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }

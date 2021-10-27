@@ -38,7 +38,7 @@ class WorkRecord
 
         $json = [
             'request' => [
-                'agentid' => Config::$app_info['AGENT_ID'],
+                'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID'],
                 'process_code' => $process_code,
                 'clean_running_task' => $clean_running_task
             ]
@@ -54,7 +54,7 @@ class WorkRecord
 
     //     $json = [
     //         'process_code' => $process_code,
-    //         'corpid' => Config::$app_info['CORP_ID']
+    //         'corpid' => Config::$app_info[Config::$app_type]['CORP_ID']
     //     ];
     //     return apiRequest::post($uri, $json);
     // }
@@ -70,7 +70,7 @@ class WorkRecord
         $pre = $json;
 
         $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
+            'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID']
         ])];
         return apiRequest::post($uri, $json);
     }
@@ -89,7 +89,7 @@ class WorkRecord
 
 
         $json = ['saveProcessRequest' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
+            'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID']
         ])];
         return apiRequest::post($uri, $json);
     }
@@ -108,7 +108,7 @@ class WorkRecord
 
         $json = [
             'request' =>  [
-                'agentid' => Config::$app_info['AGENT_ID'],
+                'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID'],
                 'process_instance_id' => $process_instance_id,
                 'status' => $status,
                 'result' => $result,
@@ -137,7 +137,7 @@ class WorkRecord
                     'status' => $status,
                     'result' => $result,
                 ],
-                'agentid' => Config::$app_info['AGENT_ID']
+                'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID']
             ]
         ];
 
@@ -154,7 +154,7 @@ class WorkRecord
         $uri = Url::$api['workrecord']['task_create'];
         $pre = $json;
         $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
+            'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID']
         ])];
 
         return apiRequest::post($uri, $json);
@@ -197,7 +197,7 @@ class WorkRecord
             'request' => [
                 'process_instance_id'=>$process_instance_id,
                 'tasks'=>$tasks,
-                'agentid' => Config::$app_info['AGENT_ID']
+                'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID']
             ]
         ];
 
@@ -210,7 +210,7 @@ class WorkRecord
         $pre = $json;
 
         $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['AGENT_ID']
+            'agentid' => Config::$app_info[Config::$app_type]['AGENT_ID']
         ])];
 
         return apiRequest::post($uri, $json);

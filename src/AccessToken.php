@@ -12,8 +12,8 @@ class AccessToken
    
     public static function getToken(): string
     {
-        $at=Config::$miniprogram_app;
-        $file_path=$at['file_path'];
+        $app_info=Config::$app_info[Config::$app_type];
+        $file_path=$app_info['access_token']['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
         }
@@ -25,7 +25,7 @@ class AccessToken
            
         } else {
             $token = json_decode($json, true);
-            if (($token['expires_in'] - $at['expires']) < time()) {
+            if (($token['expires_in'] - $app_info['access_token']['expires']) < time()) {
                 self::generateToken();
 
               
@@ -41,7 +41,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app_info=Config::$app_info;
+        $app_info=Config::$app_info[Config::$app_type];
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];
@@ -54,7 +54,7 @@ class AccessToken
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = Config::$miniprogram_app['file_path'];
+        $filename =$app_info['access_token']['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }

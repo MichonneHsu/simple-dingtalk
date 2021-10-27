@@ -17,7 +17,7 @@ class Login
     {
         $params = [
 
-            'accessKey' => Config::$app_info['APP_KEY'],
+            'accessKey' => Config::$app_info[Config::$app_type]['APP_KEY'],
             'timestamp' => self::getMillisecond(),
             'signature' => self::signature()
 
@@ -40,7 +40,7 @@ class Login
     {
 
         $params = [
-            'appid' => Config::$app_info['APP_KEY'],
+            'appid' => Config::$app_info[Config::$app_type]['APP_KEY'],
             'response_type' => 'code',
             'scope' => 'snsapi_login',
             'state' => 'STATE',
@@ -54,7 +54,7 @@ class Login
     {
 
 
-        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['APP_SECRET'], true);
+        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info[Config::$app_type]['APP_SECRET'], true);
 
         $signature = base64_encode($s);
 
