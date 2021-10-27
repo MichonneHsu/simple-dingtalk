@@ -17,7 +17,7 @@ class Login
     {
         $params = [
 
-            'accessKey' => Config::$app_info[Config::$app_type]['APP_KEY'],
+            'accessKey' => Config::$app_info['app'][Config::$app_type]['APP_KEY'],
             'timestamp' => self::getMillisecond(),
             'signature' => self::signature()
 
@@ -38,13 +38,13 @@ class Login
 
     public static function sns_authorize(string $tmp_auth_code): string
     {
-
+        $app=Config::$app_info['app'][Config::$app_type];
         $params = [
-            'appid' => Config::$app_info[Config::$app_type]['APP_KEY'],
+            'appid' => $app['APP_KEY'],
             'response_type' => 'code',
             'scope' => 'snsapi_login',
             'state' => 'STATE',
-            'redirect_uri' => Config::$scan_info['redirect_uri'],
+            'redirect_uri' =>$app['scan_info']['redirect_uri'],
             'loginTmpCode' => $tmp_auth_code
         ];
         $uri = Url::$api['domain'].self::$urls['sns_authorize'];
@@ -54,7 +54,7 @@ class Login
     {
 
 
-        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info[Config::$app_type]['APP_SECRET'], true);
+        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['app'][Config::$app_type]['APP_SECRET'], true);
 
         $signature = base64_encode($s);
 

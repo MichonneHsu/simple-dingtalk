@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
-use SimpleDingTalk\Config as MainConfig;
+use SimpleDingTalk\Config;
 use Exception;
 
 class AccessToken
@@ -12,7 +12,7 @@ class AccessToken
    
     public static function getToken(): string
     {
-        $at=Config::$app_info[Config::$app_type];
+        $at=Config::$app_info['app'][Config::$app_type]['v2']['access_token'];
         $file_path=$at['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
@@ -41,7 +41,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app_info=MainConfig::$app_info;
+        $app_info=Config::$app_info['app'];
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];
@@ -55,7 +55,7 @@ class AccessToken
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
-        $filename = Config::$access_token['file_path'];
+        $filename = Config::$app_info['app'][Config::$app_type]['v2']['access_token']['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }

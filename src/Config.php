@@ -22,9 +22,18 @@ class Config
                     'expires' => 0,
                     'file_path' => ''
                 ],
-                'callback_info' => [
+                'callback_info'=>[
                     'aes_key' => '',
                     'token' => ''
+                ],
+                'scan_info'=>[
+                    'scan_info'=>''
+                ],
+                'v2'=>[
+                    'access_token' => [
+                        'expires' => 0,
+                        'file_path' => ''
+                    ],
                 ]
             ],
             'micro_app' => [
@@ -37,14 +46,31 @@ class Config
                     'expires' => 0,
                     'file_path' => ''
                 ],
-                'callback_info' => [
+                'callback_info'=>[
                     'aes_key' => '',
                     'token' => ''
+                ],
+                'page' => [
+                    'app' => '',
+                    'pc' => '',
+                    'management' => ''
+                ],
+                'scan_info'=>[
+                    'scan_info'=>''
+                ],
+                'v2'=>[
+                    'access_token' => [
+                        'expires' => 0,
+                        'file_path' => ''
+                    ],
                 ]
             ],
         ],
 
 
 
+    ];
+    public static $scan_info = [
+        'redirect_url' => ''
     ];
 }

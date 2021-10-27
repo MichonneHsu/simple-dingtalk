@@ -12,9 +12,9 @@ class Auth
 
     public static function getConfig($href)
     {
-        $app_info = Config::$app_info;
-        $corpId = $app_info['CORP_ID'];
-        $agentId = $app_info[Config::$app_type]['AGENT_ID'];
+        $app = Config::$app_info[Config::$app_type]['app'];
+        $corpId = Config::$app_info['CORP_ID'];
+        $agentId = $app['AGENT_ID'];
         $nonceStr = self::getRandomAlphabet();
         $timeStamp = time();
         $url = urldecode($href);

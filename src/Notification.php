@@ -22,7 +22,7 @@ class Notification
 
 
         $json = array_merge($json, [
-            'agent_id' => Config::$app_info[Config::$app_type]['AGENT_ID']
+            'agent_id' => Config::$app_info['app'][Config::$app_type]['AGENT_ID']
         ]);
         return apiRequest::post($uri, $json);
     }
@@ -37,7 +37,7 @@ class Notification
 
         $uri =Url::$api['notification']['update_status_bar'];
 
-        $json['agent_id']=Config::$app_info[Config::$app_type]['AGENT_ID'];
+        $json['agent_id']=Config::$app_info['app'][Config::$app_type]['AGENT_ID'];
       
         return apiRequest::post($uri, $json);
     }
@@ -54,7 +54,7 @@ class Notification
 
 
         $json = [
-            'agent_id' => Config::$app_info[Config::$app_type]['AGENT_ID'],
+            'agent_id' => Config::$app_info['app'][Config::$app_type]['AGENT_ID'],
             'task_id' => $task_id
         ];
         return apiRequest::post($uri, $json);
@@ -72,7 +72,7 @@ class Notification
 
 
         $json = [
-            'agent_id' => Config::$app_info[Config::$app_type]['AGENT_ID'],
+            'agent_id' => Config::$app_info['app'][Config::$app_type]['AGENT_ID'],
             'task_id' => $task_id
         ];
 
@@ -91,7 +91,7 @@ class Notification
 
 
         $json = [
-            'agent_id' => Config::$app_info[Config::$app_type]['AGENT_ID'],
+            'agent_id' => Config::$app_info['app'][Config::$app_type]['AGENT_ID'],
             'msg_task_id' => $task_id
         ];
         return apiRequest::post($uri, $json);

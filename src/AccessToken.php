@@ -12,7 +12,7 @@ class AccessToken
    
     public static function getToken(): string
     {
-        $app_info=Config::$app_info[Config::$app_type];
+        $app_info=Config::$app_info['app'][Config::$app_type];
         $file_path=$app_info['access_token']['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
@@ -41,7 +41,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app_info=Config::$app_info[Config::$app_type];
+        $app_info=Config::$app_info['app'][Config::$app_type];
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];
