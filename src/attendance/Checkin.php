@@ -9,7 +9,7 @@ class Checkin
 {
     public static function get_list(string $workDateFrom,string $workDateTo,array $userIdList,int $offset=0,int $limit=10,bool $isI18n=false)
     {
-        $uri=Url::$api['attendance']['checkin']['list'];
+        $uri=Url::$api['attendance']['checkin']['get_list'];
       
         $json = [
             'workDateFrom' => $workDateFrom,
