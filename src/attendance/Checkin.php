@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\util\date\Time;
 class Checkin
 {
     public static function get_list(string $workDateFrom,string $workDateTo,array $userIdList,int $offset=0,int $limit=10,bool $isI18n=false)
@@ -41,7 +42,7 @@ class Checkin
             'userid' => $userid,
             'device_name'=>$device_name,
             'device_id'=>$device_id,
-            'user_check_time'=>$user_check_time,
+            'user_check_time'=>Time::toTime($user_check_time),
             'photo_url'=>$photo_url
         ];
         return apiRequest::post($uri, $json);
