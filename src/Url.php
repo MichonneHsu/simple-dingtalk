@@ -137,6 +137,14 @@ class Url
                 'search'=>'/topapi/attendance/shift/search',
                 'query'=>'/topapi/attendance/shift/query',
                 'list'=>'/topapi/attendance/shift/list'
+            ],
+            'schedule'=>[
+                'listbyday'=>'/topapi/attendance/schedule/listbyday',
+                'listbyusers'=>'/topapi/attendance/schedule/listbyusers',
+                'set'=>'/topapi/attendance/group/schedule/async',
+                'listbyids'=>'/topapi/attendance/schedule/result/listbyids',
+                'listschedule'=>'/topapi/attendance/listschedule',
+                'listbydays'=>'/topapi/attendance/schedule/shift/listbydays'
             ]
             
         ],
