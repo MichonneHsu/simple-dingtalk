@@ -42,7 +42,8 @@ class Schedule
     public static function set(string $op_user_id,int $group_id,array $schedules)
     {
         $uri=Url::$api['attendance']['schedule']['set'];
-      
+        $date=$schedules['work_date'];
+        $schedules['work_date']=Time::toTime($date,true);
         $json = [
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id,
@@ -78,8 +79,8 @@ class Schedule
         $json = [
             'op_user_id' => $op_user_id,
             'userids'=>$userids,
-            'from_date_time'=>$from_date_time,
-            'to_date_time'=>$to_date_time
+            'from_date_time'=>Time::toTime($from_date_time,true),
+            'to_date_time'=>Time::toTime($to_date_time,true)
         ];
         return apiRequest::post($uri, $json);
     }
