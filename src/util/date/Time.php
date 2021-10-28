@@ -15,9 +15,9 @@ class Time{
 
     public static function toTime(string $date,bool $isMilisecond=false){
         if($isMilisecond){
-            return strtotime($date)*100;
+            return self::setDate($date)->getTimestamp()*100;
         }else{
-            return strtotime($date);
+            return self::setDate($date)->getTimestamp();
         }
     }
  
