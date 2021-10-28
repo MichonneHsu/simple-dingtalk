@@ -9,12 +9,12 @@
 <img src="https://img.shields.io/badge/PHP-7.3+-green" />
 <img src="https://img.shields.io/badge/release-1.0.1-orange" />
 <img src="https://img.shields.io/badge/license-MIT-green" />
-
 </p>
 
 #### 安装方式
 `composer require michonnehsu/simpledingtalk`
-#### [文档地址](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
+#### 文档地址
+点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
 **需要新的功能请发起** [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
 #### 配置
 预先配置多个应用后，只修改app_type 进行切换。
