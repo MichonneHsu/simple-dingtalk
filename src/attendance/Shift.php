@@ -22,7 +22,7 @@ class Shift
     {
         $uri=Url::$api['attendance']['shift']['add'];
         if(count($shift['sections']['times'])>2){
-            throw new Exception('times 长度超出');
+            throw new Exception('array of times are overflowed !');
         }
         $json = [
             'op_user_id' => $op_user_id,
