@@ -20,9 +20,10 @@ class Schedule
         $json = [
             'op_user_id' => $op_user_id,
             'user_id'=>$user_id,
-            'date_time'=>Time::toTime($date_time)
+            'date_time'=>Time::toTime($date_time,true)
          
         ];
+      
         return apiRequest::post($uri, $json);
     }
     public static function listbyusers(string $op_user_id,string $userids,string $from_date_time,string $to_date_time)
@@ -32,8 +33,8 @@ class Schedule
         $json = [
             'op_user_id' => $op_user_id,
             'userids'=>$userids,
-            'from_date_time'=>Time::toTime($from_date_time),
-            'to_date_time'=>Time::toTime($to_date_time),
+            'from_date_time'=>Time::toTime($from_date_time,true),
+            'to_date_time'=>Time::toTime($to_date_time,true),
          
         ];
         return apiRequest::post($uri, $json);
