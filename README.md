@@ -14,7 +14,7 @@
 #### 安装方式
 `composer require michonnehsu/simpledingtalk`
 #### 文档地址
-点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)
+点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
 **需要新的功能请发起** [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
 #### 配置
 预先配置多个应用后，只修改app_type 进行切换。
