@@ -15,7 +15,8 @@ class MachineManagement
      * 查询员工智能考勤机列表
      *
      * @param string $userid
-     * @param string $work_date
+     * @param integer $offset
+     * @param integer $size
      * @return mixed
      */
     public static function get_by_userid(string $userid,int $offset=0,$size=10)
