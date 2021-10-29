@@ -152,6 +152,9 @@ class Url
                 'getleavetimebynames'=>'/topapi/attendance/getleavetimebynames',
                 'isopensmartreport'=>'/topapi/attendance/isopensmartreport',
                 'getupdatedata'=>'/topapi/attendance/getupdatedata'
+            ],
+            'machineManagement'=>[
+                'get_by_userid'=>'/topapi/smartdevice/atmachine/get_by_userid'
             ]
             
         ],
