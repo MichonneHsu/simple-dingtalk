@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\AccessToken;
+
 use SimpleDingTalk\apiRequest;
 class Checkin
 {
     public static function list(int $offset=0,int $size=10)
     {
-        $uri=Url::$api['attendance']['getsimplegroups'];
+        $uri=Url::$api['attendance']['group_management']['getsimplegroups'];
       
         $json = [
             'offset' => $offset,

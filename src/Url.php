@@ -145,6 +145,13 @@ class Url
                 'listbyids'=>'/topapi/attendance/schedule/result/listbyids',
                 'listschedule'=>'/topapi/attendance/listschedule',
                 'listbydays'=>'/topapi/attendance/schedule/shift/listbydays'
+            ],
+            'statistic'=>[
+                'getattcolumns'=>'/topapi/attendance/getattcolumns',
+                'getcolumnval'=>'/topapi/attendance/getcolumnval',
+                'getleavetimebynames'=>'/topapi/attendance/getleavetimebynames',
+                'isopensmartreport'=>'/topapi/attendance/isopensmartreport',
+                'getupdatedata'=>'/topapi/attendance/getupdatedata'
             ]
             
         ],

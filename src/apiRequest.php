@@ -67,10 +67,14 @@ class apiRequest
                     'access_token' => AccessToken::getToken()
                 ]);
             }
-
-            $resp = $client->request('POST', $uri, [
-                'json' => $json
-            ]);
+            if(empty($json)){
+                $resp = $client->request('POST', $uri);
+            }else{
+                $resp = $client->request('POST', $uri, [
+                    'json' => $json
+                ]);
+            }
+           
 
 
 
