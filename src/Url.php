@@ -155,6 +155,9 @@ class Url
             ],
             'machineManagement'=>[
                 'get_by_userid'=>'/topapi/smartdevice/atmachine/get_by_userid'
+            ],
+            'offWork'=>[
+                'approve_alert'=>'/topapi/attendance/approve/finish'
             ]
             
         ],
