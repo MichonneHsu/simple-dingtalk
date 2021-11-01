@@ -177,9 +177,18 @@ class User{
      *
      * @return mixed
      */
-    public static function getinactive($json){
+    public static function getinactive(array $json){
         $uri=Url::$api['user']['getinactive'];
        
         return apiRequest::post($uri,$json);
     }
+    public static function code_getuserinfo(string $code){
+        $uri=Url::$api['user']['code_getuserinfo'];
+        $json=[
+            'code'=>$code
+        ];
+        return apiRequest::post($uri,$json);
+    }
+
+    
 } 

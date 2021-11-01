@@ -27,7 +27,8 @@ class Url
             'can_access_microapp' => '/user/can_access_microapp',
             'getbymobile' => '/topapi/v2/user/getbymobile',
             'getbyunionid' => '/topapi/user/getbyunionid',
-            'getinactive' => '/topapi/inactive/user/get'
+            'getinactive' => '/topapi/inactive/user/get',
+            'code_getuserinfo'=>'/topapi/v2/user/getuserinfo'
         ],
         'department' => [
             'create' => '/topapi/v2/department/create',
