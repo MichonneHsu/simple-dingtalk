@@ -196,7 +196,7 @@ class User{
         return apiRequest::post($uri,$json);
     }
     /**
-     * 根据sns临时授权码获取用户信息
+     * 获取用户基本信息
      *
      * @param string $tmp_auth_code
      * @return mixed
@@ -221,5 +221,24 @@ class User{
         
         return $http;
     }
-    
+    /**
+     * 根据sns临时授权重定向uri
+     *
+     * @param string $tmp_auth_code
+     * @return string
+     */
+    public static function sns_authorize(string $tmp_auth_code): string
+    {
+        $app=Config::$app_info['app'][Config::$app_type];
+        $params = [
+            'appid' => $app['APP_KEY'],
+            'response_type' => 'code',
+            'scope' => 'snsapi_login',
+            'state' => 'STATE',
+            'redirect_uri' =>$app['scan_info']['redirect_uri'],
+            'loginTmpCode' => $tmp_auth_code
+        ];
+        $uri = Url::$api['domain'].Url::$api['user']['sns_authorize'];
+        return apiRequest::joinParams($uri, $params);
+    }
 } 
