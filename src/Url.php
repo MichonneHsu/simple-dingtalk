@@ -28,7 +28,9 @@ class Url
             'getbymobile' => '/topapi/v2/user/getbymobile',
             'getbyunionid' => '/topapi/user/getbyunionid',
             'getinactive' => '/topapi/inactive/user/get',
-            'code_getuserinfo'=>'/topapi/v2/user/getuserinfo'
+            'code_getuserinfo'=>'/topapi/v2/user/getuserinfo',
+            'sns_authorize' => '/connect/oauth2/sns_authorize',
+            'getuserinfo_bycode' => '/sns/getuserinfo_bycode',
         ],
         'department' => [
             'create' => '/topapi/v2/department/create',

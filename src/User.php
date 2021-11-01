@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 namespace SimpleDingTalk;
-
+use SimpleDingTalk\util\Sign;
 class User{
      /**
      * 获取用户基础信息
@@ -182,6 +182,12 @@ class User{
        
         return apiRequest::post($uri,$json);
     }
+    /**
+     * 通过免登码获取用户信息
+     *
+     * @param string $code
+     * @return mixed
+     */
     public static function code_getuserinfo(string $code){
         $uri=Url::$api['user']['code_getuserinfo'];
         $json=[
@@ -189,6 +195,31 @@ class User{
         ];
         return apiRequest::post($uri,$json);
     }
+    /**
+     * 根据sns临时授权码获取用户信息
+     *
+     * @param string $tmp_auth_code
+     * @return mixed
+     */
+    public static function getuserinfo_bycode(string $tmp_auth_code)
+    {
+        $params = [
 
+            'accessKey' => Config::$app_info['app'][Config::$app_type]['APP_KEY'],
+            'timestamp' => Sign::getMillisecond(),
+            'signature' => Sign::signature()
+
+        ];
+        $uri = Url::$api['user']['getuserinfo_bycode'];
+        $uri = apiRequest::joinParams($uri, $params);
+        $json = [
+            'tmp_auth_code' => $tmp_auth_code
+        ];
+        $has_token =false;
+        $http = apiRequest::post($uri,$json,$has_token);
+       
+        
+        return $http;
+    }
     
 } 

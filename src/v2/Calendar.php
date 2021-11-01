@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\v2;
 
 use PDO;
-use SimpleDingTalk\util\date\Time;
+use SimpleDingTalk\util\Time;
 /**
  * 日程
  */

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace SimpleDingTalk\util\date;
+namespace SimpleDingTalk\util;
 use Exception;
 
 use DateTime;

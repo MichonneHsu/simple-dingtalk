@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\apiRequest;
-use SimpleDingTalk\util\date\Time;
+use SimpleDingTalk\util\Time;
 /**
  * 考勤打卡
  */
