@@ -222,7 +222,7 @@ class User{
         return $http;
     }
     /**
-     * 根据sns临时授权重定向uri
+     * 获取sns临时授权重定向uri
      *
      * @param string $tmp_auth_code
      * @return string
@@ -238,7 +238,7 @@ class User{
             'redirect_uri' =>$app['scan_info']['redirect_uri'],
             'loginTmpCode' => $tmp_auth_code
         ];
-        $uri = Url::$api['domain'].Url::$api['user']['sns_authorize'];
+        $uri = Url::$api['user']['sns_authorize'];
         return apiRequest::joinParams($uri, $params);
     }
 } 
