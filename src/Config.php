@@ -70,13 +70,20 @@ class Config
         'robot'=>[
             'robot1' => [
                 'info' => [
-                    'AGENT_ID' => '8682001',
-                    'APP_KEY' => 'ding8micsdknhbjdmlng',
-                    'APP_SECRET' => 'LWLFgB3GQD73vxPCfKZNJDzBFfng_iHZYck839PQ8eDWfbn7SDa1Ocp5esfMACzC'
+                    'AGENT_ID' => 0,
+                    'APP_KEY' => '',
+                    'APP_SECRET' => ''
                 ],
                 
             ],
-           
+            'robot2' => [
+                'info' => [
+                    'AGENT_ID' => 0,
+                    'APP_KEY' => '',
+                    'APP_SECRET' => ''
+                ],
+                
+            ],
         ]
 
 
