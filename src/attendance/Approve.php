@@ -70,7 +70,7 @@ class Approve
         return apiRequest::post($uri, $json);
     }
     /**
-     * 通知换班通过
+     * 计算请假时长
      *
      * @param string $userid
      * @param integer $biz_type
@@ -94,7 +94,7 @@ class Approve
         return apiRequest::post($uri, $json);
     }
     /**
-     * 计算请假时长
+     * 通知换班通过
      *
      * @param string $userid
      * @param string $switch_date
@@ -126,7 +126,7 @@ class Approve
         return apiRequest::post($uri, $json);
     }
     /**
-     * 查询请假状态
+     * 计算请假时长
      *
      * @param string $userid_list
      * @param string $start_time
@@ -139,6 +139,20 @@ class Approve
     {
         $isMilisecond =true;
         $uri = Url::$api['attendance']['approve']['getleaveapproveduration'];
+        $json = [
+            'userid_list' => $userid_list,
+            'start_time' => Time::toTime($start_time,$isMilisecond),
+            'end_time' => Time::toTime($end_time,$isMilisecond),
+            'offset'=>$offset,
+            'size'=>$size
+        ];
+        return apiRequest::post($uri, $json);
+    }
+
+    public static function getleavestatus(string $userid_list, string $start_time, string $end_time,int $offset,int $size=10)
+    {
+        $isMilisecond =true;
+        $uri = Url::$api['attendance']['approve']['getleavestatus'];
         $json = [
             'userid_list' => $userid_list,
             'start_time' => Time::toTime($start_time,$isMilisecond),
