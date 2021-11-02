@@ -34,7 +34,7 @@ callback_info->token：当前应用的签名
 scan_info：扫码登录信息
 scan_info->redirect_uri：跳转url
 v2：新版服务端信息
-
+robot:群聊机器人
 Config::$app_type = 'miniprogram_app';
 Config::$app_info = [
 	'CORP_ID' => '',
@@ -83,7 +83,25 @@ Config::$app_info = [
 				]
 			]
 		]
-	]
+	],
+	'robot'=>[
+            'robot1' => [
+                'info' => [
+                    'AGENT_ID' => 0,
+                    'APP_KEY' => '',
+                    'APP_SECRET' => ''
+                ],
+                
+            ],
+            'robot2' => [
+                'info' => [
+                    'AGENT_ID' => 0,
+                    'APP_KEY' => '',
+                    'APP_SECRET' => ''
+                ],
+                
+            ],
+        ]
 ];
 
 ```
