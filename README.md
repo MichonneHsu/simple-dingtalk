@@ -18,6 +18,7 @@
 **需要新的功能请发起** [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
 #### 配置
 预先配置多个应用后，只修改app_type 进行切换。
+预先配置多个机器人后，只修改robot_type 进行切换。
 ```
 关键字解释：
 
@@ -38,6 +39,7 @@ robot:群聊机器人
 
 Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
+
 Config::$app_info = [
 	'CORP_ID' => '',
 	'app' => [
