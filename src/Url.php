@@ -159,8 +159,14 @@ class Url
             'machineManagement'=>[
                 'get_by_userid'=>'/topapi/smartdevice/atmachine/get_by_userid'
             ],
-            'offWork'=>[
-                'approve_alert'=>'/topapi/attendance/approve/finish'
+            'approve'=>[
+                'finish'=>'/topapi/attendance/approve/finish',
+                'cancel'=>'/topapi/attendance/approve/cancel',
+                'check'=>'/topapi/attendance/approve/check',
+                'duration_calculate'=>'/topapi/attendance/approve/duration/calculate',
+                'schedule_switch'=>'/topapi/attendance/approve/schedule/switch',
+                'getleaveapproveduration'=>'/topapi/attendance/getleaveapproveduration',
+                'getleavestatus'=>'/topapi/attendance/getleavestatus'
             ]
             
         ],

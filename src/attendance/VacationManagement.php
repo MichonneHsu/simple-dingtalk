@@ -6,11 +6,11 @@ namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 
 use SimpleDingTalk\apiRequest;
-class Checkin
+class VacationManagement
 {
     public static function list(int $offset=0,int $size=10)
     {
-        $uri=Url::$api['attendance']['group_management']['getsimplegroups'];
+        $uri=Url::$api['attendance']['vacationManagement']['getsimplegroups'];
       
         $json = [
             'offset' => $offset,
