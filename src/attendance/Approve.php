@@ -129,22 +129,18 @@ class Approve
      * 计算请假时长
      *
      * @param string $userid
-     * @param string $start_time
-     * @param string $end_time
-     * @param integer $offset
-     * @param integer $size
+     * @param string $from_date
+     * @param string $to_date
      * @return mixed
      */
-    public static function getleaveapproveduration(string $userid, string $start_time, string $end_time,int $offset,int $size=10)
+    public static function getleaveapproveduration(string $userid, string $from_date, string $to_date)
     {
-        $isMilisecond =true;
+       
         $uri = Url::$api['attendance']['approve']['getleaveapproveduration'];
         $json = [
             'userid' => $userid,
-            'start_time' => Time::toTime($start_time,$isMilisecond),
-            'end_time' => Time::toTime($end_time,$isMilisecond),
-            'offset'=>$offset,
-            'size'=>$size
+            'from_date' => $from_date,
+            'to_date' =>$to_date 
         ];
         return apiRequest::post($uri, $json);
     }
