@@ -14,7 +14,8 @@ class Url
         'todo'=>'/v1.0/todo/users/',
         'calendar'=>'/v1.0/calendar/users/',
         'drive'=>'/v1.0/drive/spaces/',
-        'serviceGroup'=>'/v1.0/serviceGroup/groups'
+        'serviceGroup'=>'/v1.0/serviceGroup/groups',
+        'robot'=>'/v1.0/robot'
     ];
 
     public static function joinParams(string $uri, array $params): string

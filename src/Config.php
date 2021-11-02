@@ -9,6 +9,7 @@ class Config
 {
 
     public static $app_type = 'miniprogram_app';
+    public static $robot_type = 'robot1';
     public static $app_info = [
         'CORP_ID' => '',
         'app' => [
@@ -66,6 +67,17 @@ class Config
                 ]
             ],
         ],
+        'robot'=>[
+            'robot1' => [
+                'info' => [
+                    'AGENT_ID' => '8682001',
+                    'APP_KEY' => 'ding8micsdknhbjdmlng',
+                    'APP_SECRET' => 'LWLFgB3GQD73vxPCfKZNJDzBFfng_iHZYck839PQ8eDWfbn7SDa1Ocp5esfMACzC'
+                ],
+                
+            ],
+           
+        ]
 
 
 
