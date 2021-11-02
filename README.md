@@ -35,7 +35,9 @@ scan_info：扫码登录信息
 scan_info->redirect_uri：跳转url
 v2：新版服务端信息
 robot:群聊机器人
+
 Config::$app_type = 'miniprogram_app';
+Config::$robot_type = 'robot1';
 Config::$app_info = [
 	'CORP_ID' => '',
 	'app' => [
