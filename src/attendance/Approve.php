@@ -108,7 +108,7 @@ class Approve
      * @param string $reback_target_shift_id
      * @return mixed
      */
-    public static function schedule_switch(string $userid, string $switch_date, string $reback_date, string $apply_userid, string $target_userid, string $approve_id,string $apply_shift_id,string $target_shift_id,string $reback_apply_shift_id,string $reback_target_shift_id)
+    public static function schedule_switch(string $userid, string $switch_date, string $reback_date, string $apply_userid, string $target_userid, string $approve_id,int $apply_shift_id,int $target_shift_id,int $reback_apply_shift_id,int $reback_target_shift_id)
     {
         $uri = Url::$api['attendance']['approve']['schedule_switch'];
         $json = [
