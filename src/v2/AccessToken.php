@@ -41,7 +41,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app_info=Config::$app_info['app'];
+        $app_info= Config::$app_info['app'][Config::$app_type];
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];
@@ -55,7 +55,7 @@ class AccessToken
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
-        $filename = Config::$app_info['app'][Config::$app_type]['v2']['access_token']['file_path'];
+        $filename = $app_info['v2']['access_token']['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }
