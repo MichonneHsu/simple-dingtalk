@@ -6,7 +6,14 @@ namespace SimpleDingTalk\v2;
 use SimpleDingTalk\Config;
 class Robot{
    
-    
+    /**
+     * 批量发送单聊消息
+     *
+     * @param array $userIds
+     * @param string $msgKey
+     * @param array $msgParam
+     * @return mixed
+     */
     public static function batchSend(array $userIds, string $msgKey,array $msgParam)
     {
         $robot_type=Config::$robot_type;
