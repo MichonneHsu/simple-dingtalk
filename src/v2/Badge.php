@@ -8,7 +8,7 @@ use SimpleDingTalk\util\IDgenerator;
 class Badge{
    
 
-    public static function create(string $codeIdentity,string $status,string $userCorpRelationType,string $userIdentity,string $gmtExpired,array $availableTimes,string $codeValue='')
+    public static function create(string $codeIdentity,string $status,string $userCorpRelationType,string $userIdentity,string $gmtExpired,array $availableTimes,array $extInfo,string $codeValue)
     {
         $IDgenerator=new IDgenerator();
         $requestId=$IDgenerator->make();
@@ -22,7 +22,8 @@ class Badge{
             'userIdentity'=>$userIdentity,
             'gmtExpired'=>$gmtExpired,
             'availableTimes'=>$availableTimes,
-            'codeValue'=>$codeValue
+            'extInfo'=>json_encode($extInfo),
+         
         ];
     
         return apiRequest::post($uri, $body);
