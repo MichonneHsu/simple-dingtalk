@@ -155,7 +155,6 @@ class Badge
      */
     public static function corpInstances(string $codeIdentity,string $status,array $extInfo)
     {
-
         $uri = Url::$api['badge'] . '/codes/corpInstances';
         $body = [
             'codeIdentity' => $codeIdentity,
