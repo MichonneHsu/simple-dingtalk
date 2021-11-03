@@ -15,6 +15,7 @@ class Url
         'calendar'=>'/v1.0/calendar/users/',
         'drive'=>'/v1.0/drive/spaces/',
         'serviceGroup'=>'/v1.0/serviceGroup/groups',
+        'badge'=>'/v1.0/badge',
         'robot'=>'/v1.0/robot'
     ];
 

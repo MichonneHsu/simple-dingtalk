@@ -20,5 +20,8 @@ class Time{
             return self::setDate($date)->getTimestamp();
         }
     }
+    public static function expires_date(){
+        return time()+120;
+    }
  
 }
