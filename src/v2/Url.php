@@ -16,7 +16,11 @@ class Url
         'drive'=>'/v1.0/drive/spaces/',
         'serviceGroup'=>'/v1.0/serviceGroup/groups',
         'badge'=>'/v1.0/badge',
-        'robot'=>'/v1.0/robot'
+        'robot'=>[
+            'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
+            'interactiveCards_send'=>'/v1.0/im/interactiveCards/send'
+        ],
+        
     ];
 
     public static function joinParams(string $uri, array $params): string
