@@ -41,7 +41,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app_info=Config::$app_info['app'][Config::$app_type];
+        $app_info=Config::$app_info['app'][Config::$app_type]['app_info'];
         $appkey =$app_info['APP_KEY'];
         $appSecret = $app_info['APP_SECRET'];
         $uri = Url::$api['gettoken'];

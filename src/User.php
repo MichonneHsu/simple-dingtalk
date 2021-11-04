@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace SimpleDingTalk;
 use SimpleDingTalk\util\Sign;
+
 class User{
      /**
      * 获取用户基础信息
@@ -205,7 +206,7 @@ class User{
     {
         $params = [
 
-            'accessKey' => Config::$app_info['app'][Config::$app_type]['APP_KEY'],
+            'accessKey' => Config::$app_info['app'][Config::$app_type]['app_info']['APP_KEY'],
             'timestamp' => Sign::getMillisecond(),
             'signature' => Sign::signature()
 

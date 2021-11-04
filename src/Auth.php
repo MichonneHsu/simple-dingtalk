@@ -14,7 +14,7 @@ class Auth
     {
         $app = Config::$app_info[Config::$app_type]['app'];
         $corpId = Config::$app_info['CORP_ID'];
-        $agentId = $app['AGENT_ID'];
+        $agentId = $app['app_info']['AGENT_ID'];
         $nonceStr = self::getRandomAlphabet();
         $timeStamp = time();
         $url = urldecode($href);

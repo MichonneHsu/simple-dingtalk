@@ -23,7 +23,7 @@ class CallBack
         $callback_info = Config::$app_info['app'][Config::$app_type]['callback_info'];
         $token = $callback_info['token'];
         $encodingAesKey = $callback_info['aes_key'];
-        $ownerKey = Config::$app_info['app'][Config::$app_type]['APP_KEY'];
+        $ownerKey = Config::$app_info['app'][Config::$app_type]['app_info']['APP_KEY'];
         $crypt=(new DingCallbackCrypto($token, $encodingAesKey, $ownerKey));
         $text = $crypt->getDecryptMsg($signature, $timeStamp, $nonce, $encrypt);
         $res = $crypt->getEncryptedMap("success");
