@@ -11,12 +11,12 @@
 <img src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 
-#### 安装方式
+### 安装方式
 `composer require michonnehsu/simpledingtalk`
-#### 文档地址
+### 文档地址
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
-**需要新的功能请发起** [issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)  
-#### 配置
+
+### 配置
 预先配置多个应用后，只修改app_type 进行切换。  
 预先配置多个机器人后，只修改robot_type 进行切换。
 ```
@@ -37,9 +37,10 @@ scan_info->redirect_uri：跳转url
 v2：新版服务端信息
 robot:群聊机器人
 
+
+配置格式：
 Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
-
 Config::$app_info = [
 	'CORP_ID' => '',
 	'app' => [
@@ -113,7 +114,8 @@ Config::$app_info = [
 ];
 
 ```
-#### 案例
+### 用法
+#### 基础用法
 ```
 use SimpleDingTalk\WorkFlow;
 
@@ -124,13 +126,11 @@ $json=[
 ];
 WorkFlow::add_comment($json);
 ```
-#### 函数定义规则
+### 函数定义规则
 1. 如果接口需要的参数复杂并且有必填和非必填的话，函数需要的参数需要开发者自行组装参数。
 2. 如果接口需要的参数不复杂并且有必填和非必填，则只需要按照函数所需填入即可。
 3. 如果接口需要的参数全是必填的话则函数需要的参数不需要完全自行组装参数，按照函数所需的参数填入即可。
 
-#### 关于本扩展
-如果小伙伴有定制需求的话可以发[issues](https://gitee.com/michonnehsu/simple-dingtalk/issues)。
 
-#### 扩展开发进度
+### 扩展开发进度
 开发的进度已经完成70%
