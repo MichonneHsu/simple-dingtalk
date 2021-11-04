@@ -116,7 +116,7 @@ class Todo
      */
     public static function get_by_sourceId(string $unionId,string $sourceId)
     {
-        $unionId = UserInfo::$unionId;
+      
         $uri = Url::$api['todo'] . "{$unionId}/tasks/sources/$sourceId";
 
         return apiRequest::get($uri);
