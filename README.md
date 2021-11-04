@@ -44,9 +44,11 @@ Config::$app_info = [
 	'CORP_ID' => '',
 	'app' => [
 		'miniprogram_app' => [
-			'AGENT_ID' => 0,
-			'APP_KEY' => '',
-			'APP_SECRET' => '',
+			 'app_info'=>[
+                 'AGENT_ID' => 0,
+    		    'APP_KEY' => '',
+    		    'APP_SECRET' => '',
+            ],
 			'access_token' => [
 				'expires' => 0,
 				'file_path' => './a.json'
@@ -66,9 +68,11 @@ Config::$app_info = [
 			]
 		],
 		'micro_app'=>[
-			'AGENT_ID' => 0,
-			'APP_KEY' => '',
-			'APP_SECRET' => '',
+			 'app_info'=>[
+                'AGENT_ID' => 0,
+    		    'APP_KEY' => '',
+    		    'APP_SECRET' => '',
+            ],
 			'access_token'=>[
 				'expires' => 0,
 				'file_path' => './a.json'
