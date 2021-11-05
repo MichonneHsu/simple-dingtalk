@@ -15,42 +15,18 @@ class Login
     
     public static function getuserinfo_bycode(string $tmp_auth_code)
     {
-        $params = [
-
-            'accessKey' => Config::$app_info['app'][Config::$app_type]['APP_KEY'],
-            'timestamp' => self::getMillisecond(),
-            'signature' => self::signature()
-
-        ];
-        $uri = self::$urls['getuserinfo_bycode'];
-        $uri = apiRequest::joinParams($uri, $params);
-        $json = [
-            'tmp_auth_code' => $tmp_auth_code
-        ];
-        $has_token =false;
-        $http = apiRequest::post($uri,$json,$has_token);
-       
-        
-        return $http;
+        return User::getuserinfo_bycode($tmp_auth_code);
     }
 
 
 
-    public static function sns_authorize(string $tmp_auth_code): string
+    public static function sns_authorize(string $tmp_auth_code)
     {
-        $app=Config::$app_info['app'][Config::$app_type];
-        $params = [
-            'appid' => $app['APP_KEY'],
-            'response_type' => 'code',
-            'scope' => 'snsapi_login',
-            'state' => 'STATE',
-            'redirect_uri' =>$app['scan_info']['redirect_uri'],
-            'loginTmpCode' => $tmp_auth_code
-        ];
-        $uri = Url::$api['domain'].self::$urls['sns_authorize'];
-        return apiRequest::joinParams($uri, $params);
+        return User::sns_authorize($tmp_auth_code);
     }
-    private static function signature(): string
+
+    
+    private static function signature()
     {
 
 

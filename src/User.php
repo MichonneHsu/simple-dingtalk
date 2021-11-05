@@ -232,7 +232,7 @@ class User{
     {
         $app=Config::$app_info['app'][Config::$app_type];
         $params = [
-            'appid' => $app['APP_KEY'],
+            'appid' => $app['app_info']['APP_KEY'],
             'response_type' => 'code',
             'scope' => 'snsapi_login',
             'state' => 'STATE',
