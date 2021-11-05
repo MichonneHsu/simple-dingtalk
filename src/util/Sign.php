@@ -10,7 +10,7 @@ class Sign{
     {
 
 
-        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['app'][Config::$app_type]['APP_SECRET'], true);
+        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
 
         $signature = base64_encode($s);
 
