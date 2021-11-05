@@ -174,6 +174,15 @@ class Url
             'chat_create'=>'/chat/create',
             'get_qrcode'=>'/topapi/chat/qrcode/get'
         ],
+        'blackboard'=>[
+            'create'=>'/topapi/blackboard/create',
+            'update'=>'/topapi/blackboard/update',
+            'remove'=>'/topapi/blackboard/delete',
+            'listtopten'=>'/topapi/blackboard/listtopten',
+            'category_list'=>'/topapi/blackboard/category/list',
+            'listids'=>'/topapi/blackboard/listids',
+            'get'=>'/topapi/blackboard/get'
+        ],
         'cspace'=>[
             'get_custom_space'=>'/cspace/get_custom_space'
         ]
