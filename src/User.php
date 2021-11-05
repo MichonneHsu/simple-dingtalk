@@ -239,7 +239,7 @@ class User{
             'redirect_uri' =>$app['scan_info']['redirect_uri'],
             'loginTmpCode' => $tmp_auth_code
         ];
-        $uri = Url::$api['user']['sns_authorize'];
+        $uri = apiRequest::$api['domain'].Url::$api['user']['sns_authorize'];
         return apiRequest::joinParams($uri, $params);
     }
 } 
