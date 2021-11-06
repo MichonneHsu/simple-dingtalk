@@ -167,6 +167,16 @@ class Url
                 'schedule_switch'=>'/topapi/attendance/approve/schedule/switch',
                 'getleaveapproveduration'=>'/topapi/attendance/getleaveapproveduration',
                 'getleavestatus'=>'/topapi/attendance/getleavestatus'
+            ],
+            'vacationManagement'=>[
+                'create'=>'/topapi/attendance/vacation/type/create',
+                'remove'=>'/topapi/attendance/vacation/type/delete',
+                'update'=>'/topapi/attendance/vacation/type/update',
+                'type_list'=>'/topapi/attendance/vacation/type/list',
+                'quota_init'=>'/topapi/attendance/vacation/quota/init',
+                'quota_list'=>'/topapi/attendance/vacation/quota/list',
+                'quota_update'=>'/topapi/attendance/vacation/quota/update',
+                'record_list'=>'/topapi/attendance/vacation/record/list'
             ]
             
         ],
