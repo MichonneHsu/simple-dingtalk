@@ -51,8 +51,8 @@ class Blackboard{
         ];
         return apiRequest::post($uri, $json);
     }
-    public static function listids(string $operation_userid,string $start_time,string $end_time,int $page,int $page_size,string $category_id){
-        $uri=Url::$api['blackboard']['remove'];
+    public static function listids(string $operation_userid,string $start_time,string $end_time,int $page,int $page_size=10,string $category_id=''){
+        $uri=Url::$api['blackboard']['listids'];
         
         $json=[
             'query_request'=>[
