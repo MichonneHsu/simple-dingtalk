@@ -80,4 +80,15 @@ class VacationManagement
        
         return apiRequest::post($uri, $json);
     }
+    public static function record_list(string $op_userid,array $leave_quotas)
+    {
+        $uri=Url::$api['attendance']['vacationManagement']['record_list'];
+        
+        $json=[
+            'op_userid'=>$op_userid,
+            'leave_quotas'=>$leave_quotas
+        ];
+       
+        return apiRequest::post($uri, $json);
+    }
 }
