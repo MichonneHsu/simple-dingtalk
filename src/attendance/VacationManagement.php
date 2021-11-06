@@ -99,7 +99,7 @@ class VacationManagement
 
     public static function parse_data(array $json){
         if(array_key_exists('hours_in_per_day',$json)){
-            $hours_in_per_day=$json['hours_in_per_day']*100;
+            $hours_in_per_day=$json['hours_in_per_day']*1000;
             $json['hours_in_per_day']=$hours_in_per_day;
         }
         if(array_key_exists('extras',$json)){
