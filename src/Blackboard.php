@@ -3,7 +3,7 @@ namespace SimpleDingTalk;
 
 class Blackboard{
     
-    public static function get(string $blackboard_id,string $operation_userid){
+    public static function get(string $operation_userid,string $blackboard_id){
         $uri=Url::$api['blackboard']['get'];
         
         $json=[
@@ -28,7 +28,7 @@ class Blackboard{
         ];
         return apiRequest::post($uri, $json);
     }
-    public static function remove(string $blackboard_id,string $operation_userid){
+    public static function remove(string $operation_userid,string $blackboard_id){
         $uri=Url::$api['blackboard']['remove'];
         
         $json=[
@@ -44,8 +44,8 @@ class Blackboard{
         ];
         return apiRequest::post($uri, $json);
     }
-    public static function category_lsit(string $operation_userid){
-        $uri=Url::$api['blackboard']['category_lsit'];
+    public static function category_list(string $operation_userid){
+        $uri=Url::$api['blackboard']['category_list'];
         $json=[
             'operation_userid'=>$operation_userid
         ];
