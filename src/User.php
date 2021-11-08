@@ -223,7 +223,7 @@ class User{
         return $http;
     }
     /**
-     * 获取sns临时授权重定向uri
+     *  通过sns临时根据当前应用信息组合成授权url
      *
      * @param string $tmp_auth_code
      * @return string
