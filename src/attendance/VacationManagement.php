@@ -45,14 +45,19 @@ class VacationManagement
     public static function quota_init(string $op_userid,array $leave_quotas)
     {
         $uri=Url::$api['attendance']['vacationManagement']['quota_init'];
-        if(array_key_exists('quota_num_per_day',$leave_quotas)){
-            $quota_num_per_day=$leave_quotas['quota_num_per_day']*100;
-            $leave_quotas['quota_num_per_day']=$quota_num_per_day;
-        }
-        if(array_key_exists('quota_num_per_hour',$leave_quotas)){
-            $quota_num_per_day=$leave_quotas['quota_num_per_hour']*100;
-            $leave_quotas['quota_num_per_hour']=$quota_num_per_day;
-        }
+        $isMilisecond =true;
+        $start_time=Time::toTime($leave_quotas['start_time'],$isMilisecond);
+        $end_time=Time::toTime($leave_quotas['end_time'],$isMilisecond);
+        $leave_quotas['start_time']=$start_time;
+        $leave_quotas['end_time']=$end_time;
+        // if(array_key_exists('quota_num_per_day',$leave_quotas)){
+        //     $quota_num_per_day=$leave_quotas['quota_num_per_day']*100;
+        //     $leave_quotas['quota_num_per_day']=$quota_num_per_day;
+        // }
+        // if(array_key_exists('quota_num_per_hour',$leave_quotas)){
+        //     $quota_num_per_day=$leave_quotas['quota_num_per_hour']*100;
+        //     $leave_quotas['quota_num_per_hour']=$quota_num_per_day;
+        // }
         $json=[
             'op_userid'=>$op_userid,
             'leave_quotas'=>$leave_quotas
@@ -77,11 +82,7 @@ class VacationManagement
     public static function quota_update(string $op_userid,array $leave_quotas)
     {
         $uri=Url::$api['attendance']['vacationManagement']['quota_update'];
-        $isMilisecond =true;
-        $start_time=Time::toTime($leave_quotas['start_time'],$isMilisecond);
-        $end_time=Time::toTime($leave_quotas['end_time'],$isMilisecond);
-        $leave_quotas['start_time']=$start_time;
-        $leave_quotas['end_time']=$end_time;
+      
         $json=[
             'op_userid'=>$op_userid,
             'leave_quotas'=>$leave_quotas

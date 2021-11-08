@@ -20,6 +20,13 @@ class HumanResource{
         ];
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 获取待入职员工列表
+     *
+     * @param integer $size
+     * @param integer $offset
+     * @return void
+     */
     public static function querypreentry(int $size,int $offset=0)
     {
         $uri = Url::$api['humanResource']['querypreentry'];
@@ -29,6 +36,12 @@ class HumanResource{
         ];
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 获取员工离职信息
+     *
+     * @param string $userid_list
+     * @return void
+     */
     public static function listdimission(string $userid_list)
     {
         $uri = Url::$api['humanResource']['listdimission'];
@@ -37,6 +50,13 @@ class HumanResource{
         ];
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 获取离职员工列表
+     *
+     * @param integer $size
+     * @param integer $offset
+     * @return void
+     */
     public static function querydimission(int $size,int $offset=0)
     {
         $uri =Url::$api['humanResource']['querydimission'];
@@ -47,6 +67,12 @@ class HumanResource{
      
         return apiRequest::post($uri, $json);
     }
+    /**
+     * 添加企业待入职员工
+     *
+     * @param array $json
+     * @return void
+     */
     public static function addpreentry(array $json)
     {
         $uri = Url::$api['humanResource']['addpreentry'];
