@@ -46,11 +46,7 @@ class VacationManagement
     public static function quota_init(string $op_userid,array $leave_quotas)
     {
         $uri=Url::$api['attendance']['vacationManagement']['quota_init'];
-        $isMilisecond =true;
-        $start_time=Time::toTime($leave_quotas['start_time'],$isMilisecond);
-        $end_time=Time::toTime($leave_quotas['end_time'],$isMilisecond);
-        $leave_quotas['start_time']=$start_time;
-        $leave_quotas['end_time']=$end_time;
+       
        
         $json=[
             'op_userid'=>$op_userid,
