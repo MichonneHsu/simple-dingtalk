@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SimpleDingTalk\v2;
+namespace SimpleDingTalk\v2\Robot;
 use SimpleDingTalk\Config;
-class Robot{
+use SimpleDingTalk\Url;
+class Message{
    
     /**
      * 批量发送单聊消息
