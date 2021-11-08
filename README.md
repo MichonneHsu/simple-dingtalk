@@ -100,6 +100,10 @@ Config::$app_info = [
                     'APP_KEY' => '',
                     'APP_SECRET' => ''
                 ],
+                'access_token' => [
+                    'expires' => 0,
+                    'file_path' => './robot1.json'
+                ]
                 
             ],
             'robot2' => [
@@ -108,9 +112,12 @@ Config::$app_info = [
                     'APP_KEY' => '',
                     'APP_SECRET' => ''
                 ],
-                
-            ],
-        ]
+            'access_token' => [
+				'expires' => 0,
+				'file_path' => './robot2.json'
+			]
+        ],
+    ]
 ];
 
 ```
