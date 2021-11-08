@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Robot;
 use SimpleDingTalk\Config;
-use SimpleDingTalk\Url;
+use SimpleDingTalk\v2\Url;
 class Message{
    
     /**
@@ -19,6 +19,7 @@ class Message{
     {
         $robot_type=Config::$robot_type;
         $robotCode=Config::$app_info['robot'][$robot_type]['info']['APP_KEY'];
+      
         $uri = Url::$api['robot']['oToMessages_batchSend'];
         $body=[
             'robotCode'=>$robotCode,
