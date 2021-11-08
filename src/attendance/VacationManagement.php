@@ -51,11 +51,11 @@ class VacationManagement
         $leave_quotas['start_time']=$start_time;
         $leave_quotas['end_time']=$end_time;
         if(array_key_exists('quota_num_per_day',$leave_quotas)){
-            $quota_num_per_day=$leave_quotas['quota_num_per_day']*1000;
+            $quota_num_per_day=$leave_quotas['quota_num_per_day']*100;
             $leave_quotas['quota_num_per_day']=$quota_num_per_day;
         }
         if(array_key_exists('quota_num_per_hour',$leave_quotas)){
-            $quota_num_per_day=$leave_quotas['quota_num_per_hour']*1000;
+            $quota_num_per_day=$leave_quotas['quota_num_per_hour']*100;
             $leave_quotas['quota_num_per_hour']=$quota_num_per_day;
         }
         $json=[
