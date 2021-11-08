@@ -86,18 +86,26 @@ class VacationManagement
        
         return apiRequest::post($uri, $json);
     }
-    public static function record_list(string $op_userid,array $leave_quotas)
+    public static function record_list(string $op_userid,string $leave_code,string $userids,int $offset=0,int $size=10)
     {
         $uri=Url::$api['attendance']['vacationManagement']['record_list'];
         
         $json=[
             'op_userid'=>$op_userid,
-            'leave_quotas'=>$leave_quotas
+            'leave_code'=>$leave_code,
+            'userids'=>$userids,
+            'offset'=>$offset,
+            'size'=>$size
         ];
        
         return apiRequest::post($uri, $json);
     }
     public static function parse_quote_update_data(array $leave_quotas){
+        $isMilisecond=true;
+        $start_time=Time::toTime($leave_quotas['start_time'],$isMilisecond);
+        $end_time=Time::toTime($leave_quotas['end_time'],$isMilisecond);
+        $leave_quotas['start_time']=$start_time;
+        $leave_quotas['end_time']=$end_time;
         if(array_key_exists('quota_num_per_day',$leave_quotas)){
             $quota_num_per_day=$leave_quotas['quota_num_per_day']*100;
             $leave_quotas['quota_num_per_day']=$quota_num_per_day;
