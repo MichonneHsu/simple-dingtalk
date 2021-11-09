@@ -18,7 +18,8 @@ class Url
         'badge'=>'/v1.0/badge',
         'robot'=>[
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
-            'interactiveCards_send'=>'/v1.0/im/interactiveCards/send'
+            'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
+            'scencegroup_chat'=>'/topapi/im/chat/scencegroup/message/send_v2'
         ],
         
     ];

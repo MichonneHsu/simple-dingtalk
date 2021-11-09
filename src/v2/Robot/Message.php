@@ -41,4 +41,9 @@ class Message{
         $uri = Url::$api['robot']['interactiveCards_send'];
         return apiRequest::post($uri, $body);
     }
+    public static function scencegroup_chat(array $body)
+    {
+        $uri = Url::$api['robot']['scencegroup_chat'];
+        return apiRequest::post($uri, $body);
+    }
 }
