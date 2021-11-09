@@ -11,6 +11,7 @@ class Url
     public static $api = [
         'domain' => 'https://api.dingtalk.com',
         'gettoken' => '/v1.0/oauth2/accessToken',
+        'getUserToken'=>'/v1.0/oauth2/userAccessToken',
         'todo'=>'/v1.0/todo/users/',
         'calendar'=>'/v1.0/calendar/users/',
         'drive'=>'/v1.0/drive/spaces/',

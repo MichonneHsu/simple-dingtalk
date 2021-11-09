@@ -33,50 +33,50 @@ class apiRequest{
      *
      * @param string $uri
      * @param array $body
-     * @param boolean $has_headers
+     * @param boolean $has_token
      * @return mixed
      */
-    public static function get(string $uri,array $body=[],bool $has_headers=true){
+    public static function get(string $uri,array $body=[],bool $has_token=true){
       
-        return self::REST('get',$uri,$body,$has_headers);
+        return self::REST('get',$uri,$body,$has_token);
     }
     /**
      * post请求
      *
      * @param string $uri
      * @param array $body
-     * @param boolean $has_headers
+     * @param boolean $has_token
      * @return mixed
      */
-    public static function post(string $uri,array $body=[],bool $has_headers=true){
+    public static function post(string $uri,array $body=[],bool $has_token=true){
       
-        return self::REST('post',$uri,$body,$has_headers);
+        return self::REST('post',$uri,$body,$has_token);
     }
     /**
      * delete
      *
      * @param string $uri
      * @param array $body
-     * @param boolean $has_headers
+     * @param boolean $has_token
      * @return mixed
      */
-    public static function delete(string $uri,array $body=[],bool $has_headers=true){
+    public static function delete(string $uri,array $body=[],bool $has_token=true){
       
-        return self::REST('delete',$uri,$body,$has_headers);
+        return self::REST('delete',$uri,$body,$has_token);
     }
     /**
      * delete
      *
      * @param string $uri
      * @param array $body
-     * @param boolean $has_headers
+     * @param boolean $has_token
      * @return mixed
      */
-    public static function put(string $uri,array $body,bool $has_headers=true){
+    public static function put(string $uri,array $body,bool $has_token=true){
       
-        return self::REST('put',$uri,$body,$has_headers);
+        return self::REST('put',$uri,$body,$has_token);
     }
-    public static function REST(string $method,string $uri,array $body=[],bool $has_header=true){
+    public static function REST(string $method,string $uri,array $body=[],bool $has_token=true){
         
         try {
             $client=self::client();
@@ -85,7 +85,7 @@ class apiRequest{
                 'Content-Type'=>'application/json'
             ];
             $rep=null;
-            if($has_header){
+            if($has_token){
                
                    $header['x-acs-dingtalk-access-token']=AccessToken::getToken();
               

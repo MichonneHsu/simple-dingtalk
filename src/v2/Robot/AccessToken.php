@@ -50,8 +50,8 @@ class AccessToken
             'appSecret' => $appSecret
         ];
        
-        $has_headers=false;
-        $res = apiRequest::post($uri, $body,$has_headers);
+        $has_token=false;
+        $res = apiRequest::post($uri, $body,$has_token);
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
