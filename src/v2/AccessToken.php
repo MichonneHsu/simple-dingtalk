@@ -10,6 +10,9 @@ use Exception;
 class AccessToken
 {
 
+    public $grantType='';
+    public $code='';
+    public $refreshToken = '';
 
     public static function getToken(): string
     {
@@ -57,9 +60,9 @@ class AccessToken
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }
-    
-    
-    public static function generateUserToken(string $grantType, string $code, string $refreshToken = '')
+
+
+    public static function generateUserToken()
     {
         $uri = Url::$api['getUserToken'];;
         $app = Config::$app_info['app'][Config::$app_type];
@@ -68,22 +71,23 @@ class AccessToken
         $body = [
             'clientId' => $appkey,
             'clientSecret' => $appSecret,
-            'grantType' => $grantType,
-            'code' => $code,
-            'refreshToken' => $refreshToken
+            'grantType' => self::$grantType,
+            'code' =>  self::$code,
+            'refreshToken' =>  self::$refreshToken
         ];
         $has_token = false;
-        $res=apiRequest::post($uri, $body, $has_token);
-        
-        $filename=$app['userAccessToken']['file_path'];
+        $res = apiRequest::post($uri, $body, $has_token);
+
+        $filename = $app['userAccessToken']['file_path'];
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
         $data = json_encode($token);
-        file_put_contents($filename,$data);
+        file_put_contents($filename, $data);
     }
 
-    public static function getUserToken(string $grantType, string $code, string $refreshToken = ''){
+    public static function getUserToken():string
+    {
         $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
         $file_path = $at['file_path'];
         if (!file_exists($file_path)) {
@@ -93,11 +97,11 @@ class AccessToken
         $json = file_get_contents($file_path);
         if (empty($json)) {
 
-            self::generateUserToken($grantType,$code,$refreshToken);
+            self::generateUserToken();
         } else {
             $token = json_decode($json, true);
             if (($token['expireIn'] - $at['expires']) < time()) {
-                self::generateUserToken($grantType,$code,$refreshToken);
+                self::generateUserToken();
             }
         }
 

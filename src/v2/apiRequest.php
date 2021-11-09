@@ -104,7 +104,32 @@ class apiRequest{
         }
     }
     
-   
+    public static function userGetReq(string $uri,array $body){
+        try {
+            $client=self::client();
+            $body=empty($body)?'':json_encode($body);
+            $header=[
+                'Content-Type'=>'application/json'
+            ];
+            $rep=null;
+        
+               
+                   $header['x-acs-dingtalk-access-token']=AccessToken::getUserToken();
+              
+               
+            
+            $rep=self::request('get',$uri,$body,$header);
+            $resp=$client->send($rep,['timeout'=>2]);
+           
+            $content=$resp->getBody()->getContents();
+          
+           
+            return $content;
+        } catch (RequestException $e) {
+            throw new \Exception(Message::toString($e->getResponse()));
+           
+        }
+    }
     public static function token_post(string $uri, array $json)
     {
 
