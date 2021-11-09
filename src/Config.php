@@ -35,6 +35,10 @@ class Config
                         'expires' => 0,
                         'file_path' => ''
                     ],
+                ],
+                'userAccessToken'=>[
+                    'expires' => 0,
+                    'file_path' => ''
                 ]
             ],
             'micro_app' => [
@@ -64,6 +68,10 @@ class Config
                         'expires' => 0,
                         'file_path' => ''
                     ],
+                ],
+                'userAccessToken'=>[
+                    'expires' => 0,
+                    'file_path' => ''
                 ]
             ],
         ],
@@ -86,10 +94,6 @@ class Config
             ],
         ]
 
-
-
     ];
-    public static $scan_info = [
-        'redirect_url' => ''
-    ];
+ 
 }
