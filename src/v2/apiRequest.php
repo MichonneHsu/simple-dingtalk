@@ -109,14 +109,9 @@ class apiRequest{
             $client=self::client();
             $body=empty($body)?'':json_encode($body);
             $header=[
-                'Content-Type'=>'application/json'
-            ];
-            $rep=null;
-        
-               
-                   $header['x-acs-dingtalk-access-token']=AccessToken::getUserToken();
-              
-               
+                'Content-Type'=>'application/json',
+                'x-acs-dingtalk-access-token'=>AccessToken::getUserToken()
+            ]; 
             
             $rep=self::request('get',$uri,$body,$header);
             $resp=$client->send($rep,['timeout'=>2]);

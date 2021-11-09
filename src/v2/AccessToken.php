@@ -10,9 +10,9 @@ use Exception;
 class AccessToken
 {
 
-    public $grantType='';
-    public $code='';
-    public $refreshToken = '';
+    public static $grantType='';
+    public static $code='';
+    public static $refreshToken = '';
 
     public static function getToken(): string
     {

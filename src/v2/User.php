@@ -14,6 +14,6 @@ class User
         $body=[
             'unionId'=>$unionId
         ];
-        return apiRequest::get($uri, $body);
+        return apiRequest::userGetReq($uri, $body);
     }
 }
