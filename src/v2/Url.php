@@ -20,7 +20,8 @@ class Url
         'robot'=>[
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
-            'scencegroup_chat'=>'/topapi/im/chat/scencegroup/message/send_v2'
+            'scencegroup_chat'=>'/topapi/im/chat/scencegroup/message/send_v2',
+            'callback_register'=>'/topapi/im/chat/scencegroup/interactivecard/callback/register'
         ],
         'contact'=>'/v1.0/contact/'
         

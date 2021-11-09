@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\v2\Robot;
 use SimpleDingTalk\Config;
 use SimpleDingTalk\v2\Url;
+use SimpleDingTalk\apiRequest as v1_req;
 class Message{
    
     /**
@@ -44,6 +45,16 @@ class Message{
     public static function scencegroup_chat(array $body)
     {
         $uri = Url::$api['robot']['scencegroup_chat'];
-        return apiRequest::post($uri, $body);
+        return v1_req::post($uri, $body);
+    }
+    public static function callback_register(string $callback_url,string $api_secret='',string $callbackRouteKey='',bool $forceUpdate=false){
+        $uri = Url::$api['robot']['callback_register'];
+        $json=[
+            'callback_url'=>$callback_url,
+            'api_secret'=>$api_secret,
+            'callbackRouteKey'=>$callbackRouteKey,
+            'forceUpdate'=>$forceUpdate
+        ];
+        return v1_req::post($uri, $json);
     }
 }
