@@ -22,9 +22,7 @@ class Url
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
             'scencegroup_chat'=>'/topapi/im/chat/scencegroup/message/send_v2'
         ],
-        'user'=>[
-            'get'=>'/v1.0/contact/'
-        ]
+        'contact'=>'/v1.0/contact/'
         
     ];
 
