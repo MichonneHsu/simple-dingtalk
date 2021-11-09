@@ -104,7 +104,7 @@ class apiRequest{
         }
     }
     
-    public static function userGetReq(string $uri,array $body){
+    public static function userGetReq(string $uri,array $body=[]){
         try {
             $client=self::client();
             $body=empty($body)?'':json_encode($body);
