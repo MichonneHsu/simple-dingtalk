@@ -12,6 +12,6 @@ class User
     {
         $uri = Url::$api['user']['get']."users/$unionId";
       
-        return apiRequest::userGetReq($uri, $body);
+        return apiRequest::userGetReq($uri);
     }
 }

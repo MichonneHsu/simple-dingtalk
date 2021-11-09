@@ -119,16 +119,6 @@ Config::$app_info = [
         ],
     ]
 ];
-#获取用户通讯录个人信息 
-配置：
-使用新版服务端的AccessToken配置,配置如下。
-grantType code refreshToken
-给上面三个参数赋值：
-use  SimpleDingTalk\v2\AccessToken
-AccessToken::$grantType='';
-AccessToken::$code='';
-AccessToken::$refreshToken='';
-如果要生成的话 refreshToken不需要填写任何内容
 ```
 ### 用法
 #### 基础用法
