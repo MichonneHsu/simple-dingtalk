@@ -3,11 +3,15 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Robot;
+
 use SimpleDingTalk\Config;
 use SimpleDingTalk\v2\Url;
 use SimpleDingTalk\apiRequest as v1_req;
-class Message{
-   
+use SimpleDingTalk\util\robot\Sign;
+
+class Message
+{
+
     /**
      * 批量发送单聊消息
      *
@@ -16,19 +20,19 @@ class Message{
      * @param array $msgParam
      * @return mixed
      */
-    public static function oToMessages_batchSend(array $userIds, string $msgKey,array $msgParam)
+    public static function oToMessages_batchSend(array $userIds, string $msgKey, array $msgParam)
     {
-        $robot_type=Config::$robot_type;
-        $robotCode=Config::$app_info['robot'][$robot_type]['info']['APP_KEY'];
-      
+        $robot_type = Config::$robot_type;
+        $robotCode = Config::$app_info['robot'][$robot_type]['info']['APP_KEY'];
+
         $uri = Url::$api['robot']['oToMessages_batchSend'];
-        $body=[
-            'robotCode'=>$robotCode,
-            'userIds'=>$userIds,
-            'msgKey'=>$msgKey,
-            'msgParam'=>json_encode($msgParam)
+        $body = [
+            'robotCode' => $robotCode,
+            'userIds' => $userIds,
+            'msgKey' => $msgKey,
+            'msgParam' => json_encode($msgParam)
         ];
-    
+
         return apiRequest::post($uri, $body);
     }
     /**
@@ -56,14 +60,38 @@ class Message{
      * @param boolean $forceUpdate
      * @return mixed
      */
-    public static function callback_register(string $callback_url,string $api_secret='',string $callbackRouteKey='',bool $forceUpdate=false){
+    public static function callback_register(string $callback_url, string $api_secret = '', string $callbackRouteKey = '', bool $forceUpdate = false)
+    {
         $uri = Url::$api['robot']['callback_register'];
-        $json=[
-            'callback_url'=>$callback_url,
-            'api_secret'=>$api_secret,
-            'callbackRouteKey'=>$callbackRouteKey,
-            'forceUpdate'=>$forceUpdate
+        $json = [
+            'callback_url' => $callback_url,
+            'api_secret' => $api_secret,
+            'callbackRouteKey' => $callbackRouteKey,
+            'forceUpdate' => $forceUpdate
         ];
         return v1_req::post($uri, $json);
     }
+    public static function send_group_msg(string $msgtype, array $content)
+    {
+        $params = Sign::signature();
+
+        $uri = Url::$api['robot']['send_group_msg'];
+        $uri = v1_req::joinParams($uri, $params);
+        $json = [
+            'msgtype' => $msgtype,
+            $msgtype => $content
+        ];
+        return v1_req::post($uri, $json);
+    }
+    public static function update_card(array $body)
+    {
+       
+
+        $uri = Url::$api['robot']['card'];
+     
+        return apiRequest::put($uri, $body);
+    }
+
+    
+
 }
