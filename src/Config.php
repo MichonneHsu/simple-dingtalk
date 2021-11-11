@@ -80,7 +80,8 @@ class Config
                 'info' => [
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
-                    'APP_SECRET' => ''
+                    'APP_SECRET' => '',
+                    'SEC'=>''
                 ],
                 
             ],
@@ -88,7 +89,8 @@ class Config
                 'info' => [
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
-                    'APP_SECRET' => ''
+                    'APP_SECRET' => '',
+                    'SEC'=>''
                 ],
                 
             ],

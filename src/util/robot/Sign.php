@@ -6,18 +6,22 @@ use SimpleDingTalk\Config;
 
 class Sign{
 
-    public static function signature(): string
-    {
-        $APP_SECRET=Config::$app_info['robot'][Config::$robot_type]['APP_SECRET'];
-       
+    public static function signature()
+    {   
+        
+        $APP_SECRET=Config::$app_info['robot'][Config::$robot_type]['info']['SEC'];
+        
         $getMillisecond=self::getMillisecond();
         $sign_raw=$getMillisecond."\n".$APP_SECRET;
         $s = hash_hmac('sha256', $sign_raw, $APP_SECRET, true);
 
         $signature = base64_encode($s);
 
-        // $urlencode_signature = urlencode($signature);
-        return $signature;
+        $urlencode_signature = urlencode($signature);
+        return [
+            'sign'=>$urlencode_signature,
+            'timestamp'=>$getMillisecond
+        ];
     }
 
     public static function getMillisecond(): string
