@@ -36,7 +36,7 @@ class WorkFlow
     public static function create(array $json)
     {
         $uri = Url::$api['workflow']['create'];
-        $json['agent_id'] = Config::$app_info[Config::$app_type]['app_info']['AGENT_ID'];
+        $json['agent_id'] = Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
 
         return apiRequest::post($uri, $json);
     }
@@ -142,7 +142,7 @@ class WorkFlow
         $uri = Url::$api['workflow']['space_info'];
         $json = [
             'user_id' => $user_id,
-            'agent_id' => Config::$app_info[Config::$app_type]['app_info']['AGENT_ID']
+            'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
         ];
         return apiRequest::post($uri, $json);
     }
@@ -156,7 +156,7 @@ class WorkFlow
     {
         $uri = Url::$api['workflow']['space_preview'];
         $pre = $json;
-        $pre['agentid'] = Config::$app_info[Config::$app_type]['app_info']['AGENT_ID'];
+        $pre['agentid'] = Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
         $json = [
             'request' => $pre
         ];
@@ -175,7 +175,7 @@ class WorkFlow
         $json = [
             'request' => [
                 'process_code' => $process_code,
-                'agentid' => Config::$app_info[Config::$app_type]['app_info']['AGENT_ID']
+                'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
             ]
         ];
         return apiRequest::post($uri, $json);
