@@ -11,25 +11,25 @@ use SimpleDingTalk\Config;
  */
 class Authorize
 {
-    private  $url='https://login.dingtalk.com/oauth2/auth';
-    public $redirect_uri='';
+    private static $uri='https://login.dingtalk.com/oauth2/auth';
+   
 
-    public function set_redirect_uri(string $uri){
-        $this->redirect_uri=$uri;
+  
 
-        return $this;
-    }
-
-
-    public function assemble_url(){
-        $redirect_uri=$this->redirect_uri;
-        $app_info=Config::$app_info['app'][Config::$app_type];
+    public static function assemble_url(){
+     
+        $app=Config::$app_info['app'][Config::$app_type];
+        $redirect_uri=urlencode($app['scan_info']['redirect_uri']);
         $params=[
             'redirect_uri'=>$redirect_uri,
             'response_type'=>'code',
-            'client_id'=>$app_info['app_info']['APP_KEY'],
-            ''
-        ]
+            'client_id'=>$app['app_info']['APP_KEY'],
+            'scope'=>'openid',
+            'state'=>'ok',
+            'prompt'=>'consent'
+        ];
+        $uri=self::$uri;
+        return apiRequest::joinParams($uri,$params);
 
     }
 }
