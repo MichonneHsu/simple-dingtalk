@@ -66,6 +66,10 @@ Config::$app_info = [
 					'expires' => 180,
 					'file_path' => './c.json'
 				]
+			],
+             'userAccessToken'=>[
+				'expires' => 180,
+				'file_path' => './user.json'
 			]
 		],
 		'micro_app'=>[
@@ -90,6 +94,10 @@ Config::$app_info = [
 					'expires' => 0,
 					'file_path' => './c.json'
 				]
+			],
+             'userAccessToken'=>[
+				'expires' => 180,
+				'file_path' => './user.json'
 			]
 		]
 	],
