@@ -10,7 +10,6 @@ use GuzzleHttp\Psr7\Message;
 
 class apiRequest
 {
-
     /**
      * 客户端请求基本信息
      *
