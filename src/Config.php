@@ -27,8 +27,10 @@ class Config
                     'aes_key' => '',
                     'token' => ''
                 ],
-                'scan_info' => [
-                    'redirect_uri' => ''
+                'login_info' => [
+                    'autherize'=>[
+                        'redirect_uri' => ''
+                    ]
                 ],
                 'v2' => [
                     'access_token' => [
@@ -61,8 +63,10 @@ class Config
                     'pc' => '',
                     'management' => ''
                 ],
-                'scan_info' => [
-                    'redirect_uri' => ''
+                'login_info' => [
+                    'autherize'=>[
+                        'redirect_uri' => ''
+                    ]
                 ],
                 'v2' => [
                     'access_token' => [
