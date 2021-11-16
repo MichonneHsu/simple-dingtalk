@@ -37,7 +37,7 @@ scan_info->redirect_uri：跳转url
 v2：新版服务端信息
 robot:群聊机器人
 robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
-
+robot->access_token：机器人的发送群消息token
 配置格式：
 Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
@@ -107,7 +107,7 @@ Config::$app_info = [
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
-                    'SEC'=>''
+                    'access_token'=>''
                 ],
                 'access_token' => [
                     'expires' => 0,
@@ -120,7 +120,7 @@ Config::$app_info = [
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
-                    'SEC'=>''
+                    'access_token'=>''
                 ],
                 'access_token' => [
                     'expires' => 0,
