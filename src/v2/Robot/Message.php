@@ -74,8 +74,9 @@ class Message
     public static function send_group_msg(string $msgtype, array $content)
     {
         $params = Sign::signature();
-
-        $uri = Url::$api['robot']['send_group_msg'];
+        
+        $robot_info=Config::$app_info[Config::$robot_type]['info'];
+        $uri = Url::$api['robot']['send_group_msg'].$robot_info['SEC'];
         $uri = v1_req::joinParams($uri, $params);
         $json = [
             'msgtype' => $msgtype,
@@ -92,6 +93,8 @@ class Message
         return apiRequest::put($uri, $body);
     }
 
-    
+    public static function webhook(){
+
+    }
 
 }

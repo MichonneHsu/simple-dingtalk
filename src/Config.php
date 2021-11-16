@@ -86,8 +86,12 @@ class Config
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
-                    'SEC'=>''
+                    'token'=>''
                 ],
+                'access_token' => [
+                    'expires' => 0,
+                    'file_path' => ''
+                ]
                 
             ],
             'robot2' => [
@@ -95,9 +99,12 @@ class Config
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
-                    'SEC'=>''
+                    'token'=>''
                 ],
-                
+                'access_token' => [
+                    'expires' => 0,
+                    'file_path' => ''
+                ]
             ],
         ]
 
