@@ -43,10 +43,10 @@ Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
 Config::$app_info = [
 	'CORP_ID' => '',
-	'app' => [
+'app' => [
 		'miniprogram_app' => [
 			 'app_info'=>[
-                 'AGENT_ID' => 0,
+                'AGENT_ID' => 0,
     		    'APP_KEY' => '',
     		    'APP_SECRET' => '',
             ],
@@ -100,8 +100,8 @@ Config::$app_info = [
 				'file_path' => './user.json'
 			]
 		]
-	],
-	'robot'=>[
+],
+'robot'=>[
             'robot1' => [
                 'info' => [
                     'AGENT_ID' => 0,
@@ -146,7 +146,3 @@ WorkFlow::add_comment($json);
 1. 如果接口需要的参数复杂并且有必填和非必填的话，函数需要的参数需要开发者自行组装参数。
 2. 如果接口需要的参数不复杂并且不多、有必填和非必填，则只需要按照函数所需填入即可。
 3. 如果接口需要的参数全是必填的话则函数需要的参数不需要完全自行组装参数，按照函数所需的参数填入即可。
-
-
-### 扩展开发进度
-开发的进度已经完成70%
