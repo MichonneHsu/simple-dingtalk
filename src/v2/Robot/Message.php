@@ -71,18 +71,14 @@ class Message
         ];
         return v1_req::post($uri, $json);
     }
-    public static function send_group_msg(string $msgtype, array $content)
+    public static function send_group_msg(array $json)
     {
         $params = Sign::signature();
 
-        $robot_info=Config::$app_info[Config::$robot_type]['info'];
+        $robot_info=Config::$app_info['robot'][Config::$robot_type]['info'];
         $uri = Url::$api['robot']['send_group_msg'];
         $params['access_token']=$robot_info['access_token'];
         $uri = v1_req::joinParams($uri, $params);
-        $json = [
-            'msgtype' => $msgtype,
-            $msgtype => $content
-        ];
         $has_token =false;
         return v1_req::post($uri, $json,$has_token);
     }
