@@ -74,15 +74,17 @@ class Message
     public static function send_group_msg(string $msgtype, array $content)
     {
         $params = Sign::signature();
-        
+
         $robot_info=Config::$app_info[Config::$robot_type]['info'];
-        $uri = Url::$api['robot']['send_group_msg'].$robot_info['SEC'];
+        $uri = Url::$api['robot']['send_group_msg'];
+        $params['access_token']=$robot_info['access_token'];
         $uri = v1_req::joinParams($uri, $params);
         $json = [
             'msgtype' => $msgtype,
             $msgtype => $content
         ];
-        return v1_req::post($uri, $json);
+        $has_token =false;
+        return v1_req::post($uri, $json,$has_token);
     }
     public static function update_card(array $body)
     {
