@@ -80,12 +80,11 @@ class AccessToken
         $token['expireIn'] = $expires_in + time();
 
         return $token;
-      
     }
 
     public static function setUserToken(string $unionId)
     {
-        $uri = Url::$api['contact'] . "users/$unionId";
+
         $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
         $file_path = $at['file_path'];
 
@@ -96,28 +95,34 @@ class AccessToken
         }
         $file_contents = file_get_contents($file_path);
         if ($unionId == 'me') {
-            $generatedUserToken = AccessToken::generateUserToken();
-            $accessToken = $generatedUserToken['accessToken'];
-            $res = apiRequest::userGetReq($uri, [], $accessToken);
-            $userinfo = json_decode($res, true);
-            $key = $userinfo['unionId'];
+            $userinfo = self::getUserInfo($unionId);
+
+            $key = $userinfo['user_info']['unionId'];
             if (empty($file_contents) || array_key_exists($key, $userinfo) <> true || json_decode($file_contents, true)[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
-                $data[$key] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
+                $data[$key] = $userinfo;
             }
             return file_put_contents($file_path, json_encode($data)) <> false ? true : false;
         } else {
             $fc_arr = json_decode($file_contents, true);
             if (empty($file_contents) || array_key_exists($unionId, $fc_arr) <> true || $fc_arr[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
-                
-                $generatedUserToken = AccessToken::generateUserToken();
-                $accessToken = $generatedUserToken['accessToken'];
-                $res = apiRequest::userGetReq($uri, [], $accessToken);
-                $userinfo = json_decode($res, true);
-                $data[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
+
+
+
+                $data[$unionId] = self::getUserInfo($unionId);
 
                 return file_put_contents($file_path, json_encode($data)) <> false ? true : false;
             }
         }
         return true;
+    }
+
+    public static function getUserInfo($unionId)
+    {
+        $uri = Url::$api['contact'] . "users/$unionId";
+        $generatedUserToken = AccessToken::generateUserToken();
+        $accessToken = $generatedUserToken['accessToken'];
+        $res = apiRequest::userGetReq($uri, [], $accessToken);
+
+        return  ['user_info' =>  json_decode($res, true), 'token_info' => $generatedUserToken];
     }
 }
