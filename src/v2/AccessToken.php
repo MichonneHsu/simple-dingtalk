@@ -66,63 +66,64 @@ class AccessToken
     {
         $uri = Url::$api['getUserToken'];;
         $app = Config::$app_info['app'][Config::$app_type];
+        $appkey = $app['app_info']['APP_KEY'];
+        $appSecret = $app['app_info']['APP_SECRET'];
         $body = [
-            'clientId' => $app['app_info']['APP_KEY'],
-            'clientSecret' => $app['app_info']['APP_SECRET'],
+            'clientId' => $appkey,
+            'clientSecret' => $appSecret,
             'grantType' => self::$grantType,
             'code' =>  self::$code,
             'refreshToken' =>  self::$refreshToken
         ];
         $has_token = false;
         $res = apiRequest::post($uri, $body, $has_token);
+
+        // $filename = $app['userAccessToken']['file_path'];
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
 
         return $token;
+        // $data = json_encode($token);
+        // file_put_contents($filename, $data);
     }
 
     public static function setUserToken(string $unionId)
     {
-
+        $uri = Url::$api['contact'] . "users/$unionId";
         $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
         $file_path = $at['file_path'];
 
-        $data = [];
+        $key='';
 
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
         }
-        $file_contents = file_get_contents($file_path);
+        $file_contents = json_decode(file_get_contents($file_path),true);
         if ($unionId == 'me') {
-            $userinfo = self::getUserInfo($unionId);
-
-            $key = $userinfo['user_info']['unionId'];
-            if (empty($file_contents) || array_key_exists($key, $userinfo) <> true || json_decode($file_contents, true)[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
-                $data[$key] = $userinfo;
+            $generatedUserToken = AccessToken::generateUserToken();
+            $accessToken = $generatedUserToken['accessToken'];
+            $res = apiRequest::userGetReq($uri, [], $accessToken);
+            $userinfo = json_decode($res, true);
+            $key = $userinfo['unionId'];
+            if (empty($file_contents) || array_key_exists($key, $file_contents) <> true || $file_contents[$key]['token_info']['expireIn'] - $at['expires'] < time()) {
+                $file_contents[$key] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
             }
-            return file_put_contents($file_path, json_encode($data)) <> false ? true : false;
+            return file_put_contents($file_path, json_encode($file_contents)) <> false ? $key : false;
         } else {
-            $fc_arr = json_decode($file_contents, true);
-            if (empty($file_contents) || array_key_exists($unionId, $fc_arr) <> true || $fc_arr[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
+           
+            if (empty($file_contents) || array_key_exists($unionId, $file_contents) <> true || $file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
 
+                $generatedUserToken = AccessToken::generateUserToken();
+                $accessToken = $generatedUserToken['accessToken'];
+                $res = apiRequest::userGetReq($uri, [], $accessToken);
+                $userinfo = json_decode($res, true);
+                $key = $userinfo['unionId'];
+                $file_contents[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
 
-
-                $data[$unionId] = self::getUserInfo($unionId);
-
-                return file_put_contents($file_path, json_encode($data)) <> false ? true : false;
+                return file_put_contents($file_path, json_encode($file_contents)) <> false ? $key : false;
             }
         }
-        return true;
-    }
-
-    public static function getUserInfo($unionId)
-    {
-        $uri = Url::$api['contact'] . "users/$unionId";
-        $generatedUserToken = AccessToken::generateUserToken();
-        $accessToken = $generatedUserToken['accessToken'];
-        $res = apiRequest::userGetReq($uri, [], $accessToken);
-
-        return  ['user_info' =>  json_decode($res, true), 'token_info' => $generatedUserToken];
+        return $key;
     }
 }

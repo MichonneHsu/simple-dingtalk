@@ -13,8 +13,9 @@ class Contact
     {
         $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
         $file_path = $at['file_path'];
-        if(AccessToken::setUserToken($unionId)){
-            return file_get_contents($file_path);
+        $key=AccessToken::setUserToken($unionId);
+        if($key<>false){
+            return json_decode(file_get_contents($file_path),true)[$key];
         }
         return '';
     }
