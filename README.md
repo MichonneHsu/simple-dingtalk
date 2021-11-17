@@ -34,6 +34,7 @@ callback_info->aes_key：当前应用的加密
 callback_info->token：当前应用的签名
 scan_info：扫码登录信息
 scan_info->redirect_uri：跳转url
+userAccessToken：
 v2：新版服务端信息
 robot:群聊机器人
 robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
@@ -43,7 +44,7 @@ Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
 Config::$app_info = [
 	'CORP_ID' => '',
-'app' => [
+    'app' => [
 		'miniprogram_app' => [
 			 'app_info'=>[
                 'AGENT_ID' => 0,
