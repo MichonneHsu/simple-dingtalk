@@ -91,7 +91,15 @@ class Message
         return apiRequest::put($uri, $body);
     }
 
-    public static function webhook(){
+    public static function webhook(array $json,string $group_token){
+      
+        $uri = Url::$api['robot']['webhook'];
+        $params=[
+            'access_token'=>$group_token
+        ];
+        $uri=apiRequest::joinParams($uri,$params);
+        $has_token =false;
+        return v1_req::post($uri, $json,$has_token);
 
     }
 
