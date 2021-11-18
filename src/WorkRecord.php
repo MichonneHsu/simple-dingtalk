@@ -70,10 +70,8 @@ class WorkRecord
     {
         $uri = Url::$api['workrecord']['create'];
         $pre = $json;
-
-        $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
-        ])];
+        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $json = ['request' => $pre];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -86,9 +84,8 @@ class WorkRecord
     {
         $uri = Url::$api['workrecord']['save'];
         $pre = $json;
-        $json = ['saveProcessRequest' => array_merge($pre, [
-            'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
-        ])];
+        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $json = ['saveProcessRequest' => $pre];
         return apiRequest::post($uri, $json);
     }
     /**
@@ -151,9 +148,8 @@ class WorkRecord
     {
         $uri = Url::$api['workrecord']['task_create'];
         $pre = $json;
-        $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
-        ])];
+        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $json = ['request' => $pre];
 
         return apiRequest::post($uri, $json);
     }
@@ -206,10 +202,8 @@ class WorkRecord
         $uri = Url::$api['workrecord']['cancel'];
 
         $pre = $json;
-
-        $json = ['request' => array_merge($pre, [
-            'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
-        ])];
+        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $json = ['request' => $pre];
 
         return apiRequest::post($uri, $json);
     }

@@ -71,36 +71,53 @@ class Message
         ];
         return v1_req::post($uri, $json);
     }
-    public static function send_group_msg(array $json)
+    /**
+     * 更新钉钉可交互式卡片
+     *
+     * @param array $body
+     * @return void
+     */
+    public static function update_card(array $body)
+    {
+
+
+        $uri = Url::$api['robot']['card'];
+
+        return apiRequest::put($uri, $body);
+    }
+    /**
+     * 指定群发送消息
+     *
+     * @param array $json
+     * @param string $group_token
+     * @return void
+     */
+    public static function send_group_msg(array $json, string $group_token)
     {
         $params = Sign::signature();
 
-        $robot_info=Config::$app_info['robot'][Config::$robot_type]['info'];
-        $uri = Url::$api['robot']['send_group_msg'];
-        $params['access_token']=$robot_info['access_token'];
+        $uri = Url::$api['robot']['send_msg'];
+        $params['access_token'] = $group_token;
         $uri = v1_req::joinParams($uri, $params);
-        $has_token =false;
-        return v1_req::post($uri, $json,$has_token);
+        $has_token = false;
+        return v1_req::post($uri, $json, $has_token);
     }
-    public static function update_card(array $body)
+    /**
+     * 通过webhook方式向指定对象发送消息
+     *
+     * @param array $json
+     * @param string $group_token
+     * @return void
+     */
+    public static function webhook(array $json, string $group_token)
     {
-       
 
-        $uri = Url::$api['robot']['card'];
-     
-        return apiRequest::put($uri, $body);
-    }
-
-    public static function webhook(array $json,string $group_token){
-      
-        $uri = Url::$api['robot']['webhook'];
-        $params=[
-            'access_token'=>$group_token
+        $uri = Url::$api['robot']['send_msg'];
+        $params = [
+            'access_token' => $group_token
         ];
-        $uri=apiRequest::joinParams($uri,$params);
-        $has_token =false;
-        return v1_req::post($uri, $json,$has_token);
-
+        $uri = apiRequest::joinParams($uri, $params);
+        $has_token = false;
+        return v1_req::post($uri, $json, $has_token);
     }
-
 }
