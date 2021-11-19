@@ -195,7 +195,7 @@ class Url
         ],
         
         'cspace'=>[
-            'get_custom_space'=>'/cspace/get_custom_space',
+            'add_to_single_chat'=>'/cspace/add_to_single_chat',
             'file'=>[
                 'upload_single'=>'/file/upload/single'
             ]

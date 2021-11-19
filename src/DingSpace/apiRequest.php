@@ -9,6 +9,8 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 use SimpleDingTalk\AccessToken;
 use SimpleDingTalk\Url;
+use CURLFile;
+use Exception;
 
 class apiRequest
 {
@@ -54,10 +56,10 @@ class apiRequest
      * post请求
      *
      * @param string $uri
-     * @param array $multipart
+     * @param array $json
      * @return mixed
      */
-    public static function post(string $uri, array $multipart = [], bool $has_token = true)
+    public static function post(string $uri, array $json = [], bool $has_token = true)
     {
 
         try {
@@ -70,7 +72,7 @@ class apiRequest
             }
 
             $resp = $client->request('POST', $uri, [
-                'multipart' => $multipart
+                'json' => $json
             ]);
             
             $content = $resp->getBody()->getContents();
@@ -82,7 +84,44 @@ class apiRequest
         }
     }
 
-
+    public static function upload_file(string $uri,array $params, string $file)
+    {
+        $uri=Url::$api['domain'].$uri;
+        $params['access_token']=AccessToken::getToken();
+        $uri=self::joinParams($uri,$params);
+       
+       
+       
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+        
+            CURLOPT_URL => $uri,
+        
+            CURLOPT_RETURNTRANSFER => true,
+        
+            CURLOPT_ENCODING => '',
+        
+            CURLOPT_MAXREDIRS => 10,
+        
+            CURLOPT_TIMEOUT => 0,
+        
+            CURLOPT_FOLLOWLOCATION => true,
+        
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        
+            CURLOPT_CUSTOMREQUEST => 'POST',
+        
+            CURLOPT_POSTFIELDS => array('file'=> new CURLFILE($file)),
+        
+         ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        
+        return $response;
+    }
     public static function joinParams(string $uri, array $params): string
     {
 
