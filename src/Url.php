@@ -195,7 +195,10 @@ class Url
         ],
         
         'cspace'=>[
-            'get_custom_space'=>'/cspace/get_custom_space'
+            'get_custom_space'=>'/cspace/get_custom_space',
+            'file'=>[
+                'upload_single'=>'/file/upload/single'
+            ]
         ]
 
     ];
