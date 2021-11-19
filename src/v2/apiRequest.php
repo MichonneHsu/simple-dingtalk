@@ -53,7 +53,7 @@ class apiRequest{
         return self::REST('post',$uri,$body,$has_token);
     }
     /**
-     * delete
+     * delete请求
      *
      * @param string $uri
      * @param array $body
@@ -65,7 +65,7 @@ class apiRequest{
         return self::REST('delete',$uri,$body,$has_token);
     }
     /**
-     * delete
+     * put请求
      *
      * @param string $uri
      * @param array $body
