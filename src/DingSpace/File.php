@@ -75,7 +75,6 @@ class File
             'domain' => $domain,
 
         ];
-
         return apiRequest::get($uri, $query);
     }
     public static function grant_custom_space(string $userid,string $domain,string $type,int $duration,string $path='',string $fileids='')
