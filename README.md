@@ -107,7 +107,6 @@ Config::$app_info = [
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
-                    'access_token'=>'',
                     'SEC'=>''
                 ],
                 'access_token' => [
@@ -121,7 +120,6 @@ Config::$app_info = [
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
-                    'access_token'=>'',
                      'SEC'=>''
                 ],
                 'access_token' => [
