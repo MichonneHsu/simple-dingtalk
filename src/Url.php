@@ -196,6 +196,7 @@ class Url
         
         'cspace'=>[
             'add_to_single_chat'=>'/cspace/add_to_single_chat',
+            'add'=>'/cspace/add',
             'file'=>[
                 'upload_single'=>'/file/upload/single'
             ]

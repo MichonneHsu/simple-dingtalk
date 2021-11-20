@@ -35,4 +35,21 @@ class File
         ];
         return apiRequest::upload_file($uri,$params,$file);
     }
+
+
+
+    public static function add(string $name,string $code,string $media_id,string $space_id,bool $overwrite=true,string $folder_id=''){
+        $uri=Url::$api['cspace']['add'];
+        $query=[
+            'agent_id'=> Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
+            'name'=>$name,
+            'code'=>$code,
+            'media_id'=>$media_id,
+            'space_id'=>$space_id,
+            'overwrite'=>$overwrite,
+            'folder_id'=>$folder_id
+        ];
+        
+        return apiRequest::get($uri,$query);
+    }
 }
