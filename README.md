@@ -38,7 +38,6 @@ userAccessToken：
 v2：新版服务端信息
 robot:群聊机器人
 robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
-robot->access_token：机器人的发送群消息token
 配置格式：
 Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
