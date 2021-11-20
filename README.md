@@ -7,7 +7,7 @@
 <p align="center" style="font-family: Arial, Helvetica, sans-serif;">钉钉服务端PHP-API，简化初学者的使用难度。</p>
 <p align="center">
 <img src="https://img.shields.io/badge/PHP-7.3+-green" />
-<img src="https://img.shields.io/badge/release-1.0.1-orange" />
+<img src="https://img.shields.io/badge/release-1.0.2-orange" />
 <img src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 
