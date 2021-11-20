@@ -51,16 +51,16 @@ class Message
         $uri = Url::$api['robot']['scencegroup_chat'];
         return v1_req::post($uri, $body);
     }
-    /**
-     * 注册互动卡片回调地址
-     *
-     * @param string $callback_url
-     * @param string $api_secret
-     * @param string $callbackRouteKey
-     * @param boolean $forceUpdate
-     * @return mixed
-     */
-    public static function callback_register(string $callback_url, string $api_secret = '', string $callbackRouteKey = '', bool $forceUpdate = false)
+   /**
+    * 注册互动卡片回调地址
+    *
+    * @param string $callback_url
+    * @param string $callbackRouteKey
+    * @param boolean $forceUpdate
+    * @param string $api_secret
+    * @return void
+    */
+    public static function callback_register(string $callback_url, string $callbackRouteKey = '', bool $forceUpdate = false,string $api_secret = '')
     {
         $uri = Url::$api['robot']['callback_register'];
         $json = [
