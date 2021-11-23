@@ -41,11 +41,11 @@ class ApiRequest
             ]);
 
 
-         
+
 
             return $resp->getBody()->getContents();
         } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
+            return Message::toString($e->getResponse());
         }
     }
     /**
@@ -66,23 +66,23 @@ class ApiRequest
                     'access_token' => AccessToken::getToken()
                 ]);
             }
-            if(empty($json)){
+            if (empty($json)) {
                 $resp = $client->request('POST', $uri);
-            }else{
+            } else {
                 $resp = $client->request('POST', $uri, [
                     'json' => $json
                 ]);
             }
-           
 
 
 
-          
+
+
 
 
             return $resp->getBody()->getContents();
         } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
+            return Message::toString($e->getResponse());
         }
     }
 

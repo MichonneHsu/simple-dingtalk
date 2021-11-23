@@ -99,7 +99,7 @@ class ApiRequest{
            
             return $resp->getBody()->getContents();
         } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
+            return Message::toString($e->getResponse());
            
         }
     }
@@ -116,32 +116,16 @@ class ApiRequest{
             $rep=self::request('get',$uri,$body,$header);
             $resp=$client->send($rep,['timeout'=>2]);
            
-            $content=$resp->getBody()->getContents();
+            $resp->getBody()->getContents();
           
            
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
+            return Message::toString($e->getResponse());
            
         }
     }
-    public static function token_post(string $uri, array $json)
-    {
 
-        try {
-            $client = self::client();
-            $resp = $client->request('POST', $uri, [
-                'json' => $json
-            ]);
-
-            $content = $resp->getBody()->getContents();
-
-
-            return $content;
-        } catch (RequestException $e) {
-           throw new \Exception(Message::toString($e->getResponse()));
-        }
-    }
   
     public static function joinParams(string $uri, array $params):string
     {

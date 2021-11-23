@@ -98,27 +98,13 @@ class ApiRequest{
            
             return $resp->getBody()->getContents();
         } catch (RequestException $e) {
-            throw new \Exception(Message::toString($e->getResponse()));
+            return Message::toString($e->getResponse());
            
         }
     }
     
    
-    public static function token_post(string $uri, array $json)
-    {
-
-        try {
-            $client = self::client();
-            $resp = $client->request('POST', $uri, [
-                'json' => $json
-            ]);
-
-
-            return $resp->getBody()->getContents();
-        } catch (RequestException $e) {
-           throw new \Exception(Message::toString($e->getResponse()));
-        }
-    }
+  
   
     public static function joinParams(string $uri, array $params):string
     {
