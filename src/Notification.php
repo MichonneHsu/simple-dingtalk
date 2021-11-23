@@ -20,10 +20,8 @@ class Notification
 
         $uri = Url::$api['notification']['corpconversation'];
 
-
-        $json = array_merge($json, [
-            'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
-        ]);
+        $json['agent_id']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        
         return ApiRequest::post($uri, $json);
     }
     /**

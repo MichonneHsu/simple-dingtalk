@@ -41,7 +41,7 @@ class ApiRequest
             ]);
 
 
-            $content = $resp->getBody()->getContents();
+         
 
             return $resp->getBody()->getContents();
         } catch (RequestException $e) {
