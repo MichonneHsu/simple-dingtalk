@@ -74,12 +74,6 @@ class ApiRequest
                 ]);
             }
 
-
-
-
-
-
-
             return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             return Message::toString($e->getResponse());

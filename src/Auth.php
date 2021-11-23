@@ -22,7 +22,7 @@ class Auth
         $ticket = JsapiTicket::getToken();
         $signature = self::sign($ticket, $nonceStr, $timeStamp, $url);
 
-        $config = array(
+        return array(
             'url' => $url,
             'nonceStr' => $nonceStr,
             'agentId' => $agentId,
@@ -30,7 +30,6 @@ class Auth
             'corpId' => $corpId,
             'signature' => $signature
         );
-        return $config;
     }
     public static function sign($ticket, $nonceStr, $timeStamp, $url)
     {
