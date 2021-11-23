@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\Request;
 use SimpleDingTalk\v2\Url;
-class apiRequest{
+class ApiRequest{
   
     /**
      * 客户端请求基本信息
@@ -94,11 +94,9 @@ class apiRequest{
             }
             $rep=self::request($method,$uri,$body,$header);
             $resp=$client->send($rep,['timeout'=>2]);
-           
-            $content=$resp->getBody()->getContents();
           
            
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
            
@@ -115,10 +113,8 @@ class apiRequest{
                 'json' => $json
             ]);
 
-            $content = $resp->getBody()->getContents();
 
-
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
            throw new \Exception(Message::toString($e->getResponse()));
         }

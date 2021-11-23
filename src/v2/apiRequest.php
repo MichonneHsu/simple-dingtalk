@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\Request;
-class apiRequest{
+class ApiRequest{
   
     /**
      * 客户端请求基本信息
@@ -94,23 +94,23 @@ class apiRequest{
             $rep=self::request($method,$uri,$body,$header);
             $resp=$client->send($rep,['timeout'=>2]);
            
-            $content=$resp->getBody()->getContents();
+            
           
            
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
            
         }
     }
     
-    public static function userGetReq(string $uri,array $body=[]){
+    public static function userGetReq(string $uri,array $body=[],string $accessToken){
         try {
             $client=self::client();
             $body=empty($body)?'':json_encode($body);
             $header=[
                 'Content-Type'=>'application/json',
-                'x-acs-dingtalk-access-token'=>AccessToken::getUserToken()
+                'x-acs-dingtalk-access-token'=>$accessToken
             ]; 
             
             $rep=self::request('get',$uri,$body,$header);

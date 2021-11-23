@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 use Exception;
 /**
  * 考勤班次
@@ -29,7 +29,7 @@ class Shift
             'shift'=>$shift,
           
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询历史班次
@@ -49,7 +49,7 @@ class Shift
             'version'=>$version
           
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 删除班次
@@ -66,7 +66,7 @@ class Shift
             'op_user_id' => $op_user_id,
             'shift_id'=>$shift_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 修改卡点设置
@@ -85,7 +85,7 @@ class Shift
             'shift_id'=>$shift_id,
             'punches'=>$punches
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 按名称搜索班次
@@ -102,7 +102,7 @@ class Shift
             'op_user_id' => $op_user_id,
             'shift_name'=>$shift_name
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取班次详情
@@ -119,7 +119,7 @@ class Shift
             'op_user_id' => $op_user_id,
             'shift_id'=>$shift_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取班次摘要信息
@@ -136,6 +136,6 @@ class Shift
             'op_user_id' => $op_user_id,
             'cursor'=>$cursor
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

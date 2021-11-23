@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\AccessToken;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 /**
  * 考勤组管理
  */
@@ -25,7 +25,7 @@ class GroupManagerment
             'offset' => $offset,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取用户考勤组 function
@@ -39,7 +39,7 @@ class GroupManagerment
         $json = [
             'userid' => $userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取考勤组成员
@@ -57,7 +57,7 @@ class GroupManagerment
             'group_id'=>$group_id,
             'cursor'=>$cursor
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 考勤组成员校验
@@ -77,7 +77,7 @@ class GroupManagerment
             'member_ids'=>$member_ids,
             'member_type'=>$member_type
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新考勤组成员
@@ -97,7 +97,7 @@ class GroupManagerment
             'schedule_flag'=>$schedule_flag,
             'update_param'=>$update_param
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取考勤组员工的userid
@@ -115,7 +115,7 @@ class GroupManagerment
             'group_id'=>$group_id,
             'cursor'=>$cursor
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取考勤组详情
@@ -131,7 +131,7 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 搜索考勤组摘要
@@ -147,7 +147,7 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'group_name'=>$group_name
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量新增wifi信息
@@ -165,7 +165,7 @@ class GroupManagerment
             'group_key'=>$group_key,
             'wifi_list'=>$wifi_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量移除wifi
@@ -183,7 +183,7 @@ class GroupManagerment
             'group_key'=>$group_key,
             'wifi_key_list'=>$wifi_key_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量查询wifi
@@ -203,7 +203,7 @@ class GroupManagerment
             'cursor'=>$cursor,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量新增position
@@ -221,7 +221,7 @@ class GroupManagerment
             'group_key'=>$group_key,
             'position_list'=>$position_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量删除position
@@ -239,7 +239,7 @@ class GroupManagerment
             'group_key'=>$group_key,
             'position_key_list'=>$position_key_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量查询position
@@ -259,7 +259,7 @@ class GroupManagerment
             'cursor'=>$cursor,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 创建考勤组
@@ -275,7 +275,7 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'top_group'=>$top_group
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新考勤组
@@ -291,7 +291,7 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'top_group'=>$top_group
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 删除考勤组
@@ -307,7 +307,7 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量新增考勤组成员
@@ -325,7 +325,7 @@ class GroupManagerment
             'group_key'=>$group_key,
             'user_id_list'=>$user_id_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     
     }
     /**
@@ -344,7 +344,7 @@ class GroupManagerment
             'group_key'=>$group_key,
             'user_id_list'=>$user_id_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询考勤组员工
@@ -364,7 +364,7 @@ class GroupManagerment
             'cursor'=>$cursor,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 根据groupkey查询考勤组信息
@@ -380,7 +380,7 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'group_key'=>$group_key
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * groupKey转换为groupId
@@ -397,7 +397,7 @@ class GroupManagerment
             'group_key'=>$group_key,
            
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * groupId转换为groupKey
@@ -413,6 +413,6 @@ class GroupManagerment
             'op_user_id' => $op_user_id,
             'group_id'=>$group_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

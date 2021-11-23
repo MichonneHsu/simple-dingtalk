@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\attendance;
 
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 use SimpleDingTalk\util\Time;
 
 /**
@@ -23,7 +23,7 @@ class Approve
     {
         $uri = Url::$api['attendance']['approve']['finish'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 通知审批撤销
@@ -39,59 +39,31 @@ class Approve
             'userid' => $userid,
             'approve_id' => $approve_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 通知补卡通过
      *
-     * @param string $userid
-     * @param string $work_date
-     * @param integer $punch_id
-     * @param string $punch_check_time
-     * @param string $user_check_time
-     * @param string $approve_id
-     * @param string $jump_url
-     * @param string $tag_name
+     * @param array $json
      * @return mixed
      */
-    public static function check(string $userid, string $work_date, int $punch_id, string  $punch_check_time, string $user_check_time, string $approve_id, string $jump_url, string $tag_name)
+    public static function check(array $json)
     {
         $uri = Url::$api['attendance']['approve']['check'];
-        $json = [
-            'userid' => $userid,
-            'work_date' => $work_date,
-            'punch_id' => $punch_id,
-            'punch_check_time'=>$punch_check_time,
-            'user_check_time'=>$user_check_time,
-            'approve_id' => $approve_id,
-            'jump_url'=>$jump_url,
-            'tag_name'=>$tag_name
-        ];
-        return apiRequest::post($uri, $json);
+       
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 计算请假时长
      *
-     * @param string $userid
-     * @param integer $biz_type
-     * @param string $from_time
-     * @param string $to_time
-     * @param string $duration_unit
-     * @param string $calculate_model
+     * @param array $json
      * @return mixed
      */
-    public static function duration_calculate(string $userid, int $biz_type, string $from_time, string  $to_time, string $duration_unit, string $calculate_model)
+    public static function duration_calculate(array $json)
     {
         $uri = Url::$api['attendance']['approve']['duration_calculate'];
-        $json = [
-            'userid' => $userid,
-            'biz_type' => $biz_type,
-            'from_time' => $from_time,
-            'to_time'=>$to_time,
-            'duration_unit'=>$duration_unit,
-            'calculate_model' => $calculate_model
-        ];
-        return apiRequest::post($uri, $json);
+       
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 通知换班通过
@@ -108,22 +80,11 @@ class Approve
      * @param string $reback_target_shift_id
      * @return mixed
      */
-    public static function schedule_switch(string $userid, string $switch_date, string $reback_date, string $apply_userid, string $target_userid, string $approve_id,int $apply_shift_id,int $target_shift_id,int $reback_apply_shift_id,int $reback_target_shift_id)
+    public static function schedule_switch(array $json)
     {
         $uri = Url::$api['attendance']['approve']['schedule_switch'];
-        $json = [
-            'userid' => $userid,
-            'switch_date' => $switch_date,
-            'reback_date' => $reback_date,
-            'apply_userid'=>$apply_userid,
-            'target_userid'=>$target_userid,
-            'approve_id' => $approve_id,
-            'apply_shift_id'=>$apply_shift_id,
-            'target_shift_id'=>$target_shift_id,
-            'reback_apply_shift_id'=>$reback_apply_shift_id,
-            'reback_target_shift_id'=>$reback_target_shift_id
-        ];
-        return apiRequest::post($uri, $json);
+        
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 计算请假时长
@@ -142,7 +103,7 @@ class Approve
             'from_date' => $from_date,
             'to_date' =>$to_date 
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 
     public static function getleavestatus(string $userid_list, string $start_time, string $end_time,int $offset,int $size=10)
@@ -156,6 +117,6 @@ class Approve
             'offset'=>$offset,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

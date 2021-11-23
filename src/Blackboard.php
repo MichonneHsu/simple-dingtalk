@@ -19,7 +19,7 @@ class Blackboard{
             'blackboard_id'=>$blackboard_id,
             'operation_userid'=>$operation_userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 创建公告
@@ -33,7 +33,7 @@ class Blackboard{
         $json=[
             'create_request'=>$pre
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新公告
@@ -47,7 +47,7 @@ class Blackboard{
         $json=[
             'update_request'=>$pre
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 删除公告
@@ -63,7 +63,7 @@ class Blackboard{
             'blackboard_id'=>$blackboard_id,
             'operation_userid'=>$operation_userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取用户可查看的公告
@@ -76,7 +76,7 @@ class Blackboard{
         $json=[
             'userid'=>$userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取公告分类列表
@@ -89,7 +89,7 @@ class Blackboard{
         $json=[
             'operation_userid'=>$operation_userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取公告ID列表
@@ -116,7 +116,7 @@ class Blackboard{
             ]
            
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
    
 }

@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Message;
 
-class apiRequest
+class ApiRequest
 {
     /**
      * 客户端请求基本信息
@@ -43,7 +43,7 @@ class apiRequest
 
             $content = $resp->getBody()->getContents();
 
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
         }
@@ -77,10 +77,10 @@ class apiRequest
 
 
 
-            $content = $resp->getBody()->getContents();
+          
 
 
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
         }

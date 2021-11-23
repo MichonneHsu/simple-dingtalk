@@ -18,7 +18,7 @@ class ContactLog
         $json = [
             'dept_id' => $dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门用户详情
@@ -30,7 +30,7 @@ class ContactLog
     {
         $uri = Url::$api['contact_log']['get_user'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门下人员列表
@@ -42,7 +42,7 @@ class ContactLog
     {
         $uri = Url::$api['contact_log']['get_user_list'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门列表
@@ -54,7 +54,7 @@ class ContactLog
     {
         $uri = Url::$api['contact_log']['get_department_list'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取企业信息
@@ -65,6 +65,6 @@ class ContactLog
     {
         $uri = Url::$api['contact_log']['get_organization'];
 
-        return apiRequest::post($uri);
+        return ApiRequest::post($uri);
     }
 }

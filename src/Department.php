@@ -10,7 +10,7 @@ class Department{
      */
     public static function create(array $json){
         $uri=Url::$api['department']['create'];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新部门
@@ -20,7 +20,7 @@ class Department{
      */
     public static function update(array $json){
         $uri=Url::$api['department']['update'];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 删除部门
@@ -33,7 +33,7 @@ class Department{
         $json=[
             'dept_id'=>$dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门详情
@@ -46,7 +46,7 @@ class Department{
         $json=[
             'dept_id'=>$dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门列表
@@ -59,7 +59,7 @@ class Department{
         $json=[
             'dept_id'=>$dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取子部门ID列表
@@ -72,7 +72,7 @@ class Department{
         $json=[
             'dept_id'=>$dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取指定用户的所有父部门列表
@@ -85,7 +85,7 @@ class Department{
         $json=[
             'userid'=>$userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取指定部门的所有父部门列表
@@ -98,6 +98,6 @@ class Department{
         $json=[
             'dept_id'=>$dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

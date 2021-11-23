@@ -24,7 +24,7 @@ class Notification
         $json = array_merge($json, [
             'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
         ]);
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新工作通知状态栏
@@ -39,7 +39,7 @@ class Notification
 
         $json['agent_id']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
       
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取工作通知消息的发送进度
@@ -57,7 +57,7 @@ class Notification
             'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
             'task_id' => $task_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取工作通知消息的发送结果
@@ -76,7 +76,7 @@ class Notification
             'task_id' => $task_id
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 撤回工作通知消息
@@ -94,6 +94,6 @@ class Notification
             'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
             'msg_task_id' => $task_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

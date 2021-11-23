@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\util\Time;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 /**
  * 假期管理
  */
@@ -21,7 +21,7 @@ class VacationManagement
     {
         $uri=Url::$api['attendance']['vacationManagement']['create'];
         $json=self::parse_save_data($json);
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新假期类型s
@@ -33,7 +33,7 @@ class VacationManagement
     {
         $uri=Url::$api['attendance']['vacationManagement']['update'];
         $json=self::parse_save_data($json);
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新假期类型
@@ -51,7 +51,7 @@ class VacationManagement
             'leave_code'=>$leave_code
         ];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询假期类型
@@ -69,7 +69,7 @@ class VacationManagement
             'vacation_source'=>$vacation_source
         ];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 初始化假期余额
@@ -88,7 +88,7 @@ class VacationManagement
             'leave_quotas'=>self::parse_quote_save_data($leave_quotas)
         ];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询假期余额
@@ -112,7 +112,7 @@ class VacationManagement
             'size'=>$size
         ];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量更新假期余额
@@ -132,7 +132,7 @@ class VacationManagement
             'leave_quotas'=>$leave_quotas
         ];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询假期消费记录s
@@ -156,7 +156,7 @@ class VacationManagement
             'size'=>$size
         ];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 假期余额数据格式转换

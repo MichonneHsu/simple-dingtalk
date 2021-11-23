@@ -51,7 +51,7 @@ class AccessToken
         ];
        
         $has_token=false;
-        $res = apiRequest::post($uri, $body,$has_token);
+        $res = ApiRequest::post($uri, $body,$has_token);
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Authentication;
-use SimpleDingTalk\v2\apiRequest;
+use SimpleDingTalk\v2\ApiRequest;
 use SimpleDingTalk\v2\Url;
 use SimpleDingTalk\Config;
 /**
@@ -29,7 +29,7 @@ class Authorize
             'prompt'=>'consent'
         ];
         $uri=self::$uri;
-        return apiRequest::joinParams($uri,$params);
+        return ApiRequest::joinParams($uri,$params);
 
     }
 }

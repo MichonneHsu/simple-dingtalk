@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 use SimpleDingTalk\util\Time;
 /**
  * 考勤打卡
@@ -34,7 +34,7 @@ class Checkin
             'limit'=>$limit,
             'isI18n'=>$isI18n
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取打卡详情
@@ -55,7 +55,7 @@ class Checkin
             'checkDateTo'=>$checkDateTo,
             'isI18n'=>$isI18n
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 上传打卡记录
@@ -78,6 +78,6 @@ class Checkin
             'user_check_time'=>Time::toTime($user_check_time),
             'photo_url'=>$photo_url
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

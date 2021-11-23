@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Drive;
 
-use SimpleDingTalk\v2\apiRequest;
+use SimpleDingTalk\v2\ApiRequest;
 use SimpleDingTalk\v2\Url;
 /**
  * 空间管理
@@ -26,7 +26,7 @@ class Space
             'name' => $name,
             'unionId' => $unionId
         ];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 删除空间
@@ -42,8 +42,8 @@ class Space
         $params = [
             'unionId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::delete($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::delete($uri);
     }
 
     /**
@@ -65,8 +65,8 @@ class Space
             'maxResults'=>$maxResults,
             'nextToken'=>$nextToken
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::get($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::get($uri);
     }
     /**
      * 获取空间信息
@@ -82,8 +82,8 @@ class Space
         $params = [
             'unionId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::get($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::get($uri);
     }
 
 

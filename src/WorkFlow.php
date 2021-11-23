@@ -25,7 +25,7 @@ class WorkFlow
         $json = ['saveProcessRequest' => array_merge($pre, [
             'agentid' => Config::$app_info[Config::$app_type]['app_info']['AGENT_ID']
         ])];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 发起审批实例
@@ -38,7 +38,7 @@ class WorkFlow
         $uri = Url::$api['workflow']['create'];
         $json['agent_id'] = Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 终止审批流程
@@ -52,7 +52,7 @@ class WorkFlow
         $pre = $json;
         $json = ['request' => $pre];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 下载审批附件
@@ -73,7 +73,7 @@ class WorkFlow
 
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取审批实例详情
@@ -91,7 +91,7 @@ class WorkFlow
 
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取审批实例ID列表
@@ -103,7 +103,7 @@ class WorkFlow
     {
         $uri = Url::$api['workflow']['get_list'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取用户待审批数量
@@ -117,7 +117,7 @@ class WorkFlow
         $json = [
             'userid' => $userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取指定用户可见的审批表单列表
@@ -129,7 +129,7 @@ class WorkFlow
     {
         $uri = Url::$api['workflow']['listbyuserid'];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取审批钉盘空间信息
@@ -144,7 +144,7 @@ class WorkFlow
             'user_id' => $user_id,
             'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 授权预览审批附件
@@ -160,7 +160,7 @@ class WorkFlow
         $json = [
             'request' => $pre
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询已设置为条件的表单组件
@@ -178,7 +178,7 @@ class WorkFlow
                 'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
             ]
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 添加审批评论
@@ -191,7 +191,7 @@ class WorkFlow
         $uri = Url::$api['workflow']['add_comment'];
         $pre = $json;
         $json = ['request' => $pre];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取当前企业所有可管理的模版
@@ -205,7 +205,7 @@ class WorkFlow
         $json = [
             'userid' => $userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 添加审批评论
@@ -218,7 +218,7 @@ class WorkFlow
         $uri = Url::$api['workflow']['execute'];
         $pre = $json;
         $json = ['request' => $pre];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 授权下载审批钉盘文件
@@ -242,6 +242,6 @@ class WorkFlow
 
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

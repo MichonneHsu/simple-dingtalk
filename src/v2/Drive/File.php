@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Drive;
-use SimpleDingTalk\v2\apiRequest;
+use SimpleDingTalk\v2\ApiRequest;
 use SimpleDingTalk\v2\Url;
 /**
  * 文件管理
@@ -33,8 +33,8 @@ class File
             'orderType'=>$orderType,
             'nextToken'=>$nextToken
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::get($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::get($uri);
     }
 
     public static function get_info(string $unionId, string $spaceId,string $fileId)
@@ -44,8 +44,8 @@ class File
         $params = [
             'unionId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::get($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::get($uri);
     }
 
     public static function create(string $unionId, string $spaceId,string $fileType,string $fileName,string $parentId='',string $mediaId='',string $addConflictPolicy='')
@@ -61,7 +61,7 @@ class File
             'addConflictPolicy'=>$addConflictPolicy
         ];
      
-        return apiRequest::post($uri,$body);
+        return ApiRequest::post($uri,$body);
     }
     public static function remove(string $unionId, string $spaceId,string $fileId,string $deletePolicy='toRecycle')
     {
@@ -71,7 +71,7 @@ class File
             'unionId' => $unionId,
             'deletePolicy'=>$deletePolicy
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::delete($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::delete($uri);
     }
 }

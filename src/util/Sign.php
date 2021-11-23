@@ -13,9 +13,8 @@ class Sign{
         $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
 
         $signature = base64_encode($s);
-
-        $urlencode_signature = urlencode($signature);
-        return $urlencode_signature;
+     
+        return urlencode($signature);
     }
 
     public static function getMillisecond(): string

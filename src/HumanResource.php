@@ -18,7 +18,7 @@ class HumanResource{
             'offset'=>$offset,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取待入职员工列表
@@ -34,7 +34,7 @@ class HumanResource{
             'offset'=>$offset,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取员工离职信息
@@ -48,7 +48,7 @@ class HumanResource{
         $json=[
             'userid_list'=>$userid_list
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取离职员工列表
@@ -65,7 +65,7 @@ class HumanResource{
             'size'=>$size
         ];
      
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 添加企业待入职员工
@@ -80,6 +80,6 @@ class HumanResource{
         $json=[
             'param'=>$pre
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

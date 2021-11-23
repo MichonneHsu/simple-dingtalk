@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\GroupChatMangement;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 use Exception;
 
 class GroupChat
@@ -23,7 +23,7 @@ class GroupChat
             'showHistoryType'=>$showHistoryType,
             'searchable'=>$searchable
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     public static function get_qrcode(string $chatid,string $userid)
     {
@@ -32,6 +32,6 @@ class GroupChat
             'chatid' => $chatid,
             'userid'=>$userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 
 /**
  * 考勤机管理
@@ -30,6 +30,6 @@ class MachineManagement
                 'userid'=>$userid
             ]
         ];
-        return apiRequest::post($uri,$json);
+        return ApiRequest::post($uri,$json);
     }
 }

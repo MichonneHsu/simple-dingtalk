@@ -25,9 +25,9 @@ class Todo
         $params = [
             'operatorId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 获取钉钉待办任务详情
@@ -41,7 +41,7 @@ class Todo
     
         $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
     /**
      * 删除钉钉待办任务
@@ -57,9 +57,9 @@ class Todo
         $params = [
             'operatorId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
 
-        return apiRequest::delete($uri);
+        return ApiRequest::delete($uri);
     }
     /**
      * 更新钉钉待办任务
@@ -76,9 +76,9 @@ class Todo
         $params = [
             'operatorId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
 
-        return apiRequest::put($uri, $body);
+        return ApiRequest::put($uri, $body);
     }
     /**
      * 更新钉钉待办执行者状态
@@ -95,7 +95,7 @@ class Todo
         $params = [
             'operatorId' => $unionId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
         $body = [
             'executorStatusList' => [
                 [
@@ -105,7 +105,7 @@ class Todo
 
             ]
         ];
-        return apiRequest::put($uri, $body);
+        return ApiRequest::put($uri, $body);
     }
     /**
      * 根据sourceId获取钉钉待办任务详情
@@ -119,7 +119,7 @@ class Todo
       
         $uri = Url::$api['todo'] . "{$unionId}/tasks/sources/$sourceId";
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
     /**
      * 查询企业下用户待办列表
@@ -141,6 +141,6 @@ class Todo
             'isDone' => $isDone
 
         ];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
 }

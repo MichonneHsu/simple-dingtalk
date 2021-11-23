@@ -6,7 +6,7 @@ namespace SimpleDingTalk\v2\Robot;
 
 use SimpleDingTalk\Config;
 use SimpleDingTalk\v2\Url;
-use SimpleDingTalk\apiRequest as v1_req;
+use SimpleDingTalk\ApiRequest as v1_req;
 use SimpleDingTalk\util\robot\Sign;
 
 class Message
@@ -33,7 +33,7 @@ class Message
             'msgParam' => json_encode($msgParam)
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 发送钉钉可交互式动态卡片
@@ -44,7 +44,7 @@ class Message
     public static function interactiveCards_send(array $body)
     {
         $uri = Url::$api['robot']['interactiveCards_send'];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     public static function scencegroup_chat(array $body)
     {
@@ -83,7 +83,7 @@ class Message
 
         $uri = Url::$api['robot']['card'];
 
-        return apiRequest::put($uri, $body);
+        return ApiRequest::put($uri, $body);
     }
     /**
      * 指定群发送消息
@@ -116,7 +116,7 @@ class Message
         $params = [
             'access_token' => $group_token
         ];
-        $uri = apiRequest::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
         $has_token = false;
         return v1_req::post($uri, $json, $has_token);
     }

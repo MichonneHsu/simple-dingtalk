@@ -28,7 +28,7 @@ class NormalMessage
             'cid'=>$cid,
             'msg'=>$msg
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
    
 }

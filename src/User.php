@@ -14,7 +14,7 @@ class User{
         $query = [
             'code' => $code
         ];
-        return apiRequest::get($uri, $query);
+        return ApiRequest::get($uri, $query);
     }
      /**
      * 创建用户
@@ -25,7 +25,7 @@ class User{
     public static function create(array $json){
         $uri=Url::$api['user']['create'];
        
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
      /**
      * 更新用户信息
@@ -36,7 +36,7 @@ class User{
     public static function update(array $json){
         $uri=Url::$api['user']['update'];
         
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
      /**
      * 移除用户
@@ -49,7 +49,7 @@ class User{
         $json=[
             'userid'=>$userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
      /**
      * 根据userid获取用户详情
@@ -62,7 +62,7 @@ class User{
         $json=[
             'userid'=>$userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门用户基础信息
@@ -73,7 +73,7 @@ class User{
     public static function listsimple(array $json){
         $uri=Url::$api['user']['listsimple'];
       
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门用户userid列表
@@ -86,7 +86,7 @@ class User{
         $json=[
             'dept_id'=>$dept_id
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门用户详情
@@ -97,7 +97,7 @@ class User{
     public static function list(array $json){
         $uri=Url::$api['user']['list'];
       
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取员工人数
@@ -110,7 +110,7 @@ class User{
         $json=[
             'only_active'=>$only_active
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取管理员列表
@@ -121,7 +121,7 @@ class User{
         $uri=Url::$api['user']['listadmin'];
       
        
-        return apiRequest::post($uri);
+        return ApiRequest::post($uri);
     }
     /**
      * 获取管理员通讯录权限范围
@@ -134,7 +134,7 @@ class User{
         $json=[
             'userid'=>$userid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 获取管理员的应用管理权限
@@ -145,7 +145,7 @@ class User{
     public static function can_access_microapp(array $query){
         $uri=Url::$api['user']['can_access_microapp'];
        
-        return apiRequest::get($uri,$query);
+        return ApiRequest::get($uri,$query);
     }
     /**
      * 根据手机号获取userid
@@ -158,7 +158,7 @@ class User{
         $json=[
             'mobile'=>$mobile
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
      /**
      * 根据unionid获取用户userid
@@ -171,7 +171,7 @@ class User{
         $json=[
             'unionid'=>$unionid
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
      /**
      * 获取未登录钉钉的员工列表
@@ -181,7 +181,7 @@ class User{
     public static function getinactive(array $json){
         $uri=Url::$api['user']['getinactive'];
        
-        return apiRequest::post($uri,$json);
+        return ApiRequest::post($uri,$json);
     }
     /**
      * 通过免登码获取用户信息
@@ -194,7 +194,7 @@ class User{
         $json=[
             'code'=>$code
         ];
-        return apiRequest::post($uri,$json);
+        return ApiRequest::post($uri,$json);
     }
     /**
      * 获取用户基本信息
@@ -212,15 +212,13 @@ class User{
 
         ];
         $uri = Url::$api['user']['getuserinfo_bycode'];
-        $uri = apiRequest::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
         $json = [
             'tmp_auth_code' => $tmp_auth_code
         ];
         $has_token =false;
-        $http = apiRequest::post($uri,$json,$has_token);
-       
-        
-        return $http;
+
+        return ApiRequest::post($uri,$json,$has_token);
     }
     /**
      *  通过sns临时根据当前应用信息组合成授权url
@@ -240,6 +238,6 @@ class User{
             'loginTmpCode' => $tmp_auth_code
         ];
         $uri = Url::$api['domain'].Url::$api['user']['sns_authorize'];
-        return apiRequest::joinParams($uri, $params);
+        return ApiRequest::joinParams($uri, $params);
     }
 } 

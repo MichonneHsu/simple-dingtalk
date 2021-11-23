@@ -60,14 +60,14 @@ class DingCallbackCrypto
         }
         $signature = $array[1];
 
-        $encryptMsg = json_encode(array(
+        return json_encode(array(
             "msg_signature" => $signature,
             "encrypt" => $encrypt,
             "timeStamp" => $timeStamp,
             "nonce" => $nonce
         ));
         
-		return $encryptMsg;
+		
     }
 
 	/**

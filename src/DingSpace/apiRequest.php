@@ -12,7 +12,7 @@ use SimpleDingTalk\Url;
 use CURLFile;
 use Exception;
 
-class apiRequest
+class ApiRequest
 {
     /**
      * 客户端请求基本信息

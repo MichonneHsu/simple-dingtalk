@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 
 /**
  * 考勤统计
@@ -21,7 +21,7 @@ class Statistic
         $uri=Url::$api['attendance']['statistic']['getattcolumns'];
       
       
-        return apiRequest::post($uri);
+        return ApiRequest::post($uri);
     }
     /**
      * 获取考勤报表列值
@@ -42,7 +42,7 @@ class Statistic
             'from_date'=>$from_date,
             'to_date'=>$to_date
         ];
-        return apiRequest::post($uri,$json);
+        return ApiRequest::post($uri,$json);
     }
     /**
      * 获取报表假期数据
@@ -63,7 +63,7 @@ class Statistic
             'from_date'=>$from_date,
             'to_date'=>$to_date
         ];
-        return apiRequest::post($uri,$json);
+        return ApiRequest::post($uri,$json);
     }
     /**
      * 查询是否启用智能统计报表
@@ -74,7 +74,7 @@ class Statistic
     {
         $uri=Url::$api['attendance']['statistic']['isopensmartreport'];
     
-        return apiRequest::post($uri);
+        return ApiRequest::post($uri);
     }
     /**
      * 获取用户考勤数据
@@ -91,6 +91,6 @@ class Statistic
             'userid'=>$userid,
             'work_date'=>$work_date
         ];
-        return apiRequest::post($uri,$json);
+        return ApiRequest::post($uri,$json);
     }
 }

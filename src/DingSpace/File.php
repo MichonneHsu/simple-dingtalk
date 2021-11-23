@@ -23,21 +23,8 @@ class File
             'agent_id' =>  strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'])
         ];
         // file_put_contents('ca.log',json_encode($json));
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
-
-    public static function upload_single(string $file, int $file_size = 819200)
-    {
-        $uri = Url::$api['cspace']['file']['upload_single'];
-        $params = [
-            'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
-            'file_size' => $file_size
-
-        ];
-        return apiRequest::upload_file($uri, $params, $file);
-    }
-
-
 
     public static function add(string $name, string $code, string $media_id, string $space_id, bool $overwrite = true, string $folder_id = '')
     {
@@ -52,7 +39,7 @@ class File
             'folder_id' => $folder_id
         ];
 
-        return apiRequest::get($uri, $query);
+        return ApiRequest::get($uri, $query);
     }
     public static function get_custom_space(string $domain)
     {
@@ -64,7 +51,7 @@ class File
 
         ];
 
-        return apiRequest::get($uri, $query);
+        return ApiRequest::get($uri, $query);
     }
     public static function used_info(string $domain)
     {
@@ -75,7 +62,7 @@ class File
             'domain' => $domain,
 
         ];
-        return apiRequest::get($uri, $query);
+        return ApiRequest::get($uri, $query);
     }
     public static function grant_custom_space(string $userid,string $domain,string $type,int $duration,string $path='',string $fileids='')
     {
@@ -90,6 +77,32 @@ class File
             'path'=>$path,
             'fileids'=>$fileids
         ];
-        return apiRequest::get($uri, $query);
+        return ApiRequest::get($uri, $query);
+    }
+
+    public static function upload_single(string $file, int $file_size = 819200)
+    {
+        $uri = Url::$api['cspace']['file']['upload_single'];
+        $params = [
+            'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
+            'file_size' => $file_size
+        ];
+        return ApiRequest::upload_file($uri, $params, $file);
+    }
+
+    public static function upload_transaction(int $chunk_numbers,int $file_size = 819200)
+    {
+        $uri = Url::$api['cspace']['upload_transaction'];
+
+        $query = [
+            'agent_id' => strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']),
+            'domain' => $domain,
+            'userid'=>$userid,
+            'type'=>$type,
+            'duration'=>$duration,
+            'path'=>$path,
+            'fileids'=>$fileids
+        ];
+        return ApiRequest::get($uri, $query);
     }
 }

@@ -25,7 +25,7 @@ class WorkRecord
             'name' => $name
 
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 删除模板
@@ -46,7 +46,7 @@ class WorkRecord
             ]
 
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     // public static function clean(string $process_code)
     // {
@@ -58,7 +58,7 @@ class WorkRecord
     //         'process_code' => $process_code,
     //         'corpid' => Config::$app_info['app'][Config::$app_type]['app_info']['CORP_ID']
     //     ];
-    //     return apiRequest::post($uri, $json);
+    //     return ApiRequest::post($uri, $json);
     // }
     /**
      * 创建实例
@@ -72,7 +72,7 @@ class WorkRecord
         $pre = $json;
         $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
         $json = ['request' => $pre];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 创建或更新审批模板
@@ -86,7 +86,7 @@ class WorkRecord
         $pre = $json;
         $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
         $json = ['saveProcessRequest' => $pre];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新实例状态
@@ -111,7 +111,7 @@ class WorkRecord
             ]
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量取消待办
@@ -136,7 +136,7 @@ class WorkRecord
             ]
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 创建待办事项
@@ -151,7 +151,7 @@ class WorkRecord
         $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
         $json = ['request' => $pre];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询待办列表
@@ -173,7 +173,7 @@ class WorkRecord
             'status' => $status,
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 更新待办状态
@@ -195,7 +195,7 @@ class WorkRecord
             ]
         ];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     public static function cancel(array $json)
     {
@@ -205,6 +205,6 @@ class WorkRecord
         $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
         $json = ['request' => $pre];
 
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

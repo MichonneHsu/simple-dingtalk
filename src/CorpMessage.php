@@ -27,7 +27,7 @@ class CorpMessage
             'chatid'=>$chatid,
             'msg'=>$msg
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     public static function getReadList(string $messageId,int $size=5,int $cursor=0)
     {
@@ -39,7 +39,7 @@ class CorpMessage
             'size'=>$size,
             'cursor'=>$cursor
         ];
-        return apiRequest::get($uri, $query);
+        return ApiRequest::get($uri, $query);
        
     }
    

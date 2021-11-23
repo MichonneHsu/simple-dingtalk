@@ -201,7 +201,9 @@ class Url
             'used_info'=>'/cspace/used_info',
             'grant_custom_space'=>'/cspace/grant_custom_space',
             'file'=>[
-                'upload_single'=>'/file/upload/single'
+                'upload_single'=>'/file/upload/single',
+                'upload_transaction'=>'/file/upload/transaction',
+                'upload_chunk'=>'/file/upload/chunk'
             ]
         ]
 

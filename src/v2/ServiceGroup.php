@@ -13,6 +13,6 @@ class ServiceGroup
     public static function create(array $body)
     {
         $uri = Url::$api['serviceGroup'].'groups';
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
 }

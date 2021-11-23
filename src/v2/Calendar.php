@@ -30,7 +30,7 @@ class Calendar
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . '/events';
         $body = self::date_parse($body);
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 删除日程
@@ -46,7 +46,7 @@ class Calendar
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
 
-        return apiRequest::delete($uri);
+        return ApiRequest::delete($uri);
     }
     /**
      * 修改日程
@@ -63,7 +63,7 @@ class Calendar
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
         $body = self::date_parse($body);
-        return apiRequest::put($uri, $body);
+        return ApiRequest::put($uri, $body);
     }
     /**
      * 查询单个日程详情
@@ -79,7 +79,7 @@ class Calendar
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
     /**
      * 查询日程列表
@@ -102,9 +102,9 @@ class Calendar
             $timeMax = $query['timeMax'];
             $query['timeMax'] = Time::setDate($timeMax)->format('Y-m-d\TH:i:s\Z');
         }
-        $uri = apiRequest::joinParams($uri, $query);
+        $uri = ApiRequest::joinParams($uri, $query);
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
     /**
      * 添加日程参与者
@@ -123,7 +123,7 @@ class Calendar
 
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 删除日程参与者
@@ -142,7 +142,7 @@ class Calendar
             'attendeesToRemove' =>$attendeesToRemove
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 设置日程响应邀请状态
@@ -161,7 +161,7 @@ class Calendar
             'responseStatus' => $responseStatus
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 获取用户忙闲信息
@@ -186,7 +186,7 @@ class Calendar
             'endTime' => $endTime
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 查看单个日程的签到详情
@@ -208,9 +208,9 @@ class Calendar
             'type' => $type,
             'nextToken' => $nextToken
         ];
-        $uri = apiRequest::joinParams($uri, $query);
+        $uri = ApiRequest::joinParams($uri, $query);
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
     /**
      * 查询日历
@@ -222,7 +222,7 @@ class Calendar
     {
         $uri = Url::$api['calendar'] . "{$unionId}/calendars";
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
 
     /**

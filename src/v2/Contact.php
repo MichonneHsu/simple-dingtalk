@@ -26,14 +26,14 @@ class Contact
             'inviterUserId' => $inviterUserId,
             'deptId' => $deptId
         ];
-        $uri = apiRequest::joinParams($uri, $params);
-        return apiRequest::get($uri);
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::get($uri);
     }
     public static function dingIndexs()
     {
         $uri = Url::$api['contact'] . 'dingIndexs';
 
-        return apiRequest::get($uri);
+        return ApiRequest::get($uri);
     }
     public static function depts_settings_priorities(bool $enable)
     {
@@ -41,6 +41,6 @@ class Contact
         $body = [
             'enable' => $enable
         ];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
 }

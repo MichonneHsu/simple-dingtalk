@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\attendance;
 use SimpleDingTalk\Url;
-use SimpleDingTalk\apiRequest;
+use SimpleDingTalk\ApiRequest;
 use SimpleDingTalk\util\Time;
 /**
  * 考勤排班
@@ -31,7 +31,7 @@ class Schedule
          
         ];
       
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 批量查询人员排班信息
@@ -53,7 +53,7 @@ class Schedule
             'to_date_time'=>Time::toTime($to_date_time,true),
          
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 排班制考勤组排班
@@ -73,7 +73,7 @@ class Schedule
             'group_id'=>$group_id,
             'schedules'=>$schedules
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询排班打卡结果
@@ -90,7 +90,7 @@ class Schedule
             'op_user_id' => $op_user_id,
             'schedule_ids'=>$schedule_ids
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询企业考勤排班详情
@@ -109,7 +109,7 @@ class Schedule
             'offset'=>$offset,
             'size'=>$size
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
     /**
      * 查询排班概要信息
@@ -130,6 +130,6 @@ class Schedule
             'from_date_time'=>Time::toTime($from_date_time,true),
             'to_date_time'=>Time::toTime($to_date_time,true)
         ];
-        return apiRequest::post($uri, $json);
+        return ApiRequest::post($uri, $json);
     }
 }

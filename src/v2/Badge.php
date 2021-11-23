@@ -40,7 +40,7 @@ class Badge
             'codeValue' => $codeValue
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 更新钉工牌电子码
@@ -73,7 +73,7 @@ class Badge
             'codeValue' => $codeValue
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 解码钉工牌电子码
@@ -91,7 +91,7 @@ class Badge
             'requestId' => $requestId
         ];
 
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 通知支付结果
@@ -104,7 +104,7 @@ class Badge
 
         $uri = Url::$api['badge'] . '/codes/payResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 通知退款结果
@@ -117,7 +117,7 @@ class Badge
 
         $uri = Url::$api['badge'] . '/codes/refundResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 同步钉工牌码验证结果
@@ -143,7 +143,7 @@ class Badge
             'verifyResult'=>$verifyResult,
             'verifyLocation'=>$verifyLocation
         ];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
     /**
      * 配置企业钉工牌
@@ -163,6 +163,6 @@ class Badge
             'extInfo'=>json_encode($extInfo)
           
         ];
-        return apiRequest::post($uri, $body);
+        return ApiRequest::post($uri, $body);
     }
 }
