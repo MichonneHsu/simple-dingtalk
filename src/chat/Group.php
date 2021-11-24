@@ -82,10 +82,12 @@ class Group{
      * @param string $chatid
      * @return mixed
      */
-    public static function updategroupnick(string $chatid){
+    public static function updategroupnick(string $chatid,string $userid,string $group_nick){
         $uri = Url::$api['chat']['group']['updategroupnick'];
         $json=[
-            'chatid'=>$chatid
+            'chatid'=>$chatid,
+            'userid'=>$userid,
+            'group_nick'=>$group_nick
         ];
         return ApiRequest::post($uri, $json);
     }
