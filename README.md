@@ -146,3 +146,6 @@ WorkFlow::add_comment($json);
 1. 如果接口需要的参数复杂并且有必填和非必填的话，函数需要的参数需要开发者自行组装参数。
 2. 如果接口需要的参数不复杂并且不多、有必填和非必填，则只需要按照函数所需填入即可。
 3. 如果接口需要的参数全是必填的话则函数需要的参数不需要完全自行组装参数，按照函数所需的参数填入即可。
+4. 如果参数过多的话需要开发者自行填入到`$json`或`$body`里面。
+## Stars 趋势
+[![Stargazers over time](https://whnb.wang/stars/michonnehsu/simple-dingtalk?e=10000)](https://whnb.wang)
