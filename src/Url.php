@@ -190,13 +190,13 @@ class Url
                 'get_qrcode' => '/topapi/chat/qrcode/get',
                 'updategroupnick' => '/topapi/chat/updategroupnick'
             ],
-            'scenegroup'=>[
-                'create'=>'/topapi/im/chat/scenegroup/create',
-                'update'=>'/topapi/im/chat/scenegroup/update',
-                'get'=>'/topapi/im/chat/scenegroup/get',
-                'add_member'=>'/topapi/im/chat/scenegroup/member/add',
-                'remove_member'=>'/topapi/im/chat/scenegroup/member/delete',
-                'get_member'=>'/topapi/im/chat/scenegroup/member/get'
+            'scenegroup' => [
+                'create' => '/topapi/im/chat/scenegroup/create',
+                'update' => '/topapi/im/chat/scenegroup/update',
+                'get' => '/topapi/im/chat/scenegroup/get',
+                'add_member' => '/topapi/im/chat/scenegroup/member/add',
+                'remove_member' => '/topapi/im/chat/scenegroup/member/delete',
+                'get_member' => '/topapi/im/chat/scenegroup/member/get'
             ]
 
 
@@ -222,6 +222,14 @@ class Url
                 'upload_transaction' => '/file/upload/transaction',
                 'upload_chunk' => '/file/upload/chunk'
             ]
+        ],
+        'extcontact' => [
+            'create' => '/topapi/extcontact/create',
+            'remove' => '/topapi/extcontact/delete',
+            'update' => '/topapi/extcontact/update',
+            'list' => '/topapi/extcontact/list',
+            'listlabelgroups' => '/topapi/extcontact/listlabelgroups',
+            'get' => '/topapi/extcontact/get'
         ]
 
     ];
