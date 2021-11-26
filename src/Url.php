@@ -189,6 +189,14 @@ class Url
                 'private_chat_switch' => '/topapi/chat/member/friendswitch/update',
                 'get_qrcode' => '/topapi/chat/qrcode/get',
                 'updategroupnick' => '/topapi/chat/updategroupnick'
+            ],
+            'scenegroup'=>[
+                'create'=>'/topapi/im/chat/scenegroup/create',
+                'update'=>'/topapi/im/chat/scenegroup/update',
+                'get'=>'/topapi/im/chat/scenegroup/get',
+                'add_member'=>'/topapi/im/chat/scenegroup/member/add',
+                'remove_member'=>'/topapi/im/chat/scenegroup/member/delete',
+                'get_member'=>'/topapi/im/chat/scenegroup/member/get'
             ]
 
 
