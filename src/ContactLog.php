@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk;
-
+/**
+ * 行业通讯录
+ */
 class ContactLog
 {
     /**
@@ -20,16 +22,20 @@ class ContactLog
         ];
         return ApiRequest::post($uri, $json);
     }
-    /**
-     * 获取部门用户详情
-     *
-     * @param integer $json
-     * @return mixed
-     */
-    public static function get_user(array $json)
+   /**
+    * 获取部门用户详情
+    *
+    * @param integer $dept_id
+    * @param string $userid
+    * @return void
+    */
+    public static function get_user(int $dept_id,string $userid)
     {
         $uri = Url::$api['contact_log']['get_user'];
-
+        $json=[
+            'dept_id'=>$dept_id,
+            'userid'=>$userid
+        ];
         return ApiRequest::post($uri, $json);
     }
     /**
@@ -38,22 +44,33 @@ class ContactLog
      * @param integer $json
      * @return mixed
      */
-    public static function get_user_list(array $json)
+    public static function get_user_list(int $dept_id,string $role,int $cursor=1,int $size=10)
     {
         $uri = Url::$api['contact_log']['get_user_list'];
-
+        $json=[
+            'dept_id'=>$dept_id,
+            'role'=>$role,
+            'cursor'=>$cursor,
+            'size'=>$size
+        ];
         return ApiRequest::post($uri, $json);
     }
     /**
      * 获取部门列表
      *
-     * @param integer $json
-     * @return mixed
+     * @param integer $dept_id
+     * @param integer $cursor
+     * @param integer $size
+     * @return void
      */
-    public static function get_department_list(array $json)
+    public static function get_department_list(int $dept_id,int $cursor=1,int $size=10)
     {
         $uri = Url::$api['contact_log']['get_department_list'];
-
+        $json=[
+            'dept_id'=>$dept_id,
+            'cursor'=>$cursor,
+            'size'=>$size
+        ];
         return ApiRequest::post($uri, $json);
     }
     /**
