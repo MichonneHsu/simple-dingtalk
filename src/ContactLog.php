@@ -27,7 +27,7 @@ class ContactLog
     *
     * @param integer $dept_id
     * @param string $userid
-    * @return void
+    * @return mixed
     */
     public static function get_user(int $dept_id,string $userid)
     {
@@ -61,7 +61,7 @@ class ContactLog
      * @param integer $dept_id
      * @param integer $cursor
      * @param integer $size
-     * @return void
+     * @return mixed
      */
     public static function get_department_list(int $dept_id,int $cursor=1,int $size=10)
     {
