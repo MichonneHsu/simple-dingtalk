@@ -94,19 +94,19 @@ class File
         return ApiRequest::upload_file($uri, $params, $file);
     }
 
-    public static function upload_transaction(int $chunk_numbers,int $file_size = 819200)
-    {
-        $uri = Url::$api['cspace']['upload_transaction'];
+    // public static function upload_transaction(int $chunk_numbers,int $file_size = 819200)
+    // {
+    //     $uri = Url::$api['cspace']['upload_transaction'];
 
-        $query = [
-            'agent_id' => strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']),
-            'domain' => $domain,
-            'userid'=>$userid,
-            'type'=>$type,
-            'duration'=>$duration,
-            'path'=>$path,
-            'fileids'=>$fileids
-        ];
-        return ApiRequest::get($uri, $query);
-    }
+    //     $query = [
+    //         'agent_id' => strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']),
+    //         'domain' => $domain,
+    //         'userid'=>$userid,
+    //         'type'=>$type,
+    //         'duration'=>$duration,
+    //         'path'=>$path,
+    //         'fileids'=>$fileids
+    //     ];
+    //     return ApiRequest::get($uri, $query);
+    // }
 }
