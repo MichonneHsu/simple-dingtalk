@@ -27,7 +27,7 @@ class File
         ];
         $uri=ApiRequest::joinParams($uri,$params);
         // file_put_contents('ca.log',json_encode($json));
-        return ApiRequest::post($uri);
+        return ApiRequest::post($uri,[],false);
     }
 
     public static function add(string $name, string $code, string $media_id, string $space_id, bool $overwrite = true, string $folder_id = '')
