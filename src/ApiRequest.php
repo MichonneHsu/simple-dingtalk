@@ -54,6 +54,7 @@ class ApiRequest
      *
      * @param string $uri
      * @param array $json
+     * @param boolean $has_token
      * @return mixed
      */
     public static function post(string $uri, array $json = [], bool $has_token = true)
