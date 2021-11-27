@@ -44,10 +44,7 @@ class ApiRequest
                 'query' => $query
             ]);
 
-
-            $content = $resp->getBody()->getContents();
-
-            return $content;
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
         }
@@ -79,10 +76,8 @@ class ApiRequest
             }
            
             
-            $content = $resp->getBody()->getContents();
+            return $resp->getBody()->getContents();
 
-
-            return $content;
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
         }
