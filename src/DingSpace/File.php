@@ -13,9 +13,7 @@ class File
 
     public static function add_to_single_chat(string $userid, string $file_name, string $media_id)
     {
-        $file_name = urlencode($file_name);
-        $media_id = urlencode($media_id);
-
+      
         $uri = Url::$api['cspace']['add_to_single_chat'];
         
         $params = [
