@@ -6,6 +6,7 @@ namespace SimpleDingTalk\DingSpace;
 
 use SimpleDingTalk\Config;
 use SimpleDingTalk\Url;
+use SimpleDingTalk\AccessToken;
 
 class File
 {
@@ -18,10 +19,11 @@ class File
         $uri = Url::$api['cspace']['add_to_single_chat'];
         
         $params = [
+            'access_token'=>AccessToken::getToken(),
             'file_name' => $file_name,
             'media_id' => $media_id,
             'userid' => $userid,
-            'agent_id' =>  strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'])
+            'agent_id' =>  Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
         ];
         $uri=ApiRequest::joinParams($uri,$params);
         // file_put_contents('ca.log',json_encode($json));
