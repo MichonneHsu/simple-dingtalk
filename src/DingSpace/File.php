@@ -16,14 +16,16 @@ class File
         $media_id = urlencode($media_id);
 
         $uri = Url::$api['cspace']['add_to_single_chat'];
-        $json = [
+        
+        $params = [
             'file_name' => $file_name,
             'media_id' => $media_id,
             'userid' => $userid,
             'agent_id' =>  strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'])
         ];
+        $uri=ApiRequest::joinParams($uri,$params);
         // file_put_contents('ca.log',json_encode($json));
-        return ApiRequest::post($uri, $json);
+        return ApiRequest::post($uri);
     }
 
     public static function add(string $name, string $code, string $media_id, string $space_id, bool $overwrite = true, string $folder_id = '')
