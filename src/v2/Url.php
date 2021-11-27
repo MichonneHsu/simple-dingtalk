@@ -29,13 +29,5 @@ class Url
         'contact'=>'/v1.0/contact/'
         
     ];
-
-    public static function joinParams(string $uri, array $params): string
-    {
-
-
-        $url = $uri . '?' . http_build_query($params);
-
-        return urldecode($url);
-    }
+    
 }
