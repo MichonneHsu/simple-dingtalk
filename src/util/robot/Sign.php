@@ -17,9 +17,9 @@ class Sign{
 
         $signature = base64_encode($s);
 
-        $urlencode_signature = urlencode($signature);
+       
         return [
-            'sign'=>$urlencode_signature,
+            'sign'=>$signature,
             'timestamp'=>$getMillisecond
         ];
     }
