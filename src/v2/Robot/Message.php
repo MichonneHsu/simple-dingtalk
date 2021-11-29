@@ -58,7 +58,7 @@ class Message
     * @param string $callbackRouteKey
     * @param boolean $forceUpdate
     * @param string $api_secret
-    * @return void
+    * @return mixed
     */
     public static function callback_register(string $callback_url, string $callbackRouteKey = '', bool $forceUpdate = false,string $api_secret = '')
     {
@@ -75,7 +75,7 @@ class Message
      * 更新钉钉可交互式卡片
      *
      * @param array $body
-     * @return void
+     * @return mixed
      */
     public static function update_card(array $body)
     {
@@ -90,9 +90,9 @@ class Message
      *
      * @param array $json
      * @param string $group_token
-     * @return void
+     * @return mixed
      */
-    public static function send_group_msg(array $json, string $group_token)
+    public static function send_group_msg(array $json, string $group_token )
     {
         $params = Sign::signature();
 
@@ -107,15 +107,13 @@ class Message
      *
      * @param array $json
      * @param string $group_token
-     * @return void
+     * @return mixed
      */
     public static function webhook(array $json, string $group_token)
     {
 
         $uri = Url::$api['robot']['send_msg'];
-        $params = [
-            'access_token' => $group_token
-        ];
+        $params['access_token'] = $group_token;
         $uri = ApiRequest::joinParams($uri, $params);
         $has_token = false;
         return v1_req::post($uri, $json, $has_token);
