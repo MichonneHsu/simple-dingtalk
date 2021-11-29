@@ -89,6 +89,6 @@ class ApiRequest
 
         $url = $uri . '?' . http_build_query($params);
 
-        return $url;
+        return $encode?urlencode($url):$url;
     }
 }
