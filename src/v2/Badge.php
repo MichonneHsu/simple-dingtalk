@@ -20,6 +20,8 @@ class Badge
 
         $uri = Url::$api['badge'] . 'codes/userInstances';
         $body['corpId']=Config::$app_info['CORP_ID'];
+        $body['extInfo']=json_encode($body['extInfo']);
+        
         // $body = [
         //     'requestId' => $requestId,
         //     'corpId' => Config::$app_info['CORP_ID'],
@@ -46,6 +48,7 @@ class Badge
 
         $uri = Url::$api['badge'] . 'codes/userInstances';
         $body['corpId']=Config::$app_info['CORP_ID'];
+        $body['extInfo']=json_encode($body['extInfo']);
         // $body = [
         //     'codeId' => $codeId,
         //     'corpId' => Config::$app_info['CORP_ID'],
