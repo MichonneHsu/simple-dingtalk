@@ -106,12 +106,12 @@ class ApiRequest{
    
   
   
-    public static function joinParams(string $uri, array $params):string
+    public static function joinParams(string $uri, array $params,bool $encode=false): string
     {
 
-  
-        $url = $uri.'?' . http_build_query($params);
-       
-        return urlencode($url);
+
+        $url = $uri . '?' . http_build_query($params);
+
+        return $encode?urlencode($url):$url;
     }
 }

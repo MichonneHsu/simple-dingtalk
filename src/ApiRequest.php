@@ -83,7 +83,7 @@ class ApiRequest
     }
 
 
-    public static function joinParams(string $uri, array $params,bool $encode): string
+    public static function joinParams(string $uri, array $params,bool $encode=false): string
     {
 
 

@@ -62,21 +62,22 @@ class ApiRequest
         try {
             $client = self::client();
             $resp = null;
-            if ($has_token) {
-                $uri = self::joinParams($uri, [
-                    'access_token' => AccessToken::getToken()
-                ]);
-            }
-            if(empty($json)){
-                $resp = $client->request('POST', $uri);
-            }else{
-                $resp = $client->request('POST', $uri, [
-                    'json' => $json
-                ]);
-            }
+             file_put_contents('ca.log',Url::$api['domain'].json_encode($uri));
+            // if ($has_token) {
+            //     $uri = self::joinParams($uri, [
+            //         'access_token' => AccessToken::getToken()
+            //     ]);
+            // }
+            // if(empty($json)){
+            //     $resp = $client->request('POST', $uri);
+            // }else{
+            //     $resp = $client->request('POST', $uri, [
+            //         'json' => $json
+            //     ]);
+            // }
            
             
-            return $resp->getBody()->getContents();
+            // return $resp->getBody()->getContents();
 
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
@@ -121,7 +122,7 @@ class ApiRequest
         
         return $response;
     }
-    public static function joinParams(string $uri, array $params,bool $encode=true): string
+    public static function joinParams(string $uri, array $params,bool $encode=false): string
     {
 
 
