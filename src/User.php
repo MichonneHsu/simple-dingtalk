@@ -204,11 +204,12 @@ class User{
      */
     public static function getuserinfo_bycode(string $tmp_auth_code)
     {
+        $sign_info=Sign::signature();
         $params = [
 
             'accessKey' => Config::$app_info['app'][Config::$app_type]['app_info']['APP_KEY'],
-            'timestamp' => Sign::getMillisecond(),
-            'signature' => Sign::signature()
+            'timestamp' => $sign_info['timestamp'],
+            'signature' =>  $sign_info['signature']
 
         ];
         $uri = Url::$api['user']['getuserinfo_bycode'];
