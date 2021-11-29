@@ -10,7 +10,7 @@ class Sign{
     {
 
         $millisecond=self::getMillisecond();
-        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
+        $s = hash_hmac('sha256', $millisecond, Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
 
       
         return [
