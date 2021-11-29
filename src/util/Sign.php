@@ -6,18 +6,22 @@ use SimpleDingTalk\Config;
 use DateTime;
 class Sign{
 
-    public static function signature():array
+    public static function signature(): string
     {
 
-        $millisecond=self::getMillisecond();
-        $s = hash_hmac('sha256', $millisecond, Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
+        // $millisecond=self::getMillisecond();
+        // $s = hash_hmac('sha256', $millisecond, Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
 
       
-        return [
-            'signature'=>urlencode(base64_encode($s)),
-            'timestamp'=>$millisecond
-        ];
-        
+        // return [
+        //     'signature'=>urlencode(base64_encode($s)),
+        //     'timestamp'=>$millisecond
+        // ];
+        $s = hash_hmac('sha256', self::getMillisecond(), Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'], true);
+
+        $signature = base64_encode($s);
+     
+        return urlencode($signature);
     }
 
     public static function getMillisecond(): string
