@@ -16,7 +16,7 @@ class Url
         'calendar'=>'/v1.0/calendar/users/',
         'drive'=>'/v1.0/drive/spaces/',
         'serviceGroup'=>'/v1.0/serviceGroup/',
-        'badge'=>'/v1.0/badge',
+        'badge'=>'/v1.0/badge/',
         'robot'=>[
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
