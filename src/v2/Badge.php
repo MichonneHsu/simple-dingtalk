@@ -12,7 +12,7 @@ class Badge
     /**
      * 创建钉工牌电子码
      *
-     * @param string $body
+     * @param array $body
      * @return mixed
      */
     public static function create(array $body)
