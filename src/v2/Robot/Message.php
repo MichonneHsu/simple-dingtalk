@@ -92,9 +92,11 @@ class Message
      * @param string $group_token
      * @return mixed
      */
-    public static function send_group_msg(array $json, string $group_token )
+    public static function send_group_msg(array $json, string $group_token,bool $hasSign=false)
     {
-        $params = Sign::signature();
+        
+        
+        $params = $hasSign?Sign::signature():[];
 
         $uri = Url::$api['robot']['send_msg'];
         $params['access_token'] = $group_token;

@@ -1,4 +1,3 @@
-<p align="center" style="color:gray;font-family: Arial, Helvetica, sans-serif; margin:150px 0;">钉钉服务端API</p>
 <p align="center">
 <a href="https://developers.dingtalk.com/?spm=ding_open_doc.document.0.0.3a2565733BtFVA">
 <img src="https://images.gitee.com/uploads/images/2021/1006/105453_40454723_8010855.png" alt="dingtalk" width="180"/>
@@ -72,7 +71,7 @@ Config::$app_info = [
 				'file_path' => './user.json'
 			]
 		],
-		'micro_app'=>[
+	    'micro_app'=>[
 			 'app_info'=>[
                 'AGENT_ID' => 0,
     		    'APP_KEY' => '',
@@ -100,8 +99,8 @@ Config::$app_info = [
 				'file_path' => './user.json'
 			]
 		]
-],
-'robot'=>[
+    ],
+        'robot'=>[
             'robot1' => [
                 'info' => [
                     'AGENT_ID' => 0,
@@ -147,5 +146,7 @@ WorkFlow::add_comment($json);
 2. 如果接口需要的参数不复杂并且不多、有必填和非必填，则只需要按照函数所需填入即可。
 3. 如果接口需要的参数全是必填的话则函数需要的参数不需要完全自行组装参数，按照函数所需的参数填入即可。
 4. 如果参数过多的话需要开发者自行填入到`$json`或`$body`里面。
+## License
+MIT
 ## Stars 趋势
 [![Stargazers over time](https://whnb.wang/stars/michonnehsu/simple-dingtalk?e=10000)](https://whnb.wang)
