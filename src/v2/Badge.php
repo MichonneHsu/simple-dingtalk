@@ -20,7 +20,7 @@ class Badge
 
         $uri = Url::$api['badge'] . 'codes/userInstances';
         $body['corpId']=Config::$app_info['CORP_ID'];
-        $body['extInfo']=json_encode($body['extInfo']);
+        // $body['extInfo']=json_encode($body['extInfo']);
         
         // $body = [
         //     'requestId' => $requestId,
@@ -48,7 +48,7 @@ class Badge
 
         $uri = Url::$api['badge'] . 'codes/userInstances';
         $body['corpId']=Config::$app_info['CORP_ID'];
-        $body['extInfo']=json_encode($body['extInfo']);
+        // $body['extInfo']=json_encode($body['extInfo']);
         // $body = [
         //     'codeId' => $codeId,
         //     'corpId' => Config::$app_info['CORP_ID'],
@@ -106,6 +106,9 @@ class Badge
 
         $uri = Url::$api['badge'] . 'codes/refundResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
+        $extInfo= json_encode($body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']);
+        $body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']=$extInfo;
+       
         return ApiRequest::post($uri, $body);
     }
     /**
@@ -139,14 +142,14 @@ class Badge
      * @param array $extInfo
      * @return mixed
      */
-    public static function corpInstances(string $codeIdentity,string $status,array $extInfo)
+    public static function corpInstances(string $codeIdentity,string $status,array $extInfo=[])
     {
         $uri = Url::$api['badge'] . 'codes/corpInstances';
         $body = [
             'codeIdentity' => $codeIdentity,
             'corpId' => Config::$app_info['CORP_ID'],
             'status'=>$status,
-            'extInfo'=>json_encode($extInfo)
+            'extInfo'=>$extInfo
           
         ];
         return ApiRequest::post($uri, $body);
