@@ -108,14 +108,14 @@ class Message
      * 通过webhook方式向指定对象发送消息
      *
      * @param array $json
-     * @param string $group_token
+     * @param string $target_token
      * @return mixed
      */
-    public static function webhook(array $json, string $group_token)
+    public static function webhook(array $json, string $target_token)
     {
 
         $uri = Url::$api['robot']['send_msg'];
-        $params['access_token'] = $group_token;
+        $params['access_token'] = $target_token;
         $uri = ApiRequest::joinParams($uri, $params);
         $has_token = false;
         return v1_req::post($uri, $json, $has_token);
