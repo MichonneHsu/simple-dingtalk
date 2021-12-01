@@ -93,6 +93,10 @@ class Badge
 
         $uri = Url::$api['badge'] . 'codes/payResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
+        $extInfo= json_encode($body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']);
+        $body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']=$extInfo;
+        $extInfo=json_encode($body['extInfo']);
+        $body['extInfo']=$extInfo;
         return ApiRequest::post($uri, $body);
     }
     /**
