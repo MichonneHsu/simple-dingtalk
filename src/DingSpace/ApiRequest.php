@@ -62,72 +62,92 @@ class ApiRequest
         try {
             $client = self::client();
             $resp = null;
-             file_put_contents('ca.log',Url::$api['domain'].json_encode($uri));
-            // if ($has_token) {
-            //     $uri = self::joinParams($uri, [
-            //         'access_token' => AccessToken::getToken()
-            //     ]);
-            // }
-            // if(empty($json)){
-            //     $resp = $client->request('POST', $uri);
-            // }else{
-            //     $resp = $client->request('POST', $uri, [
-            //         'json' => $json
-            //     ]);
-            // }
-           
-            
-            // return $resp->getBody()->getContents();
 
+            if ($has_token) {
+                $uri = self::joinParams($uri, [
+                    'access_token' => AccessToken::getToken()
+                ]);
+            }
+            if (empty($json)) {
+                $resp = $client->request('POST', $uri);
+            } else {
+                $resp = $client->request('POST', $uri, [
+                    'json' => $json
+                ]);
+            }
+
+
+            return $resp->getBody()->getContents();
         } catch (RequestException $e) {
             throw new \Exception(Message::toString($e->getResponse()));
         }
     }
 
-    public static function upload_file(string $uri,array $params, string $file)
+    public static function upload_file(string $uri, array $params, string $file)
     {
-        $uri=Url::$api['domain'].$uri;
-        $params['access_token']=AccessToken::getToken();
-        $uri=self::joinParams($uri,$params);
-       
-       
-       
+        $uri = Url::$api['domain'] . $uri;
+        $params['access_token'] = AccessToken::getToken();
+        $uri = self::joinParams($uri, $params);
+        
+
+
         $curl = curl_init();
-        
+
         curl_setopt_array($curl, array(
-        
+
             CURLOPT_URL => $uri,
-        
+
             CURLOPT_RETURNTRANSFER => true,
-        
+
             CURLOPT_ENCODING => '',
-        
+
             CURLOPT_MAXREDIRS => 10,
-        
+
             CURLOPT_TIMEOUT => 0,
-        
+
             CURLOPT_FOLLOWLOCATION => true,
-        
+
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        
+
             CURLOPT_CUSTOMREQUEST => 'POST',
-        
-            CURLOPT_POSTFIELDS => array('file'=> new CURLFILE($file)),
-        
-         ));
-        
+
+            CURLOPT_POSTFIELDS => array('file' => new CURLFILE($file)),
+
+        ));
+
         $response = curl_exec($curl);
-        
+
         curl_close($curl);
-        
+
         return $response;
     }
-    public static function joinParams(string $uri, array $params,bool $encode=false): string
+    public function http_request(string $method,string $uri,array $data=[],bool $has_token=true)
+    {
+        $ch = curl_init();
+        $uri=Url::$api['domain'].$uri;
+        if($has_token){
+            $params['access_token'] = AccessToken::getToken();
+            $uri = self::joinParams($uri, $params);
+        }
+       
+        
+        $method=strtoupper($method);
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 0);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        if(!empty($data)){
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        }
+      
+
+        curl_exec($ch);
+    }
+    public static function joinParams(string $uri, array $params, bool $encode = false): string
     {
 
 
         $url = $uri . '?' . http_build_query($params);
 
-        return $encode?urlencode($url):$url;
+        return $encode ? urlencode($url) : $url;
     }
 }

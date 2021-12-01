@@ -76,34 +76,73 @@ class ApiRequest{
       
         return self::REST('put',$uri,$body,$has_token);
     }
+    /**
+     * REST请求
+     *
+     * @param string $method
+     * @param string $uri
+     * @param array $body
+     * @param boolean $has_token
+     * @return mixed
+     */
     public static function REST(string $method,string $uri,array $body=[],bool $has_token=true){
         
-        try {
-            $client=self::client();
-            $body=empty($body)?'':json_encode($body);
-            $header=[
-                'Content-Type'=>'application/json'
-            ];
-            $rep=null;
-            if($has_token){
+        return self::http_request($method,$uri,$body,$has_token);
+        // try {
+        //     $client=self::client();
+        //     $body=empty($body)?'':json_encode($body);
+        //     $header=[
+        //         'Content-Type'=>'application/json'
+        //     ];
+        //     $rep=null;
+        //     if($has_token){
                
-                   $header['x-acs-dingtalk-access-token']=AccessToken::getToken();
+        //            $header['x-acs-dingtalk-access-token']=AccessToken::getToken();
               
                
-            }
-            $rep=self::request($method,$uri,$body,$header);
-            $resp=$client->send($rep,['timeout'=>2]);
+        //     }
+        //     $rep=self::request($method,$uri,$body,$header);
+        //     $resp=$client->send($rep,['timeout'=>2]);
            
             
           
            
-            return $resp->getBody()->getContents();
-        } catch (RequestException $e) {
-            return Message::toString($e->getResponse());
+        //     return $resp->getBody()->getContents();
+        // } catch (RequestException $e) {
+        //     return Message::toString($e->getResponse());
            
-        }
+        // }
     }
-    
+     /**
+     * HTTP请求
+     *
+     * @param string $method
+     * @param string $uri
+     * @param array $body
+     * @param boolean $has_token
+     * @return mixed
+     */
+    public static function http_request(string $method,string $uri,array $body=[],bool $has_token=true)
+    {
+        $uri=Url::$api['domain'].$uri;
+        $header[]='Content-Type: application/json';
+        if($has_token){
+            $header[]='x-acs-dingtalk-access-token:'.AccessToken::getToken();
+        }
+        $method=strtoupper($method);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        $body=empty($body)?'':json_encode($body);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        $res=curl_exec($ch);
+        curl_close($ch);
+        return $res;
+    }
     public static function userGetReq(string $uri,array $body=[],string $accessToken){
         try {
             $client=self::client();

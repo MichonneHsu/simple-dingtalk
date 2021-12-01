@@ -81,7 +81,43 @@ class ApiRequest
             return Message::toString($e->getResponse());
         }
     }
-
+     /**
+     * HTTP请求
+     *
+     * @param string $method
+     * @param string $uri
+     * @param array $body
+     * @param boolean $has_token
+     * @return mixed
+     */
+    public static function http_request(string $method,string $uri,array $body=[],bool $has_token=true)
+    {
+       
+        $uri=Url::$api['domain'].$uri;
+        $header[]='Content-Type: application/json';
+    
+        if($has_token){
+         
+            $header[]='x-acs-dingtalk-access-token:'.AccessToken::getToken();
+      
+          
+        }
+      
+        
+        $method=strtoupper($method);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        $body=empty($body)?'':json_encode($body);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        $res=curl_exec($ch);
+        curl_close($ch);
+        return $res;
+    }
 
     public static function joinParams(string $uri, array $params,bool $encode=false): string
     {
