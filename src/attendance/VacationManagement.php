@@ -44,7 +44,7 @@ class VacationManagement
      */
     public static function remove(string $op_userid,string $leave_code)
     {
-        $uri=Url::$api['attendance']['vacationManagement']['rmeove'];
+        $uri=Url::$api['attendance']['vacationManagement']['remove'];
         
         $json=[
             'op_userid'=>$op_userid,
