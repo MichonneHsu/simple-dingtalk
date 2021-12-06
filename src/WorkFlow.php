@@ -23,7 +23,7 @@ class WorkFlow
         $pre = $json;
 
         $json = ['saveProcessRequest' => array_merge($pre, [
-            'agentid' => Config::$app_info[Config::$app_type]['app_info']['AGENT_ID']
+            'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
         ])];
         return ApiRequest::post($uri, $json);
     }
