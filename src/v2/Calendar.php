@@ -30,6 +30,7 @@ class Calendar
 
         $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . '/events';
         $body = self::date_parse($body);
+        
         return ApiRequest::post($uri, $body);
     }
     /**
@@ -245,7 +246,7 @@ class Calendar
                 $star_dateTime = $body['start']['dateTime'];
                 $body['start']['dateTime'] = Time::setDate($star_dateTime)->format('c');
                 $body['start']['timeZone'] = 'Asia/Shanghai';
-                $end_dateTime = $body['start']['dateTime'];
+                $end_dateTime = $body['end']['dateTime'];
                 $body['end']['dateTime'] = Time::setDate($end_dateTime)->format('c');
                 $body['end']['timeZone'] = 'Asia/Shanghai';
             }
