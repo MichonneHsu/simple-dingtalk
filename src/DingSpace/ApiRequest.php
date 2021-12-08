@@ -83,7 +83,7 @@ class ApiRequest
         }
     }
 
-    public static function upload_file(string $uri, array $params, string $file)
+    public static function upload_file(string $uri, array $params, array $file_infos)
     {
         $uri = Url::$api['domain'] . $uri;
         $params['access_token'] = AccessToken::getToken();
@@ -111,7 +111,7 @@ class ApiRequest
 
             CURLOPT_CUSTOMREQUEST => 'POST',
 
-            CURLOPT_POSTFIELDS => array('file' => new CURLFILE($file)),
+            CURLOPT_POSTFIELDS => $file_infos,
 
         ));
 

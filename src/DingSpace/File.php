@@ -7,7 +7,7 @@ namespace SimpleDingTalk\DingSpace;
 use SimpleDingTalk\Config;
 use SimpleDingTalk\Url;
 use SimpleDingTalk\AccessToken;
-
+use CURLFile;
 class File
 {
 
@@ -89,7 +89,8 @@ class File
             'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
             'file_size' => $file_size
         ];
-        return ApiRequest::upload_file($uri, $params, $file);
+        $file_infos=['file' => new CURLFILE($file)];
+        return ApiRequest::upload_file($uri, $params, $file_infos);
     }
 
     // public static function upload_transaction(int $chunk_numbers,int $file_size = 819200)
