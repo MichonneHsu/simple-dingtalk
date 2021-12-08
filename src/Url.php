@@ -230,6 +230,9 @@ class Url
             'list' => '/topapi/extcontact/list',
             'listlabelgroups' => '/topapi/extcontact/listlabelgroups',
             'get' => '/topapi/extcontact/get'
+        ],
+        'media'=>[
+            'upload'=>'/media/upload'
         ]
 
     ];

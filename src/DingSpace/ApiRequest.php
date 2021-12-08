@@ -83,9 +83,10 @@ class ApiRequest
         }
     }
 
-    public static function upload_file(string $uri, array $params, array $file_infos)
+    public static function upload_file(string $uri, array $params=[], array $file_infos)
     {
         $uri = Url::$api['domain'] . $uri;
+        
         $params['access_token'] = AccessToken::getToken();
         $uri = self::joinParams($uri, $params);
         
