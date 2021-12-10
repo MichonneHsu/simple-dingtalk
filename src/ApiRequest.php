@@ -121,7 +121,7 @@ class ApiRequest
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         
         if(!empty($body) && $method=='POST'){
-            file_put_contents('ca.log','ggagg');
+          
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
         }
       
