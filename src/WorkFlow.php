@@ -20,9 +20,9 @@ class WorkFlow
     public static function save(array $json)
     {
         $uri = Url::$api['workflow']['save'];
-        $pre = $json;
-        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
-        $json = ['saveProcessRequest' => $pre];
+      
+        $json['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $json = ['saveProcessRequest' => $json];
         return ApiRequest::post($uri, $json);
     }
     /**

@@ -26,7 +26,8 @@ class Url
             'send_msg'=>'/robot/send',
            
         ],
-        'contact'=>'/v1.0/contact/'
+        'contact'=>'/v1.0/contact/',
+        'videoConferences'=>'/v1.0/conference/videoConferences'
         
     ];
     
