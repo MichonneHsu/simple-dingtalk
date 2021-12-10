@@ -28,7 +28,12 @@ class ApiRequest
      */
     public static function get(string $uri, array $query = [], bool $has_token = true)
     {
-        return self::http_request('post', $uri, $query, $has_token);
+        if(!empty($query)){
+            $uri=self::joinParams($uri,$query);
+        }
+       
+        // print_r($uri);die;
+        return self::http_request('get', $uri, $query, $has_token);
 
         // try {
         //     $client = self::client();
@@ -114,8 +119,12 @@ class ApiRequest
         curl_setopt($ch, CURLOPT_URL, $uri);
         curl_setopt($ch, CURLOPT_TIMEOUT, 2);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-        $body = empty($body) ? '' : json_encode($body);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        
+        if(!empty($body) && $method=='POST'){
+            file_put_contents('ca.log','ggagg');
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+        }
+      
         $res = curl_exec($ch);
         curl_close($ch);
         return $res;
