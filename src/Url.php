@@ -237,6 +237,11 @@ class Url
         'checkin'=>[
             'get' => '/topapi/checkin/record/get',
             'record' => '/checkin/record'
+        ],
+        'form'=>[
+            'list'=>'/topapi/collection/form/list',
+            'instance_list'=>'/topapi/collection/instance/list',
+            'instance_get'=>'/topapi/collection/instance/get'
         ]
 
     ];
