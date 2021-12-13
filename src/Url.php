@@ -233,6 +233,10 @@ class Url
         ],
         'media'=>[
             'upload'=>'/media/upload'
+        ],
+        'checkin'=>[
+            'get' => '/topapi/checkin/record/get',
+            'record' => '/checkin/record'
         ]
 
     ];
