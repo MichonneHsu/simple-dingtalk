@@ -28,7 +28,7 @@ class GroupManagerment
         return ApiRequest::post($uri, $json);
     }
     /**
-     * 获取用户考勤组 function
+     * 获取用户考勤组
      *
      * @param string $userid
      * @return mixed
