@@ -43,7 +43,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/members";
+        $uri = Url::$api['document'] . "/{$workspaceId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members' => $members
@@ -60,7 +60,7 @@ class Document
      */
     public static function get_space(string $workspaceId)
     {
-        $uri = Url::$api['document'] . $workspaceId;
+        $uri = Url::$api['document'] . "/{$workspaceId}";
         return ApiRequest::get($uri);
     }
     /**
@@ -75,7 +75,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/members";
+        $uri = Url::$api['document'] . "/{$workspaceId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members' => $members
@@ -96,7 +96,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/members/remove";
+        $uri = Url::$api['document'] . "/{$workspaceId}/members/remove";
         $body = [
             'operatorId' => $operatorId,
             'members' => $members
@@ -117,7 +117,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/docs";
+        $uri = Url::$api['document'] . "/{$workspaceId}/docs";
         $body = [
             'operatorId' => $operatorId,
             'name' => $name,
@@ -139,7 +139,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/docs/{$nodeId}/members";
+        $uri = Url::$api['document'] . "/{$workspaceId}/docs/{$nodeId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members'=>$members
@@ -160,7 +160,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/docs/{$nodeId}/members";
+        $uri = Url::$api['document'] . "/{$workspaceId}/docs/{$nodeId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members'=>$members
@@ -181,7 +181,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "{$workspaceId}/docs/{$nodeId}/members/remove";
+        $uri = Url::$api['document'] . "/{$workspaceId}/docs/{$nodeId}/members/remove";
         $body = [
             'operatorId' => $operatorId,
             'members'=>$members

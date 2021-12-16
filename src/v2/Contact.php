@@ -21,7 +21,7 @@ class Contact
     }
     public static function invites_infos(string $inviterUserId = '', string $deptId = '')
     {
-        $uri = Url::$api['contact'] . 'invites/infos';
+        $uri = Url::$api['contact'] . '/invites/infos';
         $params = [
             'inviterUserId' => $inviterUserId,
             'deptId' => $deptId
@@ -31,13 +31,13 @@ class Contact
     }
     public static function dingIndexs()
     {
-        $uri = Url::$api['contact'] . 'dingIndexs';
+        $uri = Url::$api['contact'] . '/dingIndexs';
 
         return ApiRequest::get($uri);
     }
     public static function depts_settings_priorities(bool $enable)
     {
-        $uri = Url::$api['contact'] . 'depts/settings/priorities';
+        $uri = Url::$api['contact'] . '/depts/settings/priorities';
         $body = [
             'enable' => $enable
         ];

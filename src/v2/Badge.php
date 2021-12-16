@@ -18,7 +18,7 @@ class Badge
     public static function create(array $body)
     {
 
-        $uri = Url::$api['badge'] . 'codes/userInstances';
+        $uri = Url::$api['badge'] . '/codes/userInstances';
         $body['corpId']=Config::$app_info['CORP_ID'];
         // $body['extInfo']=json_encode($body['extInfo']);
         
@@ -46,7 +46,7 @@ class Badge
     public static function update(array $body)
     {
 
-        $uri = Url::$api['badge'] . 'codes/userInstances';
+        $uri = Url::$api['badge'] . '/codes/userInstances';
         $body['corpId']=Config::$app_info['CORP_ID'];
         // $body['extInfo']=json_encode($body['extInfo']);
         // $body = [
@@ -74,7 +74,7 @@ class Badge
     public static function decode(string $payCode, string $requestId)
     {
 
-        $uri = Url::$api['badge'] . 'codes/decode';
+        $uri = Url::$api['badge'] . '/codes/decode';
         $body = [
             'payCode' => $payCode,
             'requestId' => $requestId
@@ -91,7 +91,7 @@ class Badge
     public static function payResults(array $body)
     {
 
-        $uri = Url::$api['badge'] . 'codes/payResults';
+        $uri = Url::$api['badge'] . '/codes/payResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
         $extInfo= json_encode($body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']);
         $body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']=$extInfo;
@@ -108,7 +108,7 @@ class Badge
     public static function refundResults(array $body)
     {
 
-        $uri = Url::$api['badge'] . 'codes/refundResults';
+        $uri = Url::$api['badge'] . '/codes/refundResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
         $extInfo= json_encode($body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']);
         $body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']=$extInfo;
@@ -125,7 +125,7 @@ class Badge
     public static function verifyResults(array $body)
     {
 
-        $uri = Url::$api['badge'] . 'codes/verifyResults';
+        $uri = Url::$api['badge'] . '/codes/verifyResults';
         $body['corpId'] = Config::$app_info['CORP_ID'];
         // $body = [
         //     'payCode' => $payCode,
@@ -148,7 +148,7 @@ class Badge
      */
     public static function corpInstances(string $codeIdentity,string $status,array $extInfo=[])
     {
-        $uri = Url::$api['badge'] . 'codes/corpInstances';
+        $uri = Url::$api['badge'] . '/codes/corpInstances';
         $body = [
             'codeIdentity' => $codeIdentity,
             'corpId' => Config::$app_info['CORP_ID'],

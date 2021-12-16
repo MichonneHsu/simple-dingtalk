@@ -12,11 +12,11 @@ class Url
         'domain' => 'https://api.dingtalk.com',
         'gettoken' => '/v1.0/oauth2/accessToken',
         'getUserToken'=>'/v1.0/oauth2/userAccessToken',
-        'todo'=>'/v1.0/todo/users/',
-        'calendar'=>'/v1.0/calendar/users/',
-        'drive'=>'/v1.0/drive/spaces/',
-        'serviceGroup'=>'/v1.0/serviceGroup/',
-        'badge'=>'/v1.0/badge/',
+        'todo'=>'/v1.0/todo/users',
+        'calendar'=>'/v1.0/calendar/users',
+        'drive'=>'/v1.0/drive/spaces',
+        'serviceGroup'=>'/v1.0/serviceGroup',
+        'badge'=>'/v1.0/badge',
         'robot'=>[
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
@@ -26,9 +26,9 @@ class Url
             'send_msg'=>'/robot/send',
            
         ],
-        'contact'=>'/v1.0/contact/',
+        'contact'=>'/v1.0/contact',
         'videoConferences'=>'/v1.0/conference/videoConferences',
-        'document'=>'/v1.0/doc/workspaces/'
+        'document'=>'/v1.0/doc/workspaces'
         
     ];
     

@@ -28,7 +28,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . '/events';
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . '/events';
         $body = self::date_parse($body);
         
         return ApiRequest::post($uri, $body);
@@ -44,7 +44,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
 
         return ApiRequest::delete($uri);
@@ -61,7 +61,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
         $body = self::date_parse($body);
         return ApiRequest::put($uri, $body);
@@ -77,7 +77,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
 
 
         return ApiRequest::get($uri);
@@ -93,7 +93,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events";
 
         if (array_key_exists('timeMin', $query)) {
             $timeMin = $query['timeMin'];
@@ -118,7 +118,7 @@ class Calendar
     public static function add_attendees(string $unionId,string $id , array $attendeesToAdd)
     {
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees";
         $body = [
             'attendeesToAdd' =>  $attendeesToAdd
 
@@ -138,7 +138,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees/batchRemove";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees/batchRemove";
         $body = [
             'attendeesToRemove' =>$attendeesToRemove
         ];
@@ -157,7 +157,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/respond";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/respond";
         $body = [
             'responseStatus' => $responseStatus
         ];
@@ -177,7 +177,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/querySchedule";
+        $uri = Url::$api['calendar'] . "/{$unionId}/querySchedule";
 
         $startTime = Time::setDate($startTime)->format('c');
         $endTime = Time::setDate($endTime)->format('c');
@@ -203,7 +203,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars/" . self::$calendarId . "/events/$id/signin";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/$id/signin";
         $query = [
             'maxResults' => $maxResults,
             'type' => $type,
@@ -221,7 +221,7 @@ class Calendar
      */
     public static function get(string $unionId)
     {
-        $uri = Url::$api['calendar'] . "{$unionId}/calendars";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars";
 
         return ApiRequest::get($uri);
     }

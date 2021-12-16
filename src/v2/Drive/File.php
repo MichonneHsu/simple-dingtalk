@@ -24,7 +24,7 @@ class File
      */
     public static function get_list(string $unionId, string $spaceId,string $parentId,string $maxResults,string $orderType='createTimeDesc',string $nextToken='')
     {
-        $uri = Url::$api['drive'].$spaceId.'/files';
+        $uri = Url::$api['drive']."/$spaceId/files";
 
         $params = [
             'unionId' => $unionId,
@@ -39,7 +39,7 @@ class File
 
     public static function get_info(string $unionId, string $spaceId,string $fileId)
     {
-        $uri = Url::$api['drive']."$spaceId/files/$fileId";
+        $uri = Url::$api['drive']."/$spaceId/files/$fileId";
 
         $params = [
             'unionId' => $unionId
@@ -50,7 +50,7 @@ class File
 
     public static function create(string $unionId, string $spaceId,string $fileType,string $fileName,string $parentId='',string $mediaId='',string $addConflictPolicy='')
     {
-        $uri = Url::$api['drive']."$spaceId/files";
+        $uri = Url::$api['drive']."/$spaceId/files";
 
         $body = [
             'unionId' => $unionId,
@@ -65,7 +65,7 @@ class File
     }
     public static function remove(string $unionId, string $spaceId,string $fileId,string $deletePolicy='toRecycle')
     {
-        $uri = Url::$api['drive']."$spaceId/files/$fileId";
+        $uri = Url::$api['drive']."/$spaceId/files/$fileId";
 
         $params = [
             'unionId' => $unionId,

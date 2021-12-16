@@ -21,7 +21,7 @@ class Todo
     {
       
 
-        $uri = Url::$api['todo'] . "{$unionId}/tasks";
+        $uri = Url::$api['todo'] . "/{$unionId}/tasks";
         $params = [
             'operatorId' => $unionId
         ];
@@ -39,7 +39,7 @@ class Todo
     public static function get(string $unionId,string $id)
     {
     
-        $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
+        $uri = Url::$api['todo'] . "/{$unionId}/tasks/$id";
 
         return ApiRequest::get($uri);
     }
@@ -53,7 +53,7 @@ class Todo
     public static function remove(string $unionId,string $id)
     {
      
-        $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
+        $uri = Url::$api['todo'] . "/{$unionId}/tasks/$id";
         $params = [
             'operatorId' => $unionId
         ];
@@ -72,7 +72,7 @@ class Todo
     public static function update(string $unionId,string $id, array $body)
     {
         
-        $uri = Url::$api['todo'] . "{$unionId}/tasks/$id";
+        $uri = Url::$api['todo'] . "/{$unionId}/tasks/$id";
         $params = [
             'operatorId' => $unionId
         ];
@@ -91,7 +91,7 @@ class Todo
     public static function status(string $unionId,string $id, bool $isDone)
     {
       
-        $uri = Url::$api['todo'] . "{$unionId}/tasks/$id/executorStatus";
+        $uri = Url::$api['todo'] . "/{$unionId}/tasks/$id/executorStatus";
         $params = [
             'operatorId' => $unionId
         ];
@@ -117,7 +117,7 @@ class Todo
     public static function get_by_sourceId(string $unionId,string $sourceId)
     {
       
-        $uri = Url::$api['todo'] . "{$unionId}/tasks/sources/$sourceId";
+        $uri = Url::$api['todo'] . "/{$unionId}/tasks/sources/$sourceId";
 
         return ApiRequest::get($uri);
     }
@@ -132,7 +132,7 @@ class Todo
     public static function query(string $unionId,bool $isDone, string $nextToken = '')
     {
       
-        $uri = Url::$api['todo'] . "{$unionId}/org/tasks/query";
+        $uri = Url::$api['todo'] . "/{$unionId}/org/tasks/query";
 
 
         $body = [
