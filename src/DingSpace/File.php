@@ -23,8 +23,8 @@ class File
             'userid' => $userid,
             'agent_id' =>  Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
         ];
-        $uri=ApiRequest::joinParams($uri,$params,false);
-        // file_put_contents('ca.log',json_encode($json));
+        $uri=ApiRequest::joinParams($uri,$params);
+      
         return ApiRequest::post($uri,[],false);
     }
 
