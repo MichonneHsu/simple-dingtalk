@@ -7,7 +7,7 @@ use SimpleDingTalk\v2\ApiRequest;
 use SimpleDingTalk\v2\Url;
 use SimpleDingTalk\Config;
 /**
- * 文件管理
+ * 统一授权登录第三方网站
  */
 class Authorize
 {
@@ -15,7 +15,11 @@ class Authorize
    
 
   
-
+    /**
+     * 获取构造页面地址
+     *
+     * @return mixed
+     */
     public static function assemble_url(){
      
         $app=Config::$app_info['app'][Config::$app_type];
