@@ -31,8 +31,8 @@ access_token->file_path：access_token的文件路径，建议填写绝对路径
 callback_info：回调信息
 callback_info->aes_key：当前应用的加密
 callback_info->token：当前应用的签名
-scan_info：扫码登录信息
-scan_info->redirect_uri：跳转url
+login_info：扫码登录信息
+login_info->autherize->redirect_uri：跳转url
 userAccessToken：获取用户通讯录个人信息需要的token信息
 v2：新版服务端信息
 robot:群聊机器人
@@ -89,7 +89,7 @@ Config::$app_info = [
             ],
             'login_info' => [
 				'autherize' => [
-					'redirect_uri' => 'https://www.sttaihao.com'
+					'redirect_uri' => 'https://www.baidu.com'
 				]
 			],
 			'v2'=>[
