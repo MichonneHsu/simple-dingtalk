@@ -59,7 +59,7 @@ Config::$app_info = [
             ],
             'login_info' => [
 				'autherize' => [
-					'redirect_uri' => 'https://www.sttaihao.com'
+					'redirect_uri' => 'https://www.baidu.com'
 				]
 			],
 			'v2' => [
