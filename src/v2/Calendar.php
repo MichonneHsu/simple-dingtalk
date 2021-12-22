@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
-
-use PDO;
 use SimpleDingTalk\util\Time;
 
 /**
@@ -21,15 +19,15 @@ class Calendar
     /**
      * 创建日程
      *
-     * @param string $unionId
+     * @param string $userId
      * @param array $body
      * @return mixed
      */
-    public static function create(string $unionId, array $body)
+    public static function create(string $userId, array $body)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . '/events';
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . '/events';
         $body = self::date_parse($body);
 
         return ApiRequest::post($uri, $body);
@@ -37,15 +35,15 @@ class Calendar
     /**
      * 删除日程
      *
-     * @param string $unionId
-     * @param string $id
+     * @param string $userId
+     * @param string $eventId
      * @return mixed
      */
-    public static function remove(string $unionId, string $id)
+    public static function remove(string $userId, string $eventId)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}";
 
 
         return ApiRequest::delete($uri);
@@ -54,15 +52,15 @@ class Calendar
      * 修改日程
      *
      * @param string $unionId
-     * @param string $id
+     * @param string $eventId
      * @param array $body
      * @return mixed
      */
-    public static function update(string $unionId, string $id, array $body)
+    public static function update(string $unionId, string $eventId, array $body)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$eventId}";
 
         $body = self::date_parse($body);
         return ApiRequest::put($uri, $body);
@@ -102,15 +100,15 @@ class Calendar
     /**
      * 查询日程列表
      *
-     * @param string $unionId
+     * @param string $userId
      * @param array $query
      * @return mixed
      */
-    public static function get_list(string $unionId, array $query)
+    public static function get_list(string $userId, array $query)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events";
 
         if (array_key_exists('timeMin', $query)) {
             $timeMin = $query['timeMin'];
