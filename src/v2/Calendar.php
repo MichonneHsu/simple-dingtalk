@@ -92,7 +92,7 @@ class Calendar
     {
 
 
-        $uri = Url::$api['calendar'] . "/users/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}/checkIn";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}/checkIn";
 
 
         return ApiRequest::post($uri);
