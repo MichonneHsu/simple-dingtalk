@@ -6,11 +6,12 @@ namespace SimpleDingTalk\v2;
 
 use PDO;
 use SimpleDingTalk\util\Time;
+
 /**
  * 日程
  */
 class Calendar
-{   
+{
     /**
      * 日程所属的日历ID，统一为primary，表示用户的主日历。
      *
@@ -30,7 +31,7 @@ class Calendar
 
         $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . '/events';
         $body = self::date_parse($body);
-        
+
         return ApiRequest::post($uri, $body);
     }
     /**
@@ -69,18 +70,34 @@ class Calendar
     /**
      * 查询单个日程详情
      *
-     * @param string $unionId
-     * @param string $id
+     * @param string $userId
+     * @param string $eventId
      * @return mixed
      */
-    public static function get_details( string $unionId,string $id)
+    public static function get_details(string $userId, string $eventId)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}";
 
 
         return ApiRequest::get($uri);
+    }
+    /**
+     * 针对单个日程进行签到
+     *
+     * @param string $userId
+     * @param string $eventId
+     * @return mixed
+     */
+    public static function checkIn(string $userId, string $eventId)
+    {
+
+
+        $uri = Url::$api['calendar'] . "/users/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}/checkIn";
+
+
+        return ApiRequest::post($uri);
     }
     /**
      * 查询日程列表
@@ -110,15 +127,15 @@ class Calendar
     /**
      * 添加日程参与者
      *
-     * @param string $unionId
-     * @param string $id
+     * @param string $userId
+     * @param string $eventId
      * @param array $attendeesToAdd
      * @return mixed
      */
-    public static function add_attendees(string $unionId,string $id , array $attendeesToAdd)
+    public static function add_attendees(string $userId, string $eventId, array $attendeesToAdd)
     {
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}/attendees";
         $body = [
             'attendeesToAdd' =>  $attendeesToAdd
 
@@ -129,18 +146,18 @@ class Calendar
     /**
      * 删除日程参与者
      *
-     * @param string $unionId
-     * @param string $id
+     * @param string $userId
+     * @param string $eventId
      * @param array $attendeesToRemove
      * @return mixed
      */
-    public static function remove_attendees(string $unionId,string $id , array $attendeesToRemove)
+    public static function remove_attendees(string $userId, string $eventId, array $attendeesToRemove)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/attendees/batchRemove";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}/attendees/batchRemove";
         $body = [
-            'attendeesToRemove' =>$attendeesToRemove
+            'attendeesToRemove' => $attendeesToRemove
         ];
 
         return ApiRequest::post($uri, $body);
@@ -149,15 +166,15 @@ class Calendar
      * 设置日程响应邀请状态
      *
      * @param string $unionId
-     * @param string $id
+     * @param string $eventId
      * @param string $responseStatus
      * @return mixed
      */
-    public static function respond(string $unionId, string $id, string $responseStatus)
+    public static function respond(string $userId, string $eventId, string $responseStatus)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/{$id}/respond";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/{$eventId}/respond";
         $body = [
             'responseStatus' => $responseStatus
         ];
@@ -167,17 +184,17 @@ class Calendar
     /**
      * 获取用户忙闲信息
      *
-     * @param string $unionId
+     * @param string $userId
      * @param array $userIds
      * @param string $startTime
      * @param string $endTime
      * @return mixed
      */
-    public static function querySchedule(string $unionId, array $userIds, string $startTime, string $endTime)
+    public static function querySchedule(string $userId, array $userIds, string $startTime, string $endTime)
     {
 
 
-        $uri = Url::$api['calendar'] . "/{$unionId}/querySchedule";
+        $uri = Url::$api['calendar'] . "/{$userId}/querySchedule";
 
         $startTime = Time::setDate($startTime)->format('c');
         $endTime = Time::setDate($endTime)->format('c');
@@ -192,18 +209,17 @@ class Calendar
     /**
      * 查看单个日程的签到详情
      *
-     * @param string $unionId
-     * @param string $id
+     * @param string $userId
+     * @param string $eventId
      * @param string $maxResults
      * @param string $type
      * @param string $nextToken
      * @return mixed
      */
-    public static function get_signin(string $unionId, string $id, string $maxResults, string $type, string $nextToken = '')
+    public static function get_signin(string $userId, string $eventId, string $maxResults, string $type, string $nextToken = '')
     {
 
-
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars/" . self::$calendarId . "/events/$id/signin";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars/" . self::$calendarId . "/events/$eventId/signin";
         $query = [
             'maxResults' => $maxResults,
             'type' => $type,
@@ -216,12 +232,12 @@ class Calendar
     /**
      * 查询日历
      *
-     * @param string $unionId
+     * @param string $userId
      * @return mixed
      */
-    public static function get(string $unionId)
+    public static function get(string $userId)
     {
-        $uri = Url::$api['calendar'] . "/{$unionId}/calendars";
+        $uri = Url::$api['calendar'] . "/{$userId}/calendars";
 
         return ApiRequest::get($uri);
     }
