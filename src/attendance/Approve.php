@@ -68,16 +68,7 @@ class Approve
     /**
      * 通知换班通过
      *
-     * @param string $userid
-     * @param string $switch_date
-     * @param string $reback_date
-     * @param string $apply_userid
-     * @param string $target_userid
-     * @param string $approve_id
-     * @param string $apply_shift_id
-     * @param string $target_shift_id
-     * @param string $reback_apply_shift_id
-     * @param string $reback_target_shift_id
+     * @param array $json
      * @return mixed
      */
     public static function schedule_switch(array $json)
