@@ -20,8 +20,8 @@ class WorkFlow
     public static function save(array $json)
     {
         $uri = Url::$api['workflow']['save'];
-      
-        $json['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+
+        $json['agentid'] = Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
         $json = ['saveProcessRequest' => $json];
         return ApiRequest::post($uri, $json);
     }
@@ -39,16 +39,26 @@ class WorkFlow
         return ApiRequest::post($uri, $json);
     }
     /**
-     * 终止审批流程
+     * 撤销审批实例
      *
-     * @param array $json
+     * @param string $operating_userid
+     * @param string $process_instance_id
+     * @param boolean $is_system
+     * @param string $remark
      * @return mixed
      */
-    public static function terminate(array $json)
+    public static function terminate(string $operating_userid,string $process_instance_id,bool $is_system,string $remark)
     {
         $uri = Url::$api['workflow']['terminate'];
-        $pre = $json;
-        $json = ['request' => $pre];
+
+        $json = [
+            'request' => [
+                'operating_userid'=>$operating_userid,
+                'process_instance_id'=>$process_instance_id,
+                'is_system'=>$is_system,
+                'remark'=>$remark
+            ]
+        ];
 
         return ApiRequest::post($uri, $json);
     }
