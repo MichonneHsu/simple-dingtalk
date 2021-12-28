@@ -47,7 +47,7 @@ class WorkFlow
      * @param string $remark
      * @return mixed
      */
-    public static function terminate(string $operating_userid,string $process_instance_id,bool $is_system,string $remark)
+    public static function terminate(string $operating_userid,string $process_instance_id,bool $is_system,string $remark='')
     {
         $uri = Url::$api['workflow']['terminate'];
 
