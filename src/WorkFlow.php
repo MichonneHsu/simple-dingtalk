@@ -216,7 +216,7 @@ class WorkFlow
         return ApiRequest::post($uri, $json);
     }
     /**
-     * 添加审批评论
+     * 同意或拒绝审批任务
      *
      * @param array $json
      * @return mixed
