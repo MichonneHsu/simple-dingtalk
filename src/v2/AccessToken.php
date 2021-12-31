@@ -77,20 +77,16 @@ class AccessToken
         ];
         $has_token = false;
         $res = ApiRequest::post($uri, $body, $has_token);
-
-        // $filename = $app['userAccessToken']['file_path'];
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
-
         return $token;
-        // $data = json_encode($token);
-        // file_put_contents($filename, $data);
+      
     }
 
     public static function setUserToken(string $unionId)
     {
-        $uri = Url::$api['contact'] . "users/$unionId";
+        $uri = Url::$api['contact'] . "/users/$unionId";
         $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
         $file_path = $at['file_path'];
 
@@ -103,8 +99,11 @@ class AccessToken
         if ($unionId == 'me') {
             $generatedUserToken = AccessToken::generateUserToken();
             $accessToken = $generatedUserToken['accessToken'];
-            $res = ApiRequest::userGetReq($uri, [], $accessToken);
+         
+            $res = ApiRequest::userGetReq($uri, $accessToken);
+           
             $userinfo = json_decode($res, true);
+           
             $key = $userinfo['unionId'];
             if (empty($file_contents) || !array_key_exists($key, $file_contents)  || $file_contents[$key]['token_info']['expireIn'] - $at['expires'] < time()) {
                 $file_contents[$key] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];

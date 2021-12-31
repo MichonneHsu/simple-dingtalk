@@ -143,26 +143,23 @@ class ApiRequest{
         curl_close($ch);
         return $res;
     }
-    public static function userGetReq(string $uri,array $body=[],string $accessToken){
-        try {
-            $client=self::client();
-            $body=empty($body)?'':json_encode($body);
-            $header=[
-                'Content-Type'=>'application/json',
-                'x-acs-dingtalk-access-token'=>$accessToken
-            ]; 
-            
-            $rep=self::request('get',$uri,$body,$header);
-            $resp=$client->send($rep,['timeout'=>2]);
-           
-            $resp->getBody()->getContents();
-          
-           
-            return $resp->getBody()->getContents();
-        } catch (RequestException $e) {
-            return Message::toString($e->getResponse());
-           
-        }
+    public static function userGetReq(string $uri,string $accessToken){
+        $uri=Url::$api['domain'].$uri;
+        $header=[
+            'Content-Type: application/json',
+            'x-acs-dingtalk-access-token:'.$accessToken
+        ];
+       
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        $res=curl_exec($ch);
+        curl_close($ch);
+        return $res;
     }
 
   
