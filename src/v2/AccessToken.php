@@ -115,7 +115,7 @@ class AccessToken
 
                 $generatedUserToken = AccessToken::generateUserToken();
                 $accessToken = $generatedUserToken['accessToken'];
-                $res = ApiRequest::userGetReq($uri, [], $accessToken);
+                $res = ApiRequest::userGetReq($uri,$accessToken);
                 $userinfo = json_decode($res, true);
                 $key = $userinfo['unionId'];
                 $file_contents[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
