@@ -13,7 +13,9 @@ class Extcontact{
     public static function create(array $contact)
     {
         $uri = Url::$api['extcontact']['create'];
-        $json=$contact;
+        $json=[
+            'contact'=>$contact
+        ];
         return ApiRequest::post($uri, $json);
     }
     /**
@@ -39,7 +41,9 @@ class Extcontact{
     public static function update(array $contact)
     {
         $uri = Url::$api['extcontact']['update'];
-        $json=$contact;
+        $json=[
+            'contact'=>$contact
+        ];
         return ApiRequest::post($uri, $json);
     }
     /**
