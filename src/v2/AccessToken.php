@@ -89,7 +89,7 @@ class AccessToken
         $uri = Url::$api['contact'] . "/users/$unionId";
         $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
         $file_path = $at['file_path'];
-
+        $res='';
         $key = '';
 
         if (!file_exists($file_path)) {
@@ -101,28 +101,28 @@ class AccessToken
             $accessToken = $generatedUserToken['accessToken'];
          
             $res = ApiRequest::userGetReq($uri, $accessToken);
-           
+            // print_r($res);die;
             $userinfo = json_decode($res, true);
            
             $key = $userinfo['unionId'];
             if (empty($file_contents) || !array_key_exists($key, $file_contents)  || $file_contents[$key]['token_info']['expireIn'] - $at['expires'] < time()) {
                 $file_contents[$key] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
             }
-            return file_put_contents($file_path, json_encode($file_contents)) ? $key : false;
+            return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
         } else {
 
             if (empty($file_contents) || !array_key_exists($unionId, $file_contents)  || $file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
 
                 $generatedUserToken = AccessToken::generateUserToken();
                 $accessToken = $generatedUserToken['accessToken'];
-                $res = ApiRequest::userGetReq($uri,$accessToken);
+                $res = ApiRequest::userGetReq($uri, $accessToken);
                 $userinfo = json_decode($res, true);
                 $key = $userinfo['unionId'];
                 $file_contents[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
 
-                return file_put_contents($file_path, json_encode($file_contents)) ? $key : false;
+                return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
             }
         }
-        return $key;
+        return false;
     }
 }
