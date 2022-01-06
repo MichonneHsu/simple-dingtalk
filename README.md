@@ -136,9 +136,7 @@ Config::$app_info = [
 ### 用法
 #### 基础用法
 ```
-//在非框架里使用引用：
 require_once './vendor/autoload.php';
-//在框架里使用的话：
 use SimpleDingTalk\Config;
 Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
