@@ -136,11 +136,13 @@ Config::$app_info = [
 ### 用法
 #### 基础用法
 ```
-//引用
+//在非框架里使用引用：
 require_once './vendor/autoload.php';
+//在框架里使用的话：
+use SimpleDingTalk\Config;
 Config::$app_type = 'miniprogram_app';
 Config::$robot_type = 'robot1';
-Config::$app_info = [...];//你的配置
+Config::$app_info = [...];//"..."代表你的配置内容
 use SimpleDingTalk\WorkFlow;
 
 $json=[
