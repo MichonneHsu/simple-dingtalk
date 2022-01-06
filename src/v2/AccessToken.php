@@ -121,6 +121,8 @@ class AccessToken
                 $file_contents[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
 
                 return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
+            }else{
+                return $file_contents[$unionId];
             }
         }
         return false;
