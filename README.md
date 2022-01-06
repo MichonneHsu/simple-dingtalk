@@ -136,6 +136,11 @@ Config::$app_info = [
 ### 用法
 #### 基础用法
 ```
+//引用
+require_once './vendor/autoload.php';
+Config::$app_type = 'miniprogram_app';
+Config::$robot_type = 'robot1';
+Config::$app_info = [...];//你的配置
 use SimpleDingTalk\WorkFlow;
 
 $json=[
