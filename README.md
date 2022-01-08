@@ -9,7 +9,8 @@
 <img src="https://img.shields.io/badge/release-1.0.3-orange" />
 <img src="https://img.shields.io/badge/license-MIT-green" />
 </p>
-### 介绍  
+
+### 介绍
 为什么要制作钉钉PHP服务端的扩展，因为官方的扩展实在是大，而且要使用一个功能比较繁琐，刚好可以通过http请求的方式去调用，所以我就设计了扩展的结构，以最简单的方式取调用、代码易懂、模块化。
 ### 安装方式
 `composer require michonnehsu/simpledingtalk`
