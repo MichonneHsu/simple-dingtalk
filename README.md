@@ -39,101 +39,57 @@ userAccessToken：获取用户通讯录个人信息需要的token信息
 v2：新版服务端信息
 robot:群聊机器人
 robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
-配置格式：
-Config::$app_type = 'miniprogram_app';
-Config::$robot_type = 'robot1';
-Config::$app_info = [
-	'CORP_ID' => '',
-    'app' => [
-		'miniprogram_app' => [
-			 'app_info'=>[
-                'AGENT_ID' => 0,
-    		    'APP_KEY' => '',
-    		    'APP_SECRET' => '',
-            ],
-			'access_token' => [
-				'expires' => 0,
-				'file_path' => './a.json'
-			],
-            'callback_info'=>[
-                'aes_key' => '',
-                'token' => ''
-            ],
-            'login_info' => [
-				'autherize' => [
-					'redirect_uri' => 'https://www.baidu.com'
-				]
-			],
-			'v2' => [
-				'access_token' => [
-					'expires' => 180,
-					'file_path' => './c.json'
-				]
-			],
-             'userAccessToken'=>[
-				'expires' => 180,
-				'file_path' => './user.json'
+如何配置：
+$apps=[
+	'miniprogram_app' => [
+		'app_info' => [
+			'AGENT_ID' => 879172675,
+			'APP_KEY' => '',
+			'APP_SECRET' => '',
+		],
+		'access_token' => [
+			'expires' => 180,
+			'file_path' => './a.json'
+		],
+		'login_info' => [
+			'autherize' => [
+				'redirect_uri' => 'https://www.dingtalk.com'
 			]
 		],
-	    'micro_app'=>[
-			 'app_info'=>[
-                'AGENT_ID' => 0,
-    		    'APP_KEY' => '',
-    		    'APP_SECRET' => '',
-            ],
-			'access_token'=>[
-				'expires' => 0,
-				'file_path' => './a.json'
-			],
-            'callback_info'=>[
-                'aes_key' => '',
-                'token' => ''
-            ],
-            'login_info' => [
-				'autherize' => [
-					'redirect_uri' => 'https://www.baidu.com'
-				]
-			],
-			'v2'=>[
-				'access_token'=>[
-					'expires' => 0,
-					'file_path' => './c.json'
-				]
-			],
-             'userAccessToken'=>[
+		'v2' => [
+			'access_token' => [
 				'expires' => 180,
-				'file_path' => './user.json'
+				'file_path' => './c.json'
 			]
+		],
+		'userAccessToken' => [
+			'expires' => 180,
+			'file_path' => './uat.json'
 		]
-    ],
-        'robot'=>[
-            'robot1' => [
-                'info' => [
-                    'AGENT_ID' => 0,
-                    'APP_KEY' => '',
-                    'APP_SECRET' => '',
-                    'SEC'=>''
-                ],
-                'access_token' => [
-                    'expires' => 0,
-                    'file_path' => './robot1.json'
-                ]
-                
-            ],
-            'robot2' => [
-                'info' => [
-                    'AGENT_ID' => 0,
-                    'APP_KEY' => '',
-                    'APP_SECRET' => '',
-                     'SEC'=>''
-                ],
-                'access_token' => [
-                    'expires' => 0,
-                    'file_path' => './robot2.json'
-                ]
-        ],
-    ]
+	],
 ];
+
+$robots=[
+	'robot1' => [
+		'info' => [
+			'AGENT_ID' => 0,
+			'APP_KEY' => '',
+			'APP_SECRET' => '',
+			'access_token' => '',
+			'SEC' => ''
+		],
+		'access_token' => [
+			'expires' => 180,
+			'file_path' => './robot.json'
+		]
+
+	],
+];
+Config::setRobot($robots);
+Config::setApp($apps);
+Config::setAppType('miniprogram_app');
+Config::setRobotType('robot1');
+Config::setCorpId('dingf0b7b3254cbc5769');
 ```
 ### 用法
 #### 基础用法
