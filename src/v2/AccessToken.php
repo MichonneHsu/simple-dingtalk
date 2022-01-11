@@ -42,7 +42,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app = Config::$app_info['app'][Config::$app_type];
+        $app =  Config::getApp();
         $appkey = $app['app_info']['APP_KEY'];
         $appSecret = $app['app_info']['APP_SECRET'];
         $uri = Url::$api['gettoken'];
@@ -65,7 +65,7 @@ class AccessToken
     public static function generateUserToken()
     {
         $uri = Url::$api['getUserToken'];
-        $app = Config::$app_info['app'][Config::$app_type];
+        $app =  Config::getApp();
         $appkey = $app['app_info']['APP_KEY'];
         $appSecret = $app['app_info']['APP_SECRET'];
         $body = [
@@ -87,7 +87,7 @@ class AccessToken
     public static function setUserToken(string $unionId)
     {
         $uri = Url::$api['contact'] . "/users/$unionId";
-        $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
+        $at =  Config::getApp()['userAccessToken'];
         $file_path = $at['file_path'];
         $res='';
         $key = '';
