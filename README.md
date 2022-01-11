@@ -43,7 +43,7 @@ robot->SEC：机器人的加签码，用于加密发送消息。可在群设置�
 $apps=[
 	'miniprogram_app' => [
 		'app_info' => [
-			'AGENT_ID' => 879172675,
+			'AGENT_ID' => 0,
 			'APP_KEY' => '',
 			'APP_SECRET' => '',
 		],
@@ -89,7 +89,7 @@ Config::setRobot($robots);
 Config::setApp($apps);
 Config::setAppType('miniprogram_app');
 Config::setRobotType('robot1');
-Config::setCorpId('dingf0b7b3254cbc5769');
+Config::setCorpId('dingf0xxxxx69');
 ```
 ### 用法
 #### 基础用法
