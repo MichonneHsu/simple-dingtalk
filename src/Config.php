@@ -45,7 +45,7 @@ class Config
                 ]
             ],
             'micro_app' => [
-                'app_info' => [
+                'info' => [
                     'AGENT_ID' => '',
                     'APP_KEY' => '',
                     'APP_SECRET' => ''
