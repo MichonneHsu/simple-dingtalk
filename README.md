@@ -95,10 +95,7 @@ Config::setCorpId('dingf0xxxxx69');
 #### 基础用法
 ```
 require_once './vendor/autoload.php';
-use SimpleDingTalk\Config;
-Config::$app_type = 'miniprogram_app';
-Config::$robot_type = 'robot1';
-Config::$app_info = [...];//"..."代表你的配置内容
+
 use SimpleDingTalk\WorkFlow;
 
 $json=[
