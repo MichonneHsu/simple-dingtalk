@@ -27,7 +27,7 @@ class Authorize
         $params=[
             'redirect_uri'=>$redirect_uri,
             'response_type'=>'code',
-            'client_id'=>$app['app_info']['APP_KEY'],
+            'client_id'=>$app['info']['APP_KEY'],
             'scope'=>'openid',
             'state'=>'ok',
             'prompt'=>'consent'

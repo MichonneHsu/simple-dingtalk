@@ -40,8 +40,8 @@ class AccessToken
     {
 
         $app = Config::getApp();
-        $appkey = $app['app_info']['APP_KEY'];
-        $appSecret = $app['app_info']['APP_SECRET'];
+        $appkey = $app['info']['APP_KEY'];
+        $appSecret = $app['info']['APP_SECRET'];
         $uri = Url::$api['gettoken'];
         $query = [
             'appkey' => $appkey,

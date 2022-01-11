@@ -14,7 +14,7 @@ class Config
     public static $app_info = [
 
             'miniprogram_app' => [
-                'app_info' => [
+                'info' => [
                     'AGENT_ID' => '',
                     'APP_KEY' => '',
                     'APP_SECRET' => ''

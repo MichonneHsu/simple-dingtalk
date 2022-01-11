@@ -24,7 +24,7 @@ class CallBack
         $callback_info = $getApp['callback_info'];
         $token = $callback_info['token'];
         $encodingAesKey = $callback_info['aes_key'];
-        $ownerKey = $getApp['app_info']['APP_KEY'];
+        $ownerKey = $getApp['info']['APP_KEY'];
         $crypt=(new DingCallbackCrypto($token, $encodingAesKey, $ownerKey));
         $text = $crypt->getDecryptMsg($signature, $timeStamp, $nonce, $encrypt);
         $res = $crypt->getEncryptedMap("success");

@@ -204,17 +204,9 @@ class User{
      */
     public static function getuserinfo_bycode(string $tmp_auth_code)
     {
-        // $sign_info=Sign::signature();
-        // $params = [
-
-        //     'accessKey' => Config::$app_info['app'][Config::$app_type]['app_info']['APP_KEY'],
-        //     'timestamp' => $sign_info['timestamp'],
-        //     'signature' =>  $sign_info['signature']
-
-        // ];
         $params = [
 
-            'accessKey' => Config::getApp()['app_info']['APP_KEY'],
+            'accessKey' => Config::getApp()['info']['APP_KEY'],
             'timestamp' => Sign::getMillisecond(),
             'signature' => Sign::signature()
 
@@ -238,7 +230,7 @@ class User{
     {
         $app=Config::getApp();
         $params = [
-            'appid' => $app['app_info']['APP_KEY'],
+            'appid' => $app['info']['APP_KEY'],
             'response_type' => 'code',
             'scope' => 'snsapi_login',
             'state' => 'STATE',
