@@ -22,8 +22,8 @@ class Message
      */
     public static function oToMessages_batchSend(array $userIds, string $msgKey, array $msgParam)
     {
-        $robot_type = Config::$robot_type;
-        $robotCode = Config::$app_info['robot'][$robot_type]['info']['APP_KEY'];
+       
+        $robotCode = Config::getRobot()['info']['APP_KEY'];
 
         $uri = Url::$api['robot']['oToMessages_batchSend'];
         $body = [

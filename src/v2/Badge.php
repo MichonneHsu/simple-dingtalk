@@ -19,21 +19,8 @@ class Badge
     {
 
         $uri = Url::$api['badge'] . '/codes/userInstances';
-        $body['corpId']=Config::$app_info['CORP_ID'];
-        // $body['extInfo']=json_encode($body['extInfo']);
+        $body['corpId']=Config::getCorpId();
         
-        // $body = [
-        //     'requestId' => $requestId,
-        //     'corpId' => Config::$app_info['CORP_ID'],
-        //     'codeIdentity' => $codeIdentity,
-        //     'status' => $status,
-        //     'userCorpRelationType' => $userCorpRelationType,
-        //     'userIdentity' => $userIdentity,
-        //     'gmtExpired' => $gmtExpired,
-        //     'availableTimes' => $availableTimes,
-        //     'extInfo' => json_encode($extInfo),
-        //     'codeValue' => $codeValue
-        // ];
 
         return ApiRequest::post($uri, $body);
     }
@@ -47,20 +34,8 @@ class Badge
     {
 
         $uri = Url::$api['badge'] . '/codes/userInstances';
-        $body['corpId']=Config::$app_info['CORP_ID'];
-        // $body['extInfo']=json_encode($body['extInfo']);
-        // $body = [
-        //     'codeId' => $codeId,
-        //     'corpId' => Config::$app_info['CORP_ID'],
-        //     'codeIdentity' => $codeIdentity,
-        //     'status' => $status,
-        //     'userCorpRelationType' => $userCorpRelationType,
-        //     'userIdentity' => $userIdentity,
-        //     'gmtExpired' => $gmtExpired,
-        //     'availableTimes' => $availableTimes,
-        //     'extInfo' => json_encode($extInfo),
-        //     'codeValue' => $codeValue
-        // ];
+        $body['corpId']=Config::getCorpId();
+       
 
         return ApiRequest::put($uri, $body);
     }
@@ -92,7 +67,7 @@ class Badge
     {
 
         $uri = Url::$api['badge'] . '/codes/payResults';
-        $body['corpId'] = Config::$app_info['CORP_ID'];
+        $body['corpId'] = Config::getCorpId();
         $extInfo= json_encode($body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']);
         $body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']=$extInfo;
         $extInfo=json_encode($body['extInfo']);
@@ -109,7 +84,7 @@ class Badge
     {
 
         $uri = Url::$api['badge'] . '/codes/refundResults';
-        $body['corpId'] = Config::$app_info['CORP_ID'];
+        $body['corpId'] = Config::getCorpId();
         $extInfo= json_encode($body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']);
         $body['payChannelDetailList'][0]['fundToolDetailList'][0]['extInfo']=$extInfo;
        
@@ -126,16 +101,8 @@ class Badge
     {
 
         $uri = Url::$api['badge'] . '/codes/verifyResults';
-        $body['corpId'] = Config::$app_info['CORP_ID'];
-        // $body = [
-        //     'payCode' => $payCode,
-        //     'corpId' => Config::$app_info['CORP_ID'],
-        //     'userCorpRelationType'=>$userCorpRelationType,
-        //     'userIdentity'=>$userIdentity,
-        //     'verifyTime'=>$verifyTime,
-        //     'verifyResult'=>$verifyResult,
-        //     'verifyLocation'=>$verifyLocation
-        // ];
+        $body['corpId'] = Config::getCorpId();
+      
         return ApiRequest::post($uri, $body);
     }
     /**
@@ -151,7 +118,7 @@ class Badge
         $uri = Url::$api['badge'] . '/codes/corpInstances';
         $body = [
             'codeIdentity' => $codeIdentity,
-            'corpId' => Config::$app_info['CORP_ID'],
+            'corpId' => Config::getCorpId(),
             'status'=>$status,
             'extInfo'=>$extInfo
           

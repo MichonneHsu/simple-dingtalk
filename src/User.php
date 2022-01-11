@@ -214,7 +214,7 @@ class User{
         // ];
         $params = [
 
-            'accessKey' => Config::$app_info['app'][Config::$app_type]['app_info']['APP_KEY'],
+            'accessKey' => Config::getApp()['app_info']['APP_KEY'],
             'timestamp' => Sign::getMillisecond(),
             'signature' => Sign::signature()
 
@@ -236,7 +236,7 @@ class User{
      */
     public static function sns_authorize(string $tmp_auth_code): string
     {
-        $app=Config::$app_info['app'][Config::$app_type];
+        $app=Config::getApp();
         $params = [
             'appid' => $app['app_info']['APP_KEY'],
             'response_type' => 'code',

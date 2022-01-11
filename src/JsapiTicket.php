@@ -12,7 +12,7 @@ class JsapiTicket
    
     public static function getToken(): string
     {
-        $app=Config::$app_info['app'][Config::$app_type];
+        $app=Config::getApp();
         $file_path=$app['access_token']['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
@@ -52,7 +52,7 @@ class JsapiTicket
         $token = json_decode($json, true);
         $expires_in = $token['expires_in'];
         $token['expires_in'] = $expires_in + time();
-        $filename = Config::$app_info['app'][Config::$app_type]['access_token']['file_path'];
+        $filename = Config::getApp()['access_token']['file_path'];
         $data = json_encode($token);
         file_put_contents($filename, $data);
     }

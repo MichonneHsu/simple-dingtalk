@@ -17,7 +17,7 @@ class Sign{
         //     'signature'=>urlencode(base64_encode($s)),
         //     'timestamp'=>$millisecond
         // ];
-        $key=Config::$app_info['app'][Config::$app_type]['app_info']['APP_SECRET'];
+        $key=Config::getApp()['app_info']['APP_SECRET'];
         $s = hash_hmac('sha256', self::getMillisecond(), $key, true);
 
         $signature = base64_encode($s);

@@ -12,8 +12,8 @@ class AccessToken
    
     public static function getToken(): string
     {
-        $at=Config::$app_info['robot'][Config::$robot_type]['access_token'];
-        $file_path=$at['file_path'];
+        $robot=Config::getRobot();
+        $file_path=$robot['access_token']['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');
         }
@@ -25,7 +25,7 @@ class AccessToken
            
         } else {
             $token = json_decode($json, true);
-            if (($token['expireIn'] - $at['expires']) < time()) {
+            if (($token['expireIn'] - $robot['access_token']['expires']) < time()) {
                 self::generateToken();
 
               
@@ -41,7 +41,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app= Config::$app_info['robot'][Config::$robot_type];
+        $app= Config::getRobot();
         $appkey =$app['info']['APP_KEY'];
         $appSecret = $app['info']['APP_SECRET'];
         $uri = Url::$api['gettoken'];

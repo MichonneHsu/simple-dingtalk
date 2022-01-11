@@ -11,7 +11,7 @@ class Contact
 {
     public static function getPersonalInfo(string $unionId)
     {
-        $at = Config::$app_info['app'][Config::$app_type]['userAccessToken'];
+        $at = Config::getApp()['userAccessToken'];
         $file_path = $at['file_path'];
         $key=AccessToken::setUserToken($unionId);
         if($key<>false){

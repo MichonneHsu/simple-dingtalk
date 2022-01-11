@@ -9,7 +9,7 @@ class Sign{
     public static function signature()
     {   
         
-        $APP_SECRET=Config::$app_info['robot'][Config::$robot_type]['info']['SEC'];
+        $APP_SECRET=Config::getRobot()['info']['SEC'];
         
         $getMillisecond=self::getMillisecond();
         $sign_raw=$getMillisecond."\n".$APP_SECRET;

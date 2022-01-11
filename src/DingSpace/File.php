@@ -21,7 +21,7 @@ class File
             'file_name' => $file_name,
             'media_id' => $media_id,
             'userid' => $userid,
-            'agent_id' =>  Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
+            'agent_id' =>  Config::getApp()['app_info']['AGENT_ID']
         ];
         $uri=ApiRequest::joinParams($uri,$params);
       
@@ -32,7 +32,7 @@ class File
     {
         $uri = Url::$api['cspace']['add'];
         $query = [
-            'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
+            'agent_id' => Config::getApp()['app_info']['AGENT_ID'],
             'name' => $name,
             'code' => $code,
             'media_id' => $media_id,
@@ -48,7 +48,7 @@ class File
         $uri = Url::$api['cspace']['get_custom_space'];
 
         $query = [
-            'agent_id' => strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']),
+            'agent_id' => strval(Config::getApp()['app_info']['AGENT_ID']),
             'domain' => $domain,
 
         ];
@@ -60,7 +60,7 @@ class File
         $uri = Url::$api['cspace']['used_info'];
 
         $query = [
-            'agent_id' => strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']),
+            'agent_id' => strval(Config::getApp()['app_info']['AGENT_ID']),
             'domain' => $domain,
 
         ];
@@ -71,7 +71,7 @@ class File
         $uri = Url::$api['cspace']['grant_custom_space'];
 
         $query = [
-            'agent_id' => strval(Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']),
+            'agent_id' => strval(Config::getApp()['app_info']['AGENT_ID']),
             'domain' => $domain,
             'userid'=>$userid,
             'type'=>$type,
@@ -86,7 +86,7 @@ class File
     {
         $uri = Url::$api['cspace']['file']['upload_single'];
         $params = [
-            'agent_id' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
+            'agent_id' => Config::getApp()['app_info']['AGENT_ID'],
             'file_size' => $file_size
         ];
         $file_infos=['file' => new CURLFILE($file)];

@@ -16,7 +16,7 @@ class AccessToken
 
     public static function getToken(): string
     {
-        $at = Config::$app_info['app'][Config::$app_type]['v2']['access_token'];
+        $at = Config::getApp()['v2']['access_token'];
         $file_path = $at['file_path'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path . ' 文件不存在');

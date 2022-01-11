@@ -22,7 +22,7 @@ class Authorize
      */
     public static function assemble_url(){
      
-        $app=Config::$app_info['app'][Config::$app_type];
+        $app=Config::getApp();
         $redirect_uri=urlencode($app['login_info']['autherize']['redirect_uri']);
         $params=[
             'redirect_uri'=>$redirect_uri,

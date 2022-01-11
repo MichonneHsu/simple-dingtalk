@@ -40,7 +40,7 @@ class WorkRecord
 
         $json = [
             'request' => [
-                'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
+                'agentid' => Config::getApp()['app_info']['AGENT_ID'],
                 'process_code' => $process_code,
                 'clean_running_task' => $clean_running_task
             ]
@@ -70,7 +70,7 @@ class WorkRecord
     {
         $uri = Url::$api['workrecord']['create'];
         $pre = $json;
-        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $pre['agentid']=Config::getApp()['app_info']['AGENT_ID'];
         $json = ['request' => $pre];
         return ApiRequest::post($uri, $json);
     }
@@ -84,7 +84,7 @@ class WorkRecord
     {
         $uri = Url::$api['workrecord']['save'];
         $pre = $json;
-        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $pre['agentid']=Config::getApp()['app_info']['AGENT_ID'];
         $json = ['saveProcessRequest' => $pre];
         return ApiRequest::post($uri, $json);
     }
@@ -103,7 +103,7 @@ class WorkRecord
 
         $json = [
             'request' =>  [
-                'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'],
+                'agentid' => Config::getApp()['app_info']['AGENT_ID'],
                 'process_instance_id' => $process_instance_id,
                 'status' => $status,
                 'result' => $result,
@@ -132,7 +132,7 @@ class WorkRecord
                     'status' => $status,
                     'result' => $result,
                 ],
-                'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
+                'agentid' => Config::getApp()['app_info']['AGENT_ID']
             ]
         ];
 
@@ -148,7 +148,7 @@ class WorkRecord
     {
         $uri = Url::$api['workrecord']['task_create'];
         $pre = $json;
-        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $pre['agentid']=Config::getApp()['app_info']['AGENT_ID'];
         $json = ['request' => $pre];
 
         return ApiRequest::post($uri, $json);
@@ -191,7 +191,7 @@ class WorkRecord
             'request' => [
                 'process_instance_id'=>$process_instance_id,
                 'tasks'=>$tasks,
-                'agentid' => Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID']
+                'agentid' => Config::getApp()['app_info']['AGENT_ID']
             ]
         ];
 
@@ -202,7 +202,7 @@ class WorkRecord
         $uri = Url::$api['workrecord']['cancel'];
 
         $pre = $json;
-        $pre['agentid']=Config::$app_info['app'][Config::$app_type]['app_info']['AGENT_ID'];
+        $pre['agentid']=Config::getApp()['app_info']['AGENT_ID'];
         $json = ['request' => $pre];
 
         return ApiRequest::post($uri, $json);
