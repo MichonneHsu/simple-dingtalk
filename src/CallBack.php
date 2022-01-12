@@ -6,7 +6,9 @@ namespace SimpleDingTalk;
 
 use SimpleDingTalk\util\encrypt\DingCallbackCrypto;
 
-
+/**
+ * 回调事件
+ */
 class CallBack
 {
     /**
