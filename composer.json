@@ -8,7 +8,7 @@
             "email": "850574565@qq.com"
         }
     ],
-    "license": "Apache-2.0",
+    "license": "MIT",
     "require": {
         "php":">=7.3",
         "guzzlehttp/guzzle": "^7.3"

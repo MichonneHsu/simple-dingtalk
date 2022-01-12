@@ -2,32 +2,9 @@
 
 namespace SimpleDingTalk\v2;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Message;
-use GuzzleHttp\Psr7\Request;
+
 class ApiRequest{
-  
-    /**
-     * 客户端请求基本信息
-     *
-     * @return Client
-     */
-    public static function client(){
-        return  new Client(['base_uri'=>Url::$api['domain']]);
-    }
-    /**
-     * 客户端请求基本信息
-     *
-     * @param string $method
-     * @param string $uri
-     * @param string $body
-     * @param array $header
-     * @return Request
-     */
-    public static function request(string $method,string $uri,string $body='',array $header=[]){
-        return new Request($method,$uri,$header,$body);
-    }
+    
    /**
      * get请求
      *
@@ -88,30 +65,7 @@ class ApiRequest{
     public static function REST(string $method,string $uri,array $body=[],bool $has_token=true){
         
         return self::http_request($method,$uri,$body,$has_token);
-        // try {
-        //     $client=self::client();
-        //     $body=empty($body)?'':json_encode($body);
-        //     $header=[
-        //         'Content-Type'=>'application/json'
-        //     ];
-        //     $rep=null;
-        //     if($has_token){
-               
-        //            $header['x-acs-dingtalk-access-token']=AccessToken::getToken();
-              
-               
-        //     }
-        //     $rep=self::request($method,$uri,$body,$header);
-        //     $resp=$client->send($rep,['timeout'=>2]);
-           
-            
-          
-           
-        //     return $resp->getBody()->getContents();
-        // } catch (RequestException $e) {
-        //     return Message::toString($e->getResponse());
-           
-        // }
+      
     }
      /**
      * HTTP请求
