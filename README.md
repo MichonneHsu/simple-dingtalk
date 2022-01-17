@@ -56,6 +56,10 @@ $apps=[
 				'redirect_uri' => 'https://www.dingtalk.com'
 			]
 		],
+		'callback_info' => [
+                    'aes_key' => '',
+                    'token' => ''
+         ],
 		'v2' => [
 			'access_token' => [
 				'expires' => 180,
