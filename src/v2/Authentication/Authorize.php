@@ -15,7 +15,7 @@ class Authorize
 {
     private static $uris=[
         'assemble_url'=>'https://login.dingtalk.com/oauth2/auth',
-        'dingtalk_login_url'=>'https://oapi.dingtalk.com/connect/oauth2/sns_authorize',
+        'dingtalk_login_uri'=>'https://oapi.dingtalk.com/connect/oauth2/sns_authorize',
     ];
  
     /**
@@ -26,7 +26,7 @@ class Authorize
     public static function assemble_url(){
      
         $app=Config::getApp();
-        $redirect_uri=urlencode($app['login_info']['autherize']['redirect_uri']);
+        $redirect_uri=$app['login_info']['autherize']['redirect_uri'];
         $params=[
             'redirect_uri'=>$redirect_uri,
             'response_type'=>'code',
@@ -47,13 +47,13 @@ class Authorize
     public static function dingtalk_login_url(){
       
         $app=Config::getApp();
-        $redirect_uri=urlencode($app['login_info']['autherize']['dingtalk_login_uri']);
+        $redirect_uri=$app['login_info']['autherize']['dingtalk_login_uri'];
         $params=[
+            'redirect_uri'=>$redirect_uri,
            'appid'=>$app['info']['APP_KEY'],
            'response_type'=>'code',
            'scope'=>'snsapi_auth',
-           'state'=>'ok',
-           'redirect_uri'=>$redirect_uri
+           'state'=>'ok'
         ];
         $uri=self::$uris['dingtalk_login_uri'];
         return ApiRequest::joinParams($uri,$params);
