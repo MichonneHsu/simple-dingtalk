@@ -21,7 +21,7 @@ class Authorize
     /**
      * 统一授权登录第三方网站
      *
-     * @return mixed
+     * @return string
      */
     public static function assemble_url(){
      
@@ -42,7 +42,7 @@ class Authorize
     /**
      * 钉钉内免登页面地址
      *
-     * @return void
+     * @return string
      */
     public static function dingtalk_login_url(){
       
