@@ -65,7 +65,8 @@ class Config
                 ],
                 'login_info' => [
                     'autherize' => [
-                        'redirect_uri' => ''
+                        'redirect_uri' => '',
+                        'dingtalk_login_uri'=>''
                     ]
                 ],
                 'v2' => [
