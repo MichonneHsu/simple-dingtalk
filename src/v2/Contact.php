@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
 
-use SimpleDingTalk\Config;
-use Exception;
 
 class Contact
 {
     public static function getPersonalInfo(string $unionId)
     {
-        $at = Config::getApp()['userAccessToken'];
-        $file_path = $at['file_path'];
-        $key=AccessToken::setUserToken($unionId);
-        if($key<>false){
-            return json_decode(file_get_contents($file_path),true)[$key];
-        }
-        return '';
+        return AccessToken::setUserToken($unionId);
     }
     public static function invites_infos(string $inviterUserId = '', string $deptId = '')
     {
