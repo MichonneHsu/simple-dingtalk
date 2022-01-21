@@ -15,7 +15,7 @@ class Authorize
 {
     private static $uris=[
         'assemble_url'=>'https://login.dingtalk.com/oauth2/auth',
-        'dingtalk_login_uri'=>'https://oapi.dingtalk.com/connect/oauth2/sns_authorize',
+        'dingtalk_login_url'=>'https://oapi.dingtalk.com/connect/oauth2/sns_authorize',
     ];
  
     /**
