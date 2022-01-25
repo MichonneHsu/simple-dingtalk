@@ -98,13 +98,6 @@ $robots=[
 
 	],
 ];
-
-Config::setRobot($robots);
-Config::setApp($apps);
-Config::setAppType('miniprogram_app');
-Config::setRobotType('robot1');
-Config::setCorpId('dingf0xxxxx69');
-OR
 Config::setRobot($robots)->
 setApp($apps)->
 setAppType('miniprogram_app')->

@@ -8,10 +8,10 @@ namespace SimpleDingTalk;
 class Config
 {
 
-    public static $app_type = 'miniprogram_app';
-    public static $robot_type = 'robot1';
-    public static $corp_id = '';
-    public static $app_info = [
+    private static $app_type = 'miniprogram_app';
+    private static $robot_type = 'robot1';
+    private static $corp_id = '';
+    private static $app_info = [
 
             'miniprogram_app' => [
                 'info' => [
@@ -81,7 +81,7 @@ class Config
                 ]
             ]
     ];
-    public static $robot_info = [
+    private static $robot_info = [
         'robot1' => [
             'info' => [
                 'AGENT_ID' => 0,

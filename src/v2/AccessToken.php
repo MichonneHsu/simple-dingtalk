@@ -10,10 +10,24 @@ use Exception;
 class AccessToken
 {
 
-    public static $grantType = '';
-    public static $code = '';
-    public static $refreshToken = '';
-
+    private static $grantType = '';
+    private static $code = '';
+    private static $refreshToken = '';
+    public static function setGrantType($grantType)
+    {
+        self::$grantType = $grantType;
+        return new Self;
+    }
+    public static function setCode($code)
+    {
+        self::$code = $code;
+        return new Self;
+    }
+    public static function setRefreshToken($refreshToken)
+    {
+        self::$refreshToken = $refreshToken;
+        return new Self;
+    }
     public static function getToken(): string
     {
         $at = Config::getApp()['v2']['access_token'];
@@ -81,7 +95,6 @@ class AccessToken
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
         return $token;
-      
     }
 
     public static function setUserToken(string $unionId)
@@ -89,7 +102,7 @@ class AccessToken
         $uri = Url::$api['contact'] . "/users/$unionId";
         $at =  Config::getApp()['userAccessToken'];
         $file_path = $at['file_path'];
-        $res='';
+        $res = '';
         $key = '';
 
         if (!file_exists($file_path)) {
@@ -99,11 +112,11 @@ class AccessToken
         if ($unionId == 'me') {
             $generatedUserToken = AccessToken::generateUserToken();
             $accessToken = $generatedUserToken['accessToken'];
-         
+
             $res = ApiRequest::userGetReq($uri, $accessToken);
             // print_r($res);die;
             $userinfo = json_decode($res, true);
-           
+
             $key = $userinfo['unionId'];
             if (empty($file_contents) || !array_key_exists($key, $file_contents)  || $file_contents[$key]['token_info']['expireIn'] - $at['expires'] < time()) {
                 $file_contents[$key] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
@@ -121,7 +134,7 @@ class AccessToken
                 $file_contents[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
 
                 return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
-            }else{
+            } else {
                 return $file_contents[$unionId];
             }
         }
