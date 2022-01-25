@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk;
 
-
+use Exception;
 
 class ApiRequest
 {
@@ -60,25 +60,30 @@ class ApiRequest
                 'access_token' => AccessToken::getToken()
             ]);
         }
-
-
-        $method = strtoupper($method);
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_URL, $uri);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-        
-        if(!empty($body) && $method=='POST'){
+        try {
+            $method = strtoupper($method);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_URL, $uri);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+            
+            if(!empty($body) && $method=='POST'){
+              
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+            }
           
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+            $res = curl_exec($ch);
+            curl_close($ch);
+            return $res;
+        } catch (\RuntimeException $e) {
+            throw new Exception($e->getMessage());
+            
         }
-      
-        $res = curl_exec($ch);
-        curl_close($ch);
-        return $res;
+
+       
     }
 
     public static function joinParams(string $uri, array $params, bool $encode = false): string

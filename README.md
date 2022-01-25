@@ -14,6 +14,13 @@
 这是一款PHP编写的钉钉服务端扩展包，以最简单的方式取调用、源码易懂、模块化。
 ### 安装方式
 `composer require michonnehsu/simpledingtalk`
+### 环境版本
+*推荐这个版本配置以上*  
+PHP 7.3.24 (cli) (built: Oct 27 2020 14:44:04)  
+( ZTS MSVC15 (Visual C++ 2017) x64 )  
+Copyright (c) 1997-2018 The PHP Group  
+Zend Engine v3.3.24, Copyright (c) 1998-2018 Zend Technologies  
+with Xdebug v2.8.1, Copyright (c) 2002-2019, by Derick Rethans
 ### 文档地址
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
 
