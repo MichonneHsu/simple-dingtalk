@@ -41,8 +41,8 @@ callback_info：回调信息
 callback_info->aes_key：当前应用的加密
 callback_info->token：当前应用的签名
 login_info：扫码登录信息
-login_info->autherize->redirect_uri：统一授权登录第三方网站
-login_info->autherize->dingtalk_login_uri：钉钉内免登第三方网站跳转url
+login_info->authorize->redirect_uri：统一授权登录第三方网站
+login_info->authorize->dingtalk_login_uri：钉钉内免登第三方网站跳转url
 userAccessToken：获取用户通讯录个人信息需要的token信息
 v2：新版服务端信息
 robot:群聊机器人
@@ -60,7 +60,7 @@ $apps=[
 			'file_path' => './a.json'
 		],
 		'login_info' => [
-			'autherize' => [
+			'authorize' => [
 				'redirect_uri' => 'https://www.dingtalk.com',
 				'dingtalk_login_uri'=>'https://www.dingtalk.com'
 			]

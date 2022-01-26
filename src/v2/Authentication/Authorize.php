@@ -26,7 +26,7 @@ class Authorize
     public static function assemble_url(){
      
         $app=Config::getApp();
-        $redirect_uri=$app['login_info']['autherize']['redirect_uri'];
+        $redirect_uri=$app['login_info']['authorize']['redirect_uri'];
         $params=[
             'redirect_uri'=>$redirect_uri,
             'response_type'=>'code',
@@ -47,7 +47,7 @@ class Authorize
     public static function dingtalk_login_url(){
       
         $app=Config::getApp();
-        $redirect_uri=$app['login_info']['autherize']['dingtalk_login_uri'];
+        $redirect_uri=$app['login_info']['authorize']['dingtalk_login_uri'];
         $params=[
             'redirect_uri'=>$redirect_uri,
            'appid'=>$app['info']['APP_KEY'],

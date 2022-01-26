@@ -28,7 +28,7 @@ class Config
                     'token' => ''
                 ],
                 'login_info' => [
-                    'autherize' => [
+                    'authorize' => [
                         'redirect_uri' => ''
                     ]
                 ],
@@ -64,7 +64,7 @@ class Config
                     'management' => ''
                 ],
                 'login_info' => [
-                    'autherize' => [
+                    'authorize' => [
                         'redirect_uri' => '',
                         'dingtalk_login_uri'=>''
                     ]

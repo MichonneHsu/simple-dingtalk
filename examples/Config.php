@@ -15,7 +15,7 @@ $apps=[
 			'file_path' => './a.json'
 		],
 		'login_info' => [
-			'autherize' => [
+			'authorize' => [
 				'redirect_uri' => 'https://www.dingtalk.com',
 				'dingtalk_login_uri'=>'https://www.dingtalk.com'
 			]
