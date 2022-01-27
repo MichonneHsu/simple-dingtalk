@@ -234,7 +234,7 @@ class User{
             'response_type' => 'code',
             'scope' => 'snsapi_login',
             'state' => 'STATE',
-            'redirect_uri' =>$app['login_info']['autherize']['redirect_uri'],
+            'redirect_uri' =>$app['login_info']['authorize']['redirect_uri'],
             'loginTmpCode' => $tmp_auth_code
         ];
         $uri = Url::$api['domain'].Url::$api['user']['sns_authorize'];
