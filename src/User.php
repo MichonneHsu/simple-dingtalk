@@ -204,9 +204,10 @@ class User{
      */
     public static function getuserinfo_bycode(string $tmp_auth_code)
     {
+        $app=Config::getApp();
         $params = [
 
-            'accessKey' => Config::getApp()['info']['APP_KEY'],
+            'accessKey' => $app['info']['APP_KEY'],
             'timestamp' => Sign::getMillisecond(),
             'signature' => Sign::signature()
 
