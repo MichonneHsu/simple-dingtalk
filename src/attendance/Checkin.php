@@ -75,7 +75,7 @@ class Checkin
             'userid' => $userid,
             'device_name'=>$device_name,
             'device_id'=>$device_id,
-            'user_check_time'=>Time::toTime($user_check_time),
+            'user_check_time'=>Time::toTime($user_check_time,true),
             'photo_url'=>$photo_url
         ];
         return ApiRequest::post($uri, $json);
