@@ -31,7 +31,7 @@ class OA{
     {
       
 
-        $uri = Url::$api['oa']['workflow'].'/schemas/getByProcessCode';
+        $uri = Url::$api['oa']['workflow'].'/schemas/processCodes';
         $params = [
             'processCode' => $processCode
         ];
