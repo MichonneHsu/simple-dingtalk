@@ -36,6 +36,6 @@ class OA{
             'processCode' => $processCode
         ];
         $uri = ApiRequest::joinParams($uri, $params);
-        return ApiRequest::post($uri);
+        return ApiRequest::get($uri);
     }
 }
