@@ -35,4 +35,21 @@ class Contact
         ];
         return ApiRequest::post($uri, $body);
     }
+    public static function exclusive_enable(string $userId)
+    {
+        $uri = Url::$api['contact'] . '/orgAccounts/enable';
+        $body = [
+            'userId' => $userId
+        ];
+        return ApiRequest::post($uri, $body);
+    }
+    public static function exclusive_disable(string $userId, string $reason)
+    {
+        $uri = Url::$api['contact'] . '/orgAccounts/enable';
+        $body = [
+            'userId' => $userId,
+            'reason' => $reason
+        ];
+        return ApiRequest::post($uri, $body);
+    }
 }
