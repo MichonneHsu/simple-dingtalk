@@ -15,7 +15,7 @@ function getDepts($dept_id){
             if($break){
                 break;
             }
-            $result[$p]['subs'][]=getDepts($result[$p]['dept_id']);
+            $result[$p]['subs']=getDepts($result[$p]['dept_id']);
 
     }
     return $result;
