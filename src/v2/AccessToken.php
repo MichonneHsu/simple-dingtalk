@@ -117,8 +117,6 @@ class AccessToken
         $uri = Url::$api['contact'] . "/users/$unionId";
         $at =  Config::getApp()['userAccessToken'];
         $file_path = $at['file_path'];
-        // return json_decode(file_get_contents($file_path), true)[$unionId];
-
         $res = '';
         $key = '';
 
