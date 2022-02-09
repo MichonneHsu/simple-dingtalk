@@ -13,7 +13,7 @@ class AccessToken
     private static $grantType = '';
     private static $code = '';
     private static $refreshToken = '';
-    
+
     public static function setGrantType($grantType)
     {
         self::$grantType = $grantType;
@@ -40,7 +40,6 @@ class AccessToken
     public static function getRefreshToken()
     {
         return self::$refreshToken;
-       
     }
     public static function getToken(): string
     {
@@ -113,9 +112,13 @@ class AccessToken
 
     public static function setUserToken(string $unionId)
     {
+
+
         $uri = Url::$api['contact'] . "/users/$unionId";
         $at =  Config::getApp()['userAccessToken'];
         $file_path = $at['file_path'];
+        // return json_decode(file_get_contents($file_path), true)[$unionId];
+
         $res = '';
         $key = '';
 
@@ -126,10 +129,11 @@ class AccessToken
         if ($unionId == 'me') {
             self::setGrantType('authorization_code');
             $generatedUserToken = self::generateUserToken();
+
             $accessToken = $generatedUserToken['accessToken'];
 
             $res = ApiRequest::userGetReq($uri, $accessToken);
-            
+
             $userinfo = json_decode($res, true);
 
             $key = $userinfo['unionId'];
@@ -140,17 +144,15 @@ class AccessToken
         } else {
 
             if (empty($file_contents) || !array_key_exists($unionId, $file_contents)  || $file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
-                $refreshToken=$file_contents[$unionId]['token_info']['refreshToken'];
+                $refreshToken = $file_contents[$unionId]['token_info']['refreshToken'];
+
                 self::setGrantType('refresh_token')->setRefreshToken($refreshToken);
 
                 $generatedUserToken = self::generateUserToken();
-                $accessToken = $generatedUserToken['accessToken'];
-                $res = ApiRequest::userGetReq($uri, $accessToken);
-                $userinfo = json_decode($res, true);
-                $key = $userinfo['unionId'];
-                $file_contents[$unionId] = ['user_info' => $userinfo, 'token_info' => $generatedUserToken];
 
-                return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
+                $file_contents[$unionId]['token_info'] = $generatedUserToken;
+
+                return file_put_contents($file_path, json_encode($file_contents)) ? $file_contents[$unionId] : false;
             } else {
                 return $file_contents[$unionId];
             }
