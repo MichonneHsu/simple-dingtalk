@@ -12,7 +12,7 @@ $url=Authorize::assemble_url();
 // 钉钉会返回一个`code`的参数
 // 设置一下userAccessToken的 获取个授权人信息的Token配置
 $authCode=$_GET['code'];
-AccessToken::setGrantType('authorization_code')->setCode($authCode);
+AccessToken::setCode($authCode);
 // 最后Contact类调用getPersonalInfo并设置 me 为参数
 $userinfo=Contact::getPersonalInfo('me');
 // 打印结果出来

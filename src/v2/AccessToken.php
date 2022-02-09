@@ -13,6 +13,7 @@ class AccessToken
     private static $grantType = '';
     private static $code = '';
     private static $refreshToken = '';
+    
     public static function setGrantType($grantType)
     {
         self::$grantType = $grantType;
@@ -27,6 +28,19 @@ class AccessToken
     {
         self::$refreshToken = $refreshToken;
         return new Self;
+    }
+    public static function getGrantType()
+    {
+        return self::$grantType;
+    }
+    public static function getCode()
+    {
+        return self::$code;
+    }
+    public static function getRefreshToken()
+    {
+        return self::$refreshToken;
+       
     }
     public static function getToken(): string
     {
@@ -85,9 +99,9 @@ class AccessToken
         $body = [
             'clientId' => $appkey,
             'clientSecret' => $appSecret,
-            'grantType' => self::$grantType,
-            'code' =>  self::$code,
-            'refreshToken' =>  self::$refreshToken
+            'grantType' => self::getGrantType(),
+            'code' =>  self::getCode(),
+            'refreshToken' =>  self::getRefreshToken()
         ];
         $has_token = false;
         $res = ApiRequest::post($uri, $body, $has_token);
@@ -110,11 +124,12 @@ class AccessToken
         }
         $file_contents = json_decode(file_get_contents($file_path), true);
         if ($unionId == 'me') {
-            $generatedUserToken = AccessToken::generateUserToken();
+            self::setGrantType('authorization_code');
+            $generatedUserToken = self::generateUserToken();
             $accessToken = $generatedUserToken['accessToken'];
 
             $res = ApiRequest::userGetReq($uri, $accessToken);
-            // print_r($res);die;
+            
             $userinfo = json_decode($res, true);
 
             $key = $userinfo['unionId'];
@@ -125,8 +140,10 @@ class AccessToken
         } else {
 
             if (empty($file_contents) || !array_key_exists($unionId, $file_contents)  || $file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
+                $refreshToken=$file_contents[$unionId]['token_info']['refreshToken'];
+                self::setGrantType('refresh_token')->setRefreshToken($refreshToken);
 
-                $generatedUserToken = AccessToken::generateUserToken();
+                $generatedUserToken = self::generateUserToken();
                 $accessToken = $generatedUserToken['accessToken'];
                 $res = ApiRequest::userGetReq($uri, $accessToken);
                 $userinfo = json_decode($res, true);
