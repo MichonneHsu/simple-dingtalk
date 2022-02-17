@@ -121,7 +121,10 @@ class AccessToken
         $file_path = $at['file_path'];
         $res = '';
         $key = '';
+<<<<<<< HEAD
 
+=======
+>>>>>>> dfe0190a3fb4eac893a7822331c59fa36d45a6cd
         $file_info=pathinfo($file_path);
         $file_path_info=$file_info['dirname'].'\\'.$file_info['basename'];
         if (!file_exists($file_path)) {
