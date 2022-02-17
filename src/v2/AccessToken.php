@@ -45,8 +45,10 @@ class AccessToken
     {
         $at = Config::getApp()['v2']['access_token'];
         $file_path = $at['file_path'];
+        $file_info=pathinfo($file_path);
+        $file_path_info=$file_info['dirname'].'\\'.$file_info['basename'];
         if (!file_exists($file_path)) {
-            throw new Exception($file_path . ' 文件不存在');
+            throw new Exception($file_path_info . ' 文件不存在');
         }
 
         $json = file_get_contents($file_path);
@@ -119,9 +121,10 @@ class AccessToken
         $file_path = $at['file_path'];
         $res = '';
         $key = '';
-
+        $file_info=pathinfo($file_path);
+        $file_path_info=$file_info['dirname'].'\\'.$file_info['basename'];
         if (!file_exists($file_path)) {
-            throw new Exception($file_path . ' 文件不存在');
+            throw new Exception($file_path_info . ' 文件不存在');
         }
         $file_contents = json_decode(file_get_contents($file_path), true);
         if ($unionId == 'me') {
