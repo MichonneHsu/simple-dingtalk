@@ -16,7 +16,7 @@ class AccessToken
         $app = Config::getApp();
         $file_path = $app['access_token']['file_path'];
         $file_info=pathinfo($file_path);
-        $file_path_info=$file_info['dirname'].'\\'.$file_info['basename'];
+        $file_path_info=$file_info['dirname'].'/'.$file_info['basename'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path_info . ' 文件不存在');
         }
