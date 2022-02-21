@@ -8,7 +8,7 @@ function list(data) {
   var a=false;
   html += "<ul>";
   for (let i of data) {
-      // console.log(i)
+     
    
            
         
