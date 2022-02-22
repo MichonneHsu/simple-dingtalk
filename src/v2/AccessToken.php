@@ -45,8 +45,8 @@ class AccessToken
     {
         $at = Config::getApp()['v2']['access_token'];
         $file_path = $at['file_path'];
-        $file_info=pathinfo($file_path);
-        $file_path_info=$file_info['dirname'].'/'.$file_info['basename'];
+        $file_info = pathinfo($file_path);
+        $file_path_info = $file_info['dirname'] . '/' . $file_info['basename'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path_info . ' 文件不存在');
         }
@@ -121,8 +121,8 @@ class AccessToken
         $file_path = $at['file_path'];
         $res = '';
         $key = '';
-        $file_info=pathinfo($file_path);
-        $file_path_info=$file_info['dirname'].'/'.$file_info['basename'];
+        $file_info = pathinfo($file_path);
+        $file_path_info = $file_info['dirname'] . '/' . $file_info['basename'];
         if (!file_exists($file_path)) {
             throw new Exception($file_path_info . ' 文件不存在');
         }
@@ -143,21 +143,20 @@ class AccessToken
             }
             return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
         } else {
-
-            if($file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()){
+            if (empty($file_contents) || !array_key_exists($unionId, $file_contents)) {
                 $refreshToken = $file_contents[$unionId]['token_info']['refreshToken'];
 
-                self::setGrantType('refresh_token')->setRefreshToken($refreshToken);
+                self::setGrantType('authorization_code')->setRefreshToken($refreshToken);
 
                 $generatedUserToken = self::generateUserToken();
 
                 $file_contents[$unionId]['token_info'] = $generatedUserToken;
 
                 return file_put_contents($file_path, json_encode($file_contents)) ? $file_contents[$unionId] : false;
-            }elseif (empty($file_contents) || !array_key_exists($unionId, $file_contents)) {
+            } elseif ($file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
                 $refreshToken = $file_contents[$unionId]['token_info']['refreshToken'];
 
-                self::setGrantType('authorization_code')->setRefreshToken($refreshToken);
+                self::setGrantType('refresh_token')->setRefreshToken($refreshToken);
 
                 $generatedUserToken = self::generateUserToken();
 
