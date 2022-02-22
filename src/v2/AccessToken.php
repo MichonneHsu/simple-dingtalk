@@ -144,10 +144,20 @@ class AccessToken
             return file_put_contents($file_path, json_encode($file_contents)) ? $res : false;
         } else {
 
-            if (empty($file_contents) || !array_key_exists($unionId, $file_contents)  || $file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()) {
+            if($file_contents[$unionId]['token_info']['expireIn'] - $at['expires'] < time()){
                 $refreshToken = $file_contents[$unionId]['token_info']['refreshToken'];
 
                 self::setGrantType('refresh_token')->setRefreshToken($refreshToken);
+
+                $generatedUserToken = self::generateUserToken();
+
+                $file_contents[$unionId]['token_info'] = $generatedUserToken;
+
+                return file_put_contents($file_path, json_encode($file_contents)) ? $file_contents[$unionId] : false;
+            }elseif (empty($file_contents) || !array_key_exists($unionId, $file_contents)) {
+                $refreshToken = $file_contents[$unionId]['token_info']['refreshToken'];
+
+                self::setGrantType('authorization_code')->setRefreshToken($refreshToken);
 
                 $generatedUserToken = self::generateUserToken();
 
