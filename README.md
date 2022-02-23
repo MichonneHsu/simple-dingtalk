@@ -6,7 +6,7 @@
 <p align="center" style="font-family: Arial, Helvetica, sans-serif;">轻量级钉钉服务端PHP-SDK，简化初学者的使用难度。</p>
 <p align="center">
 <img src="https://img.shields.io/badge/PHP-7.3+-green" />
-<img src="https://img.shields.io/badge/release-1.0.5-orange" />
+<img src="https://img.shields.io/badge/release-1.0.6-orange" />
 <img src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 
