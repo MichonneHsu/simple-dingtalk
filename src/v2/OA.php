@@ -17,7 +17,7 @@ class OA{
     {
       
 
-        $uri = Url::$api['oa']['workflow'];
+        $uri = Url::$api['oa']['workflow'].'/forms';
 
         return ApiRequest::post($uri, $body);
     }
@@ -31,7 +31,7 @@ class OA{
     {
       
 
-        $uri = Url::$api['oa']['workflow'].'/schemas/processCodes';
+        $uri = Url::$api['oa']['workflow'].'/forms/schemas/processCodes';
         $params = [
             'processCode' => $processCode
         ];

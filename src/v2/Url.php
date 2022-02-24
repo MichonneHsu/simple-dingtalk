@@ -30,7 +30,7 @@ class Url
         'videoConferences'=>'/v1.0/conference/videoConferences',
         'document'=>'/v1.0/doc/workspaces',
         'oa'=>[
-            'workflow'=>'/v1.0/workflow/forms'
+            'workflow'=>'/v1.0/workflow'
         ]
         
     ];
