@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
+
+use SimpleDingTalk\Config;
+
 /**
  * OA审批
  */
@@ -56,8 +59,9 @@ class OA{
      * @return mixed
      */
     public static function request(array $body){
+        $app=Config::getApp();
         $uri = Url::$api['oa']['workflow'].'/processInstances';
-       
+        $body['microappAgentId']=$app['agent_id'];
         return ApiRequest::post($uri,$body);
     }
 }
