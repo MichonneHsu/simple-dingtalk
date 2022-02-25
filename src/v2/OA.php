@@ -61,7 +61,7 @@ class OA{
     public static function request(array $body){
         $app=Config::getApp();
         $uri = Url::$api['oa']['workflow'].'/processInstances';
-        $body['microappAgentId']=$app['info']['agent_id'];
+        $body['microappAgentId']=$app['info']['AGENT_ID'];
         return ApiRequest::post($uri,$body);
     }
 }
