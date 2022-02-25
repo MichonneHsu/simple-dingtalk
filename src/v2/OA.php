@@ -38,4 +38,26 @@ class OA{
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
     }
+    /**
+     * 获取审批单流程中的节点信息
+     *
+     * @param array $body
+     * @return mixed
+     */
+    public static function forecast(array $body){
+        $uri = Url::$api['oa']['workflow'].'/processes/forecast';
+       
+        return ApiRequest::post($uri,$body);
+    }
+    /**
+     * 发起审批实例
+     *
+     * @param array $body
+     * @return mixed
+     */
+    public static function request(array $body){
+        $uri = Url::$api['oa']['workflow'].'/processInstances';
+       
+        return ApiRequest::post($uri,$body);
+    }
 }
