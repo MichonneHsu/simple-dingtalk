@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
+
 use SimpleDingTalk\Config;
+
 
 if(!function_exists('dk_conf')){
     function dk_conf(string $name){
