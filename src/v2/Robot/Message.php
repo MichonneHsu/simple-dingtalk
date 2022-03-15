@@ -120,4 +120,20 @@ class Message
         $has_token = false;
         return v1_req::post($uri, $json, $has_token);
     }
+    /**
+     * 批量撤回单聊消息
+     *
+     * @param array $processQueryKeys
+     * @return mixed
+     */
+    public static function batchRecall(array $processQueryKeys){
+        $uri = Url::$api['robot']['batchRecall'];
+        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $json=[
+            'robotCode'=>$robotCode,
+            'processQueryKeys'=>$processQueryKeys
+        ];
+       
+        return v1_req::post($uri, $json);
+    }
 }
