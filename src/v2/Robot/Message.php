@@ -129,11 +129,11 @@ class Message
     public static function batchRecall(array $processQueryKeys){
         $uri = Url::$api['robot']['batchRecall'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
-        $json=[
+        $body=[
             'robotCode'=>$robotCode,
             'processQueryKeys'=>$processQueryKeys
         ];
        
-        return v1_req::post($uri, $json);
+        return ApiRequest::post($uri, $body);
     }
 }
