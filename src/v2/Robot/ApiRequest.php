@@ -108,7 +108,23 @@ class ApiRequest{
     }
     
    
-  
+    public static function old_request(string $uri,array $body=[]){
+        $domain='https://oapi.dingtalk.com/';
+        $uri=$domain. $uri.'?access_token='.AccessToken::getToken();
+        $header[]='Content-Type: application/json';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        $body=empty($body)?'':json_encode($body);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        $res=curl_exec($ch);
+        curl_close($ch);
+        return $res;
+    }
   
     public static function joinParams(string $uri, array $params,bool $encode=false): string
     {

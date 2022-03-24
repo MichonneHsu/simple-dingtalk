@@ -69,7 +69,7 @@ class Message
             'callbackRouteKey' => $callbackRouteKey,
             'forceUpdate' => $forceUpdate
         ];
-        return v1_req::post($uri, $json);
+        return ApiRequest::old_request($uri,$json);
     }
     /**
      * 更新钉钉可交互式卡片
