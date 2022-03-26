@@ -15,7 +15,7 @@ class VacationManagement
      * 更新假期类型
      *
      * @param array $json
-     * @return void
+     * @return mixed
      */
     public static function create(array $json)
     {
@@ -27,7 +27,7 @@ class VacationManagement
      * 更新假期类型s
      *
      * @param array $json
-     * @return void
+     * @return mixed
      */
     public static function update(array $json)
     {
@@ -40,7 +40,7 @@ class VacationManagement
      *
      * @param string $op_userid
      * @param string $leave_code
-     * @return void
+     * @return mixed
      */
     public static function remove(string $op_userid,string $leave_code)
     {
@@ -58,7 +58,7 @@ class VacationManagement
      *
      * @param string $op_userid
      * @param string $vacation_source
-     * @return void
+     * @return mixed
      */
     public static function type_list(string $op_userid,string $vacation_source)
     {
@@ -76,7 +76,7 @@ class VacationManagement
      *
      * @param string $op_userid
      * @param array $leave_quotas
-     * @return void
+     * @return mixed
      */
     public static function quota_init(string $op_userid,array $leave_quotas)
     {
@@ -98,7 +98,7 @@ class VacationManagement
      * @param string $userids
      * @param integer $offset
      * @param integer $size
-     * @return void
+     * @return mixed
      */
     public static function quota_list(string $op_userid,string $leave_code,string $userids,int $offset=0,int $size=10)
     {
@@ -119,7 +119,7 @@ class VacationManagement
      *
      * @param string $op_userid
      * @param array $leave_quotas
-     * @return void
+     * @return mixed
      */
     public static function quota_update(string $op_userid,array $leave_quotas)
     {
@@ -142,7 +142,7 @@ class VacationManagement
      * @param string $userids
      * @param integer $offset
      * @param integer $size
-     * @return void
+     * @return mixed
      */
     public static function record_list(string $op_userid,string $leave_code,string $userids,int $offset=0,int $size=10)
     {
