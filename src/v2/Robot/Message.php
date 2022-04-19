@@ -136,4 +136,74 @@ class Message
        
         return ApiRequest::post($uri, $body);
     }
+
+
+
+    /**
+     * 发送机器人群聊消息
+     *
+     * @param string $msgParam
+     * @param string $msgKey
+     * @param string $openConversationId
+     * @return mixed
+     */
+    public static function sendGroupMessages(string $msgParam,string $msgKey ,string $openConversationId){
+        $uri = Url::$api['robot']['batchRecall'];
+        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $body=[
+            'msgParam'=>$msgParam,
+            'msgKey'=>$msgKey,
+            'openConversationId'=>$openConversationId,
+            'robotCode'=>$robotCode
+        ];
+       
+        return ApiRequest::post($uri, $body);
+    }
+    /**
+     * 批量查询机器人单聊消息是否已读
+     *
+     * @param string $processQueryKey
+     * @return mixed
+     */
+    public static function readStatus(string $processQueryKey){
+        $uri = Url::$api['robot']['readStatus'];
+        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $params=[
+            'processQueryKey'=>$processQueryKey,
+            'robotCode'=>$robotCode
+        ];
+        $uri=ApiRequest::joinParams($uri,$params);
+        return ApiRequest::get($uri);
+    }
+
+    /**
+     * 批量撤回群聊消息
+     *
+     * @param string $processQueryKey
+     * @return void
+     */
+    public static function recallGroupMessages(string $openConversationId,array $processQueryKeys){
+        $uri = Url::$api['robot']['recallGroupMessages'];
+        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $body=[
+            'openConversationId'=>$openConversationId,
+            'processQueryKeys'=>$processQueryKeys,
+            'robotCode'=>$robotCode
+        ];
+       
+        return ApiRequest::post($uri,$body);
+    }
+    public static function queryGroupMessages(string $openConversationId,string $processQueryKey,int $maxResults=5,string $nextToken=''){
+        $uri = Url::$api['robot']['queryGroupMessages'];
+        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $body=[
+            'openConversationId'=>$openConversationId,
+            'processQueryKey'=>$processQueryKey,
+            'maxResults'=>$maxResults,
+            'nextToken'=>$nextToken,
+            'robotCode'=>$robotCode
+        ];
+       
+        return ApiRequest::post($uri,$body);
+    }
 }

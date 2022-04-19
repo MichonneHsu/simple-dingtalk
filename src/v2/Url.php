@@ -24,7 +24,11 @@ class Url
             'scencegroup_chat'=>'/topapi/im/chat/scencegroup/message/send_v2',
             'callback_register'=>'/topapi/im/chat/scencegroup/interactivecard/callback/register',
             'send_msg'=>'/robot/send',
-            'batchRecall'=>'/v1.0/robot/otoMessages/batchRecall'
+            'batchRecall'=>'/v1.0/robot/otoMessages/batchRecall',
+            'sendGroupMessages'=>'/v1.0/robot/groupMessages/send ',
+            'readStatus'=>'/v1.0/robot/oToMessages/readStatus',
+            'recallGroupMessages'=>'/v1.0/robot/groupMessages/recall',
+            'queryGroupMessages'=>'/v1.0/robot/groupMessages/query'
            
         ],
         'contact'=>'/v1.0/contact',
