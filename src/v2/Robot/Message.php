@@ -142,16 +142,16 @@ class Message
     /**
      * 发送机器人群聊消息
      *
-     * @param string $msgParam
+     * @param array $msgParam
      * @param string $msgKey
      * @param string $openConversationId
      * @return mixed
      */
-    public static function sendGroupMessages(string $msgParam,string $msgKey ,string $openConversationId){
-        $uri = Url::$api['robot']['batchRecall'];
+    public static function sendGroupMessages(array $msgParam,string $msgKey ,string $openConversationId){
+        $uri = Url::$api['robot']['sendGroupMessages'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
         $body=[
-            'msgParam'=>$msgParam,
+            'msgParam'=>json_encode($msgParam,JSON_UNESCAPED_UNICODE),
             'msgKey'=>$msgKey,
             'openConversationId'=>$openConversationId,
             'robotCode'=>$robotCode
