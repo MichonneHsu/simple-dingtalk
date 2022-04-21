@@ -22,7 +22,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'];
+        $uri = Url::$api['document']['workspaces'];
         $body = [
             'operatorId' => $operatorId,
             'name' => $name,
@@ -43,7 +43,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/members";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members' => $members
@@ -60,7 +60,7 @@ class Document
      */
     public static function get_space(string $workspaceId)
     {
-        $uri = Url::$api['document'] . "/{$workspaceId}";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}";
         return ApiRequest::get($uri);
     }
     /**
@@ -75,7 +75,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/members";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members' => $members
@@ -96,7 +96,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/members/remove";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/members/remove";
         $body = [
             'operatorId' => $operatorId,
             'members' => $members
@@ -117,7 +117,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/docs";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/docs";
         $body = [
             'operatorId' => $operatorId,
             'name' => $name,
@@ -139,7 +139,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/docs/{$nodeId}/members";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/docs/{$nodeId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members'=>$members
@@ -160,7 +160,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/docs/{$nodeId}/members";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/docs/{$nodeId}/members";
         $body = [
             'operatorId' => $operatorId,
             'members'=>$members
@@ -181,7 +181,7 @@ class Document
     {
 
 
-        $uri = Url::$api['document'] . "/{$workspaceId}/docs/{$nodeId}/members/remove";
+        $uri = Url::$api['document']['workspaces'] . "/{$workspaceId}/docs/{$nodeId}/members/remove";
         $body = [
             'operatorId' => $operatorId,
             'members'=>$members
@@ -189,4 +189,25 @@ class Document
 
         return ApiRequest::post($uri, $body);
     }
+    /**
+     * 查询文档模版
+     *
+     * @param string $operatorId
+     * @param string $templateType
+     * @param string $workspaceId
+     * @param string $nextToken
+     * @param integer $maxResults
+     * @return mixed
+     */
+    public static function query_docs_templates(string $operatorId, string $templateType,string $workspaceId,string $nextToken,int $maxResults=10)
+    {
+
+
+        $uri = Url::$api['document']['templates'] . "/operatorId={$operatorId}&templateType={$templateType}&workspaceId={$workspaceId}&nextToken={$nextToken}&maxResults={$maxResults}";
+       
+
+        return ApiRequest::get($uri);
+    }
+
+    
 }

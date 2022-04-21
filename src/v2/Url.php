@@ -33,7 +33,10 @@ class Url
         ],
         'contact'=>'/v1.0/contact',
         'videoConferences'=>'/v1.0/conference/videoConferences',
-        'document'=>'/v1.0/doc/workspaces',
+        'document'=>[
+            'workspaces'=>'/v1.0/doc/workspaces',
+            'templates'=>'/v1.0/doc/templates'
+        ],
         'oa'=>[
             'workflow'=>'/v1.0/workflow'
         ],
