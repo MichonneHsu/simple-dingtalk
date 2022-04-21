@@ -6,16 +6,18 @@ namespace SimpleDingTalk\v2;
 
 class Group{
 
+      /**
+     * 把chatId变为OpenConversationId
+     *
+     * @param string $chatId
+     * @return mixed
+     */
     public static function convertToOpenConversationId(string $chatId)
     {
 
 
-        $uri = Url::$api['document'];
-        $body = [
-            'chatId' => $chatId,
-           
-        ];
-
-        return ApiRequest::post($uri, $body);
+        $uri = Url::$api['group']['convertToOpenConversationId'].'/'.$chatId.'/convertToOpenConversationId';
+       
+        return ApiRequest::post($uri);
     }
 }

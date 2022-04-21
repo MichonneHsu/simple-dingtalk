@@ -36,6 +36,9 @@ class Url
         'document'=>'/v1.0/doc/workspaces',
         'oa'=>[
             'workflow'=>'/v1.0/workflow'
+        ],
+        'group'=>[
+            'convertToOpenConversationId'=>'/v1.0/im/chat'
         ]
         
     ];
