@@ -192,19 +192,16 @@ class Document
     /**
      * 查询文档模版
      *
-     * @param string $operatorId
-     * @param string $templateType
-     * @param string $workspaceId
-     * @param string $nextToken
-     * @param integer $maxResults
+     * @param array $params
      * @return mixed
      */
-    public static function query_docs_templates(string $operatorId, string $templateType,string $workspaceId,string $nextToken,int $maxResults=10)
+    public static function query_docs_templates(array $params)
     {
 
-
-        $uri = Url::$api['document']['templates'] . "/operatorId={$operatorId}&templateType={$templateType}&workspaceId={$workspaceId}&nextToken={$nextToken}&maxResults={$maxResults}";
-       
+      
+        $uri = Url::$api['document']['templates'];
+        
+        $uri=ApiRequest::joinParams($uri,$params);
 
         return ApiRequest::get($uri);
     }
