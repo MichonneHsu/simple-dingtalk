@@ -35,4 +35,9 @@ class CallBack
             'map'=>json_decode($res, true)
         ];
     }
+
+    public static function get_callback_failed_lists(){
+        $uri=Url::$api['callback'];
+        return ApiRequest::get($uri);
+    }
 }

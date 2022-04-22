@@ -242,7 +242,8 @@ class Url
             'list'=>'/topapi/collection/form/list',
             'instance_list'=>'/topapi/collection/instance/list',
             'instance_get'=>'/topapi/collection/instance/get'
-        ]
+        ],
+        'callback'=>'/call_back/get_call_back_failed_result'
 
     ];
 
