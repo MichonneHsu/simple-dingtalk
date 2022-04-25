@@ -249,7 +249,7 @@ class Message
         $body = [
             'openConversationId' => $openConversationId,
             'outTrackId' => $outTrackId,
-            'expiredTime' => Time::toTime($expiredTime),
+            'expiredTime' => Time::toTime($expiredTime,true),
             'platforms' => $platforms,
             'coolAppCode' => $coolAppCode
         ];
