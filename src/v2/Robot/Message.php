@@ -8,6 +8,7 @@ use SimpleDingTalk\Config;
 use SimpleDingTalk\v2\Url;
 use SimpleDingTalk\ApiRequest as v1_req;
 use SimpleDingTalk\util\robot\Sign;
+use SimpleDingTalk\util\Time;
 
 class Message
 {
@@ -22,7 +23,7 @@ class Message
      */
     public static function oToMessages_batchSend(array $userIds, string $msgKey, array $msgParam)
     {
-       
+
         $robotCode = Config::getRobot()['info']['APP_KEY'];
 
         $uri = Url::$api['robot']['oToMessages_batchSend'];
@@ -51,16 +52,16 @@ class Message
         $uri = Url::$api['robot']['scencegroup_chat'];
         return v1_req::post($uri, $body);
     }
-   /**
-    * 注册互动卡片回调地址
-    *
-    * @param string $callback_url
-    * @param string $callbackRouteKey
-    * @param boolean $forceUpdate
-    * @param string $api_secret
-    * @return mixed
-    */
-    public static function callback_register(string $callback_url, string $callbackRouteKey = '', bool $forceUpdate = false,string $api_secret = '')
+    /**
+     * 注册互动卡片回调地址
+     *
+     * @param string $callback_url
+     * @param string $callbackRouteKey
+     * @param boolean $forceUpdate
+     * @param string $api_secret
+     * @return mixed
+     */
+    public static function callback_register(string $callback_url, string $callbackRouteKey = '', bool $forceUpdate = false, string $api_secret = '')
     {
         $uri = Url::$api['robot']['callback_register'];
         $json = [
@@ -69,7 +70,7 @@ class Message
             'callbackRouteKey' => $callbackRouteKey,
             'forceUpdate' => $forceUpdate
         ];
-        return ApiRequest::old_request($uri,$json);
+        return ApiRequest::old_request($uri, $json);
     }
     /**
      * 更新钉钉可交互式卡片
@@ -92,11 +93,11 @@ class Message
      * @param string $group_token
      * @return mixed
      */
-    public static function send_group_msg(array $json, string $group_token,bool $hasSign=false)
+    public static function send_group_msg(array $json, string $group_token, bool $hasSign = false)
     {
-        
-        
-        $params = $hasSign?Sign::signature():[];
+
+
+        $params = $hasSign ? Sign::signature() : [];
 
         $uri = Url::$api['robot']['send_msg'];
         $params['access_token'] = $group_token;
@@ -126,14 +127,15 @@ class Message
      * @param array $processQueryKeys
      * @return mixed
      */
-    public static function batchRecall(array $processQueryKeys){
+    public static function batchRecall(array $processQueryKeys)
+    {
         $uri = Url::$api['robot']['batchRecall'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
-        $body=[
-            'robotCode'=>$robotCode,
-            'processQueryKeys'=>$processQueryKeys
+        $body = [
+            'robotCode' => $robotCode,
+            'processQueryKeys' => $processQueryKeys
         ];
-       
+
         return ApiRequest::post($uri, $body);
     }
 
@@ -147,16 +149,17 @@ class Message
      * @param string $openConversationId
      * @return mixed
      */
-    public static function sendGroupMessages(array $msgParam,string $msgKey ,string $openConversationId){
+    public static function sendGroupMessages(array $msgParam, string $msgKey, string $openConversationId)
+    {
         $uri = Url::$api['robot']['sendGroupMessages'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
-        $body=[
-            'msgParam'=>json_encode($msgParam,JSON_UNESCAPED_UNICODE),
-            'msgKey'=>$msgKey,
-            'openConversationId'=>$openConversationId,
-            'robotCode'=>$robotCode
+        $body = [
+            'msgParam' => json_encode($msgParam, JSON_UNESCAPED_UNICODE),
+            'msgKey' => $msgKey,
+            'openConversationId' => $openConversationId,
+            'robotCode' => $robotCode
         ];
-       
+
         return ApiRequest::post($uri, $body);
     }
     /**
@@ -165,14 +168,15 @@ class Message
      * @param string $processQueryKey
      * @return mixed
      */
-    public static function readStatus(string $processQueryKey){
+    public static function readStatus(string $processQueryKey)
+    {
         $uri = Url::$api['robot']['readStatus'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
-        $params=[
-            'processQueryKey'=>$processQueryKey,
-            'robotCode'=>$robotCode
+        $params = [
+            'processQueryKey' => $processQueryKey,
+            'robotCode' => $robotCode
         ];
-        $uri=ApiRequest::joinParams($uri,$params);
+        $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
     }
 
@@ -180,30 +184,93 @@ class Message
      * 批量撤回群聊消息
      *
      * @param string $processQueryKey
-     * @return void
+     * @return mixed
      */
-    public static function recallGroupMessages(string $openConversationId,array $processQueryKeys){
+    public static function recallGroupMessages(string $openConversationId, array $processQueryKeys)
+    {
         $uri = Url::$api['robot']['recallGroupMessages'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
-        $body=[
-            'openConversationId'=>$openConversationId,
-            'processQueryKeys'=>$processQueryKeys,
-            'robotCode'=>$robotCode
+        $body = [
+            'openConversationId' => $openConversationId,
+            'processQueryKeys' => $processQueryKeys,
+            'robotCode' => $robotCode
         ];
-       
-        return ApiRequest::post($uri,$body);
+
+        return ApiRequest::post($uri, $body);
     }
-    public static function queryGroupMessages(string $openConversationId,string $processQueryKey,int $maxResults=5,string $nextToken=''){
+    /**
+     * 查询机器人群聊消息已读状态
+     *
+     * @param string $openConversationId
+     * @param string $processQueryKey
+     * @param integer $maxResults
+     * @param string $nextToken
+     * @return mixed
+     */
+    public static function queryGroupMessages(string $openConversationId, string $processQueryKey, int $maxResults = 5, string $nextToken = '')
+    {
         $uri = Url::$api['robot']['queryGroupMessages'];
         $robotCode = Config::getRobot()['info']['APP_KEY'];
-        $body=[
-            'openConversationId'=>$openConversationId,
-            'processQueryKey'=>$processQueryKey,
-            'maxResults'=>$maxResults,
-            'nextToken'=>$nextToken,
-            'robotCode'=>$robotCode
+        $body = [
+            'openConversationId' => $openConversationId,
+            'processQueryKey' => $processQueryKey,
+            'maxResults' => $maxResults,
+            'nextToken' => $nextToken,
+            'robotCode' => $robotCode
         ];
-       
-        return ApiRequest::post($uri,$body);
+
+        return ApiRequest::post($uri, $body);
+    }
+    /**
+     * 发送吊顶卡
+     *
+     * @param array $body
+     * @return mixed
+     */
+    public static function card_hanger(array $body)
+    {
+        $uri = Url::$api['robot']['card_hanger'];
+        return ApiRequest::post($uri, $body);
+    }
+    /**
+     * 开启互动卡片实例置顶
+     *
+     * @param string $openConversationId
+     * @param string $outTrackId
+     * @param string $expiredTime
+     * @param string $platforms
+     * @param string $coolAppCode
+     * @return mixed
+     */
+    public static function card_hanger_open(string $openConversationId, string $outTrackId, string $expiredTime, string $platforms = 'ios|mac|android|win', string $coolAppCode = '')
+    {
+        $uri = Url::$api['robot']['card_hanger_open'];
+
+        $body = [
+            'openConversationId' => $openConversationId,
+            'outTrackId' => $outTrackId,
+            'expiredTime' => Time::toTime($expiredTime),
+            'platforms' => $platforms,
+            'coolAppCode' => $coolAppCode
+        ];
+        return ApiRequest::post($uri, $body);
+    }
+    /**
+     * 关闭互动卡片实例置顶
+     *
+     * @param string $openConversationId
+     * @param string $outTrackId
+     * @param string $coolAppCode
+     * @return mixed
+     */
+    public static function card_hanger_close(string $openConversationId, string $outTrackId, string $coolAppCode)
+    {
+        $uri = Url::$api['robot']['card_hanger_close'];
+        $body = [
+            'openConversationId' => $openConversationId,
+            'outTrackId' => $outTrackId,
+            'coolAppCode' => $coolAppCode
+        ];
+        return ApiRequest::post($uri, $body);
     }
 }
