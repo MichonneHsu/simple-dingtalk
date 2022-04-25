@@ -31,8 +31,7 @@ class Url
             'queryGroupMessages'=>'/v1.0/robot/groupMessages/query',
             'card_hanger'=>'/v1.0/im/interactiveCards/instances',
             'card_hanger_open'=>'/v1.0/im/topBoxes/open',
-            'card_hanger_close'=>'/v1.0/im/topBoxes/close',
-           
+            'card_hanger_close'=>'/v1.0/im/topBoxes/close'
         ],
         'contact'=>'/v1.0/contact',
         'videoConferences'=>'/v1.0/conference/videoConferences',
