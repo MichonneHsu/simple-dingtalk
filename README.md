@@ -5,13 +5,15 @@
 </p>
 <p align="center" style="font-family: Arial, Helvetica, sans-serif;">轻量级钉钉服务端PHP-SDK，简化初学者的使用难度。</p>
 <p align="center">
-<img src="https://img.shields.io/badge/PHP-7.3+-green" />
-<img src="https://img.shields.io/badge/release-1.0.7-orange" />
+<img src="https://img.shields.io/badge/PHP-7.3^|8^-green" />
+<img src="https://img.shields.io/badge/release-1.0.7^-orange" />
 <img src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 
 ### 介绍
 这是一款PHP编写的轻量级钉钉服务端扩展包，以最简单的方式取调用、源码易懂、模块化。
+### PHP版本使用范围
+目前 7.3和8以上都没问题。
 ### 安装方式
 `composer require michonnehsu/simpledingtalk`
 ### 文档地址
