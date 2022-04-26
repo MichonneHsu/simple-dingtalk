@@ -21,9 +21,7 @@ class Shift
     public static function add(string $op_user_id,array $shift)
     {
         $uri=Url::$api['attendance']['shift']['add'];
-        if(count($shift['sections']['times'])>2){
-            throw new Exception('array of times are overflowed !');
-        }
+       
         $json = [
             'op_user_id' => $op_user_id,
             'shift'=>$shift,
