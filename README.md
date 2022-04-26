@@ -20,8 +20,6 @@
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
 
 ### 配置
-预先配置多个应用后，只修改app_type 进行切换。  
-预先配置多个机器人后，只修改robot_type 进行切换。
 ```
 关键字解释：
 
