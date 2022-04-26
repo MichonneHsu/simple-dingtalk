@@ -20,6 +20,10 @@ $apps=[
 				'dingtalk_login_uri'=>'https://www.dingtalk.com'
 			]
 		],
+		'callback_info' => [
+			'aes_key' => 'i0id7pAhp22josGT2FXuVJCI9lIHQb',
+			'token' => 'TmeODpsxpWtm338QmPP0c16'
+		],
 		'v2' => [
 			'access_token' => [
 				'expires' => 180,
