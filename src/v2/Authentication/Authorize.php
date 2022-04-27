@@ -32,7 +32,7 @@ class Authorize
             'response_type'=>'code',
             'client_id'=>$app['info']['APP_KEY'],
             'scope'=>'openid',
-            'state'=>'ok',
+            'state'=>Random::alpabets()->generate(),
             'prompt'=>'consent'
         ];
         $uri=self::$uris['assemble_url'];
@@ -53,7 +53,7 @@ class Authorize
            'appid'=>$app['info']['APP_KEY'],
            'response_type'=>'code',
            'scope'=>'snsapi_auth',
-           'state'=>'ok'
+           'state'=>Random::alpabets()->generate()
         ];
         $uri=self::$uris['dingtalk_login_uri'];
         return ApiRequest::joinParams($uri,$params);

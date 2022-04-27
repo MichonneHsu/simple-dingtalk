@@ -6,22 +6,20 @@ namespace SimpleDingTalk\util;
 
 class Random
 {
-    public $str = '';
-    public  function alpabets(bool $capital = false)
+    public static $str = '';
+    public static function alpabets(bool $capital = false)
     {
         if ($capital) {
-            $this->str = implode('', range('A', 'Z'));
+            self::$str  = implode('', range('A', 'Z'));
         } else {
-            $this->str = implode('', range('a', 'z'));
+            self::$str  = implode('', range('a', 'z'));
         }
 
-        return $this;
+        return new self;
     }
-    public function numbers(){
-        $this->str = implode('', range(0, 9999));
-    }
-    public  function generate(int $length)
+   
+    public static function generate(int $length=6)
     {
-        return mb_substr($this->str,0,$length);
+        return mb_substr(self::$str,0,$length);
     }
 }
