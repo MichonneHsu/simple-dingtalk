@@ -118,8 +118,6 @@ WorkFlow::add_comment($json);
 4. 如果参数过多的话需要开发者自行填入到`$json`或`$body`里面。
 ## 使用须知
 1. 怎么说...兄嘚，我还是建议用PHP8以上的版本
-2. 本地开发如果是SDK报错的话，很有可能是你的环境有问题，建议使用XAMPP这款PHP集成环境。
+2. 本地开发如果是SDK报错的话，很有可能是你的环境有问题，建议使用XAMPP这款PHP集成环境软件。
 ## License
 MIT
-## Stars 趋势
-[![Stargazers over time](https://whnb.wang/stars/michonnehsu/simple-dingtalk?e=10000)](https://whnb.wang)
