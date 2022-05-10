@@ -22,7 +22,7 @@ class File
      * @param string $nextToken
      * @return mixed
      */
-    public static function get_list(string $unionId, string $spaceId,string $parentId,string $maxResults,string $orderType='createTimeDesc',string $nextToken='')
+    public static function get_list(string $unionId, string $spaceId,string $parentId,int $maxResults,string $orderType='createTimeDesc',string $nextToken='')
     {
         $uri = Url::$api['drive']."/$spaceId/files";
 
