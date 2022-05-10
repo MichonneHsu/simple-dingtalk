@@ -107,21 +107,23 @@ class File
      * @param string $unionId
      * @param string $spaceId
      * @param string $fileId
-     * @param string $deletePolicy
+     * @param string $targetSpaceId
+     * @param string $targetParentId
+     * @param string $addConflictPolicy
      * @return mixed
      */
     public static function move(string $unionId, string $spaceId,string $fileId,string $targetSpaceId,string $targetParentId='',string $addConflictPolicy='returnError')
     {
         $uri = Url::$api['drive']."/$spaceId/files/$fileId/move";
 
-        $params = [
+        $body = [
             'unionId' => $unionId,
             'targetSpaceId'=>$targetSpaceId,
             'targetParentId'=>$targetParentId,
             'addConflictPolicy'=>$addConflictPolicy
         ];
-        $uri = ApiRequest::joinParams($uri, $params);
-        return ApiRequest::post($uri);
+       
+        return ApiRequest::post($uri,$body);
     }
     /**
      * 修改文件（夹）名
@@ -129,21 +131,19 @@ class File
      * @param string $unionId
      * @param string $spaceId
      * @param string $fileId
-     * @param string $targetSpaceId
-     * @param string $targetParentId
-     * @param string $addConflictPolicy
+     * @param string $newFileName
      * @return mixed
      */
     public static function rename(string $unionId, string $spaceId,string $fileId,string $newFileName)
     {
         $uri = Url::$api['drive']."/$spaceId/files/$fileId/rename";
 
-        $params = [
+        $body = [
             'unionId' => $unionId,
             'newFileName'=>$newFileName
         ];
-        $uri = ApiRequest::joinParams($uri, $params);
-        return ApiRequest::post($uri);
+       
+        return ApiRequest::post($uri,$body);
     }
     /**
      * 获取文件下载信息

@@ -37,7 +37,7 @@ class Space
      */
     public static function remove(string $unionId, string $spaceId)
     {
-        $uri = Url::$api['drive'] . $spaceId;
+        $uri = Url::$api['drive'] .'/'. $spaceId;
 
         $params = [
             'unionId' => $unionId
@@ -77,7 +77,7 @@ class Space
      */
     public static function get_info(string $unionId, string $spaceId)
     {
-        $uri = Url::$api['drive'].$spaceId;
+        $uri = Url::$api['drive'].'/'.$spaceId;
 
         $params = [
             'unionId' => $unionId
