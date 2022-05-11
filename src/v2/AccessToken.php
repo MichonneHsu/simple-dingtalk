@@ -161,7 +161,7 @@ class AccessToken
                 $generatedUserToken = self::generateUserToken();
 
                 $file_contents[$unionId]['token_info'] = $generatedUserToken;
-
+                
                 return file_put_contents($file_path, json_encode($file_contents)) ? $file_contents[$unionId] : false;
             } else {
                 return $file_contents[$unionId];
