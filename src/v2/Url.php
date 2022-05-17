@@ -33,6 +33,11 @@ class Url
             'card_hanger_open'=>'/v1.0/im/topBoxes/open',
             'card_hanger_close'=>'/v1.0/im/topBoxes/close'
         ],
+        'honor'=>[
+            'getLists'=>'/v1.0/orgCulture/organizations/honors',
+            'give'=>'/v1.0/orgCulture/honors',
+            'query'=>'/v1.0/orgCulture/honors/users'
+        ],
         'contact'=>'/v1.0/contact',
         'videoConferences'=>'/v1.0/conference/videoConferences',
         'document'=>[
