@@ -5,12 +5,8 @@ console.log(json)
 function list(data) {
  
   html = "";
-  var a=false;
   html += "<ul>";
   for (let i of data) {
-     
-   
-           
         
     html += `<li><p>${i.name}</p>`;
      
@@ -18,8 +14,6 @@ function list(data) {
       html+=list(i.subs);
       
     } 
-          
-     
 
     html+="</li>";
   
