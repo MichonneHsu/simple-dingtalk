@@ -37,19 +37,22 @@ class FileTransmission
      *
      * @param string $unionId
      * @param string $spaceId
-     * @param string $fileId
+     * @param string $parentId
      * @param string $fileName
      * @param string $fileSize
      * @return mixed
      */
-    public static function uploadInfos(string $unionId, string $spaceId,string $parentId,string $fileName,string $fileSize)
+    public static function uploadInfos(string $unionId, string $spaceId,string $parentId,string $fileName,string $fileSize,string $md5,string $addConflictPolicy='returnError',string $mediaId='')
     {
         $uri = Url::$api['drive']."/$spaceId/files/$parentId/uploadInfos";
 
         $params = [
             'unionId' => $unionId,
             'fileName'=>$fileName,
-            'fileSize'=>$fileSize
+            'fileSize'=>$fileSize,
+            'md5'=>$md5,
+            'addConflictPolicy'=>$addConflictPolicy,
+            'mediaId'=>$mediaId
         ];
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
