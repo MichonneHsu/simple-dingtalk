@@ -145,48 +145,5 @@ class File
        
         return ApiRequest::post($uri,$body);
     }
-    /**
-     * 获取文件下载信息
-     *
-     * @param string $unionId
-     * @param string $spaceId
-     * @param string $fileId
-     * @param boolean $withRegion
-     * @param boolean $withInternalResourceUrl
-     * @return mixed
-     */
-    public static function downloadInfos(string $unionId, string $spaceId,string $fileId,bool $withRegion=false,bool $withInternalResourceUrl=false)
-    {
-        $uri = Url::$api['drive']."/$spaceId/files/$fileId/downloadInfos";
-
-        $params = [
-            'unionId' => $unionId,
-            'withRegion'=>$withRegion,
-            'withInternalResourceUrl'=>$withInternalResourceUrl
-        ];
-        $uri = ApiRequest::joinParams($uri, $params);
-        return ApiRequest::get($uri);
-    }
-    /**
-     * 获取文件上传信息
-     *
-     * @param string $unionId
-     * @param string $spaceId
-     * @param string $fileId
-     * @param string $fileName
-     * @param string $fileSize
-     * @return mixed
-     */
-    public static function uploadInfos(string $unionId, string $spaceId,string $parentId,string $fileName,string $fileSize)
-    {
-        $uri = Url::$api['drive']."/$spaceId/files/$parentId/uploadInfos";
-
-        $params = [
-            'unionId' => $unionId,
-            'fileName'=>$fileName,
-            'fileSize'=>$fileSize
-        ];
-        $uri = ApiRequest::joinParams($uri, $params);
-        return ApiRequest::get($uri);
-    }
+   
 }
