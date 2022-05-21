@@ -12,13 +12,11 @@
 
 ### 介绍
 这是一款PHP编写的轻量级钉钉服务端扩展包，以最简单的方式取调用、源码易懂、模块化。
-### PHP版本使用范围
-目前 7.3和8以上都没问题。
+
 ### 安装方式
 `composer require michonnehsu/simpledingtalk`
 ### 文档地址
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
-
 ### 配置
 ```
 关键字解释：
@@ -40,6 +38,9 @@ userAccessToken：获取用户通讯录个人信息需要的token信息
 v2：新版服务端信息
 robot:群聊机器人
 robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
+```
+### 如何配置
+```
 如何配置：
 $apps=[
 	'miniprogram_app' => [
@@ -97,8 +98,7 @@ setAppType('miniprogram_app')->
 setRobotType('robot1')->
 setCorpId('dingf0xxxxx69');
 ```
-### 用法
-#### 基础用法
+### 例子
 ```
 require_once './vendor/autoload.php';
 
@@ -111,13 +111,6 @@ $json=[
 ];
 WorkFlow::add_comment($json);
 ```
-### 函数定义规则
-1. 如果接口需要的参数复杂并且有必填和非必填的话，函数需要的参数需要开发者自行组装参数。
-2. 如果接口需要的参数不复杂并且不多、有必填和非必填，则只需要按照函数所需填入即可。
-3. 如果接口需要的参数全是必填的话则函数需要的参数不需要完全自行组装参数，按照函数所需的参数填入即可。
-4. 如果参数过多的话需要开发者自行填入到`$json`或`$body`里面。
+
 ## 使用须知
-1. 怎么说...兄嘚，我还是建议用PHP8以上的版本
-2. 本地开发如果是SDK报错的话，很有可能是你的环境有问题，建议使用XAMPP这款PHP集成环境软件。
-## License
-MIT
+不推荐使用phpstudy,有兼容问题，推荐xampp，lnmp能正常运行代码
