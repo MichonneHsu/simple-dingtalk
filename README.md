@@ -17,7 +17,7 @@
 `composer require michonnehsu/simpledingtalk`
 ### 文档地址
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
-### 配置
+### 配置信息介绍
 ```
 关键字解释：
 
