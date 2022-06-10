@@ -38,24 +38,26 @@ class FileTransmission
      * 获取文件上传信息
      *
      * @param string $unionId
+     * @param string $fileName
+     * @param integer $fileSize
+     * @param string $md5
      * @param string $spaceId
      * @param string $parentId
-     * @param string $fileName
-     * @param string $fileSize
+     * @param string $addConflictPolicy
+     * @param string $mediaId
      * @return mixed
      */
-    public static function uploadInfos(string $unionId, string $spaceId, string $parentId, string $fileName, string $addConflictPolicy = 'returnError', string $mediaId = '')
+    public static function uploadInfos(string $unionId, string $fileName, int $fileSize, string $md5, string $spaceId, string $parentId,  string $mediaId = '',string $addConflictPolicy = 'returnError')
     {
         $uri = Url::$api['drive'] . "/$spaceId/files/$parentId/uploadInfos";
-        $fileSize = filesize($fileName);
-        $md5 =md5_file($fileName);
+
         $params = [
             'unionId' => $unionId,
             'fileName' => $fileName,
             'fileSize' => $fileSize,
             'md5' => $md5,
-            'addConflictPolicy' => $addConflictPolicy,
-            'mediaId' => $mediaId
+            'addConflictPolicy' => $addConflictPolicy
+            
         ];
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
