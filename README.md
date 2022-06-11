@@ -96,6 +96,7 @@ setApp($apps)->
 setAppType('miniprogram_app')->
 setRobotType('robot1')->
 setCorpId('dingf0xxxxx69');
+
 ```
 ### 用法
 #### 基础用法
