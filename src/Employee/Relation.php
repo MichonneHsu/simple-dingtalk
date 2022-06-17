@@ -8,7 +8,7 @@ use SimpleDingTalk\Url;
 use SimpleDingTalk\ApiRequest;
 
 /**
- * 员工管理
+ * 员工关系
  */
 class Relation
 {
