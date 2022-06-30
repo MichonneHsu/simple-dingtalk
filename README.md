@@ -19,26 +19,6 @@
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
 ### 配置信息介绍
 ```
-关键字解释：
-
-CORP_ID：当前公司的Corp_id
-app：微应用或小程序
-APP_KEY：当前应用的app_key
-APP_SECRET：当前应用的app_secret
-access_token：当前应用的access_token信息
-access_token->expires：access_token的提前超时重新获取时间，单位秒
-access_token->file_path：access_token的文件路径，建议填写绝对路径
-callback_info：回调信息
-callback_info->aes_key：当前应用的加密
-callback_info->token：当前应用的签名
-login_info：扫码登录信息
-login_info->authorize->redirect_uri：统一授权登录第三方网站
-login_info->authorize->dingtalk_login_uri：钉钉内免登第三方网站跳转url
-userAccessToken：获取用户通讯录个人信息需要的token信息
-v2：新版服务端信息
-robot:群聊机器人
-robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
-```
 #### 配置架构
 ```
 ├─apps                                   应用目录
