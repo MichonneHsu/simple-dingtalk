@@ -71,8 +71,8 @@ robot->SEC：机器人的加签码，用于加密发送消息。可在群设置�
 │  │   |   ├─AGENT_ID        
 │  │   |   ├─APP_KEY        
 │  │   |   ├─APP_SECRET        
-│  │   |   ├─access_token                群token
-│  │   |   ├─SEC                         群加签
+│  │   |   ├─access_token                群token（非必填）
+│  │   |   ├─SEC                         群加签 （非必填）
 │  |   ├─access_token                    API凭证信息（必填）
 │  │   |   ├─expires                     凭证刷新时间（凭证默认2小时内过期，建议提前3分钟刷新，填写以秒为单位的数字就好，例如三分钟等于180）
 │  │   |   ├─file_path                   凭证存储文件（该文件必须用户自己生成，名字自定义，并填入凭证存储文件的路径，建议填入绝对路径）
