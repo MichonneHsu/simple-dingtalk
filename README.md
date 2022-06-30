@@ -152,4 +152,4 @@ WorkFlow::add_comment($json);
 ```
 
 ## 使用须知
-不推荐使用phpstudy,有兼容问题，推荐xampp，lnmp能正常运行代码
+不推荐使用phpstudy,有兼容问题，推荐xampp，lnmp能正常运行代码，Swoole环境里也可以使用。
