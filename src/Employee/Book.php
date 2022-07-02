@@ -20,7 +20,7 @@ class Book
     {
         $uri = Url::$api['humanResource']['book']['get'];
         $json=[
-            'agentid'=>Config::getApp()['agentid'],
+            'agentid'=>Config::getApp()['info']['AGENT_ID'],
            
         ];
         return ApiRequest::post($uri, $json);
@@ -33,7 +33,7 @@ class Book
     {
         $uri = Url::$api['humanResource']['book']['grouplist'];
         $json=[
-            'agentid'=>Config::getApp()['agentid'],
+            'agentid'=>Config::getApp()['info']['AGENT_ID'],
            
         ];
         return ApiRequest::post($uri, $json);
@@ -49,7 +49,7 @@ class Book
     {
         $uri = Url::$api['humanResource']['book']['list'];
         $json=[
-            'agentid'=>Config::getApp()['agentid'],
+            'agentid'=>Config::getApp()['info']['AGENT_ID'],
             'userid_list'=>$userid_list,
             'field_filter_list'=>$field_filter_list
         ];
@@ -66,7 +66,7 @@ class Book
       {
           $uri = Url::$api['humanResource']['book']['update'];
           $json=[
-              'agentid'=>Config::getApp()['agentid'],
+              'agentid'=>Config::getApp()['info']['AGENT_ID'],
               'param'=>[
                 'groups'=>$groups,
                 'userid'=>$userid
