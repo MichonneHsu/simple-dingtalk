@@ -276,7 +276,21 @@ class Message
 
     public static function interactiveStandarCard_send(array $body){
         $uri = Url::$api['robot']['interactiveStandarCard_send'];
-       
+        $cardData=strval(json_encode($body['cardData'],JSON_UNESCAPED_UNICODE));
+        $body['robotCode']=Config::getRobot()['info']['APP_KEY'];
+        $body['cardData']=$cardData;
         return ApiRequest::post($uri, $body);
+    }
+    public static function interactiveStandarCard_update(array $body){
+        $uri = Url::$api['robot']['interactiveStandarCard_update'];
+        
+        if(array_key_exists('userIdPrivateDataMap',$body)){
+            $body['userIdPrivateDataMap']=strval(json_encode($body['userIdPrivateDataMap'],JSON_UNESCAPED_UNICODE));
+        }
+        if(array_key_exists('unionIdPrivateDataMap',$body)){
+            $body['unionIdPrivateDataMap']=strval(json_encode($body['unionIdPrivateDataMap'],JSON_UNESCAPED_UNICODE));
+        }
+           
+        return ApiRequest::put($uri, $body);
     }
 }

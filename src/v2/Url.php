@@ -21,6 +21,7 @@ class Url
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
             'interactiveStandarCard_send'=>'/v1.0/im/v1.0/robot/interactiveCards/send',
+            'interactiveStandarCard_update'=>'/v1.0/im/robots/interactiveCards',
             'card'=>'/v1.0/im/interactiveCards',
             'scencegroup_chat'=>'/topapi/im/chat/scencegroup/message/send_v2',
             'callback_register'=>'/topapi/im/chat/scencegroup/interactivecard/callback/register',
