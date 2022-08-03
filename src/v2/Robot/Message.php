@@ -273,4 +273,10 @@ class Message
         ];
         return ApiRequest::post($uri, $body);
     }
+
+    public static function interactiveStandarCard_send(array $body){
+        $uri = Url::$api['robot']['interactiveStandarCard_send'];
+       
+        return ApiRequest::post($uri, $body);
+    }
 }
