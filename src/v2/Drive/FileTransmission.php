@@ -56,8 +56,8 @@ class FileTransmission
             'fileName' => $fileName,
             'fileSize' => $fileSize,
             'md5' => $md5,
-            'addConflictPolicy' => $addConflictPolicy
-            
+            'addConflictPolicy' => $addConflictPolicy,
+            'mediaId'=>$mediaId
         ];
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
