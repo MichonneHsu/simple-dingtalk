@@ -22,14 +22,14 @@ class Group
 
         $uri = Url::$api['attendance'] . '/writePermissions/query';
        
-        $params=[
+        $body=[
             'opUserId'=>$opUserId,
             'category'=>$category,
             'resourceKey'=>$resourceKey,
             'entityIds'=>$entityIds
         ];
-        $uri=ApiRequest::joinParams($uri,$params);
-        return ApiRequest::get($uri);
+     
+        return ApiRequest::post($uri,$body);
     }
    
 }
