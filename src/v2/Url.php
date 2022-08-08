@@ -17,6 +17,7 @@ class Url
         'drive'=>'/v1.0/drive/spaces',
         'serviceGroup'=>'/v1.0/serviceGroup',
         'badge'=>'/v1.0/badge',
+        'attendance'=>'/v1.0/attendance',
         'robot'=>[
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
