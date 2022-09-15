@@ -197,6 +197,19 @@ class OA
         return ApiRequest::get($uri);
     }
     /**
+     * 获取审批实例ID列表
+     *
+     * @param array $body
+     * @return mixed
+     */
+    public static function query(array $body)
+    {
+
+        $uri = Url::$api['oa']['workflow'] . '/processes/instanceIds/query';
+
+        return ApiRequest::post($uri,$body);
+    }
+    /**
      * 获取指定用户可见的审批表单列表
      *
      * @param array $params
