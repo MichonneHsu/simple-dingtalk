@@ -92,6 +92,12 @@ class Url
             'listdimission' => '/topapi/smartwork/hrm/employee/listdimission',
             'querydimission' => '/topapi/smartwork/hrm/employee/querydimission',
             'addpreentry' => '/topapi/smartwork/hrm/employee/addpreentry',
+            'book'=>[
+                'get'=>'/topapi/smartwork/hrm/roster/meta/get',
+                'grouplist'=>'/topapi/smartwork/hrm/employee/field/grouplist',
+                'list'=>'/topapi/smartwork/hrm/employee/v2/list',
+                'update'=>'/topapi/smartwork/hrm/employee/v2/update'
+            ]
         ],
         'normalMessage' => [
             'send_to_conversation' => '/message/send_to_conversation'

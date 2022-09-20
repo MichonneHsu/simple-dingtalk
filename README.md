@@ -11,35 +11,53 @@
 </p>
 
 ### 介绍
-这是一款PHP编写的轻量级钉钉服务端扩展包，以最简单的方式取调用、源码易懂、模块化。
-
+这是一款PHP编写的轻量级钉钉服务端扩展包，以最简单的方式取调用、源码易懂、模块化。  
+用户可以自行定期更新token或应用自行判断，达到使用接口函数不需要考虑token的问题。
 ### 安装方式
 `composer require michonnehsu/simpledingtalk`
 ### 文档地址
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
-### 配置信息介绍
-```
-关键字解释：
 
-CORP_ID：当前公司的Corp_id
-app：微应用或小程序
-APP_KEY：当前应用的app_key
-APP_SECRET：当前应用的app_secret
-access_token：当前应用的access_token信息
-access_token->expires：access_token的提前超时重新获取时间，单位秒
-access_token->file_path：access_token的文件路径，建议填写绝对路径
-callback_info：回调信息
-callback_info->aes_key：当前应用的加密
-callback_info->token：当前应用的签名
-login_info：扫码登录信息
-login_info->authorize->redirect_uri：统一授权登录第三方网站
-login_info->authorize->dingtalk_login_uri：钉钉内免登第三方网站跳转url
-userAccessToken：获取用户通讯录个人信息需要的token信息
-v2：新版服务端信息
-robot:群聊机器人
-robot->SEC：机器人的加签码，用于加密发送消息。可在群设置的智能群助手的机器人信息里查看
+#### 配置架构
 ```
-### 如何配置
+├─apps                                   应用目录
+│  ├─app1                                第一个小程序或微应用（名字自取，app1只是解释，方便理解）  
+│  |   ├─info                            应用凭证信息（必填）
+│  │   |   ├─AGENT_ID        
+│  │   |   ├─APP_KEY        
+│  │   |   ├─APP_SECRET        
+│  |   ├─access_token                    API凭证信息（必填）
+│  │   |   ├─expires                     凭证刷新时间（凭证默认2小时内过期，建议提前3分钟刷新，填写以秒为单位的数字就好，例如三分钟等于180）
+│  │   |   ├─file_path                   凭证存储文件（该文件必须用户自己生成，名字自定义，并填入凭证存储文件的路径，建议填入绝对路径）
+│  |   ├─login_info                      免登信息
+│  │   |   ├─authorize                   授权地址        
+│  │   │   |   ├─redirect_uri            钉钉免登跳转到第三方网站地址   
+│  │   │   |   ├─dingtalk_login_uri      钉钉内免登的网站地址
+│  |   ├─callback_info                   回调凭证信息
+│  │   |   ├─aes_key        
+│  │   |   ├─token        
+│  |   ├─v2                              新版服务端
+│  │   |   ├─access_token                凭证信息        
+│  │   │   |   ├─expires                 凭证刷新时间（凭证默认2小时内过期，建议提前3分钟刷新，填写以秒为单位的数字就好，例如三分钟等于180）  
+│  │   │   |   ├─file_path               凭证存储文件（该文件必须用户自己生成，并填入凭证存储文件的路径，建议填入绝对路径）
+│  |   ├─userAccessToken                 跳转第三方的免登
+│  │   |   ├─expires                     凭证刷新时间（凭证默认2小时内过期，建议提前3分钟刷新，填写以秒为单位的数字就好，例如三分钟等于180）
+│  │   |   ├─file_path                   凭证存储文件（该文件必须用户自己生成，并填入凭证存储文件的路径，建议填入绝对路径）
+│  ├─app2                                第二个小程序或微应用（配置内容跟上面一样，以此类推） 
+├─robots                                 机器人应用目录
+│  ├─robot1                              第一个机器人应用  
+│  |   ├─info                            应用凭证信息（必填）
+│  │   |   ├─AGENT_ID        
+│  │   |   ├─APP_KEY        
+│  │   |   ├─APP_SECRET        
+│  │   |   ├─access_token                群token（非必填）
+│  │   |   ├─SEC                         群加签 （非必填）
+│  |   ├─access_token                    API凭证信息（必填）
+│  │   |   ├─expires                     凭证刷新时间（凭证默认2小时内过期，建议提前3分钟刷新，填写以秒为单位的数字就好，例如三分钟等于180）
+│  │   |   ├─file_path                   凭证存储文件（该文件必须用户自己生成，名字自定义，并填入凭证存储文件的路径，建议填入绝对路径）
+│  ├─robot1                              第二个机器人应用（配置内容跟上面一样，以此类推） 
+```
+#### 如何配置
 ```
 如何配置：
 $apps=[
@@ -114,4 +132,4 @@ WorkFlow::add_comment($json);
 ```
 
 ## 使用须知
-不推荐使用phpstudy,有兼容问题，推荐xampp，lnmp能正常运行代码
+不推荐使用phpstudy,有兼容问题，推荐xampp，lnmp能正常运行代码，Swoole环境里也可以使用。

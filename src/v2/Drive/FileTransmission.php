@@ -43,8 +43,8 @@ class FileTransmission
      * @param string $md5
      * @param string $spaceId
      * @param string $parentId
-     * @param string $addConflictPolicy
      * @param string $mediaId
+     * @param string $addConflictPolicy
      * @return mixed
      */
     public static function uploadInfos(string $unionId, string $fileName, int $fileSize, string $md5, string $spaceId, string $parentId,  string $mediaId = '',string $addConflictPolicy = 'returnError')
@@ -56,8 +56,8 @@ class FileTransmission
             'fileName' => $fileName,
             'fileSize' => $fileSize,
             'md5' => $md5,
-            'addConflictPolicy' => $addConflictPolicy
-            
+            'addConflictPolicy' => $addConflictPolicy,
+            'mediaId'=>$mediaId
         ];
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);

@@ -1,11 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
 
 
-class ApiRequest{
-    
-   /**
+class ApiRequest
+{
+
+    /**
      * get请求
      *
      * @param string $uri
@@ -13,9 +16,10 @@ class ApiRequest{
      * @param boolean $has_token
      * @return mixed
      */
-    public static function get(string $uri,array $body=[],bool $has_token=true){
-      
-        return self::REST('get',$uri,$body,$has_token);
+    public static function get(string $uri, array $body = [], bool $has_token = true)
+    {
+
+        return self::REST('get', $uri, $body, $has_token);
     }
     /**
      * post请求
@@ -25,9 +29,10 @@ class ApiRequest{
      * @param boolean $has_token
      * @return mixed
      */
-    public static function post(string $uri,array $body=[],bool $has_token=true){
-      
-        return self::REST('post',$uri,$body,$has_token);
+    public static function post(string $uri, array $body = [], bool $has_token = true)
+    {
+
+        return self::REST('post', $uri, $body, $has_token);
     }
     /**
      * delete请求
@@ -37,9 +42,10 @@ class ApiRequest{
      * @param boolean $has_token
      * @return mixed
      */
-    public static function delete(string $uri,array $body=[],bool $has_token=true){
-      
-        return self::REST('delete',$uri,$body,$has_token);
+    public static function delete(string $uri, array $body = [], bool $has_token = true)
+    {
+
+        return self::REST('delete', $uri, $body, $has_token);
     }
     /**
      * put请求
@@ -49,9 +55,10 @@ class ApiRequest{
      * @param boolean $has_token
      * @return mixed
      */
-    public static function put(string $uri,array $body,bool $has_token=true){
-      
-        return self::REST('put',$uri,$body,$has_token);
+    public static function put(string $uri, array $body, bool $has_token = true)
+    {
+
+        return self::REST('put', $uri, $body, $has_token);
     }
     /**
      * REST请求
@@ -62,12 +69,12 @@ class ApiRequest{
      * @param boolean $has_token
      * @return mixed
      */
-    public static function REST(string $method,string $uri,array $body=[],bool $has_token=true){
-        
-        return self::http_request($method,$uri,$body,$has_token);
-      
+    public static function REST(string $method, string $uri, array $body = [], bool $has_token = true)
+    {
+
+        return self::http_request($method, $uri, $body, $has_token);
     }
-     /**
+    /**
      * HTTP请求
      *
      * @param string $method
@@ -76,34 +83,44 @@ class ApiRequest{
      * @param boolean $has_token
      * @return mixed
      */
-    public static function http_request(string $method,string $uri,array $body=[],bool $has_token=true)
+    public static function http_request(string $method, string $uri, array $body = [], bool $has_token = true)
     {
-        $uri=Url::$api['domain'].$uri;
-        $header[]='Content-Type: application/json';
-        if($has_token){
-            $header[]='x-acs-dingtalk-access-token:'.AccessToken::getToken();
+        $uri = Url::$api['domain'] . $uri;
+        $header[] = 'Content-Type: application/json';
+        if ($has_token) {
+            $header[] = 'x-acs-dingtalk-access-token:' . AccessToken::getToken();
         }
-        $method=strtoupper($method);
+        $method = strtoupper($method);
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_URL, $uri);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-        $body=empty($body)?'':json_encode($body);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        $res=curl_exec($ch);
+        curl_setopt_array($ch,[
+            CURLOPT_HTTPHEADER=>$header,
+            CURLOPT_RETURNTRANSFER=>true,
+            CURLOPT_HEADER=>false,
+            CURLOPT_URL=>$uri,
+            CURLOPT_TIMEOUT=>2,
+            CURLOPT_CUSTOMREQUEST=>$method,
+            CURLOPT_POSTFIELDS=>empty($body) ? '' : json_encode($body)
+        ]);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_HEADER, 0);
+        // curl_setopt($ch, CURLOPT_URL, $uri);
+        // curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+        // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        // $body = empty($body) ? '' : json_encode($body);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        $res = curl_exec($ch);
         curl_close($ch);
         return $res;
     }
-    public static function userGetReq(string $uri,string $accessToken){
-        $uri=Url::$api['domain'].$uri;
-        $header=[
+    public static function userGetReq(string $uri, string $accessToken)
+    {
+        $uri = Url::$api['domain'] . $uri;
+        $header = [
             'Content-Type: application/json',
-            'x-acs-dingtalk-access-token:'.$accessToken
+            'x-acs-dingtalk-access-token:' . $accessToken
         ];
-       
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -111,18 +128,47 @@ class ApiRequest{
         curl_setopt($ch, CURLOPT_URL, $uri);
         curl_setopt($ch, CURLOPT_TIMEOUT, 2);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-        $res=curl_exec($ch);
+        $res = curl_exec($ch);
         curl_close($ch);
         return $res;
     }
 
-  
-    public static function joinParams(string $uri, array $params,bool $encode=false): string
+
+
+    public static function test()
+    {
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://www.baidu.com',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_POSTFIELDS => '',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Cookie: BAIDUID=85545FF347B8832C647CCF017EEC46BF:FG=1; BIDUPSID=44846CBCFB40C6964C0954EA079452EF; PSTM=1617183657'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+    }
+
+    public static function joinParams(string $uri, array $params): string
     {
 
 
         $url = $uri . '?' . http_build_query($params);
 
-        return $encode?urlencode($url):$url;
+        return $url;
     }
 }
