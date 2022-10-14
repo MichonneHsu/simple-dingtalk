@@ -162,7 +162,7 @@ class ApiRequest
         curl_close($curl);
         echo $response;
     }
-
+    
     public static function joinParams(string $uri, array $params): string
     {
 

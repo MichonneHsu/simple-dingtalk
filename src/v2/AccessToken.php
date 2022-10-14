@@ -147,7 +147,7 @@ class AccessToken
                 $refreshToken = $file_contents[$unionId]['token_info']['refreshToken'];
 
                 self::setGrantType('authorization_code')->setRefreshToken($refreshToken);
-
+                
                 $generatedUserToken = self::generateUserToken();
 
                 $file_contents[$unionId]['token_info'] = $generatedUserToken;

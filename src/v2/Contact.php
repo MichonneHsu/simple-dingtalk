@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2;
 
-
+/**通讯录 */
 class Contact
 {
     public static function getPersonalInfo(string $unionId)
@@ -50,6 +50,12 @@ class Contact
             'userId' => $userId,
             'reason' => $reason
         ];
+        return ApiRequest::post($uri, $body);
+    }
+    public static function seniorSettings(array $body)
+    {
+        $uri = Url::$api['contact'] . '/seniorSettings';
+        
         return ApiRequest::post($uri, $body);
     }
 }
