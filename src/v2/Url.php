@@ -18,6 +18,8 @@ class Url
         'serviceGroup'=>'/v1.0/serviceGroup',
         'badge'=>'/v1.0/badge',
         'attendance'=>'/v1.0/attendance',
+        'storage'=>'/v1.0/storage',
+        'convFile'=>'/v1.0/convFile',
         'robot'=>[
             'oToMessages_batchSend'=>'/v1.0/robot/oToMessages/batchSend',
             'interactiveCards_send'=>'/v1.0/im/interactiveCards/send',
