@@ -116,6 +116,11 @@ setAppType('miniprogram_app')->
 setRobotType('robot1')->
 setCorpId('dingf0xxxxx69');
 
+#解释
+setApp 			配置应用信息
+setAppType		在多个应用里选择一个
+setRobotType 	在多个机器人应用里选择一个
+setCorpId 		设置企业ID
 ```
 ### 例子
 ```
