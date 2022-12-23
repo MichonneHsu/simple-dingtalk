@@ -20,6 +20,7 @@ class Random
    
     public static function generate(int $length=6)
     {
-        return mb_substr(self::$str,0,$length);
+        
+        return mb_substr(str_shuffle(self::$str),0,$length);
     }
 }
