@@ -54,6 +54,9 @@ class Url
         ],
         'group'=>[
             'convertToOpenConversationId'=>'/v1.0/im/chat'
+        ],
+        'teambition'=>[
+            'project'=>'/v1.0/project'
         ]
         
     ];
