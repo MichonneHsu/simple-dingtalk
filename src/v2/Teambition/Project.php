@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SimpleDingTalk\v2;
+namespace SimpleDingTalk\v2\Teambition;
 
 use SimpleDingTalk\v2\ApiRequest;
 use SimpleDingTalk\v2\Url;
