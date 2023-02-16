@@ -31,6 +31,19 @@ class AccessToken
         self::$refreshToken = $refreshToken;
         return new Self;
     }
+    
+    public static function getGrantType()
+    {
+        return self::$grantType;
+    }
+    public static function getCode()
+    {
+        return self::$code;
+    }
+    public static function getRefreshToken()
+    {
+        return self::$refreshToken;
+    }
     /**
      * 设置Token是否取自JSON文件
      *
@@ -44,17 +57,14 @@ class AccessToken
     public static function  getTokenFromJsonFile(){
         return static::$tokenFromJsonFile;
     }
-    public static function getGrantType()
-    {
-        return self::$grantType;
+    public static function editUserToken(array $token){
+        static::$userToken=$token;
     }
-    public static function getCode()
-    {
-        return self::$code;
+    public static function retriveUserToken(){
+        return static::$userToken;
     }
-    public static function getRefreshToken()
-    {
-        return self::$refreshToken;
+    public static function getGeneratedToken(){
+        return static::$token;
     }
     public static function getToken(): string
     {
@@ -101,12 +111,7 @@ class AccessToken
         }
        
     }
-    public static function editUserToken(array $token){
-        static::$userToken=$token;
-    }
-    public static function retriveUserToken(){
-        return static::$userToken;
-    }
+    
     public static function generateToken()
     {
         $getTokenFromJsonFile=static::getTokenFromJsonFile();
@@ -134,9 +139,7 @@ class AccessToken
         }
        
     }
-    public static function getGeneratedToken(){
-        return static::$token;
-    }
+  
 
     public static function generateUserToken()
     {
