@@ -86,7 +86,6 @@ class AccessToken
             return  $token['accessToken'];
         }else{
           
-            $token = static::$token;
             $userToken=static::$userToken;
             if(!empty($userToken)){
                 if (($userToken['expireIn'] - $at['expires']) < time()) {
@@ -135,7 +134,9 @@ class AccessToken
         }
        
     }
-
+    public static function getGeneratedToken(){
+        return static::$token;
+    }
 
     public static function generateUserToken()
     {
