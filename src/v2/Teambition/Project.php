@@ -38,7 +38,7 @@ class Project
      * @return void
      */
     public static function queryViewerGroup(string $userId,array $query){
-        $uri=Url::$api['teambition']['project']."/users/{$userId}/templates/projects";
+        $uri=Url::$api['teambition']['project']."/organizations/users/{$userId}/groups";
         $uri=ApiRequest::joinParams($uri,$query);
         return ApiRequest::get($uri);
     }
