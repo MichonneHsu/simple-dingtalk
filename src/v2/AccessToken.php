@@ -13,7 +13,9 @@ class AccessToken
     private static $grantType = '';
     private static $code = '';
     private static $refreshToken = '';
-
+    private static $token=[];
+    private static $userToken=[];
+    private static $tokenFromJsonFile=true;
     public static function setGrantType($grantType)
     {
         self::$grantType = $grantType;
@@ -28,6 +30,19 @@ class AccessToken
     {
         self::$refreshToken = $refreshToken;
         return new Self;
+    }
+    /**
+     * 设置Token是否取自JSON文件
+     *
+     * @param boolean $fromJsonFile
+     * @return void
+     */
+    public static function setTokenFromJsonFile(bool $fromJsonFile){
+        static::$tokenFromJsonFile=$fromJsonFile;
+    }
+
+    public static function  getTokenFromJsonFile(){
+        return static::$tokenFromJsonFile;
     }
     public static function getGrantType()
     {
@@ -44,33 +59,58 @@ class AccessToken
     public static function getToken(): string
     {
         $at = Config::getApp()['v2']['access_token'];
-        $file_path = $at['file_path'];
-        $file_info = pathinfo($file_path);
-        $file_path_info = $file_info['dirname'] . '/' . $file_info['basename'];
-        if (!file_exists($file_path)) {
-            throw new Exception($file_path_info . ' 文件不存在');
-        }
-
-        $json = file_get_contents($file_path);
-        if (empty($json)) {
-
-            self::generateToken();
-        } else {
-            $token = json_decode($json, true);
-            if (($token['expireIn'] - $at['expires']) < time()) {
-                self::generateToken();
+        $getTokenFromJsonFile=static::getTokenFromJsonFile();
+        if(true===$getTokenFromJsonFile){
+            $file_path = $at['file_path'];
+            $file_info = pathinfo($file_path);
+            $file_path_info = $file_info['dirname'] . '/' . $file_info['basename'];
+            if (!file_exists($file_path)) {
+                throw new Exception($file_path_info . ' 文件不存在');
             }
+    
+            $json = file_get_contents($file_path);
+            if (empty($json)) {
+    
+                self::generateToken();
+            } else {
+                $token = json_decode($json, true);
+                if (($token['expireIn'] - $at['expires']) < time()) {
+                    self::generateToken();
+                }
+            }
+    
+            $json = file_get_contents($file_path);
+    
+            $token = json_decode($json, true);
+    
+            return  $token['accessToken'];
+        }else{
+          
+            $token = static::$token;
+            $userToken=static::$userToken;
+            if(!empty($userToken)){
+                if (($userToken['expireIn'] - $at['expires']) < time()) {
+                    self::generateToken();
+                }
+                return $userToken['accessToken'];
+            }else{
+                throw new Exception("Empty Token", 500);
+                
+            }
+           
+            
         }
-
-        $json = file_get_contents($file_path);
-
-        $token = json_decode($json, true);
-
-        return  $token['accessToken'];
+       
+    }
+    public static function editUserToken(array $token){
+        static::$userToken=$token;
+    }
+    public static function retriveUserToken(){
+        return static::$userToken;
     }
     public static function generateToken()
     {
-
+        $getTokenFromJsonFile=static::getTokenFromJsonFile();
         $app =  Config::getApp();
         $appkey = $app['info']['APP_KEY'];
         $appSecret = $app['info']['APP_SECRET'];
@@ -85,9 +125,15 @@ class AccessToken
         $token = json_decode($res, true);
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
-        $filename = $app['v2']['access_token']['file_path'];
-        $data = json_encode($token);
-        file_put_contents($filename, $data);
+        if(true===$getTokenFromJsonFile){
+            $filename = $app['v2']['access_token']['file_path'];
+            $data = json_encode($token);
+            file_put_contents($filename, $data);
+        }else{
+            static::$token=$token;
+            
+        }
+       
     }
 
 
