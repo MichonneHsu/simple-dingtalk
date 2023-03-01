@@ -50,7 +50,8 @@ class Url
             'templates'=>'/v1.0/doc/templates'
         ],
         'oa'=>[
-            'workflow'=>'/v1.0/workflow'
+            'workflow'=>'/v1.0/workflow',
+            'processCentres'=>'/v1.0/workflow/processCentres'
         ],
         'group'=>[
             'convertToOpenConversationId'=>'/v1.0/im/chat'
