@@ -58,6 +58,6 @@ class OAPC{
     }
     public static function tasksCancel(array $body){
         $uri = Url::$api['oa']['processCentres'] . '/tasks/cancel';
-        return ApiRequest::put($uri,$body);
+        return ApiRequest::post($uri,$body);
     }
 }
