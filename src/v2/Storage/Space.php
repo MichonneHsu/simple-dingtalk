@@ -38,7 +38,7 @@ class Space
      * @param string $spaceId
      * @return mixed
      */
-    public static function getSpeceInfo(string $unionId, string $spaceId)
+    public static function getSpaceInfo(string $unionId, string $spaceId)
     {
         $uri = Url::$api['storage'] . '/spaces/' . $spaceId;
         $params = [
