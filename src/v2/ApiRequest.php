@@ -135,32 +135,28 @@ class ApiRequest
 
 
 
-    public static function test()
+    public static function send(string $method,string $uri,array $body,array $headers)
     {
 
 
         $curl = curl_init();
-
+       
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://www.baidu.com',
+            CURLOPT_URL => $uri,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_TIMEOUT => 2,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_POSTFIELDS => '',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Cookie: BAIDUID=85545FF347B8832C647CCF017EEC46BF:FG=1; BIDUPSID=44846CBCFB40C6964C0954EA079452EF; PSTM=1617183657'
-            ),
+            CURLOPT_CUSTOMREQUEST => strtoupper($method),
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_POSTFIELDS=>empty($body) ? '' : json_encode($body)
         ));
 
         $response = curl_exec($curl);
 
         curl_close($curl);
-        echo $response;
+        
+        return $response;
+
     }
     
     public static function joinParams(string $uri, array $params): string
