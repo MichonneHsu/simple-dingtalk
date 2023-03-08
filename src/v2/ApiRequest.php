@@ -97,6 +97,7 @@ class ApiRequest
             CURLOPT_RETURNTRANSFER=>true,
             CURLOPT_HEADER=>false,
             CURLOPT_URL=>$uri,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_TIMEOUT=>2,
             CURLOPT_CUSTOMREQUEST=>$method,
             CURLOPT_POSTFIELDS=>empty($body) ? '' : json_encode($body)
