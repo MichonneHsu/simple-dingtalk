@@ -20,7 +20,7 @@ class Space
      * @param array $body
      * @return mixed
      */
-    public static function addSpece(string $unionId, array $body)
+    public static function addSpace(string $unionId, array $body)
     {
         $uri = Url::$api['storage'] . '/spaces';
         $params = [
