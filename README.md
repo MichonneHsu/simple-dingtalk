@@ -59,7 +59,6 @@
 ```
 #### 如何配置以及使用
 ```
-```
 <?php
 declare(strict_types=1);
 
@@ -167,9 +166,6 @@ class mydemo extends dd{
 }
 $params=['dept_id'=>1];
 (new mydemo())->user('listid',$params);
-
-```
-
 ```
 
 ## 使用须知
