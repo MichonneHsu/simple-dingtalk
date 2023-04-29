@@ -57,83 +57,119 @@
 │  │   |   ├─file_path                   凭证存储文件（该文件必须用户自己生成，名字自定义，并填入凭证存储文件的路径，建议填入绝对路径）
 │  ├─robot1                              第二个机器人应用（配置内容跟上面一样，以此类推） 
 ```
-#### 如何配置
+#### 如何配置以及使用
 ```
-如何配置：
-$apps=[
-	'miniprogram_app' => [
-		'info' => [
-			'AGENT_ID' => 0,
-			'APP_KEY' => '',
-			'APP_SECRET' => '',
-		],
-		'access_token' => [
-			'expires' => 180,
-			'file_path' => './a.json'
-		],
-		'login_info' => [
-			'authorize' => [
-				'redirect_uri' => 'https://www.dingtalk.com',
-				'dingtalk_login_uri'=>'https://www.dingtalk.com'
-			]
-		],
-		'callback_info' => [
-                    'aes_key' => '',
-                    'token' => ''
-         ],
-		'v2' => [
-			'access_token' => [
-				'expires' => 180,
-				'file_path' => './c.json'
-			]
-		],
-		'userAccessToken' => [
-			'expires' => 180,
-			'file_path' => './uat.json'
-		]
-	],
-];
-
-$robots=[
-	'robot1' => [
-		'info' => [
-			'AGENT_ID' => 0,
-			'APP_KEY' => '',
-			'APP_SECRET' => '',
-			'access_token' => '',
-			'SEC' => ''
-		],
-		'access_token' => [
-			'expires' => 180,
-			'file_path' => './robot.json'
-		]
-
-	],
-];
-Config::setRobot($robots)->
-setApp($apps)->
-setAppType('miniprogram_app')->
-setRobotType('robot1')->
-setCorpId('dingf0xxxxx69');
-
-#解释
-setApp 			配置应用信息
-setAppType		在多个应用里选择一个
-setRobotType 	在多个机器人应用里选择一个
-setCorpId 		设置企业ID
 ```
-### 例子
+<?php
+declare(strict_types=1);
+
+namespace app\common\dingtalk;
+use SimpleDingTalk\Config;
+use SimpleDingTalk\User;
+
+class MyApp{
+    private function __construct()
+    {
+        $apps = [
+            'miniprogram_app' => [
+                'info' => [
+                    'AGENT_ID' => 0,
+                    'APP_KEY' => '',
+                    'APP_SECRET' => '',
+                ],
+                'access_token' => [
+                    'expires' => 180,
+                    'file_path' => 'static/tk/a.json'
+                ],
+                'login_info' => [
+                    'authorize' => [
+                        'redirect_uri' => '',
+                        'dingtalk_login_uri' => ''
+                    ]
+                ],
+                'v2' => [
+                    'access_token' => [
+                        'expires' => 180,
+                        'file_path' => 'static/tk/c.json'
+                    ]
+                ],
+                'userAccessToken' => [
+                    'expires' => 180,
+                    'file_path' => 'static/tk/uat.json'
+                ]
+            ],
+        ];
+        
+        $robots = [
+            'robot1' => [
+                'info' => [
+                    'AGENT_ID' => 0,
+                    'APP_KEY' => '',
+                    'APP_SECRET' => '',
+                    'access_token' => '',
+                    'SEC' => ''
+                ],
+                'access_token' => [
+                    'expires' => 180,
+                    'file_path' => 'static/tk/robot.json'
+                ]
+        
+            ],
+        ];
+        Config::setRobot($robots)->setApp($apps)->setCorpId('');
+        
+    }
+
+   public static function __callStatic($name, $arguments)
+	{
+		new Self();
+		$res = null;
+		[$type, $class, $method, $params] = $arguments;
+		if ($type == 'app') {
+			Config::setAppType($name);
+		}
+		if ($type == 'robot') {
+			Config::setRobotType($name);
+			
+		}
+		$res=call_user_func_array([$class,$method], $params);
+
+		return $res;
+	}
+}
+
+
+// 面向对象（推荐）
+class dd{
+	function app(string $name,string $class,string $method,array $params){
+		$type=__FUNCTION__;
+		return MyApp::$name($type,$class,$method,$params);
+	}
+	function robot(string $name,string $class,string $method,array $params){
+		$type=__FUNCTION__;
+		return MyApp::$name($type,$class,$method,$params);
+	}
+}
+class mydemo extends dd{
+	private $classes=[
+		'user'=>User::class
+	];
+	private $name='miniprogram_app';
+
+	public function __call($name, $arguments)
+	{
+		$class=$this->classes[$name];
+		[$method,$params]=$arguments;
+		$name=$this->name;
+		return $this->app($name,$class,$method,$params);
+	}
+
+}
+$params=['dept_id'=>1];
+(new mydemo())->user('listid',$params);
+
 ```
-require_once './vendor/autoload.php';
 
-use SimpleDingTalk\WorkFlow;
-
-$json=[
-    'process_instance_id'=>$process_instance_id,
-    'text'=>'测试评论',
-    'comment_userid'=>$userid
-];
-WorkFlow::add_comment($json);
 ```
 
 ## 使用须知
