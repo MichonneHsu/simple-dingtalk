@@ -24,7 +24,7 @@ class Message
     public static function oToMessages_batchSend(array $userIds, string $msgKey, array $msgParam)
     {
 
-        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $robotCode = Config::getApp()['info']['ROBOT_CODE'];
 
         $uri = Url::$api['robot']['oToMessages_batchSend'];
         $body = [
@@ -130,7 +130,8 @@ class Message
     public static function batchRecall(array $processQueryKeys)
     {
         $uri = Url::$api['robot']['batchRecall'];
-        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        // $robotCode = Config::getApp()['info']['APP_KEY'];
+        $robotCode = Config::getApp()['info']['ROBOT_CODE'];
         $body = [
             'robotCode' => $robotCode,
             'processQueryKeys' => $processQueryKeys
@@ -152,7 +153,7 @@ class Message
     public static function sendGroupMessages(array $msgParam, string $msgKey, string $openConversationId)
     {
         $uri = Url::$api['robot']['sendGroupMessages'];
-        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $robotCode = Config::getApp()['info']['ROBOT_CODE'];
         $body = [
             'msgParam' => json_encode($msgParam, JSON_UNESCAPED_UNICODE),
             'msgKey' => $msgKey,
@@ -171,7 +172,7 @@ class Message
     public static function readStatus(string $processQueryKey)
     {
         $uri = Url::$api['robot']['readStatus'];
-        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $robotCode = Config::getApp()['info']['ROBOT_CODE'];
         $params = [
             'processQueryKey' => $processQueryKey,
             'robotCode' => $robotCode
@@ -189,7 +190,7 @@ class Message
     public static function recallGroupMessages(string $openConversationId, array $processQueryKeys)
     {
         $uri = Url::$api['robot']['recallGroupMessages'];
-        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $robotCode = Config::getApp()['info']['ROBOT_CODE'];
         $body = [
             'openConversationId' => $openConversationId,
             'processQueryKeys' => $processQueryKeys,
@@ -210,7 +211,7 @@ class Message
     public static function queryGroupMessages(string $openConversationId, string $processQueryKey, int $maxResults = 5, string $nextToken = '')
     {
         $uri = Url::$api['robot']['queryGroupMessages'];
-        $robotCode = Config::getRobot()['info']['APP_KEY'];
+        $robotCode = Config::getApp()['info']['ROBOT_CODE'];
         $body = [
             'openConversationId' => $openConversationId,
             'processQueryKey' => $processQueryKey,
@@ -277,7 +278,7 @@ class Message
     public static function interactiveStandarCard_send(array $body){
         $uri = Url::$api['robot']['interactiveStandarCard_send'];
         $cardData=strval(json_encode($body['cardData'],JSON_UNESCAPED_UNICODE));
-        $body['robotCode']=Config::getRobot()['info']['APP_KEY'];
+        $body['robotCode']=Config::getApp()['info']['ROBOT_CODE'];
         $body['cardData']=$cardData;
         return ApiRequest::post($uri, $body);
     }

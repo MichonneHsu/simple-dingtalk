@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleDingTalk\v2\Robot;
 
-
+use SimpleDingTalk\v2\AccessToken as appAct;
 use SimpleDingTalk\v2\Url;
 
 class ApiRequest
@@ -94,7 +94,7 @@ class ApiRequest
 
         if ($has_token) {
 
-            $header[] = 'x-acs-dingtalk-access-token:' . AccessToken::getToken();
+            $header[] = 'x-acs-dingtalk-access-token:' . appAct::getToken();
         }
 
 

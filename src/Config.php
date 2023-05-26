@@ -17,7 +17,8 @@ class Config
                 'info' => [
                     'AGENT_ID' => '',
                     'APP_KEY' => '',
-                    'APP_SECRET' => ''
+                    'APP_SECRET' => '',
+                    'ROBOT_CODE'=>''
                 ],
                 'access_token' => [
                     'expires' => 0,
