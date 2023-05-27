@@ -75,6 +75,7 @@ class MyApp{
                     'AGENT_ID' => 0,
                     'APP_KEY' => '',
                     'APP_SECRET' => '',
+                    'ROBOT_CODE' => '',
                 ],
                 'access_token' => [
                     'expires' => 180,
