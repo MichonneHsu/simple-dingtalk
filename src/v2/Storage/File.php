@@ -313,4 +313,17 @@ class File
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::post($uri,$body);
     }
+    /**
+     * 获取文件或文件夹列表
+     *
+     * @param string $unionId
+     * @param array $params
+     * @return mixed
+     */
+    public static function getBySpace(string $spaceId,array $params)
+    {
+        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries";
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::get($uri);
+    }
 }
