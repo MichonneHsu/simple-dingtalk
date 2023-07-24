@@ -25,7 +25,7 @@ class HumanResource{
      *
      * @param integer $size
      * @param integer $offset
-     * @return void
+     * @return mixed
      */
     public static function querypreentry(int $size,int $offset=0)
     {
@@ -40,7 +40,7 @@ class HumanResource{
      * 获取员工离职信息
      *
      * @param string $userid_list
-     * @return void
+     * @return mixed
      */
     public static function listdimission(string $userid_list)
     {
@@ -55,7 +55,7 @@ class HumanResource{
      *
      * @param integer $size
      * @param integer $offset
-     * @return void
+     * @return mixed
      */
     public static function querydimission(int $size,int $offset=0)
     {
@@ -71,7 +71,7 @@ class HumanResource{
      * 添加企业待入职员工
      *
      * @param array $json
-     * @return void
+     * @return mixed
      */
     public static function addpreentry(array $json)
     {

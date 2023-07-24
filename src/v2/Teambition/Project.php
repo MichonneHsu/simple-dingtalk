@@ -13,7 +13,7 @@ class Project
      *
      * @param string $userId
      * @param string $keyword
-     * @return void
+     * @return mixed
      */
     public static function searchTemplates(string $userId,string $keyword){
         $uri=Url::$api['teambition']['project']."/organizations/users/{$userId}/templates?keyword={$keyword}";
@@ -24,7 +24,7 @@ class Project
      *
      * @param string $userId
      * @param array $body
-     * @return void
+     * @return mixed
      */
     public static function create(string $userId,array $body){
         $uri=Url::$api['teambition']['project']."/users/{$userId}/templates/projects";
@@ -35,7 +35,7 @@ class Project
      *
      * @param string $userId
      * @param array $query
-     * @return void
+     * @return mixed
      */
     public static function queryViewerGroup(string $userId,array $query){
         $uri=Url::$api['teambition']['project']."/organizations/users/{$userId}/groups";
@@ -48,7 +48,7 @@ class Project
      * @param string $userId
      * @param string $projectId
      * @param array $body
-     * @return void
+     * @return mixed
      */
     public static function updateGroup(string $userId,string $projectId,array $body){
         $uri=Url::$api['teambition']['project']."/users/{$userId}/projects/{$projectId}/groups";
@@ -61,7 +61,7 @@ class Project
      * @param string $userId
      * @param string $projectId
      * @param array $body
-     * @return void
+     * @return mixed
      */
     public static function addMembers(string $userId,string $projectId,array $body){
         $uri=Url::$api['teambition']['project']."/users/{$userId}/projects/{$projectId}/members";

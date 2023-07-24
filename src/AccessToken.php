@@ -15,7 +15,7 @@ class AccessToken
      * 设置Token是否取自JSON文件
      *
      * @param boolean $fromJsonFile
-     * @return void
+     * @return mixed
      */
     public static function setTokenFromJsonFile(bool $fromJsonFile){
         static::$tokenFromJsonFile=$fromJsonFile;

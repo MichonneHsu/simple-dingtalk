@@ -35,7 +35,7 @@ class Management
      *
      * @param integer $size
      * @param integer $offset
-     * @return void
+     * @return mixed
      */
     public static function querypreentry(int $size,int $offset=0)
     {
@@ -50,7 +50,7 @@ class Management
      * 获取员工离职信息
      *
      * @param string $userid_list
-     * @return void
+     * @return mixed
      */
     public static function listdimission(string $userid_list)
     {
@@ -65,7 +65,7 @@ class Management
      *
      * @param integer $size
      * @param integer $offset
-     * @return void
+     * @return mixed
      */
     public static function querydimission(int $size,int $offset=0)
     {

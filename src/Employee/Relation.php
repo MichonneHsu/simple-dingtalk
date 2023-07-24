@@ -21,7 +21,7 @@ class Relation
      * 添加企业待入职员工
      *
      * @param array $json
-     * @return void
+     * @return mixed
      */
     public static function addpreentry(array $json)
     {
