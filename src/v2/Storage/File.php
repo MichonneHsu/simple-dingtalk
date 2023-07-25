@@ -135,7 +135,7 @@ class File
      */
     public static function toRecycleBin(string $spaceId,string $dentryId, array $params)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/toRecycleBin";
+        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}";
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::delete($uri);
     }
