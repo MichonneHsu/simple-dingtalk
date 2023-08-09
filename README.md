@@ -18,7 +18,7 @@
 ### 文档地址
 点击访问[文档](https://gitee.com/michonnehsu/simple-dingtalk/wikis/pages)  
 
-#### 配置架构
+### 配置架构
 ```
 ├─apps                                   应用目录
 │  ├─app1                                第一个小程序或微应用（名字自取，app1只是解释，方便理解）  
@@ -58,7 +58,7 @@
 │  │   |   ├─file_path                   凭证存储文件（该文件必须用户自己生成，名字自定义，并填入凭证存储文件的路径，建议填入绝对路径）
 │  ├─robot1                              第二个机器人应用（配置内容跟上面一样，以此类推） 
 ```
-#### 如何配置以及使用
+### 如何配置以及使用
 ```
 <?php
 declare(strict_types=1);
@@ -67,7 +67,7 @@ namespace app\common\dingtalk;
 use SimpleDingTalk\Config;
 use SimpleDingTalk\User;
 
-class MyApp{
+class dingTalkApps{
     private function __construct()
     {
         $apps = [
@@ -101,23 +101,8 @@ class MyApp{
             ],
         ];
         
-        $robots = [
-            'robot1' => [
-                'info' => [
-                    'AGENT_ID' => 0,
-                    'APP_KEY' => '',
-                    'APP_SECRET' => '',
-                    'access_token' => '',
-                    'SEC' => ''
-                ],
-                'access_token' => [
-                    'expires' => 180,
-                    'file_path' => 'static/tk/robot.json'
-                ]
-        
-            ],
-        ];
-        Config::setRobot($robots)->setApp($apps)->setCorpId('');
+      
+        Config::setApp($apps)->setCorpId('');
         
     }
 
@@ -126,13 +111,8 @@ class MyApp{
 		new Self();
 		$res = null;
 		[$type, $class, $method, $params] = $arguments;
-		if ($type == 'app') {
-			Config::setAppType($name);
-		}
-		if ($type == 'robot') {
-			Config::setRobotType($name);
-			
-		}
+		Config::setAppType($name);
+	
 		$res=call_user_func_array([$class,$method], $params);
 
 		return $res;
@@ -141,20 +121,18 @@ class MyApp{
 
 
 // 面向对象（推荐）
-class dd{
+class dingtalkProxy{
 	function app(string $name,string $class,string $method,array $params){
 		$type=__FUNCTION__;
-		return MyApp::$name($type,$class,$method,$params);
-	}
-	function robot(string $name,string $class,string $method,array $params){
-		$type=__FUNCTION__;
-		return MyApp::$name($type,$class,$method,$params);
+		return dingTalkApps::$name($type,$class,$method,$params);
 	}
 }
-class mydemo extends dd{
+class myApp extends dingtalkProxy{
+    //$classes 这里面添加需要使用的类
 	private $classes=[
 		'user'=>User::class
 	];
+    //$name 如果要使用其他应用的话可以更改它的值
 	private $name='miniprogram_app';
 
 	public function __call($name, $arguments)
