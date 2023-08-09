@@ -1,8 +1,3 @@
-<p align="center">
-<a href="https://developers.dingtalk.com/?spm=ding_open_doc.document.0.0.3a2565733BtFVA">
-<img src="https://images.gitee.com/uploads/images/2021/1006/105453_40454723_8010855.png" alt="dingtalk" width="180"/>
-</a>
-</p>
 <p align="center" style="font-family: Arial, Helvetica, sans-serif;">轻量级钉钉服务端PHP-SDK，简化初学者的使用难度。</p>
 <p align="center">
 <img src="https://img.shields.io/badge/PHP-7.3^|8^-green" />
