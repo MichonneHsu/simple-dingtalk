@@ -12,9 +12,9 @@ use SimpleDingTalk\v2\Url;
  */
 class FileTransmission
 {
-    public static function uploadInfos(string $unionId, string $spaceId,array $body)
+    public static function uploadInfos(string $unionId, string $parentDentryUuid,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/files/uploadInfos/query";
+        $uri = Url::$api['storage'] . "/spaces/files/$parentDentryUuid/uploadInfos/query";
 
         $params = [
             'unionId' => $unionId
@@ -22,9 +22,9 @@ class FileTransmission
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::post($uri, $body);
     }
-    public static function commit(string $unionId, string $spaceId,array $body)
+    public static function commit(string $unionId, string $parentDentryUuid,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/files/commit";
+        $uri = Url::$api['storage'] . "/spaces/files/$parentDentryUuid/commit";
 
         $params = [
             'unionId' => $unionId
@@ -42,4 +42,5 @@ class FileTransmission
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::post($uri, $body);
     }
+   
 }

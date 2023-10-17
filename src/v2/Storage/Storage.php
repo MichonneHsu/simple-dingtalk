@@ -38,5 +38,13 @@ class Storage
         return ApiRequest::post($uri, $body);
     }
 
-    
+    public static function search(string $operatorId, array $body){
+        $uri = Url::$api['storage'] . "/storage/dentries/search";
+
+        $params = [
+            'operatorId' => $operatorId
+        ];
+        $uri = ApiRequest::joinParams($uri, $params);
+        return ApiRequest::post($uri, $body);
+    }
 }
