@@ -14,7 +14,7 @@ class FileTransmission
 {
     public static function uploadInfos(string $unionId, string $parentDentryUuid,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/files/$parentDentryUuid/uploadInfos/query";
+        $uri = Url::$api['storage']['v2'] . "/spaces/files/$parentDentryUuid/uploadInfos/query";
 
         $params = [
             'unionId' => $unionId
@@ -24,7 +24,7 @@ class FileTransmission
     }
     public static function commit(string $unionId, string $parentDentryUuid,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/files/$parentDentryUuid/commit";
+        $uri = Url::$api['storage']['v2'] . "/spaces/files/$parentDentryUuid/commit";
 
         $params = [
             'unionId' => $unionId

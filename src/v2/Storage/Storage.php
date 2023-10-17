@@ -39,7 +39,7 @@ class Storage
     }
 
     public static function search(string $operatorId, array $body){
-        $uri = Url::$api['storage'] . "/storage/dentries/search";
+        $uri = Url::$api['storage']['v2'] . "/storage/dentries/search";
 
         $params = [
             'operatorId' => $operatorId
