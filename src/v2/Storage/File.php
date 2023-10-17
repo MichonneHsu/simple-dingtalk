@@ -24,7 +24,7 @@ class File
      */
     public static function create(string $unionId, string $spaceId, string $parentId, array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$parentId}/folders";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$parentId}/folders";
 
         $params = [
             'unionId' => $unionId
@@ -43,7 +43,7 @@ class File
      */
     public static function copy(string $unionId, string $spaceId, string $dentryId, array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/copy";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/copy";
 
         $params = [
             'unionId' => $unionId
@@ -61,7 +61,7 @@ class File
      */
     public static function batchCopy(string $unionId, string $spaceId, array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/batchCopy";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/batchCopy";
 
         $params = [
             'unionId' => $unionId
@@ -80,7 +80,7 @@ class File
      */
     public static function move(string $unionId, string $spaceId,string $dentryId, array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/move";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/move";
 
         $params = [
             'unionId' => $unionId
@@ -98,7 +98,7 @@ class File
      */
     public static function batchMove(string $unionId, string $spaceId, array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/batchMove";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/batchMove";
 
         $params = [
             'unionId' => $unionId
@@ -117,7 +117,7 @@ class File
      */
     public static function rename(string $unionId, string $spaceId,string $dentryId, array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/rename";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/rename";
 
         $params = [
             'unionId' => $unionId
@@ -135,7 +135,7 @@ class File
      */
     public static function toRecycleBin(string $spaceId,string $dentryId, array $params)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}";
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::delete($uri);
     }
@@ -149,7 +149,7 @@ class File
      */
     public static function batchRemove(string $unionId,string $spaceId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/batchRemove";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/batchRemove";
         $params = [
             'unionId' => $unionId
         ];
@@ -168,7 +168,7 @@ class File
      */
     public static function revert(string $unionId,string $spaceId,string $dentryId,string $version,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/versions/{$version}/revert";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/versions/{$version}/revert";
         $params = [
             'unionId' => $unionId
         ];
@@ -185,7 +185,7 @@ class File
      */
     public static function versions(string $spaceId,string $dentryId,array $params)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/versions";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/versions";
        
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
@@ -201,7 +201,7 @@ class File
      */
     public static function query(string $unionId,string $spaceId,string $dentryId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/query";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/query";
         $params = [
             'unionId' => $unionId
         ];
@@ -218,7 +218,7 @@ class File
      */
     public static function getInfos(string $unionId,string $spaceId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/query";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/query";
         $params = [
             'unionId' => $unionId
         ];
@@ -235,7 +235,7 @@ class File
      */
     public static function listAll(string $unionId,string $spaceId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/listAll";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/listAll";
         $params = [
             'unionId' => $unionId
         ];
@@ -253,7 +253,7 @@ class File
      */
     public static function appProperties(string $unionId,string $spaceId,string $dentryId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/appProperties";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/appProperties";
         $params = [
             'unionId' => $unionId
         ];
@@ -271,7 +271,7 @@ class File
      */
     public static function propertiesRemove(string $unionId,string $spaceId,string $dentryId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/appProperties/remove";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/appProperties/remove";
         $params = [
             'unionId' => $unionId
         ];
@@ -289,7 +289,7 @@ class File
      */
     public static function openInfosQuery(string $unionId,string $spaceId,string $dentryId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries/{$dentryId}/openInfos/query";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries/{$dentryId}/openInfos/query";
         $params = [
             'unionId' => $unionId
         ];
@@ -306,7 +306,7 @@ class File
      */
     public static function thumbnailsQuery(string $unionId,string $spaceId,array $body)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/thumbnails/query";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/thumbnails/query";
         $params = [
             'unionId' => $unionId
         ];
@@ -322,7 +322,7 @@ class File
      */
     public static function getBySpace(string $spaceId,array $params)
     {
-        $uri = Url::$api['storage'] . "/spaces/{$spaceId}/dentries";
+        $uri = Url::$api['storage']['v1'] . "/spaces/{$spaceId}/dentries";
         $uri = ApiRequest::joinParams($uri, $params);
         return ApiRequest::get($uri);
     }
