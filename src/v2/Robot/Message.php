@@ -112,13 +112,9 @@ class Message
      * @param string $target_token
      * @return mixed
      */
-    public static function webhook(array $json, string $target_token)
+    public static function webhook(string $url,array $json)
     {
-
-        $uri = Url::$api['robot']['send_msg'];
-        $params['access_token'] = $target_token;
-        $uri = ApiRequest::joinParams($uri, $params);
-        return ApiRequest::reply_request('post',$uri, $json,);
+        return ApiRequest::reply_request('post',$url, $json,);
     }
     /**
      * 批量撤回单聊消息
