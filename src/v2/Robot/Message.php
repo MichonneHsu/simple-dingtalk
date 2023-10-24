@@ -101,7 +101,7 @@ class Message
 
         $uri = Url::$api['robot']['send_msg'];
         $params['access_token'] = $group_token;
-        $uri = v1_req::joinParams($uri, $params);
+        $uri = ApiRequest::joinParams($uri, $params);
         $has_token = false;
         return v1_req::post($uri, $json, $has_token);
     }
@@ -118,8 +118,7 @@ class Message
         $uri = Url::$api['robot']['send_msg'];
         $params['access_token'] = $target_token;
         $uri = ApiRequest::joinParams($uri, $params);
-        $has_token = false;
-        return v1_req::post($uri, $json, $has_token);
+        return ApiRequest::reply_request('post',$uri, $json,);
     }
     /**
      * 批量撤回单聊消息
