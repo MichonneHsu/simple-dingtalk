@@ -12,8 +12,8 @@ class AccessToken
    
     public static function getToken(): string
     {
-        $robot=Config::getRobot();
-        $file_path=$robot['access_token']['file_path'];
+        $app=Config::getApp();
+        $file_path=$app['access_token']['file_path'];
         $file_info=pathinfo($file_path);
         $file_path_info=$file_info['dirname'].'/'.$file_info['basename'];
         if (!file_exists($file_path)) {
@@ -27,7 +27,7 @@ class AccessToken
            
         } else {
             $token = json_decode($json, true);
-            if (($token['expireIn'] - $robot['access_token']['expires']) < time()) {
+            if (($token['expireIn'] - $app['access_token']['expires']) < time()) {
                 self::generateToken();
 
               
@@ -43,7 +43,7 @@ class AccessToken
     public static function generateToken()
     {
 
-        $app= Config::getRobot();
+        $app= Config::getApp();
         $appkey =$app['info']['APP_KEY'];
         $appSecret = $app['info']['APP_SECRET'];
         $uri = Url::$api['gettoken'];
@@ -58,7 +58,7 @@ class AccessToken
         $expires_in = $token['expireIn'];
         $token['expireIn'] = $expires_in + time();
         $filename = $app['access_token']['file_path'];
-        $data = json_encode($token);
+        $data = json_encode($token, JSON_UNESCAPED_UNICODE);
         file_put_contents($filename, $data);
     }
 }
