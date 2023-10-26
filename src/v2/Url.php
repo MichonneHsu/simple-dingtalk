@@ -62,6 +62,15 @@ class Url
         ],
         'teambition'=>[
             'project'=>'/v1.0/project'
+        ],
+        'interactiveCard'=>[
+            'v1'=>[
+                'instances'=>'/v1.0/card/instances',
+                'deliver'=>'/v1.0/card/instances/deliver',
+                'createAndDeliver'=>'/v1.0/card/instances/createAndDeliver',
+                'register'=>'/v1.0/card/callbacks/register',
+                'spaces'=>'/v1.0/card/instances/spaces'
+            ]
         ]
         
     ];
