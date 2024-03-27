@@ -75,13 +75,14 @@ class Sheets
      *
      * @param string $operatorId
      * @param string $workbookId
+     * @param string $sheetId
      * @return mixed
      */
-    public static function remove(string $operatorId, string $workbookId)
+    public static function remove(string $operatorId, string $workbookId,string $sheetId)
     {
 
 
-        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets?operatorId=$operatorId";
+        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId?operatorId=$operatorId";
      
 
         return ApiRequest::delete($uri);
