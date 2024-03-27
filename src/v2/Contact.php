@@ -58,4 +58,11 @@ class Contact
         
         return ApiRequest::post($uri, $body);
     }
+    public static function signOut(array $body)
+    {
+        $uri = Url::$api['contact'] . '/orgAccounts/signOut';
+        
+        return ApiRequest::post($uri, $body);
+    }
+    
 }
