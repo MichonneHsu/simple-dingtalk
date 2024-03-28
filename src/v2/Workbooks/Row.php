@@ -9,7 +9,7 @@ use SimpleDingTalk\v2\ApiRequest;
 /**
  * 行列
  */
-class Rows
+class Row
 {
      /**
      * 指定行上方插入若干行

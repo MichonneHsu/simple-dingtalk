@@ -25,7 +25,7 @@ class Range
     {
 
 
-        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/$rangeAddress";
+        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/ranges/$rangeAddress";
         $params=[
             'select'=>$select,
             'operatorId'=>$operatorId
@@ -48,7 +48,7 @@ class Range
     {
 
 
-        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/$rangeAddress";
+        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/ranges/$rangeAddress";
         $params=[
             'operatorId'=>$operatorId
         ];
@@ -70,7 +70,7 @@ class Range
     {
 
 
-        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/$rangeAddress/clearData";
+        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/ranges/$rangeAddress/clearData";
         $params=[
             'operatorId'=>$operatorId
         ];
@@ -92,7 +92,7 @@ class Range
     {
 
 
-        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/$rangeAddress/clear";
+        $uri = Url::$api['document']['workbooks']."/$workbookId/sheets/$sheetId/ranges/$rangeAddress/clear";
         $params=[
             'operatorId'=>$operatorId
         ];

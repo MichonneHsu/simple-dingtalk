@@ -9,7 +9,7 @@ use SimpleDingTalk\v2\ApiRequest;
 /**
  * 工作表
  */
-class Sheets
+class Sheet
 {
     /**
      * 新获取所有工作表
