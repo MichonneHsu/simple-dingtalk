@@ -12,8 +12,8 @@ class Register{
         $app=Config::getApp();
         $uri=Url::$api['register']['v1']['gateway'];
         $body=[
-            'clientId'=>$app['APP_KEY'],
-            'clientSecret'=>$app['APP_SECRET'],
+            'clientId'=>$app['info']['APP_KEY'],
+            'clientSecret'=>$app['info']['APP_SECRET'],
             'subscriptions'=>$subscriptions
         ];
         $res=ApiRequest::http_request("POST",$uri,$body,false);
