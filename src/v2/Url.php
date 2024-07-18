@@ -73,6 +73,11 @@ class Url
                 'spaces' => '/v1.0/card/instances/spaces'
             ]
         ],
+        'register'=>[
+            'v1'=>[
+                'gateway'=>'/v1.0/gateway/connections/open'
+            ]
+        ]
 
     ];
 }

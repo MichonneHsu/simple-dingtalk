@@ -28,6 +28,10 @@ class Config
                     'aes_key' => '',
                     'token' => ''
                 ],
+                'callback_stream'=>[
+                    'localIp'=>'',
+                    'ua'=>''
+                ],
                 'login_info' => [
                     'authorize' => [
                         'redirect_uri' => '',
